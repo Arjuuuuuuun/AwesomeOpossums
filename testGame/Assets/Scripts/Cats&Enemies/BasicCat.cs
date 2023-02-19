@@ -7,17 +7,19 @@ public class BasicCat : MonoBehaviour
     // Start is called before the first frame update
 
     [SerializeField] int health;
-    [SerializeField] int damage;
+    [SerializeField] public int damage;
+    public Rigidbody2D rb;
     
-    void Start()
+    void Awake()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    private void FixedUpdate()
+    private void Start()
     {
-        
+        rb.velocity = new Vector2(5.0f, 0.0f);
     }
+
 
     private void takeDamage(int incDamage)
     {
@@ -27,6 +29,6 @@ public class BasicCat : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Enemy other = collision.gameObject.GetComponent<Enemy>();
+        
     }
 }
