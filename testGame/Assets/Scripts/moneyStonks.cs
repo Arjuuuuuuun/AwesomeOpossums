@@ -14,6 +14,7 @@ public class moneyStonks : MonoBehaviour
 
     public Button worker_upgrade_button;
     public Text worker_upgrade_button_text;
+    public Text money_display_text;
 
 
     // Start is called before the first frame update
@@ -39,6 +40,7 @@ public class moneyStonks : MonoBehaviour
             money = max_money;
         }
 
+        money_display_text.text = '$' + money.ToString() + '/' + max_money.ToString();
         Debug.Log(money);
     }
 
@@ -57,30 +59,39 @@ public class moneyStonks : MonoBehaviour
                 money_generation = 3;
                 max_money = 500;
                 worker_price = 60;
+                worker_upgrade_button_text.text = '$' + worker_price.ToString();
                 break;
+
             case 2:
                 worker_level = 3;
                 money_generation = 5;
                 max_money = 580;
                 worker_price = 80;
+                worker_upgrade_button_text.text = '$' + worker_price.ToString();
                 break;
+
             case 3:
                 worker_level = 4;
                 money_generation = 6;
                 max_money = 660;
                 worker_price = 100;
+                worker_upgrade_button_text.text = '$' + worker_price.ToString();
                 break;
+
             case 4:
                 worker_level = 5;
                 money_generation = 7;
                 max_money = 720;
                 worker_price = 120;
+                worker_upgrade_button_text.text = '$' + worker_price.ToString();
                 break;
+
             case 5:
                 worker_level = 6;
                 money_generation = 8;
                 max_money = 760;
                 worker_upgrade_button.interactable = false;
+                worker_upgrade_button_text.text = "MAX LEVEL ACQUIRED :)!";
                 break;
         }
     }
