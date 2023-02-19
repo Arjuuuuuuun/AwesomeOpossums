@@ -11,10 +11,18 @@ public class moneyStonks : MonoBehaviour
     int max_money;
     int money_generation;
     int worker_price;
+    int reveille_price;
+    int aggie_engineer_price;
+    int jimbo_fisher_price;
 
     public Button worker_upgrade_button;
     public Button reveille_buy_button;
+    public Button aggie_engineer_buy_button;
+    public Button jimbo_fisher_buy_button;
     public Text worker_upgrade_button_text;
+    public Text reveille_buy_button_text;
+    public Text aggie_engineer_buy_button_text;
+    public Text jimbo_fisher_buy_button_text;
     public Text money_display_text;
 
 
@@ -26,6 +34,13 @@ public class moneyStonks : MonoBehaviour
         max_money = 2000;
         money_generation = 5;
         worker_price = 800;
+        reveille_price = 1300;
+        aggie_engineer_price = 550;
+        jimbo_fisher_price = 3000;
+
+        reveille_buy_button_text.text = '$' + reveille_price.ToString();
+        jimbo_fisher_buy_button_text.text = '$' + jimbo_fisher_price.ToString();
+        aggie_engineer_buy_button_text.text = '$' + aggie_engineer_price.ToString();
         worker_upgrade_button_text.text = '$' + worker_price.ToString();
     }
 
@@ -42,6 +57,36 @@ public class moneyStonks : MonoBehaviour
         }
 
         money_display_text.text = '$' + money.ToString() + '/' + max_money.ToString();
+    }
+
+    public void onAggieEngineerBuy()
+    {
+        if (money < aggie_engineer_price)
+        {
+            return;
+        }
+        money -= aggie_engineer_price;
+        //spawn aggie engineer
+    }
+
+    public void onReveilleBuy()
+    {
+        if (money < reveille_price)
+        {
+            return;
+        }
+        money -= reveille_price;
+        //spawn reveille
+    }
+
+    public void onJimboFisherBuy()
+    {
+        if (money < jimbo_fisher_price)
+        {
+            return;
+        }
+        money -= jimbo_fisher_price;
+        //spawn jimbo fisher
     }
 
     public void onWorkerUpgrade()
