@@ -13,6 +13,7 @@ public class moneyStonks : MonoBehaviour
     int worker_price;
 
     public Button worker_upgrade_button;
+    public Button reveille_buy_button;
     public Text worker_upgrade_button_text;
     public Text money_display_text;
 
@@ -22,9 +23,9 @@ public class moneyStonks : MonoBehaviour
     {
         worker_level = 1;
         money = 0;
-        max_money = 400;
-        money_generation = 1;
-        worker_price = 40;
+        max_money = 2000;
+        money_generation = 5;
+        worker_price = 800;
         worker_upgrade_button_text.text = '$' + worker_price.ToString();
     }
 
@@ -41,7 +42,6 @@ public class moneyStonks : MonoBehaviour
         }
 
         money_display_text.text = '$' + money.ToString() + '/' + max_money.ToString();
-        Debug.Log(money);
     }
 
     public void onWorkerUpgrade()
@@ -56,40 +56,40 @@ public class moneyStonks : MonoBehaviour
         {
             case 1:
                 worker_level = 2;
-                money_generation = 3;
-                max_money = 500;
-                worker_price = 60;
+                money_generation = 7;
+                max_money = 2500;
+                worker_price = 1000;
                 worker_upgrade_button_text.text = '$' + worker_price.ToString();
                 break;
 
             case 2:
                 worker_level = 3;
-                money_generation = 5;
-                max_money = 580;
-                worker_price = 80;
+                money_generation = 9;
+                max_money = 2900;
+                worker_price = 1200;
                 worker_upgrade_button_text.text = '$' + worker_price.ToString();
                 break;
 
             case 3:
                 worker_level = 4;
-                money_generation = 6;
-                max_money = 660;
-                worker_price = 100;
+                money_generation = 10;
+                max_money = 3300;
+                worker_price = 1500;
                 worker_upgrade_button_text.text = '$' + worker_price.ToString();
                 break;
 
             case 4:
                 worker_level = 5;
-                money_generation = 7;
-                max_money = 720;
-                worker_price = 120;
+                money_generation = 11;
+                max_money = 3600;
+                worker_price = 1900;
                 worker_upgrade_button_text.text = '$' + worker_price.ToString();
                 break;
 
             case 5:
                 worker_level = 6;
-                money_generation = 8;
-                max_money = 760;
+                money_generation = 12;
+                max_money = 3800;
                 worker_upgrade_button.interactable = false;
                 worker_upgrade_button_text.text = "MAX LEVEL ACQUIRED :)!";
                 break;
