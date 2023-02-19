@@ -11,7 +11,9 @@ public class moneyStonks : MonoBehaviour
     int max_money;
     int money_generation;
     int worker_price;
-    bool can_upgrade;
+
+    public Button worker_upgrade_button;
+    public Text worker_upgrade_button_text;
 
 
     // Start is called before the first frame update
@@ -22,7 +24,7 @@ public class moneyStonks : MonoBehaviour
         max_money = 400;
         money_generation = 1;
         worker_price = 40;
-        can_upgrade = true;
+        worker_upgrade_button_text.text = '$' + worker_price.ToString();
     }
 
     // Update is called once per frame
@@ -78,7 +80,7 @@ public class moneyStonks : MonoBehaviour
                 worker_level = 6;
                 money_generation = 8;
                 max_money = 760;
-                can_upgrade = false;
+                worker_upgrade_button.interactable = false;
                 break;
         }
     }
