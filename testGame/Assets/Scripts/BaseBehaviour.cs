@@ -10,24 +10,28 @@ public class BaseBehaviour : MonoBehaviour
     public GameObject enemyType2;
     public GameObject enemyType3;
     public GameObject enemyType4;
+    public bool cont;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SpawnEnemy("enemyType1"));
+        StartCoroutine(SpawnEnemy());
+        cont = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
 
 
-    public IEnumerator SpawnEnemy(string tag)
+    public IEnumerator SpawnEnemy()
     {
+        //int i = 3;
         while (true)
         {
+            string tag = "enemyType1";
+            Debug.Log(tag);
             switch (tag)
             {
                 case "enemyType1":
@@ -43,8 +47,8 @@ public class BaseBehaviour : MonoBehaviour
                     Instantiate(enemyType4, transform.position, transform.rotation);
                     break;
             }
+            yield return new WaitForSeconds(2);
         }
-        yield return new WaitForSeconds(5f);
         
     }
     
