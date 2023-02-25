@@ -7,6 +7,7 @@ public class Fox : MonoBehaviour
     [SerializeField] int health;
     [SerializeField] float speed;
     [SerializeField] float knockBack;
+    [SerializeField] float KBT;
     Rigidbody2D rigidbody;
     private void Awake()
     {
@@ -20,20 +21,18 @@ public class Fox : MonoBehaviour
     {
         health -= damage;
         StartCoroutine(DamageAnime());
-
-
     }
 
     IEnumerator DamageAnime()
     {
         rigidbody.velocity = new Vector3(-knockBack * speed, 0, 0);
         Debug.Log("called");
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(KBT);
 
         rigidbody.velocity = new Vector3(0, 0, 0);
         Debug.Log("called");
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(KBT);
         Debug.Log("called");
 
         rigidbody.velocity = new Vector3(speed, 0, 0);
