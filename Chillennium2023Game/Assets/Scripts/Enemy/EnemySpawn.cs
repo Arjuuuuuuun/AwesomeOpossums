@@ -56,5 +56,7 @@ public class EnemySpawn : MonoBehaviour
         yield return new WaitForSeconds(6);
 
         yield return new WaitForSeconds(8);
+
+        HeadManager.instance.level_counter = 2;
     }
 }

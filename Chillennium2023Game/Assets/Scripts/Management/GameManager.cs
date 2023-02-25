@@ -29,18 +29,14 @@ public class GameManager : MonoBehaviour
         }
         else if (Input.GetKeyDown("2"))
         {
-            buyFox();
+            if(HeadManager.instance.is_fox_active)
+            {
+                buyFox();
+            }
         }
         else if (Input.GetKeyDown("3"))
         {
             buyCamel();
-        }
-
-
-        //if you die... :(
-        if (health <= 0)
-        {
-            gameActive = false;
         }
     }
 

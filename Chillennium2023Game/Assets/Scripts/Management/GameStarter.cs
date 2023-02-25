@@ -8,5 +8,6 @@ public class GameStarter : MonoBehaviour
     {
         HeadManager.instance.level_counter = 1;
         HeadManager.instance.tutorial_counter = 1;
+        HeadManager.instance.is_fox_active = false;
     }
 }
