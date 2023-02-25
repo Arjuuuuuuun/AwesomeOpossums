@@ -8,8 +8,7 @@ public class textManager : MonoBehaviour
 
 
     public Text tutorial_text;
-    
-    private bool is_fox_bought;
+
     private bool is_camel_bought;
     private bool is_wave_1_started;
 
@@ -42,7 +41,8 @@ public class textManager : MonoBehaviour
 
             case (3):
                 tutorial_text.text = "Press \'1\' to buy a fox!";
-                if (is_fox_bought)
+                HeadManager.instance.is_fox_active = true;
+                if (HeadManager.instance.is_fox_bought)
                 {
                     GameObject.Find("EnemySpawner").SendMessage("StartLevel1");
                     ++HeadManager.instance.tutorial_counter;
@@ -56,12 +56,11 @@ public class textManager : MonoBehaviour
                     ++HeadManager.instance.tutorial_counter;
                 }
                 break;
-        }
-    }
 
-    void FoxBought()
-    {
-        is_fox_bought = true;
+            case (5):
+                tutorial_text.text = "Level 1 beat";
+                break;
+        }
     }
 
     void CamelBought()

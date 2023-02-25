@@ -7,6 +7,9 @@ public class HeadManager : MonoBehaviour
     public static HeadManager instance;
     public int level_counter;
     public int tutorial_counter;
+    public bool is_fox_active;
+    public bool is_fox_bought;
+
     private void Awake()
     {
 

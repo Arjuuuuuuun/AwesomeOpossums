@@ -72,7 +72,10 @@ public class Spirit : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       
+       if(collision.tag == "Son")
+        {
+            collision.SendMessage("takeDamage",1);
+        }
     }
 
 }

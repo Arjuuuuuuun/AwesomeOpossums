@@ -16,7 +16,8 @@ public class PlayerSpawn : MonoBehaviour
 
     public void SpawnFox()
     {
-        Instantiate(fox, new Vector3(trans.position.x - .5f, trans.position.y, trans.position.z), Quaternion.identity, trans);
+        HeadManager.instance.is_fox_bought = true;
+        Instantiate(fox, new Vector3(trans.position.x, trans.position.y, trans.position.z), Quaternion.identity, trans);
     }
 
     public void SpawnRat()
@@ -29,12 +30,12 @@ public class PlayerSpawn : MonoBehaviour
         for (int i = 0; i < 3; ++i)
         {
             yield return new WaitForSeconds(0.2f);
-            Instantiate(rat, new Vector3(trans.position.x - .5f, trans.position.y, trans.position.z), Quaternion.identity, trans);
+            Instantiate(rat, new Vector3(trans.position.x, trans.position.y, trans.position.z), Quaternion.identity, trans);
         }
     }
 
     public void SpawnCamel()
     {
-        Instantiate(camel, new Vector3(trans.position.x - .5f, trans.position.y, trans.position.z), Quaternion.identity, trans);
+        Instantiate(camel, new Vector3(trans.position.x, trans.position.y, trans.position.z), Quaternion.identity, trans);
     }
 }
