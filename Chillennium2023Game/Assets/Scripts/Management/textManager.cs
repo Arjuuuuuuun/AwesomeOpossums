@@ -36,19 +36,25 @@ public class textManager : MonoBehaviour
                 break;
 
             case (2):
-                tutorial_text.text = "Be careful! Enemies also deplete your life force!";
+                tutorial_text.text = "You can summon helpful spirits to help absorb minions!";
+                StartCoroutine(Wait());
                 break;
 
             case (3):
-                tutorial_text.text = "Camels can block projectiles, use them to protect yourself and your minions!";
-                if (is_camel_bought)
+                tutorial_text.text = "Press \'1\' to buy a fox!";
+                if (is_fox_bought)
                 {
                     GameObject.Find("EnemySpawner").SendMessage("StartLevel1");
                     ++HeadManager.instance.tutorial_counter;
                 }
                 break;
+
             case (4):
-                tutorial_text.text = "Killing enemies gives you more life force, defeat the enemy base to win!!";
+                tutorial_text.text = "Survive the level to win!";
+                if (HeadManager.instance.level_counter == 2)
+                {
+                    ++HeadManager.instance.tutorial_counter;
+                }
                 break;
         }
     }
