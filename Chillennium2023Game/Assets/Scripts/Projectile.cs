@@ -14,6 +14,10 @@ public class Projectile : MonoBehaviour
     {
         rb.velocity = new Vector3(speed, 0,0);  
     }
+    void TakeDamage(int damage)
+    {
+        return;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

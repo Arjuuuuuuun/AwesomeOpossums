@@ -24,12 +24,15 @@ public class infantScript : MonoBehaviour
     private void Start()
     {
         rb.velocity = new Vector3(speed, 0, 0);
+        StartCoroutine(Ataque());
     }
     private void TakeDamage(int damage)
     {
         health -= damage;
-        if(health < 0) StopAllCoroutines();
-        Destroy(gameObject);
+        if(health < 0) {
+            StopAllCoroutines();
+            Destroy(gameObject); 
+        }
         StartCoroutine(DamageAnime());
     }
 
@@ -57,6 +60,7 @@ public class infantScript : MonoBehaviour
     }
     IEnumerator DamageAnime()
     {
+        StopCoroutine(Ataque());
         running = true;
         if (this.gameObject != null)
         {
@@ -73,21 +77,15 @@ public class infantScript : MonoBehaviour
             rb.velocity = new Vector3(speed, 0, 0);
         }
         running = false;
+        StartCoroutine(DamageAnime());
     }
 
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag != "projectile")
-        {
-            StartCoroutine(DamageAnime());
-            collision.gameObject.SendMessage("TakeDamage", damage);
-            if (health <= 0)
-            {
-                StopCoroutine(DamageAnime());
-                Destroy(this.gameObject);
-            }
-        }
+        collision.gameObject.SendMessage("TakeDamage", 4 * damage);
+        StopAllCoroutines();
+        Destroy(gameObject);
     }
 
 }
