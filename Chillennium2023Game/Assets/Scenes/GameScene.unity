@@ -758,7 +758,7 @@ GameObject:
   - component: {fileID: 548311308}
   - component: {fileID: 548311307}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Spirit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
