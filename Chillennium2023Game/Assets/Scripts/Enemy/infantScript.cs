@@ -88,5 +88,4 @@ public class infantScript : MonoBehaviour
         StopAllCoroutines();
         Destroy(gameObject);
     }
-
 }
