@@ -11,9 +11,8 @@ public class infantScript : MonoBehaviour
     [SerializeField] float knockBack;
     [SerializeField] float KBT;
     [SerializeField] float WT;
+    [SerializeField] GameObject projectile;
     Rigidbody2D rb;
-
-    public GameObject projectile;
     bool running;
 
     private void Awake()
@@ -29,7 +28,7 @@ public class infantScript : MonoBehaviour
     private void TakeDamage(int damage)
     {
         health -= damage;
-        if(health < 0) {
+        if(health <= 0) {
             StopAllCoroutines();
             Destroy(gameObject); 
         }
@@ -83,9 +82,9 @@ public class infantScript : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.gameObject.SendMessage("TakeDamage", 4 * damage);
-        StopAllCoroutines();
-        Destroy(gameObject);
+        //collision.gameObject.SendMessage("TakeDamage", 4 * damage);
+        //StopAllCoroutines();
+        //Destroy(gameObject);
     }
 
 }

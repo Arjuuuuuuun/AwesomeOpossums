@@ -12,6 +12,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] LayerMask BaseMask;
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         rb.velocity = new Vector3(speed, 0,0);  
     }
     void TakeDamage(int damage)
