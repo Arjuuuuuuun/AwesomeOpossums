@@ -398,6 +398,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorial_text: {fileID: 281970831}
+  fox_buy_button: {fileID: 141542488}
+  rat_buy_button: {fileID: 1319423525}
+  camel_buy_button: {fileID: 1317316743}
 --- !u!1 &281970829
 GameObject:
   m_ObjectHideFlags: 0

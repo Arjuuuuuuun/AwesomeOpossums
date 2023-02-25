@@ -6,17 +6,21 @@ public class EnemySpawn : MonoBehaviour
 {
 
     public GameObject spirit;
-    private GameObject clone;
     private Transform trans;
 
 
     public void Start()
     {
         trans = GetComponent<Transform>();
-        StartCoroutine(Wave1());
+        switch (HeadManager.instance.level_counter)
+        {
+            case (1):
+                StartCoroutine(Level1());
+                break;
+        }
     }
 
-    IEnumerator Wave1()
+    IEnumerator Level1()
     {
 
         //BEGIN LEVEL 1
@@ -24,7 +28,7 @@ public class EnemySpawn : MonoBehaviour
 
         for (int i = 0; i < 3; ++i)
         {
-            clone = Instantiate(spirit, new Vector3(trans.position.x + .5f, trans.position.y, trans.position.z), Quaternion.identity, trans);
+            Instantiate(spirit, new Vector3(trans.position.x + .5f, trans.position.y, trans.position.z), Quaternion.identity, trans);
             Debug.Log("Spirit Spawned");
             yield return new WaitForSeconds(2);
         }
