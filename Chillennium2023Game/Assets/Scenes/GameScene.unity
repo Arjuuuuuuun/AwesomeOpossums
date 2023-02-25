@@ -1081,6 +1081,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spirit: {fileID: 3810320899557299151, guid: 7e2b08d4dfbd130469fa8a3a20e372d2, type: 3}
+  infantry: {fileID: 6005606165005200148, guid: fce992c8c6ed7714d9e094d938b57ae0, type: 3}
+  exploder: {fileID: 3810320899557299151, guid: d43338b67e42fb14e9c4973a02f754db, type: 3}
 --- !u!4 &1312659004
 Transform:
   m_ObjectHideFlags: 0
