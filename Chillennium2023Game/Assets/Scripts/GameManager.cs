@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     static public bool gameActive;
     static public int health;
+    public Text healthText;
 
 
     private void Awake()
@@ -18,6 +19,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        //Updating health text
+        healthText.text = health.ToString() + "/200";
+
+        //if you die... :(
         if (health <= 0)
         {
             gameActive = false;
@@ -30,6 +35,7 @@ public class GameManager : MonoBehaviour
         while (gameActive)
         {
             yield return new WaitForSeconds(2);
+
             if (health < 190)
             {
                 health += 10;
@@ -61,7 +67,7 @@ public class GameManager : MonoBehaviour
         if (buyMinion(30))
         {
             //SPAWN RAT
-            Debug.Log("Rat Spawned");
+            Debug.Log("Rat Bought");
         }
     }
 
@@ -70,7 +76,7 @@ public class GameManager : MonoBehaviour
         if (buyMinion(40))
         {
             //SPAWN SNAKE
-            Debug.Log("Snake Spawned");
+            Debug.Log("Snake Bought");
         }
     }
 
@@ -78,8 +84,8 @@ public class GameManager : MonoBehaviour
     {
         if (buyMinion(20))
         {
-            //SPAWN FOX
-            Debug.Log("Fox Spawned");
+            GameObject.Find("PlayerSpawner").SendMessage("SpawnFox");
+            Debug.Log("Fox Bought");
         }
     }
 
@@ -88,7 +94,7 @@ public class GameManager : MonoBehaviour
         if (buyMinion(55))
         {
             //SPAWN CAMEL
-            Debug.Log("Camel Spawned");
+            Debug.Log("Camel Bought");
         }
     }
 }
