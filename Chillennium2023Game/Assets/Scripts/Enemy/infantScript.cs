@@ -36,7 +36,7 @@ public class infantScript : MonoBehaviour
         }
         StartCoroutine(DamageAnime());
     }
-
+       
     IEnumerator Ataque()
     {
         while (true)
