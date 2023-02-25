@@ -11,7 +11,10 @@ public class textManager : MonoBehaviour
     public Button fox_buy_button;
     public Button rat_buy_button;
     public Button camel_buy_button;
+    
     private bool is_fox_bought;
+    private bool is_camel_bought;
+
     private bool isWaiting;
 
     // Update is called once per frame
@@ -32,12 +35,21 @@ public class textManager : MonoBehaviour
                 break;
             case (2):
                 tutorial_text.text = "Be careful! Enemies also deplete your life force!";
+                fox_buy_button.interactable = false;
                 break;
             case (3):
-                tutorial_text.text = "Camels can block projectiles, use them to protect yourself!";
-                rat_buy_button.interactable = true;
+                tutorial_text.text = "Camels can block projectiles, use them to protect yourself and your minions!";
+                rat_buy_button.interactable = false;
                 camel_buy_button.interactable = true;
-                StartCoroutine(Wait());
+                if (is_camel_bought)
+                {
+                    ++HeadManager.instance.tutorial_counter;
+                }
+                break;
+            case (4):
+                tutorial_text.text = "Killing enemies gives you more life force, defeat the enemy base to win!!";
+                fox_buy_button.interactable = true;
+                camel_buy_button.interactable = true;
                 break;
         }
     }
@@ -45,6 +57,11 @@ public class textManager : MonoBehaviour
     void FoxBought()
     {
         is_fox_bought = true;
+    }
+
+    void CamelBought()
+    {
+        is_camel_bought = true;
     }
 
     IEnumerator Wait()

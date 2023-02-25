@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitForSeconds(2);
 
-            if (health < 198)
+            if (health < 198 && HeadManager.instance.tutorial_counter >= 4)
             {
                 health += 2;
             }
