@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         //Updating health slider
-        healthbar.value = health;
+        healthText.text = health.ToString() + "/200";
 
         //if you die... :(
         if (health <= 0)
