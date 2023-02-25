@@ -23,6 +23,20 @@ public class GameManager : MonoBehaviour
         //Updating health slider
         healthText.text = health.ToString() + "/200";
 
+        if (Input.GetKeyDown("1"))
+        {
+            buyRat();
+        }
+        else if (Input.GetKeyDown("2"))
+        {
+            buyFox();
+        }
+        else if (Input.GetKeyDown("3"))
+        {
+            buyCamel();
+        }
+
+
         //if you die... :(
         if (health <= 0)
         {
