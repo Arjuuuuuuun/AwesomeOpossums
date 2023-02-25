@@ -15,7 +15,7 @@ public class EnemySpawn : MonoBehaviour
     {
         trans = GetComponent<Transform>();
         switch (HeadManager.instance.level_counter)
-        {
+        { 
             case (1):
                 StartCoroutine(Level1());
                 break;
