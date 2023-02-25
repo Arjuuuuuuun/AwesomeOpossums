@@ -68,15 +68,6 @@ public class Fighter : MonoBehaviour
             rb.velocity = new Vector3(speed, 0, 0);
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        StartCoroutine(DamageAnime());
-        collision.gameObject.SendMessage("TakeDamage", damage);
-        if (health <= 0)
-        {
-            StopCoroutine(DamageAnime());
-            Destroy(this.gameObject);
-        }
-    }
+
 
 }

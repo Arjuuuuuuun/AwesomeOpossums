@@ -5,7 +5,7 @@ using UnityEngine;
 public class Son : MonoBehaviour
 {
 
-    public static int sonHealth;
+    public int sonHealth;
     // Update is called once per frame
     void takeDamage(int val)
     {
