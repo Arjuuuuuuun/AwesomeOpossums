@@ -1460,8 +1460,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fox: {fileID: 6724324185395457321, guid: 198240fcc61b03c499e96b089ff0bd63, type: 3}
-  rat: {fileID: 6724324185395457321, guid: 198240fcc61b03c499e96b089ff0bd63, type: 3}
-  camel: {fileID: 6724324185395457321, guid: 198240fcc61b03c499e96b089ff0bd63, type: 3}
+  rat: {fileID: 6724324185395457321, guid: d55fce097cccfda46ba5dd4c42da84f6, type: 3}
+  camel: {fileID: 6724324185395457321, guid: a868e7ea5533e0e4db8a9a5ec8f8caef, type: 3}
 --- !u!4 &1406877608
 Transform:
   m_ObjectHideFlags: 0
