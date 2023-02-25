@@ -72,14 +72,7 @@ public class Spirit : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        StartCoroutine(DamageAnime());
-        collision.gameObject.SendMessage("TakeDamage", damage);
-        if (health <= 0)
-        {
-            StopCoroutine(DamageAnime());
-            Destroy(this.gameObject);
-        }
+       
     }
 
 }
