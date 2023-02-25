@@ -23,8 +23,9 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         collision.gameObject.SendMessage("TakeDamage", damage);
-        if (collision.gameObject.layer.Equals(CamelMask) || collision.gameObject.layer.Equals(BaseMask))
+        if (collision.gameObject.tag == "StopsProjectile")
         {
+            Debug.Log("we got here");
             Destroy(gameObject);
         }
     }

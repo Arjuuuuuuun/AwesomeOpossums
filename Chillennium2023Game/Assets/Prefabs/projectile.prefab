@@ -73,7 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb8d34eb6d0c714788ca515bd0777a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 8
+  damage: 3
   speed: -5
   CamelMask:
     serializedVersion: 2
