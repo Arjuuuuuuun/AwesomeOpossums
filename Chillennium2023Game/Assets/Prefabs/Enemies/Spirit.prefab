@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3810320899557299144}
   - component: {fileID: 3810320899557299145}
   - component: {fileID: 3810320899557299150}
-  - component: {fileID: 388473797812623062}
+  - component: {fileID: 2738836327406623855}
   m_Layer: 6
   m_Name: Spirit
   m_TagString: Enemy
@@ -134,7 +134,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 6
---- !u!114 &388473797812623062
+--- !u!114 &2738836327406623855
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,12 +143,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3810320899557299151}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ca460e86cfcd8143a26e514f96a8a19, type: 3}
+  m_Script: {fileID: 11500000, guid: 63182b7f9cfe55a4384f23807d7bbea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 3
   health: 18
-  speed: -0.7
+  speed: -3
   knockBack: 2
-  KBT: 0.35
-  WT: 0.3
+  KBT: 0.2
+  WT: 1.5
