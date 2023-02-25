@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fighter : MonoBehaviour
+public class infantScript : MonoBehaviour
 {
     [SerializeField] int damage;
+
     [SerializeField] int health;
     [SerializeField] float speed;
     [SerializeField] float knockBack;
