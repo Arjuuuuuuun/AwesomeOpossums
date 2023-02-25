@@ -14,12 +14,25 @@ public class EnemySpawn : MonoBehaviour
     public void Start()
     {
         trans = GetComponent<Transform>();
-        switch (HeadManager.instance.level_counter)
-        { 
+
+    }
+
+    private void Update()
+    {
+        switch (HeadManager.instance.tutorial_counter)
+        {
             case (1):
-                StartCoroutine(Level1());
+                //StartCoroutine(Level1());
+                break;
+            case (2):
+                
                 break;
         }
+    }
+
+    void Tutur1()
+    {
+        Instantiate(infantry, new Vector3(trans.position.x + .5f, trans.position.y, trans.position.z), Quaternion.identity, trans);
     }
 
     IEnumerator Level1()

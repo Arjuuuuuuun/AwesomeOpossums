@@ -20,17 +20,20 @@ public class textManager : MonoBehaviour
         switch (HeadManager.instance.tutorial_counter)
         {
             case (1):
-                tutorial_text.text = "Oh my! You are under attack!!! Buy a Fox buy clicking the button below!!!!";
+                tutorial_text.text = "Ah, a tomb with a heart! Spend your life force to reanimate a fox by clicking the button below";
                 rat_buy_button.interactable = false;
                 camel_buy_button.interactable = false;
                 fox_buy_button.onClick.AddListener(FoxBought);
                 if (is_fox_bought)
                 {
                     ++HeadManager.instance.tutorial_counter;
+                    GameObject.Find("EnemySpawner").SendMessage("Tutur1");
                 }
                 break;
-
             case (2):
+                tutorial_text.text = "Be careful! Enemies also deplete your life force!";
+                break;
+            case (3):
                 tutorial_text.text = "Camels can block projectiles, use them to protect yourself!";
                 rat_buy_button.interactable = true;
                 camel_buy_button.interactable = true;

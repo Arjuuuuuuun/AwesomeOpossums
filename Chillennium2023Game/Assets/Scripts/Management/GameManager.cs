@@ -64,6 +64,11 @@ public class GameManager : MonoBehaviour
         health += amount;
     }
 
+    void setHealth(int amount)
+    {
+        health = amount;
+    }
+
     public void buyRat()
     {
         if (buyMinion(30))
