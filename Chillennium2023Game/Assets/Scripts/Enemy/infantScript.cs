@@ -32,7 +32,12 @@ public class infantScript : MonoBehaviour
             GameObject.Find("GameManager").SendMessage("gainHealth", 30);
             
             //for tutroil purposes 
-            if(HeadManager.instance.tutorial_counter == 2) {  ++HeadManager.instance.tutorial_counter;}
+            if(HeadManager.instance.tutorial_counter == 2) {
+                ++HeadManager.instance.tutorial_counter;
+                GameObject.Find("Fox(Clone)").SendMessage("TakeDamage", 10000);
+                GameObject.Find("GameManager").SendMessage("setHealth", 100);
+            }
+            //end of tutriol purposes
 
             StopAllCoroutines();
             Destroy(gameObject);

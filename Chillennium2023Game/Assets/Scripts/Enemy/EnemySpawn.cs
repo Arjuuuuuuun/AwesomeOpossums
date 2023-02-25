@@ -35,6 +35,8 @@ public class EnemySpawn : MonoBehaviour
         Instantiate(infantry, new Vector3(trans.position.x + .5f, trans.position.y, trans.position.z), Quaternion.identity, trans);
     }
 
+    void StartLevel1() { StartCoroutine(Level1()); }
+
     IEnumerator Level1()
     {
 
