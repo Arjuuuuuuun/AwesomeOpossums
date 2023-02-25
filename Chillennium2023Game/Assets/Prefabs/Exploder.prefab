@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3810320899557299150}
   - component: {fileID: 388473797812623062}
   m_Layer: 6
-  m_Name: Expoloder guy
+  m_Name: Exploder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
