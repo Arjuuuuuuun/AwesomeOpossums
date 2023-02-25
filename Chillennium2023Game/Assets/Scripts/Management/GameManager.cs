@@ -9,11 +9,13 @@ public class GameManager : MonoBehaviour
     static public int health;
     public Text healthText;
     public Slider healthbar;
+    private int sonHealth;
 
 
     private void Awake()
     {
-        health = 100;
+        health = 40;
+        sonHealth = 5;
         gameActive = true;
         StartCoroutine(GameClock());
     }
@@ -21,7 +23,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         //Updating health slider
-        healthText.text = health.ToString() + "/200";
+        healthText.text = health.ToString() + "/200 " + sonHealth.ToString() + "/5";
 
         if (Input.GetKeyDown("2"))
         {
@@ -45,11 +47,11 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         while (gameActive)
         {
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1);
 
             if (health < 195 && HeadManager.instance.tutorial_counter >= 4)
             {
-                health += 5;
+                health += 3;
             }
         }
     }
@@ -70,16 +72,15 @@ public class GameManager : MonoBehaviour
         health -= cost;
         return true;
     }
-    void gainHealth(int amount)
-    {
-        health += amount;
-    }
 
-    void setHealth(int amount)
+    void TakeSonDamage(int val)
     {
-        health = amount;
+        sonHealth -= val;
+        if (sonHealth <= 0)
+        {
+            endGame();
+        }
     }
-
     public void buyRat()
     {
         if (buyMinion(30))
