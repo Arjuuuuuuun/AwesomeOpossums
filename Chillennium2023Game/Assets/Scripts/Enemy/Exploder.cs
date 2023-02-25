@@ -40,7 +40,7 @@ public class Exploder : MonoBehaviour
     {
         if (this.gameObject != null)
         {
-            rb.velocity = new Vector3(knockBack * -speed, 0, 0);
+            rb.velocity = new Vector3(knockBack * -1, 0, 0);
         }
         yield return new WaitForSeconds(KBT);
         if (this.gameObject != null)
@@ -57,6 +57,7 @@ public class Exploder : MonoBehaviour
     IEnumerator Explode()
     {
         rb.velocity = Vector3.zero;
+        speed = 0;
         yield return new WaitForSeconds(2);
         exploding = true;
         trans.position = new Vector3(trans.position.x,trans.position.y+100,trans.position.z);
