@@ -67,15 +67,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void buySnake()
-    {
-        if (buyMinion(40))
-        {
-            GameObject.Find("PlayerSpawner").SendMessage("SpawnSnake");
-            Debug.Log("Snake Bought");
-        }
-    }
-
     public void buyFox()
     {
         if (buyMinion(20))

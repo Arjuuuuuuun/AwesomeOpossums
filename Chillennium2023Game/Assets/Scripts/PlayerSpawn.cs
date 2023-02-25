@@ -6,7 +6,6 @@ public class PlayerSpawn : MonoBehaviour
 {
     public GameObject fox;
     public GameObject rat;
-    public GameObject snake;
     public GameObject camel;
     private GameObject clone;
     private Transform trans;
@@ -26,12 +25,6 @@ public class PlayerSpawn : MonoBehaviour
     {
         clone = Instantiate(rat, new Vector3(trans.position.x - .5f, trans.position.y, trans.position.z), Quaternion.identity, trans);
         Debug.Log("Rat Spawned");
-    }
-
-    public void SpawnSnake()
-    {
-        clone = Instantiate(snake, new Vector3(trans.position.x - .5f, trans.position.y, trans.position.z), Quaternion.identity, trans);
-        Debug.Log("Snake Spawned");
     }
 
     public void SpawnCamel()
