@@ -6,6 +6,7 @@ public class Fox : MonoBehaviour
 {
     [SerializeField] int health;
     [SerializeField] float speed;
+    [SerializeField] float knockBack;
     Rigidbody2D rigidbody;
     private void Awake()
     {
@@ -18,23 +19,31 @@ public class Fox : MonoBehaviour
     private void TakeDamage(int damage)
     {
         health -= damage;
+        StartCoroutine(DamageAnime());
+
 
     }
 
     IEnumerator DamageAnime()
     {
-        speed = -3 * speed;
-
-        yield return new WaitForSeconds(1);
-        speed = 0;
+        rigidbody.velocity = new Vector3(-knockBack * speed, 0, 0);
+        Debug.Log("called");
         yield return new WaitForSeconds(1);
 
-        speed = - speed / 3;
+        rigidbody.velocity = new Vector3(0, 0, 0);
+        Debug.Log("called");
+
+        yield return new WaitForSeconds(1);
+        Debug.Log("called");
+
+        rigidbody.velocity = new Vector3(speed, 0, 0);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         collision.gameObject.SendMessage("TakeDamage", 6);
+        if (health <= 0)
+            Destroy(this.gameObject);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
