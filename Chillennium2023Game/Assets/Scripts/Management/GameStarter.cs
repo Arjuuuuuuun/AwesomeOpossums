@@ -6,6 +6,6 @@ public class GameStarter : MonoBehaviour
 {
     private void Awake()
     {
-        HeadManager.instance.counter = 0;
+        HeadManager.instance.level_counter = 0;
     }
 }

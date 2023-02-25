@@ -5,7 +5,7 @@ using UnityEngine;
 public class HeadManager : MonoBehaviour
 {
     public static HeadManager instance;
-    public int counter;
+    public int level_counter;
     private void Awake()
     {
 
