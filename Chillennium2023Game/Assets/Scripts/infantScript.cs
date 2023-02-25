@@ -12,9 +12,14 @@ public class infantScript : MonoBehaviour
     [SerializeField] float KBT;
     [SerializeField] float WT;
     Rigidbody2D rb;
+    [SerializeField] LayerMask CamelMask; 
+    [SerializeField] LayerMask BaseMask;
+    bool running;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        running = false;
     }
     private void Start()
     {
@@ -28,8 +33,47 @@ public class infantScript : MonoBehaviour
         StartCoroutine(DamageAnime());
     }
 
+    IEnumerator Ataque()
+    {
+        while (true)
+        {
+            running = true;
+
+            rb.velocity = new Vector3(0,0,0);
+
+            DoDamage(damage);
+            yield return new WaitForSeconds(1);
+            running = false;
+            rb.velocity = new Vector3(speed, 0,0);
+            yield return new WaitForSeconds(2);
+        }
+    }
+    
+    private void DoDamage(int damage)
+    {
+        RaycastHit2D hit1 = Physics2D.Raycast(transform.position, Vector2.left, CamelMask);
+        RaycastHit2D hit2 = Physics2D.Raycast(transform.position, Vector2.left, BaseMask);
+        if (hit1.collider != null)
+        {
+            Vector3 position = hit1.collider.transform.position;
+
+        }
+        else if (hit2.collider != null)
+        {
+            Vector3 position = hit1.collider.transform.position;
+
+        }
+    }
+    private void Update()
+    {
+        if (!running)
+        {
+            this.rb.velocity = new Vector3(speed, 0, 0);
+        }
+    }
     IEnumerator DamageAnime()
     {
+        running = true;
         if (this.gameObject != null)
         {
             rb.velocity = new Vector3(knockBack * -speed, 0, 0);
@@ -44,6 +88,7 @@ public class infantScript : MonoBehaviour
         {
             rb.velocity = new Vector3(speed, 0, 0);
         }
+        running = false;
     }
 
     

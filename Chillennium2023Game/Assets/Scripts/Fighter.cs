@@ -11,9 +11,12 @@ public class Fighter : MonoBehaviour
     [SerializeField] float KBT;
     [SerializeField] float WT;
     Rigidbody2D rb;
+
+    bool running;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        running = false;
     }
     private void Start()
     {
@@ -27,6 +30,7 @@ public class Fighter : MonoBehaviour
 
     IEnumerator DamageAnime()
     {
+        running = true;
         if (this.gameObject != null)
         {
             rb.velocity = new Vector3(knockBack * -speed, 0, 0);
@@ -41,6 +45,7 @@ public class Fighter : MonoBehaviour
         {
             rb.velocity = new Vector3(speed, 0, 0);
         }
+        running =false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -50,6 +55,13 @@ public class Fighter : MonoBehaviour
         {
             StopCoroutine(DamageAnime());
             Destroy(this.gameObject);
+        }
+    }
+    private void Update()
+    {
+        if (!running)
+        {
+            rb.velocity = new Vector3(speed, 0, 0);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
