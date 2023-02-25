@@ -29,7 +29,6 @@ public class infantScript : MonoBehaviour
     {
         health -= damage;
         if(health <= 0) {
-            GameObject.Find("GameManager").SendMessage("gainHealth", 30);
             
             //for tutroil purposes 
             if(HeadManager.instance.tutorial_counter == 2) {

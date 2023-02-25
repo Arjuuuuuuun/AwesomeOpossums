@@ -47,16 +47,16 @@ public class EnemySpawn : MonoBehaviour
         {
             Instantiate(infantry, new Vector3(trans.position.x + .5f, trans.position.y, trans.position.z), Quaternion.identity, trans);
             Debug.Log("Infantry Spawned");
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(4);
         }
 
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(8);
 
-        for (int i = 0; i < 4; ++i)
+        for (int i = 0; i < 2; ++i)
         {
             Instantiate(infantry, new Vector3(trans.position.x + .5f, trans.position.y, trans.position.z), Quaternion.identity, trans);
             Debug.Log("Infantry Spawned");
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(2f);
         }
 
     }

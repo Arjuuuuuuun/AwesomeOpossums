@@ -35,11 +35,11 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         while (gameActive)
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1.5f);
 
-            if (health < 198 && HeadManager.instance.tutorial_counter >= 4)
+            if (health < 195 && HeadManager.instance.tutorial_counter >= 4)
             {
-                health += 2;
+                health += 5;
             }
         }
     }
