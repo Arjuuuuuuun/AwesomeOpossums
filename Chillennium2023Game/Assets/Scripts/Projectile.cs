@@ -25,7 +25,6 @@ public class Projectile : MonoBehaviour
         collision.gameObject.SendMessage("TakeDamage", damage);
         if (collision.gameObject.tag == "StopsProjectile")
         {
-            Debug.Log("we got here");
             Destroy(gameObject);
         }
     }
