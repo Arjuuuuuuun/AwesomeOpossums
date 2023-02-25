@@ -21,8 +21,13 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.gameObject.tag == "PlayerBase")
+        {
+            Destroy(gameObject);
+            return;
+        }
         collision.gameObject.SendMessage("TakeDamage", damage);
-        if (collision.gameObject.tag == "Camel" && !camelExemption || collision.gameObject.tag == "PlayerBase")
+        if (collision.gameObject.tag == "Camel" && !camelExemption)
         {
             Destroy(gameObject);
         }

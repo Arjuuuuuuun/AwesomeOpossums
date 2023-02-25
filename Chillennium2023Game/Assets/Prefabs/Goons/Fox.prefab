@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  health: 25
+  health: 16
   speed: 2
   knockBack: 1.5
   KBT: 0.3

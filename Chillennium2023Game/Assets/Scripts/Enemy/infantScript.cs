@@ -32,13 +32,6 @@ public class infantScript : MonoBehaviour
         health -= damage;
         if(health <= 0) {
             
-            //for tutroil purposes 
-            if(HeadManager.instance.tutorial_counter == 2) {
-                ++HeadManager.instance.tutorial_counter;
-                GameObject.Find("Fox(Clone)").SendMessage("TakeDamage", 10000);
-                GameObject.Find("GameManager").SendMessage("setHealth", 100);
-            }
-            //end of tutriol purposes
 
             StopAllCoroutines();
             Destroy(gameObject);
@@ -99,11 +92,12 @@ public class infantScript : MonoBehaviour
         StartCoroutine(Ataque());
     }
 
-    
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.gameObject.SendMessage("TakeDamage", 4 * damage);
-        StopAllCoroutines();
-        Destroy(gameObject);
+        if (collision.tag == "Son")
+        {
+            collision.SendMessage("takeDamage", 1);
+        }
     }
 }
