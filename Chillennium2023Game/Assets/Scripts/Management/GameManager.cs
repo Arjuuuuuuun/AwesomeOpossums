@@ -23,11 +23,11 @@ public class GameManager : MonoBehaviour
         //Updating health slider
         healthText.text = health.ToString() + "/200";
 
-        if (Input.GetKeyDown("1"))
+        if (Input.GetKeyDown("2"))
         {
             buyRat();
         }
-        else if (Input.GetKeyDown("2"))
+        else if (Input.GetKeyDown("1"))
         {
             if(HeadManager.instance.is_fox_active)
             {
