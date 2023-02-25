@@ -42,7 +42,12 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    
+    void endGame()
+    {
+        StopAllCoroutines();
 
+    }
 
     bool buyMinion(int cost)
     {
@@ -63,7 +68,6 @@ public class GameManager : MonoBehaviour
         if (buyMinion(30))
         {
             GameObject.Find("PlayerSpawner").SendMessage("SpawnRat");
-            Debug.Log("Rat Bought");
         }
     }
 
@@ -72,7 +76,6 @@ public class GameManager : MonoBehaviour
         if (buyMinion(20))
         {
             GameObject.Find("PlayerSpawner").SendMessage("SpawnFox");
-            Debug.Log("Fox Bought");
         }
     }
 
@@ -81,7 +84,6 @@ public class GameManager : MonoBehaviour
         if (buyMinion(55))
         {
             GameObject.Find("PlayerSpawner").SendMessage("SpawnCamel");
-            Debug.Log("Camel Bought");
         }
     }
 }
