@@ -12,15 +12,18 @@ public class infantScript : MonoBehaviour
     [SerializeField] float WT;
     [SerializeField] GameObject projectile;
     Rigidbody2D rb;
+    Animator animator;
     bool running;
 
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         running = false;
     }
     private void Start()
     {
+        animator.SetBool("isWalking", true);
         rb.velocity = new Vector3(speed, 0, 0);
         StartCoroutine(Ataque());
     }
@@ -49,11 +52,15 @@ public class infantScript : MonoBehaviour
         while (true)
         {
             running = true;
+            animator.SetBool("isWalking", false);
+
             rb.velocity = new Vector3(0,0,0);
+            yield return new WaitForSeconds(.5f);
             Instantiate(projectile, gameObject.transform);
-            //add animation here
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(.5f);
             running = false;
+            animator.SetBool("isWalking", true);
+
             rb.velocity = new Vector3(speed, 0,0);
             yield return new WaitForSeconds(2);
         }
@@ -69,6 +76,8 @@ public class infantScript : MonoBehaviour
     IEnumerator DamageAnime()
     {
         StopCoroutine(Ataque());
+        animator.SetBool("isWalking", false);
+
         running = true;
         if (this.gameObject != null)
         {
@@ -85,7 +94,9 @@ public class infantScript : MonoBehaviour
             rb.velocity = new Vector3(speed, 0, 0);
         }
         running = false;
-        StartCoroutine(DamageAnime());
+        animator.SetBool("isWalking", true);
+
+        StartCoroutine(Ataque());
     }
 
     
