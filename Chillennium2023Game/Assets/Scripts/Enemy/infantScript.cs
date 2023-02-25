@@ -5,7 +5,6 @@ using UnityEngine;
 public class infantScript : MonoBehaviour
 {
     [SerializeField] int damage;
-
     [SerializeField] int health;
     [SerializeField] float speed;
     [SerializeField] float knockBack;
