@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     void endGame()
     {
         StopAllCoroutines();
+        Debug.Log("enemy base deafeated");
         //end the game
     }
 
