@@ -36,9 +36,9 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitForSeconds(2);
 
-            if (health < 190)
+            if (health < 198)
             {
-                health += 10;
+                health += 2;
             }
         }
     }

@@ -35,7 +35,9 @@ public class Exploder : MonoBehaviour
         if(health <= 0)
         {
             StopAllCoroutines();
+            GameObject.Find("GameManager").SendMessage("gainHealth", 20);
             Destroy(this.gameObject);
+
         }
     }
 

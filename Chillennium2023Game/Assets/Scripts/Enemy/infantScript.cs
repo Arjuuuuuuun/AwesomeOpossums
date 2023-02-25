@@ -29,8 +29,10 @@ public class infantScript : MonoBehaviour
     {
         health -= damage;
         if(health <= 0) {
+            GameObject.Find("GameManager").SendMessage("gainHealth", 30);
             StopAllCoroutines();
-            Destroy(gameObject); 
+            Destroy(gameObject);
+
         }
         StartCoroutine(DamageAnime());
     }
@@ -82,9 +84,9 @@ public class infantScript : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //collision.gameObject.SendMessage("TakeDamage", 4 * damage);
-        //StopAllCoroutines();
-        //Destroy(gameObject);
+        collision.gameObject.SendMessage("TakeDamage", 4 * damage);
+        StopAllCoroutines();
+        Destroy(gameObject);
     }
 
 }
