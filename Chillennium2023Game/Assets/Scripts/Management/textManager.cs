@@ -12,6 +12,7 @@ public class textManager : MonoBehaviour
     public Button rat_buy_button;
     public Button camel_buy_button;
     private bool is_fox_bought;
+    private bool isWaiting;
 
     // Update is called once per frame
     void Update()
@@ -28,11 +29,33 @@ public class textManager : MonoBehaviour
                     ++HeadManager.instance.tutorial_counter;
                 }
                 break;
+
+            case (2):
+                tutorial_text.text = "Camels can block projectiles, use them to protect yourself!";
+                rat_buy_button.interactable = true;
+                camel_buy_button.interactable = true;
+                StartCoroutine(Wait());
+                break;
         }
     }
 
     void FoxBought()
     {
         is_fox_bought = true;
+    }
+
+    IEnumerator Wait()
+    {
+        if (isWaiting)
+        {
+
+        }
+        else
+        {
+            isWaiting = true;
+            yield return new WaitForSeconds(5);
+            isWaiting = false;
+            ++HeadManager.instance.tutorial_counter;
+        }
     }
 }

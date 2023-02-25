@@ -6,6 +6,8 @@ public class EnemySpawn : MonoBehaviour
 {
 
     public GameObject spirit;
+    public GameObject infantry;
+    public GameObject exploder;
     private Transform trans;
 
 
@@ -26,11 +28,20 @@ public class EnemySpawn : MonoBehaviour
         //BEGIN LEVEL 1
         yield return new WaitForSeconds(2);
 
-        for (int i = 0; i < 3; ++i)
+        for (int i = 0; i < 2; ++i)
         {
-            Instantiate(spirit, new Vector3(trans.position.x + .5f, trans.position.y, trans.position.z), Quaternion.identity, trans);
-            Debug.Log("Spirit Spawned");
+            Instantiate(infantry, new Vector3(trans.position.x + .5f, trans.position.y, trans.position.z), Quaternion.identity, trans);
+            Debug.Log("Infantry Spawned");
             yield return new WaitForSeconds(2);
+        }
+
+        yield return new WaitForSeconds(4);
+
+        for (int i = 0; i < 4; ++i)
+        {
+            Instantiate(infantry, new Vector3(trans.position.x + .5f, trans.position.y, trans.position.z), Quaternion.identity, trans);
+            Debug.Log("Infantry Spawned");
+            yield return new WaitForSeconds(1.5f);
         }
 
     }
