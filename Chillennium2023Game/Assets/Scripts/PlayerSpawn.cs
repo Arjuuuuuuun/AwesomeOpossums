@@ -18,18 +18,15 @@ public class PlayerSpawn : MonoBehaviour
     public void SpawnFox()
     {
         clone = Instantiate(fox, new Vector3(trans.position.x - .5f, trans.position.y, trans.position.z), Quaternion.identity, trans);
-        Debug.Log("Fox Spawned");
     }
 
     public void SpawnRat()
     {
         clone = Instantiate(rat, new Vector3(trans.position.x - .5f, trans.position.y, trans.position.z), Quaternion.identity, trans);
-        Debug.Log("Rat Spawned");
     }
 
     public void SpawnCamel()
     {
         clone = Instantiate(camel, new Vector3(trans.position.x - .5f, trans.position.y, trans.position.z), Quaternion.identity, trans);
-        Debug.Log("Camel Spawned");
     }
 }

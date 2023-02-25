@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fox : MonoBehaviour
+public class Fighter : MonoBehaviour
 {
     [SerializeField] int health;
     [SerializeField] float speed;
@@ -53,7 +53,7 @@ public class Fox : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        DamageAnime();
+        StartCoroutine(DamageAnime());
         collision.gameObject.SendMessage("TakeDamage", 6);
         if (health <= 0)
         {
