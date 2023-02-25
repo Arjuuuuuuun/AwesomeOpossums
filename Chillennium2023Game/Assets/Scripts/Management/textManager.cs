@@ -41,8 +41,10 @@ public class textManager : MonoBehaviour
                 tutorial_text.text = "Camels can block projectiles, use them to protect yourself and your minions!";
                 rat_buy_button.interactable = false;
                 camel_buy_button.interactable = true;
+                camel_buy_button.onClick.AddListener(CamelBought);
                 if (is_camel_bought)
                 {
+                    GameObject.Find("EnemySpawner").SendMessage("StartLevel1");
                     ++HeadManager.instance.tutorial_counter;
                 }
                 break;

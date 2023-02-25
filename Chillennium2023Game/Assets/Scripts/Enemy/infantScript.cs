@@ -35,7 +35,7 @@ public class infantScript : MonoBehaviour
             if(HeadManager.instance.tutorial_counter == 2) {
                 ++HeadManager.instance.tutorial_counter;
                 GameObject.Find("Fox(Clone)").SendMessage("TakeDamage", 10000);
-                GameObject.Find("GameManager").SendMessage("setHealth", 60);
+                GameObject.Find("GameManager").SendMessage("setHealth", 100);
             }
             //end of tutriol purposes
 
