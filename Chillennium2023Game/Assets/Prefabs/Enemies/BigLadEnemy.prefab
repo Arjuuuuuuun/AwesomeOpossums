@@ -152,4 +152,4 @@ MonoBehaviour:
   knockBack: 0
   KBT: 0
   WT: 0
-  projectile: {fileID: 0}
+  projectile: {fileID: 1501249281707172754, guid: 6a43c69069ab1f240b96631f3659ab3f, type: 3}

@@ -13,6 +13,7 @@ public class BigLadEnemy : MonoBehaviour
     [SerializeField] GameObject projectile;
     Rigidbody2D rb;
     bool running;
+    GameObject temp;
 
     private void Awake()
     {
@@ -43,11 +44,16 @@ public class BigLadEnemy : MonoBehaviour
         {
             running = true;
             rb.velocity = new Vector3(0, 0, 0);
-            Instantiate(projectile, gameObject.transform);
+            temp = Instantiate(projectile, gameObject.transform);
             //add animation here
             yield return new WaitForSeconds(1);
             running = false;
             rb.velocity = new Vector3(speed, 0, 0);
+            yield return new WaitForSeconds(1);
+            if (temp != null)
+            {
+                Destroy(temp);
+            }
             yield return new WaitForSeconds(2);
         }
     }

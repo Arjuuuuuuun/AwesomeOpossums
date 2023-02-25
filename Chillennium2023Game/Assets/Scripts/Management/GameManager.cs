@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     static public bool gameActive;
     static public int health;
     public Text healthText;
+    public Slider healthbar;
 
 
     private void Awake()
@@ -19,8 +20,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        //Updating health text
-        healthText.text = health.ToString() + "/200";
+        //Updating health slider
+        healthbar.value = health;
 
         //if you die... :(
         if (health <= 0)
