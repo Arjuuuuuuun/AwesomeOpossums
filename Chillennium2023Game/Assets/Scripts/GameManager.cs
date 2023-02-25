@@ -40,10 +40,6 @@ public class GameManager : MonoBehaviour
             {
                 health += 10;
             }
-            else
-            {
-                health = 200;
-            }
         }
     }
 
