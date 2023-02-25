@@ -25,7 +25,15 @@ public class Fighter : MonoBehaviour
     private void TakeDamage(int damage)
     {
         health -= damage;
-        StartCoroutine(DamageAnime());
+        if (health <= 0)
+        {
+            StopAllCoroutines();
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            StartCoroutine(DamageAnime());
+        }
     }
 
     IEnumerator DamageAnime()
@@ -51,11 +59,7 @@ public class Fighter : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         collision.gameObject.SendMessage("TakeDamage", damage);
-        if (health <= 0)
-        {
-            StopCoroutine(DamageAnime());
-            Destroy(this.gameObject);
-        }
+        
     }
     private void Update()
     {

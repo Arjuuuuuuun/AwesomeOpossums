@@ -14,6 +14,7 @@ public class infantScript : MonoBehaviour
     Rigidbody2D rb;
     [SerializeField] LayerMask CamelMask; 
     [SerializeField] LayerMask BaseMask;
+    public GameObject projectile;
     bool running;
 
     private void Awake()
@@ -29,7 +30,7 @@ public class infantScript : MonoBehaviour
     {
         health -= damage;
         if(health < 0) StopAllCoroutines();
-        Destroy(this.gameObject);
+        Destroy(gameObject);
         StartCoroutine(DamageAnime());
     }
 
@@ -38,32 +39,16 @@ public class infantScript : MonoBehaviour
         while (true)
         {
             running = true;
-
             rb.velocity = new Vector3(0,0,0);
-
-            DoDamage(damage);
+            Instantiate(projectile, gameObject.transform);
+            //add animation here
             yield return new WaitForSeconds(1);
             running = false;
             rb.velocity = new Vector3(speed, 0,0);
             yield return new WaitForSeconds(2);
         }
     }
-    
-    private void DoDamage(int damage)
-    {
-        RaycastHit2D hit1 = Physics2D.Raycast(transform.position, Vector2.left, CamelMask);
-        RaycastHit2D hit2 = Physics2D.Raycast(transform.position, Vector2.left, BaseMask);
-        if (hit1.collider != null)
-        {
-            Vector3 position = hit1.collider.transform.position;
 
-        }
-        else if (hit2.collider != null)
-        {
-            Vector3 position = hit1.collider.transform.position;
-
-        }
-    }
     private void Update()
     {
         if (!running)
