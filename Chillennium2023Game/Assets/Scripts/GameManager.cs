@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     void endGame()
     {
         StopAllCoroutines();
-
+        //end the game
     }
 
     bool buyMinion(int cost)
