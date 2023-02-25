@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class GameStarter : MonoBehaviour
 {
-    private void Awake()
+    private void Start()
     {
-        HeadManager.instance.level_counter = 0;
+        HeadManager.instance.level_counter = 1;
+        HeadManager.instance.tutorial_counter = 1;
     }
 }

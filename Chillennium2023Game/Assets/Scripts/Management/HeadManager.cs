@@ -6,6 +6,7 @@ public class HeadManager : MonoBehaviour
 {
     public static HeadManager instance;
     public int level_counter;
+    public int tutorial_counter;
     private void Awake()
     {
 

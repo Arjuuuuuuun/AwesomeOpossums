@@ -6,22 +6,33 @@ using UnityEngine.UI;
 public class textManager : MonoBehaviour
 {
 
-    public Text tutorial_text;
-    private int counter = 0;
 
-    private void Start()
-    {
-        counter = 0;
-    }
+    public Text tutorial_text;
+    public Button fox_buy_button;
+    public Button rat_buy_button;
+    public Button camel_buy_button;
+    private bool is_fox_bought;
 
     // Update is called once per frame
     void Update()
     {
-        switch (counter)
+        switch (HeadManager.instance.tutorial_counter)
         {
-            case (0):
-                tutorial_text.text = "Welcome";
+            case (1):
+                tutorial_text.text = "Oh my! You are under attack!!! Buy a Fox buy clicking the button below!!!!";
+                rat_buy_button.interactable = false;
+                camel_buy_button.interactable = false;
+                fox_buy_button.onClick.AddListener(FoxBought);
+                if (is_fox_bought)
+                {
+                    ++HeadManager.instance.tutorial_counter;
+                }
                 break;
         }
+    }
+
+    void FoxBought()
+    {
+        is_fox_bought = true;
     }
 }
