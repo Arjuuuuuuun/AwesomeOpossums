@@ -11,4 +11,9 @@ public class Fox : MonoBehaviour
     {
         health -= damage;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        collision.gameObject.SendMessage("TakeDamage", 6);
+    }
 }
