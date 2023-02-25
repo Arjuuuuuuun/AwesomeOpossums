@@ -12,8 +12,7 @@ public class infantScript : MonoBehaviour
     [SerializeField] float KBT;
     [SerializeField] float WT;
     Rigidbody2D rb;
-    [SerializeField] LayerMask CamelMask; 
-    [SerializeField] LayerMask BaseMask;
+
     public GameObject projectile;
     bool running;
 
@@ -79,12 +78,15 @@ public class infantScript : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        StartCoroutine(DamageAnime());
-        collision.gameObject.SendMessage("TakeDamage", damage);
-        if (health <= 0)
+        if (collision.gameObject.tag != "projectile")
         {
-            StopCoroutine(DamageAnime());
-            Destroy(this.gameObject);
+            StartCoroutine(DamageAnime());
+            collision.gameObject.SendMessage("TakeDamage", damage);
+            if (health <= 0)
+            {
+                StopCoroutine(DamageAnime());
+                Destroy(this.gameObject);
+            }
         }
     }
 
