@@ -12,11 +12,6 @@ public class PlayerBase : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void TakeDamage(int val)
-    {
-        GameObject.Find("GameManager").SendMessage("gainHealth", -val);
-    }
-
     private void Update()
     {
         if (Input.GetKey("w"))
@@ -33,6 +28,15 @@ public class PlayerBase : MonoBehaviour
             rb.velocity = Vector2.zero;
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            Destroy(collision.gameObject);
+        }
+    }
+
 }
 
 
