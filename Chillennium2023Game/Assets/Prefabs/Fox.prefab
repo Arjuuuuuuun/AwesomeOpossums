@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6724324185395457323}
   - component: {fileID: 6724324185395457322}
   - component: {fileID: 7188774314765504599}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
