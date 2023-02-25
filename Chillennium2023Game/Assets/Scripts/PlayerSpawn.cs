@@ -21,7 +21,16 @@ public class PlayerSpawn : MonoBehaviour
 
     public void SpawnRat()
     {
-        Instantiate(rat, new Vector3(trans.position.x - .5f, trans.position.y, trans.position.z), Quaternion.identity, trans);
+        StartCoroutine(SpawnRats());
+    }
+
+    IEnumerator SpawnRats()
+    {
+        for (int i = 0; i < 3; ++i)
+        {
+            yield return new WaitForSeconds(0.2f);
+            Instantiate(rat, new Vector3(trans.position.x - .5f, trans.position.y, trans.position.z), Quaternion.identity, trans);
+        }
     }
 
     public void SpawnCamel()
