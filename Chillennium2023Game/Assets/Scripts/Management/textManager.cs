@@ -8,14 +8,17 @@ public class textManager : MonoBehaviour
 
 
     public Text tutorial_text;
-    public Button fox_buy_button;
-    public Button rat_buy_button;
-    public Button camel_buy_button;
     
     private bool is_fox_bought;
     private bool is_camel_bought;
+    private bool is_wave_1_started;
 
     private bool isWaiting;
+
+    private void Start()
+    {
+        is_wave_1_started = false;
+    }
 
     // Update is called once per frame
     void Update()
@@ -23,25 +26,21 @@ public class textManager : MonoBehaviour
         switch (HeadManager.instance.tutorial_counter)
         {
             case (1):
-                tutorial_text.text = "Ah, a tomb with a heart! Spend your life force to reanimate a fox by clicking the button below";
-                rat_buy_button.interactable = false;
-                camel_buy_button.interactable = false;
-                fox_buy_button.onClick.AddListener(FoxBought);
-                if (is_fox_bought)
+                tutorial_text.text = "Ah, a tomb with a heart! Protect your son against incoming spirits.";
+                if (!is_wave_1_started)
                 {
-                    ++HeadManager.instance.tutorial_counter;
+                    is_wave_1_started = true;
                     GameObject.Find("EnemySpawner").SendMessage("Tutur1");
-                }
+                    StartCoroutine(Wait());
+                }             
                 break;
+
             case (2):
                 tutorial_text.text = "Be careful! Enemies also deplete your life force!";
-                fox_buy_button.interactable = false;
                 break;
+
             case (3):
                 tutorial_text.text = "Camels can block projectiles, use them to protect yourself and your minions!";
-                rat_buy_button.interactable = false;
-                camel_buy_button.interactable = true;
-                camel_buy_button.onClick.AddListener(CamelBought);
                 if (is_camel_bought)
                 {
                     GameObject.Find("EnemySpawner").SendMessage("StartLevel1");
@@ -50,8 +49,6 @@ public class textManager : MonoBehaviour
                 break;
             case (4):
                 tutorial_text.text = "Killing enemies gives you more life force, defeat the enemy base to win!!";
-                fox_buy_button.interactable = true;
-                camel_buy_button.interactable = true;
                 break;
         }
     }
