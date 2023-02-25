@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2583338394176924787}
   - component: {fileID: -2677420886765220782}
   - component: {fileID: -7004274388763510778}
+  - component: {fileID: -652981589496639692}
   m_Layer: 6
   m_Name: infant
   m_TagString: Untagged
@@ -153,3 +154,18 @@ MonoBehaviour:
   KBT: 0.2
   WT: 0.5
   projectile: {fileID: 1501249281707172754, guid: d3c8720f63490804082356962420d86d, type: 3}
+--- !u!111 &-652981589496639692
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6005606165005200148}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
