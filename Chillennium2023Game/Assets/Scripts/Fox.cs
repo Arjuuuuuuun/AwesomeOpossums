@@ -23,9 +23,13 @@ public class Fox : MonoBehaviour
 
     IEnumerator DamageAnime()
     {
-        speed = -speed;
+        speed = -3 * speed;
 
         yield return new WaitForSeconds(1);
+        speed = 0;
+        yield return new WaitForSeconds(1);
+
+        speed = - speed / 3;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
