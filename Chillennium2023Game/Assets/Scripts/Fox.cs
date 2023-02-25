@@ -53,7 +53,13 @@ public class Fox : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.gameObject.SendMessage("TakeDamage", 3);
+        DamageAnime();
+        collision.gameObject.SendMessage("TakeDamage", 6);
+        if (health <= 0)
+        {
+            StopCoroutine(DamageAnime());
+            Destroy(this.gameObject);
+        }
     }
 
 }
