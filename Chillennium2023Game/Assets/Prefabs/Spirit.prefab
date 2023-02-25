@@ -149,4 +149,5 @@ MonoBehaviour:
   health: 18
   speed: -0.7
   knockBack: 2
-  KBT: 0.5
+  KBT: 0.35
+  WT: 0.3

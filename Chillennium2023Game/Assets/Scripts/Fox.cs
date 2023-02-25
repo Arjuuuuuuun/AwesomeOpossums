@@ -8,6 +8,7 @@ public class Fox : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float knockBack;
     [SerializeField] float KBT;
+    [SerializeField] float WT;
     Rigidbody2D rigidbody;
     private void Awake()
     {
@@ -25,24 +26,30 @@ public class Fox : MonoBehaviour
 
     IEnumerator DamageAnime()
     {
-        rigidbody.velocity = new Vector3(-knockBack * speed, 0, 0);
-        Debug.Log("called");
+        if (this.gameObject != null)
+        {
+            rigidbody.velocity = new Vector3(knockBack * -speed, 0, 0);
+        }
         yield return new WaitForSeconds(KBT);
-
-        rigidbody.velocity = new Vector3(0, 0, 0);
-        Debug.Log("called");
-
-        yield return new WaitForSeconds(KBT);
-        Debug.Log("called");
-
-        rigidbody.velocity = new Vector3(speed, 0, 0);
+        if (this.gameObject != null)
+        {
+            rigidbody.velocity = new Vector3(0, 0, 0);
+        }
+        yield return new WaitForSeconds(WT);
+        if (this.gameObject != null)
+        {
+            rigidbody.velocity = new Vector3(speed, 0, 0);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         collision.gameObject.SendMessage("TakeDamage", 6);
         if (health <= 0)
+        {
+            StopCoroutine(DamageAnime());
             Destroy(this.gameObject);
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
