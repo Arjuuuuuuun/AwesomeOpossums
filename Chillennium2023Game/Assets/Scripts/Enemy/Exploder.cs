@@ -11,7 +11,9 @@ public class Exploder : MonoBehaviour
     [SerializeField] float KBT;
     [SerializeField] float WT;
     bool exploding;
+    [SerializeField] LayerMask mask;
     Rigidbody2D rb;
+    BoxCollider2D bx;
     Transform trans;
 
     private void Awake()
@@ -19,6 +21,7 @@ public class Exploder : MonoBehaviour
         exploding = false;
         rb = GetComponent<Rigidbody2D>();
         trans = GetComponent<Transform>();
+        bx = GetComponent<BoxCollider2D>();
     }
 
     private void Start()
@@ -40,7 +43,7 @@ public class Exploder : MonoBehaviour
     {
         if (this.gameObject != null)
         {
-            rb.velocity = new Vector3(knockBack * -1, 0, 0);
+            rb.velocity = new Vector3(knockBack * 1, 0, 0);
         }
         yield return new WaitForSeconds(KBT);
         if (this.gameObject != null)
@@ -60,28 +63,32 @@ public class Exploder : MonoBehaviour
         speed = 0;
         yield return new WaitForSeconds(2);
         exploding = true;
-        trans.position = new Vector3(trans.position.x,trans.position.y+100,trans.position.z);
+        RaycastHit2D[] arr = Physics2D.RaycastAll(
+            new Vector2(transform.position.x + 2, transform.position.y),
+            Vector2.left, 4,
+             mask);
+        for(int i = 0; i < arr.Length; ++i)
+        {
+           arr[i].collider.gameObject.SendMessage("TakeDamage",damage);
+        }
         Destroy(this.gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        StartCoroutine(Explode());
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (exploding) { collision.gameObject.SendMessage("TakeDamage", damage); }
+        collision.gameObject.SendMessage("TakeDamage", 1);
+        if (!exploding)
+        {
+            StartCoroutine(Explode());
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        StartCoroutine(Explode());
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (exploding) { collision.gameObject.SendMessage("TakeDamage", damage); }
+        if (!exploding)
+        {
+            StartCoroutine(Explode());
+        }
     }
 
 }
