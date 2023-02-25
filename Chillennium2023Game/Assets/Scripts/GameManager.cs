@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
     {
         if (buyMinion(30))
         {
-            //SPAWN RAT
+            GameObject.Find("PlayerSpawner").SendMessage("SpawnRat");
             Debug.Log("Rat Bought");
         }
     }
@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
     {
         if (buyMinion(40))
         {
-            //SPAWN SNAKE
+            GameObject.Find("PlayerSpawner").SendMessage("SpawnSnake");
             Debug.Log("Snake Bought");
         }
     }
@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
     {
         if (buyMinion(55))
         {
-            //SPAWN CAMEL
+            GameObject.Find("PlayerSpawner").SendMessage("SpawnCamel");
             Debug.Log("Camel Bought");
         }
     }
