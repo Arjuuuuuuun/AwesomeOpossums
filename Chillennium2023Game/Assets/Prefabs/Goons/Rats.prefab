@@ -148,14 +148,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
-  health: 5
-  speed: 3
+  health: 10
+  speed: 3.5
   knockBack: 3
   KBT: 0.3
   WT: 0.15
   mask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   isFox: 1
 --- !u!95 &-3789069049150153378
 Animator:

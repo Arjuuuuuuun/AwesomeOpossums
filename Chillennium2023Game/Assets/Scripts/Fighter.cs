@@ -65,7 +65,7 @@ public class Fighter : MonoBehaviour
              mask);
         for (int i = 0; i < arr.Length; ++i)
         {
-            arr[i].collider.gameObject.SendMessage("TakeDamage", damage);
+            arr[i].collider.gameObject.SendMessage("TakeDamage", 8);
         }
         Destroy(this.gameObject);
     }

@@ -69,7 +69,7 @@ public class textManager : MonoBehaviour
 
             case (5):
                 HeadManager.instance.is_powerup_active = true;
-                tutorial_text.text = "You can spend your son\'s life force to use power-ups turn the tide of battle!";
+                tutorial_text.text = "You can spend the heart\'s life force to use power-ups turn the tide of battle!";
                 StartCoroutine(Wait(7));
                 break;
 
@@ -102,7 +102,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (9):
-                tutorial_text.text = "You can also drain your son\'s life to gain more money by pressing \'r\'.";
+                tutorial_text.text = "You can also drain the heart\'s life to gain more money by pressing \'r\'.";
                 is_wave_started = false;
                 StartCoroutine(Wait(8));
                 break;
@@ -180,6 +180,7 @@ public class textManager : MonoBehaviour
                 if (Input.GetKeyDown("2"))
                 {
                     ++HeadManager.instance.tutorial_counter;
+                    GameObject.Find("EnemySpawner").SendMessage("StartLevel5");
                 }
                 break;
 
@@ -189,6 +190,15 @@ public class textManager : MonoBehaviour
                 HeadManager.instance.is_camel_active = true;
                 HeadManager.instance.is_fox_active = true;
                 HeadManager.instance.is_powerup_active = true;
+                StartCoroutine(Wait(5));
+                break;
+
+            case (18):
+                tutorial_text.text = "Remeber to use your power ups!";
+                if (HeadManager.instance.level_counter == 6)
+                {
+                    ++HeadManager.instance.tutorial_counter;
+                }
                 break;
         }
     }
