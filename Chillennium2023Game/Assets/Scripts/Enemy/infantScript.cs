@@ -18,12 +18,13 @@ public class infantScript : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        animator.SetBool("DogBool", false);
         rb = GetComponent<Rigidbody2D>();
         running = false;
     }
     private void Start()
     {
-        animator.SetBool("isWalking", true);
+        animator.SetBool("DogBool", false);
         rb.velocity = new Vector3(speed, 0, 0);
         StartCoroutine(Ataque());
     }
@@ -45,14 +46,14 @@ public class infantScript : MonoBehaviour
         while (true)
         {
             running = true;
-            animator.SetBool("isWalking", false);
+            animator.SetBool("DogBool", true);
 
             rb.velocity = new Vector3(0,0,0);
             yield return new WaitForSeconds(.5f);
             Instantiate(projectile, gameObject.transform);
             yield return new WaitForSeconds(.5f);
             running = false;
-            animator.SetBool("isWalking", true);
+            animator.SetBool("DogBool", false);
 
             rb.velocity = new Vector3(speed, 0,0);
             yield return new WaitForSeconds(2);
@@ -69,7 +70,7 @@ public class infantScript : MonoBehaviour
     IEnumerator DamageAnime()
     {
         StopCoroutine(Ataque());
-        animator.SetBool("isWalking", false);
+        animator.SetBool("DogBool", false);
 
         running = true;
         if (this.gameObject != null)
@@ -87,7 +88,6 @@ public class infantScript : MonoBehaviour
             rb.velocity = new Vector3(speed, 0, 0);
         }
         running = false;
-        animator.SetBool("isWalking", true);
 
         StartCoroutine(Ataque());
     }
