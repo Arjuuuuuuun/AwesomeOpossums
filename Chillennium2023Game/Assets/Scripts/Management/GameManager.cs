@@ -121,7 +121,7 @@ public class GameManager : MonoBehaviour
     {
         if (buyMinion(10))
         {
-           
+            GameObject.Find("PlayerSpawner").BroadcastMessage("Boom", SendMessageOptions.DontRequireReceiver);
             //do things!!!
         }
     }

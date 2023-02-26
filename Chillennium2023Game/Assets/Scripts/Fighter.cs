@@ -10,13 +10,17 @@ public class Fighter : MonoBehaviour
     [SerializeField] float knockBack;
     [SerializeField] float KBT;
     [SerializeField] float WT;
+    [SerializeField] LayerMask mask;
+
     Rigidbody2D rb;
 
+    [SerializeField] bool isFox = false;
     bool running;
+    bool exploding;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        running = false;
+        running = exploding = false;
     }
     private void Start()
     {
@@ -35,7 +39,27 @@ public class Fighter : MonoBehaviour
             StartCoroutine(DamageAnime());
         }
     }
-
+    void Boom()
+    {
+        if (isFox) StartCoroutine(Bom());
+        
+    }
+    IEnumerator Bom()
+    {
+        rb.velocity = Vector3.zero;
+        speed = 0;
+        yield return new WaitForSeconds(2);
+        exploding = true;
+        RaycastHit2D[] arr = Physics2D.RaycastAll(
+            new Vector2(transform.position.x + 2, transform.position.y),
+            Vector2.left, 4,
+             mask);
+        for (int i = 0; i < arr.Length; ++i)
+        {
+            arr[i].collider.gameObject.SendMessage("TakeDamage", damage);
+        }
+        Destroy(this.gameObject);
+    }
     IEnumerator DamageAnime()
     {
         running = true;

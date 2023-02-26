@@ -153,6 +153,10 @@ MonoBehaviour:
   knockBack: 1.5
   KBT: 0.3
   WT: 0.15
+  mask:
+    serializedVersion: 2
+    m_Bits: 320
+  isFox: 1
 --- !u!95 &-1304559460287944493
 Animator:
   serializedVersion: 4
