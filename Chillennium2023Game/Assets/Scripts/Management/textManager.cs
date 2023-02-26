@@ -174,7 +174,7 @@ public class textManager : MonoBehaviour
                 break;
             
             case (17):
-                tutorial_text.text = "Press \'2\' to summon an earth of foxes. (Buy some foxes to continue)";
+                tutorial_text.text = "Press \'2\' to summon 3 foxes. (Buy some foxes to continue)";
                 GameManager.canGainMoney = false;
                 HeadManager.instance.is_camel_active = false;
                 HeadManager.instance.is_fox_active = false;
@@ -188,7 +188,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (18):
-                tutorial_text.text = "Foxes are very weak, but press \'e\' to detonate them for massive damage!";
+                tutorial_text.text = "Foxes are weak but fast and plentful!";
                 is_wave_started = false;
                 GameManager.canGainMoney = true;
                 HeadManager.instance.is_camel_active = true;
@@ -216,7 +216,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (21):
-                tutorial_text.text = "Good luck on the upcoming trials!";
+                tutorial_text.text = "The pharoh is beginning to show his true strength!";
                 if (!is_wave_started)
                 {
                     is_wave_started = true;
@@ -226,8 +226,25 @@ public class textManager : MonoBehaviour
                 break;
 
             case (22):
-                tutorial_text.text = "It\'s impressive you made it this far...";
                 if (HeadManager.instance.level_counter == 7)
+                {
+                    ++HeadManager.instance.tutorial_counter;
+                }
+                break;
+
+            case (23):
+                tutorial_text.text = "Good luck on the upcoming trials!";
+                if (!is_wave_started)
+                {
+                    is_wave_started = true;
+                    GameObject.Find("EnemySpawner").SendMessage("StartLevel6");
+                    StartCoroutine(Wait(10));
+                }
+                break;
+
+            case (24):
+                tutorial_text.text = "It\'s impressive you made it this far...";
+                if (HeadManager.instance.level_counter == 8)
                 {
                     ++HeadManager.instance.tutorial_counter;
                 }

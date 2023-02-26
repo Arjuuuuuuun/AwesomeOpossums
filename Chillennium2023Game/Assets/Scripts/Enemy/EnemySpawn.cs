@@ -21,7 +21,7 @@ public class EnemySpawn : MonoBehaviour
 
     void Tutur1()
     {
-        Spawn('s', 2);
+        Spawn('s', 1);
     }
 
     void Tutur2()
@@ -60,6 +60,10 @@ public class EnemySpawn : MonoBehaviour
     void StartLevel6()
     {
         StartCoroutine(Level6());
+    }
+    void StartLevel7()
+    {
+        StartCoroutine(Level7());
     }
     void Spawn(char type, int level)
     {
@@ -186,6 +190,48 @@ public class EnemySpawn : MonoBehaviour
 
     IEnumerator Level6()
     {
+        for (int i = 2; i <= 4; ++i)
+        {
+            Spawn('s', i);
+            yield return new WaitForSeconds(3f);
+        }
+        Spawn('i', 2);
+        yield return new WaitForSeconds(6);
+
+        for (int i = 2; i <= 4; ++i)
+        {
+            Spawn('i', i);
+            yield return new WaitForSeconds(4f);
+            Spawn('s', i);
+        }
+
+        yield return new WaitForSeconds(12);
+
+        Spawn('s', 2);
+        Spawn('i', 3);
+        Spawn('s', 1);
+        Spawn('i', 1);
+
+        yield return new WaitForSeconds(12);
+
+        Spawn('s', 3);
+        Spawn('i', 4);
+        Spawn('s', 1);
+        Spawn('i', 2);
+
+        yield return new WaitForSeconds(14);
+        for (int i = 3; i <= 4; ++i)
+        {
+            Spawn('i', i);
+            yield return new WaitForSeconds(4f);
+            Spawn('s', i);
+        }
+
+        StartCoroutine(waitUntilKillCount(23));
+    }
+
+    IEnumerator Level7()
+    {
         for(int i = 1; i <=4; ++i)
         {
             Spawn('s', i);
@@ -225,7 +271,7 @@ public class EnemySpawn : MonoBehaviour
             Spawn('s', i);
         }
 
-        StopCoroutine(waitUntilKillCount(22));
+        StopCoroutine(waitUntilKillCount(34));
 
     }
 
