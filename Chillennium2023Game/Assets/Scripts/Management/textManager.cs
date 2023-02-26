@@ -49,7 +49,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (3):
-                tutorial_text.text = "Press \'1\' to buy a bear! Bears cost 20 money.";
+                tutorial_text.text = "Press \'1 (One)\' to buy a bear! Bears cost 20 money.";
                 HeadManager.instance.is_fox_active = true;
                 if (HeadManager.instance.is_fox_bought)
                 {
@@ -67,7 +67,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (5):
-                tutorial_text.text = "You can spend the heart\'s life force to use power-ups turn the tide of battle!";
+                tutorial_text.text = "You can spend the heart\'s life force to use power-ups to turn the tide of battle!";
                 StartCoroutine(Wait(7));
                 break;
 
@@ -116,7 +116,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (11):
-                tutorial_text.text = "Remember, you can also block enemies!";
+                tutorial_text.text = "Remember, you can block enemies!";
                 if (HeadManager.instance.level_counter == 3)
                 {
                     ++HeadManager.instance.tutorial_counter;
