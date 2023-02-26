@@ -67,17 +67,16 @@ public class textManager : MonoBehaviour
                 break;
 
             case (5):
-                tutorial_text.text = "Press \'3\' to buy an elephant! Elephantts, unlike bears can absorb projectiles.";
+                tutorial_text.text = "Press \'3\' to buy an elephant! Elephants, unlike bears can absorb projectiles.";
                 HeadManager.instance.is_camel_active = true;
                 if (HeadManager.instance.is_camel_bought)
                 {
-                    GameObject.Find("EnemySpawner").SendMessage("StartLevel1");
                     ++HeadManager.instance.tutorial_counter;
                 }
                 break;
 
             case (6):
-                tutorial_text.text = "Yooooo";
+                tutorial_text.text = "Manage Projec";
                 break;
         }
     }
