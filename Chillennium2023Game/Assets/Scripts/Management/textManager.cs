@@ -103,11 +103,17 @@ public class textManager : MonoBehaviour
 
             case (9):
                 tutorial_text.text = "You can also drain your son\'s life to gain more money by pressing \'r\'.";
+                is_wave_started = false;
                 StartCoroutine(Wait(8));
                 break;
 
             case (10):
-                GameObject.Find("EnemySpawner").SendMessage("StartLevel2");
+                if (!is_wave_started)
+                {
+                    is_wave_started = true;
+                    GameObject.Find("EnemySpawner").SendMessage("StartLevel2");
+                    StartCoroutine(Wait(10));
+                }
                 StartCoroutine(Wait(8));
                 break;
 
