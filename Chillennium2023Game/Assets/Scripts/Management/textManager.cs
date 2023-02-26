@@ -84,10 +84,17 @@ public class textManager : MonoBehaviour
                 break;
 
             case (7):
-
-                
+                tutorial_text.text = "Press q to unleash a blast that will damage all minions, projectiles, and enemies";
+                StartCoroutine(Wait(3));
                 break;
 
+            case (8):
+                tutorial_text.text = "Good luck with the rest of the level!";
+                if(HeadManager.instance.level_counter == 3)
+                {
+                    ++HeadManager.instance.tutorial_counter;
+                }
+                break;
         }
     }
 
