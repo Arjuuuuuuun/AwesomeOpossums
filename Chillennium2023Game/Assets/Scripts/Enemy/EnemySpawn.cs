@@ -210,14 +210,12 @@ public class EnemySpawn : MonoBehaviour
         Spawn('s', 2);
         Spawn('i', 3);
         Spawn('s', 1);
-        Spawn('i', 1);
 
         yield return new WaitForSeconds(12);
 
         Spawn('s', 3);
         Spawn('i', 4);
         Spawn('s', 1);
-        Spawn('i', 2);
 
         yield return new WaitForSeconds(14);
         for (int i = 3; i <= 4; ++i)
@@ -227,7 +225,7 @@ public class EnemySpawn : MonoBehaviour
             Spawn('s', i);
         }
 
-        StartCoroutine(waitUntilKillCount(23));
+        StartCoroutine(waitUntilKillCount(21));
     }
 
     IEnumerator Level7()

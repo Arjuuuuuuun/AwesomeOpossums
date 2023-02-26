@@ -25,7 +25,7 @@ public class textManager : MonoBehaviour
         {
 
             case (0):
-                tutorial_text.text = "Ah, a tomb with a heart! Use the \'w\' and \'s\' keys to move up and down.";
+                tutorial_text.text = "The pharaoh\'s trials begin! Use the \'w\' and \'s\' keys to move up and down.";
                 if (Input.GetKeyDown("w"))
                 {
                     ++HeadManager.instance.tutorial_counter;
@@ -138,7 +138,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (13):
-                tutorial_text.text = "Projectiles will only be stopped by elephants, unlike bears, so watch out!";
+                tutorial_text.text = "Only you and your elephants can stop fireballs!";
                 PlayerBase.canMove = true;
                 GameManager.canGainMoney = true;
                 HeadManager.instance.is_fox_active = true;
@@ -147,7 +147,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (14):
-                tutorial_text.text = "Wall of Fire also destroys projectiles!";
+                tutorial_text.text = "Wall of Fire also destroys fireballs.";
                 if (HeadManager.instance.level_counter == 4)
                 {
                     is_wave_started = false;
@@ -208,7 +208,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (20):
-                tutorial_text.text = "You have learned everything now, the pharaoh will soon show no mercy.";
+                tutorial_text.text = "You are now equipped for the coming trials, the pharaoh will soon show no mercy.";
                 if (HeadManager.instance.level_counter == 6)
                 {
                     ++HeadManager.instance.tutorial_counter;
@@ -216,7 +216,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (21):
-                tutorial_text.text = "The pharaoh is beginning to show his true strength!";
+                tutorial_text.text = "The pharaoh is beginning to reveal his true strength!";
                 if (!is_wave_started)
                 {
                     is_wave_started = true;
