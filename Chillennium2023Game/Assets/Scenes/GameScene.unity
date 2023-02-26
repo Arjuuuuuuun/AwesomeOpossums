@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthText: {fileID: 1233170342}
+  screenFlash: {fileID: 784153826}
   fire: {fileID: 8300000, guid: f4147389976e50e4ab0fda866cdc1ef5, type: 3}
   money: {fileID: 8300000, guid: 03a1ac6e3d4dd4c4eb9ae3cffbf37a40, type: 3}
   buy: {fileID: 8300000, guid: 52b6ebbeed28b6c4499636ed7741694c, type: 3}
@@ -748,7 +749,7 @@ GameObject:
   - component: {fileID: 784153828}
   - component: {fileID: 784153827}
   m_Layer: 0
-  m_Name: Square
+  m_Name: ScreenFlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
