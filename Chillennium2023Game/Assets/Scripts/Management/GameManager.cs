@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
         {
             return false;
         }
-
+        GameObject.Find("Son").SendMessage("remoteCallFunnyDamage");
         --sonHealth;
         return true;
     }

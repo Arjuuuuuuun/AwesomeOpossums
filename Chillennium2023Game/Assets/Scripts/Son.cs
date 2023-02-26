@@ -20,6 +20,10 @@ public class Son : MonoBehaviour
         GameObject.Find("GameManager").SendMessage("TakeSonDamage", val);          
         StartCoroutine(Damnage());  
     }
+    void remoteCallFunnyDamage()
+    {
+        StartCoroutine(Damnage());
+    }
     IEnumerator Damnage()
     {
         anime.SetBool("funnyDeathBool", true);
