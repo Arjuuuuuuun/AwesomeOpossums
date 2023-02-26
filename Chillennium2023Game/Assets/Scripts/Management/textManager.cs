@@ -26,7 +26,7 @@ public class textManager : MonoBehaviour
 
             case (0):
                 tutorial_text.text = "The pharaoh\'s trials begin! Use the \'w\' and \'s\' or arrow keys to move up and down.";
-                if (Input.GetKeyDown("w"))
+                if (Input.GetKeyDown("w") || Input.GetKeyDown(KeyCode.UpArrow)) 
                 {
                     ++HeadManager.instance.tutorial_counter;
                 }
@@ -72,7 +72,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (6):
-                tutorial_text.text = "Press \'f\' to send out a massive wall of fire! (Buy the wall of fire to continue)";
+                tutorial_text.text = "Press \'f\' to send out a massive wall of fire! (use the wall of fire to continue)";
                 HeadManager.instance.is_powerup_active = true;
                 if (!is_wave_started)
                 {
@@ -88,7 +88,7 @@ public class textManager : MonoBehaviour
             case (7):
                 tutorial_text.text = "The wall of fire costs 1 life, and damages EVERYTHING, including your own forces!";
                 is_wave_started = false;
-                StartCoroutine(Wait(4));
+                StartCoroutine(Wait(2));
                 break;
 
             case (8):
@@ -101,9 +101,12 @@ public class textManager : MonoBehaviour
                 break;
 
             case (9):
-                tutorial_text.text = "You can also drain the heart\'s life to gain more money by pressing \'r\'.";
+                tutorial_text.text = "You can use the money power-up by pressing \'r\'. (use the money power-up to continue)";
                 is_wave_started = false;
-                StartCoroutine(Wait(12));
+                if (Input.GetKeyDown("r"))
+                {
+                    ++HeadManager.instance.tutorial_counter;
+                }
                 break;
 
             case (10):
