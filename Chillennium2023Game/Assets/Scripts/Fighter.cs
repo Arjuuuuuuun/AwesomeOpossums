@@ -47,6 +47,7 @@ public class Fighter : MonoBehaviour
     void Boom()
     {
         anime.SetBool("IstanBool", true);
+        Debug.Log("one day your car goes boom");
         if (isFox) StartCoroutine(Bom());
         
     }
