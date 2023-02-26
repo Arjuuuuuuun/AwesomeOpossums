@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     {
         health = 40;
         if (HeadManager.instance.level_counter == 2) { health += 15; }
-        sonHealth = 5;
+        sonHealth = 6;
         gameActive = true;
         canGainMoney = true;
         StartCoroutine(GameClock());
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         //Updating health slider
-        healthText.text = health.ToString() + "/200 " + sonHealth.ToString() + "/5";
+        healthText.text = health.ToString() + "/200 " + sonHealth.ToString() + "/6";
 
         if (Input.GetKeyDown("2"))
         {
