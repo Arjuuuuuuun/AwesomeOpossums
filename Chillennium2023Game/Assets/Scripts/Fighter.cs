@@ -11,6 +11,7 @@ public class Fighter : MonoBehaviour
     [SerializeField] float KBT;
     [SerializeField] float WT;
     [SerializeField] LayerMask mask;
+    Animator anime;
 
     Rigidbody2D rb;
 
@@ -19,6 +20,7 @@ public class Fighter : MonoBehaviour
     bool exploding;
     private void Awake()
     {
+        anime = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         running = exploding = false;
     }
@@ -41,6 +43,7 @@ public class Fighter : MonoBehaviour
     }
     void Boom()
     {
+        anime.SetBool("IstanBool", true);
         if (isFox) StartCoroutine(Bom());
         
     }
