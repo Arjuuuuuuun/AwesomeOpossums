@@ -19,13 +19,15 @@ public class Son : MonoBehaviour
         GameObject.Find("GameManager").SendMessage("TakeSonDamage", val);  
         anime.StopPlayback();
         sprender.sprite = spir;
-        Debug.Log("we got some cheese");
+        sprender.sortingOrder = 2;
         StartCoroutine("Damnage");  
     }
     IEnumerable Damnage()
     {
         yield return new WaitForSeconds(.5f);
         sprender.sprite = spirt;
+        sprender.sortingOrder = 1;
+
         anime.StartPlayback();
     }
 }
