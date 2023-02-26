@@ -47,6 +47,11 @@ public class EnemySpawn : MonoBehaviour
         StartCoroutine(Level3());
     }
 
+    void StartLevel4()
+    {
+        StartCoroutine(Level4());
+    }
+
     void Spawn(char type, int level)
     {
         float level_offset = -2.75f + 1.75f * (level - 1);
@@ -115,7 +120,19 @@ public class EnemySpawn : MonoBehaviour
         yield return new WaitForSeconds(10);
 
         Spawn('i', 4);
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(20);
+
+
+        HeadManager.instance.level_counter = 4;
+        SceneManager.LoadScene(1);
+
+    }
+
+    IEnumerator Level4()
+    {
+        Spawn('s', 1);
+        Spawn('s', 4);
+        yield return new WaitForSeconds(5);
 
         Spawn('s', 3);
         Spawn('i', 3);
@@ -123,9 +140,5 @@ public class EnemySpawn : MonoBehaviour
 
         Spawn('s', 2);
         yield return new WaitForSeconds(20);
-
-        HeadManager.instance.level_counter = 4;
-        SceneManager.LoadScene(1);
-
     }
 }

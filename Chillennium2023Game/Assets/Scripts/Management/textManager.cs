@@ -150,12 +150,21 @@ public class textManager : MonoBehaviour
 
             case (14):
                 tutorial_text.text = "Wall of Fire also destroys projectiles!";
-                StartCoroutine(Wait(13));
+                if (HeadManager.instance.level_counter == 4)
+                {
+                    is_wave_started = false;
+                    ++HeadManager.instance.tutorial_counter;
+                }
                 break;
 
             case (15):
                 tutorial_text.text = "The phraoh is not holding back...";
-                if (HeadManager.instance.level_counter == 4)
+                if (!is_wave_started)
+                {
+                    is_wave_started = true;
+                    GameObject.Find("EnemySpawner").SendMessage("StartLevel4");
+                }
+                if (HeadManager.instance.level_counter == 5)
                 {
                     ++HeadManager.instance.tutorial_counter;
                 }
