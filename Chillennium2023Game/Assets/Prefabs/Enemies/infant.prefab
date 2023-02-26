@@ -150,7 +150,7 @@ MonoBehaviour:
   damage: 3
   health: 10
   speed: -1
-  knockBack: 1
+  knockBack: 3
   KBT: 0.2
   WT: 0.5
   projectile: {fileID: 1501249281707172754, guid: d3c8720f63490804082356962420d86d, type: 3}

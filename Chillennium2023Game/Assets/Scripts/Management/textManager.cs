@@ -44,7 +44,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (2):
-                tutorial_text.text = "You can summon helpful spirits to help absorb minions!";
+                tutorial_text.text = "You can summon helpful spirits to help block minions!";
                 StartCoroutine(Wait(4));
                 break;
 
@@ -69,15 +69,25 @@ public class textManager : MonoBehaviour
             case (5):
                 tutorial_text.text = "Press \'3\' to buy an elephant! Elephants, unlike bears can absorb projectiles.";
                 HeadManager.instance.is_camel_active = true;
+                PlayerBase.canMove = false;
                 if (HeadManager.instance.is_camel_bought)
                 {
                     ++HeadManager.instance.tutorial_counter;
+                    GameObject.Find("EnemySpawner").SendMessage("StartLevel2");
                 }
                 break;
 
             case (6):
-                tutorial_text.text = "Manage Projec";
+                tutorial_text.text = "Projectiles will go through foxes and damage them, watch out!";
+                PlayerBase.canMove = true;
+                StartCoroutine(Wait(3));
                 break;
+
+            case (7):
+
+                
+                break;
+
         }
     }
 

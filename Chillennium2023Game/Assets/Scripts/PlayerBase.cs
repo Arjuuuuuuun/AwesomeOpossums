@@ -7,18 +7,20 @@ public class PlayerBase : MonoBehaviour
     Transform ts;
     [SerializeField] float speed;
     static public int level;
+    static public bool canMove;
 
     private void Awake()
     {
         ts = GetComponent<Transform>();
         level = 1;
+        canMove = true;
     }
 
     private void Update()
     {
         if (Input.GetKeyDown("w"))
         {
-            if (level < 4)
+            if ((level < 4) && canMove)
             {
                 ++level;
             }
@@ -26,7 +28,7 @@ public class PlayerBase : MonoBehaviour
 
         else if (Input.GetKeyDown("s"))
         {
-            if (level > 1)
+            if ((level > 1) && canMove)
             {
                 --level;
             }
