@@ -6,8 +6,8 @@ public class GameStarter : MonoBehaviour
 {
     private void Start()
     {
-        HeadManager.instance.level_counter = 1;
-        HeadManager.instance.tutorial_counter = 0;
+        HeadManager.instance.level_counter = 4;
+        HeadManager.instance.tutorial_counter = 15;
         HeadManager.instance.kill_counter = 0;
         HeadManager.instance.is_fox_active = false;
         HeadManager.instance.is_fox_bought = false;
