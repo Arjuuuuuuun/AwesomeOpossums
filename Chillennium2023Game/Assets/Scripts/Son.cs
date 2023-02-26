@@ -23,7 +23,6 @@ public class Son : MonoBehaviour
     IEnumerator Damnage()
     {
         anime.SetBool("funnyDeathBool", true);
-
         yield return new WaitForSeconds(.5f);
         anime.SetBool("funnyDeathBool", false);
 
