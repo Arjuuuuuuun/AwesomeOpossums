@@ -26,7 +26,7 @@ public class beam : MonoBehaviour
     {
         if(collision.tag == "Enemy")
         {
-            collision.gameObject.SendMessage("TakeDamage", 5);
+            collision.gameObject.SendMessage("TakeDamage", 8);
         }
         else
         {
