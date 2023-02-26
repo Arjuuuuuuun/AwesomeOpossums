@@ -67,13 +67,13 @@ public class textManager : MonoBehaviour
                 break;
 
             case (5):
-                HeadManager.instance.is_powerup_active = true;
                 tutorial_text.text = "You can spend the heart\'s life force to use power-ups turn the tide of battle!";
                 StartCoroutine(Wait(7));
                 break;
 
             case (6):
                 tutorial_text.text = "Press \'f\' to send out a wall of fire, damaging EVERYTHING, including your own forces!";
+                HeadManager.instance.is_powerup_active = true;
                 if (!is_wave_started)
                 {
                     is_wave_started = true;
