@@ -196,7 +196,7 @@ public class EnemySpawn : MonoBehaviour
             yield return new WaitForSeconds(3f);
         }
         Spawn('i', 2);
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(8);
 
         for (int i = 2; i <= 4; ++i)
         {

@@ -88,7 +88,7 @@ public class textManager : MonoBehaviour
             case (7):
                 tutorial_text.text = "The wall of fire costs 1 life, and damages EVERYTHING, including your own forces!";
                 is_wave_started = false;
-                StartCoroutine(Wait(2));
+                StartCoroutine(Wait(4));
                 break;
 
             case (8):
