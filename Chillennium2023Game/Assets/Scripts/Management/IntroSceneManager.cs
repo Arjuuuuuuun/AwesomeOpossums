@@ -53,7 +53,7 @@ public class IntroSceneManager : MonoBehaviour
                 break;
                 case 2:
                     sprender.sprite = scene3;
-                    txt.text = "When an ancient mystic tome reveals the secret to life anew, \nFrom the corpse of a Pharaoh, a heart the seeker must hew";
+                    txt.text = "When an ancient tome reveals the secret to breathing life anew, \nFrom the corpse of a Pharaoh, a heart the seeker must hew";
 
                 break;
                 case 3:
