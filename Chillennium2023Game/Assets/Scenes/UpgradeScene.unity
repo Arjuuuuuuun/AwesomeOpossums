@@ -615,6 +615,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1030366191}
+  - component: {fileID: 1030366192}
   m_Layer: 0
   m_Name: winManager
   m_TagString: Untagged
@@ -637,6 +638,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1030366192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030366190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93e4cfff3648c0c4e9abe5a1c476f7cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 673943450}
+  button: {fileID: 1304481081}
 --- !u!1 &1304481079
 GameObject:
   m_ObjectHideFlags: 0
