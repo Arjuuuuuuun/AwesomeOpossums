@@ -89,6 +89,7 @@ public class textManager : MonoBehaviour
 
             case (8):
                 tutorial_text.text = "You can also drain your son\'s life to gain more money by pressing \'r\'";
+
                 break;
         }
     }
