@@ -64,8 +64,8 @@ public class IntroSceneManager : MonoBehaviour
                 default:
                     sprender.transform.position = new Vector3(10000, 10000, 10000);
                     dongle.transform.position = new Vector3(10000, 10000, 10000);
-                    Butt1.transform.position = new Vector3(0 , 3, 0);
-                    Butt2.transform.position = new Vector3(0, -3, 0); 
+                    Butt1.transform.position = new Vector3(-2.2f , -3.75f, 0);
+                    Butt2.transform.position = new Vector3(2.2f, -3.75f, 0); 
                     waiting = true;
                     txt.text = "";
                 sprender.sortingLayerName = "Background";
