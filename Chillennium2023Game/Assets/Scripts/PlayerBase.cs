@@ -40,19 +40,19 @@ public class PlayerBase : MonoBehaviour
         switch (level)
         {
             case (1):
-                ts.position = new Vector3(ts.position.x, -3.25f, ts.position.z);
+                ts.position = new Vector3(ts.position.x, -3.1f, ts.position.z);
                 break;
 
             case (2):
-                ts.position = new Vector3(ts.position.x, -1.5f, ts.position.z);
+                ts.position = new Vector3(ts.position.x, -1.4f, ts.position.z);
                 break;
 
             case (3):
-                ts.position = new Vector3(ts.position.x, 0.25f, ts.position.z);
+                ts.position = new Vector3(ts.position.x, 0.3f, ts.position.z);
                 break;
 
             case (4):
-                ts.position = new Vector3(ts.position.x, 2f, ts.position.z);
+                ts.position = new Vector3(ts.position.x, 2.1f, ts.position.z);
                 break;
         }
     }
