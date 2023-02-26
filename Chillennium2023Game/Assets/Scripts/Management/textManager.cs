@@ -105,6 +105,20 @@ public class textManager : MonoBehaviour
                 tutorial_text.text = "You can also drain your son\'s life to gain more money by pressing \'r\'.";
                 StartCoroutine(Wait(8));
                 break;
+
+            case (10):
+                GameObject.Find("EnemySpawner").SendMessage("StartLevel2");
+                StartCoroutine(Wait(8));
+                break;
+
+            case (11):
+                tutorial_text.text = "Almost there!";
+                if (HeadManager.instance.level_counter == 3)
+                {
+                    ++HeadManager.instance.tutorial_counter;
+                }
+                break;
+
         }
     }
 

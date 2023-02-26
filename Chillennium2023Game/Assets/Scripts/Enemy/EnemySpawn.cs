@@ -79,6 +79,29 @@ public class EnemySpawn : MonoBehaviour
 
     IEnumerator Level2()
     {
+
+        //BEGIN LEVEL 2
+        Spawn('s', 4);
+        Spawn('s', 1);
+        yield return new WaitForSeconds(5);
+
+        Spawn('s', 4);
+        Spawn('s', 3);
+        Spawn('s', 2);
+        yield return new WaitForSeconds(5);
+
+        Spawn('s', 4);
+        Spawn('s', 1);
+        Spawn('s', 2);
+        yield return new WaitForSeconds(10);
+
+        HeadManager.instance.level_counter = 3;
+        SceneManager.LoadScene(1);
+
+    }
+
+    IEnumerator Level3()
+    {
         //BEGIN LEVEL 2
         Spawn('i', 1);
         yield return new WaitForSeconds(5);
@@ -92,7 +115,7 @@ public class EnemySpawn : MonoBehaviour
         Spawn('s', 3);
         yield return new WaitForSeconds(10);
 
-        HeadManager.instance.level_counter = 3;
+        HeadManager.instance.level_counter = 4;
         SceneManager.LoadScene(1);
 
     }
