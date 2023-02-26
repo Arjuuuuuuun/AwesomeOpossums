@@ -57,6 +57,10 @@ public class EnemySpawn : MonoBehaviour
         StartCoroutine(Level5());
     }
 
+    void StartLevel6()
+    {
+        StartCoroutine(Level6());
+    }
     void Spawn(char type, int level)
     {
         float level_offset = -2.75f + 1.75f * (level - 1);
@@ -178,6 +182,27 @@ public class EnemySpawn : MonoBehaviour
 
         StartCoroutine(waitUntilKillCount(17));
 
+    }
+
+    IEnumerator Level6()
+    {
+        for(int i = 1; i <=4; ++i)
+        {
+            Spawn('s', i);
+            yield return new WaitForSeconds(1.75f);
+        }
+        Spawn('i', 2);
+        Spawn('i', 3);
+        yield return new WaitForSeconds(4);
+
+        for(int i = 1; i <= 4; ++i)
+        {
+            Spawn('i', i);
+            yield return new WaitForSeconds(1.5f);
+            Spawn('s', i);
+        }
+
+        StopCoroutine(waitUntilKillCount(14));
     }
 
     IEnumerator waitUntilKillCount(int val)
