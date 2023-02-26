@@ -37,6 +37,7 @@ public class PlayerSpawn : MonoBehaviour
 
     public void SpawnCamel()
     {
+        HeadManager.instance.is_camel_bought = true;
         Instantiate(camel, new Vector3(trans.position.x, trans.position.y + ((PlayerBase.level - 1) * 1.75f), trans.position.z), Quaternion.identity, trans);
     }
 

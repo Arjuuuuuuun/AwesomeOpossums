@@ -25,7 +25,7 @@ public class textManager : MonoBehaviour
         switch (HeadManager.instance.tutorial_counter)
         {
             case (1):
-                tutorial_text.text = "Ah, a tomb with a heart! Protect your son against incoming spirits.";
+                tutorial_text.text = "Ah, a tomb with a heart! Protect your son against incoming spirits by blocking their path.";
                 if (!is_wave_1_started)
                 {
                     is_wave_1_started = true;
@@ -40,7 +40,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (3):
-                tutorial_text.text = "Press \'1\' to buy a fox!";
+                tutorial_text.text = "Press \'1\' to buy a bear!";
                 HeadManager.instance.is_fox_active = true;
                 if (HeadManager.instance.is_fox_bought)
                 {
@@ -58,7 +58,17 @@ public class textManager : MonoBehaviour
                 break;
 
             case (5):
-                tutorial_text.text = "Level 1 beat";
+                tutorial_text.text = "Press \'3\' to buy an elephant! Elephantts, unlike bears can absorb projectiles.";
+                HeadManager.instance.is_camel_active = true;
+                if (HeadManager.instance.is_camel_bought)
+                {
+                    GameObject.Find("EnemySpawner").SendMessage("StartLevel1");
+                    ++HeadManager.instance.tutorial_counter;
+                }
+                break;
+
+            case (6):
+                tutorial_text.text = "Yooooo";
                 break;
         }
     }

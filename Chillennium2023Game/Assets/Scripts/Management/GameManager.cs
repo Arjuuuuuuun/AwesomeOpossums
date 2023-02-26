@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
     static public bool gameActive;
     static public int health;
     public Text healthText;
-    public Slider healthbar;
     private int sonHealth;
 
 
@@ -38,7 +37,10 @@ public class GameManager : MonoBehaviour
         }
         else if (Input.GetKeyDown("3"))
         {
-            buyCamel();
+            if (HeadManager.instance.is_camel_active)
+            {
+                buyCamel();
+            }
         }
         else if (Input.GetKeyDown("q"))
         {

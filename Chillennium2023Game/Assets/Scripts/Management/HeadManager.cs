@@ -9,6 +9,8 @@ public class HeadManager : MonoBehaviour
     public int tutorial_counter;
     public bool is_fox_active;
     public bool is_fox_bought;
+    public bool is_camel_active;
+    public bool is_camel_bought;
 
     private void Awake()
     {
