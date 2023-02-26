@@ -12,10 +12,12 @@ public class EnemySpawn : MonoBehaviour
     private Transform trans;
 
 
+
     public void Start()
     {
-        Instantiate(spirit, new Vector3(trans.position.x + .5f, trans.position.y, trans.position.z), Quaternion.identity, trans);
-        //trans = GetComponent<Transform>();
+        trans = GetComponent<Transform>();
+        Instantiate(spirit, new Vector3(trans.position.x + .5f, trans.position.y + 2f, trans.position.z), Quaternion.identity, trans);
+
         //switch (HeadManager.instance.level_counter)
         //{
         //    case (2):
@@ -25,14 +27,14 @@ public class EnemySpawn : MonoBehaviour
 
     }
 
-    //void Tutur1()
-    //{
+    void Tutur1()
+    {
     //    Instantiate(spirit, new Vector3(trans.position.x + .5f, trans.position.y, trans.position.z), Quaternion.identity, trans);
-    //}
-    //void StartLevel1()
-    //{
+    }
+    void StartLevel1()
+    {
     //    StartCoroutine(Level1());
-    //}
+    }
 
     //IEnumerator Level1()
     //{
