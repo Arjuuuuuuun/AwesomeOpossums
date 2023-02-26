@@ -21,7 +21,13 @@ public class EnemySpawn : MonoBehaviour
 
     void Tutur1()
     {
-        Instantiate(spirit, new Vector3(trans.position.x + .5f, trans.position.y - 1f, trans.position.z), Quaternion.identity, trans);
+        Spawn('s', 2);
+    }
+
+    void Tutur2()
+    {
+        Spawn('s', 3);
+        Spawn('s', 1);
     }
 
 

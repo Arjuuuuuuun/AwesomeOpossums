@@ -49,7 +49,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (3):
-                tutorial_text.text = "Press \'1\' to buy a bear!";
+                tutorial_text.text = "Press \'1\' to buy a bear! Bears cost 20 power.";
                 HeadManager.instance.is_fox_active = true;
                 if (HeadManager.instance.is_fox_bought)
                 {
@@ -67,44 +67,28 @@ public class textManager : MonoBehaviour
                 break;
 
             case (5):
-                tutorial_text.text = "Press \'3\' to buy an elephant! Elephants, unlike bears can absorb projectiles.";
-                HeadManager.instance.is_camel_active = true;
-                PlayerBase.canMove = false;
-                if (HeadManager.instance.is_camel_bought)
-                {
-                    ++HeadManager.instance.tutorial_counter;
-                    GameObject.Find("EnemySpawner").SendMessage("StartLevel2");
-                }
+                HeadManager.instance.is_powerup_active = true;
+                tutorial_text.text = "You can spend your son\'s life force to use power-ups turn the tide of battle!";
+                StartCoroutine(Wait(7));
                 break;
 
             case (6):
-                tutorial_text.text = "Projectiles will go through bears and damage them, watch out!";
-                PlayerBase.canMove = true;
-                StartCoroutine(Wait(10));
-                break;
-
-            case (7):
-                tutorial_text.text = "This is fun!";
-                StartCoroutine(Wait(15));
-
-                break;
-
-            case (8):
-                tutorial_text.text = "Press \'q\' to unleash a blast that will damage all minions, projectiles, and enemies";
-                StartCoroutine(Wait(10));
-                break;
-
-            case (9):
-                tutorial_text.text = "Be careful, the beam can kill your bears if timed poorly!";
-                if(HeadManager.instance.level_counter == 3)
+                tutorial_text.text = "Press \'f\' to send out a wall of fire, heavily damaging EVERYTHING, including your own forces!";
+                GameObject.Find("EnemySpawner").SendMessage("Tutur1");
+                if (Input.GetKeyDown("f"))
                 {
                     ++HeadManager.instance.tutorial_counter;
                 }
                 break;
 
-            case (10):
-                tutorial_text.text = "Press \'2\' to send a swarm of foxes";
+            case (7):
+                tutorial_text.text = "The wall of fire costs 1 life, use it carefully.";
+                GameObject.Find("EnemySpawner").SendMessage("Tutur1");
+                StartCoroutine(Wait(10));
+                break;
 
+            case (8):
+                tutorial_text.text = "You can also drain your son\'s life to gain more money by pressing \'r\'";
                 break;
         }
     }

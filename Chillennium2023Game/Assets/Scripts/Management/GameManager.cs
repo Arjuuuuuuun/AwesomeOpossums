@@ -46,11 +46,17 @@ public class GameManager : MonoBehaviour
         }
         else if (Input.GetKeyDown("f"))
         {
-            buyBeam();
+            if (HeadManager.instance.is_powerup_active)
+            {
+                buyBeam();
+            }
         }
         else if (Input.GetKeyDown("r"))
         {
-            buyMoney();
+            if (HeadManager.instance.is_powerup_active)
+            {
+                buyMoney();
+            }
         }
     }
 
