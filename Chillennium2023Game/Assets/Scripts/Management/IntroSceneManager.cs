@@ -11,8 +11,8 @@ public class IntroSceneManager : MonoBehaviour
     [SerializeField] Sprite scene4;
     [SerializeField] GameObject Butt1;
     [SerializeField] GameObject Butt2;
-    [SerializeField] Text txt;
-    [SerializeField] Text dongle;
+    public Text txt;
+    public Text dongle;
     SpriteRenderer sprender;
     int introScene;
     bool waiting;
@@ -20,8 +20,6 @@ public class IntroSceneManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dongle.transform.position = new Vector3(10000, 10000, 10000);
-        txt = GetComponent<Text>();
         sprender = GetComponent<SpriteRenderer>();
         sprender.sortingLayerName = "Default";
         waiting = false;
@@ -31,25 +29,15 @@ public class IntroSceneManager : MonoBehaviour
         Butt2.transform.position = new Vector3(10000, 10000, 10000);
 
     }
-    IEnumerator theForcedMusicAppreciation()
-    {
-        dongle.transform.position = new Vector3(10000, 10000, 10000);
-
-        waiting = true;
-        yield return new WaitForSeconds(5);
-        waiting = false;
-        dongle.transform.position = new Vector3(5   , 5, 5);
-
-    }
+    
     // Update is called once per frame
     void Update()
     {
         if (!waiting)
         {
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 introScene += 1;
-                StartCoroutine(theForcedMusicAppreciation());
             }
         }
             switch (introScene)
