@@ -84,7 +84,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (7):
-                tutorial_text.text = "Press q to unleash a blast that will damage all minions, projectiles, and enemies";
+                tutorial_text.text = "Press \'q\' to unleash a blast that will damage all minions, projectiles, and enemies";
                 StartCoroutine(Wait(7));
                 break;
 
