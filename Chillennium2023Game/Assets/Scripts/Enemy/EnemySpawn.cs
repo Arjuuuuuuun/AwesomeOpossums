@@ -202,7 +202,31 @@ public class EnemySpawn : MonoBehaviour
             Spawn('s', i);
         }
 
-        StopCoroutine(waitUntilKillCount(14));
+        yield return new WaitForSeconds(12);
+
+        Spawn('s', 4);
+        Spawn('i', 1);
+        Spawn('s', 2);
+        Spawn('i', 3);
+
+        yield return new WaitForSeconds(5);
+
+        Spawn('s', 3);
+        Spawn('i', 4);
+        Spawn('s', 1);
+        Spawn('i', 2);
+
+        yield return new WaitForSeconds(10);
+        for (int i = 1; i <= 4; ++i)
+        {
+            Spawn('i', i);
+            Spawn('i', 4);
+            yield return new WaitForSeconds(3f);
+            Spawn('s', i);
+        }
+
+        StopCoroutine(waitUntilKillCount(22));
+
     }
 
     IEnumerator waitUntilKillCount(int val)
