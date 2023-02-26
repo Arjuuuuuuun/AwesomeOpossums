@@ -45,6 +45,7 @@ public class SceneScript : MonoBehaviour
                 break;
 
             case (6):
+                HeadManager.instance.tutorial_counter = 21;
                 break;
 
         }
