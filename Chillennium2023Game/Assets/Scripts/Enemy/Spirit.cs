@@ -75,6 +75,7 @@ public class Spirit : MonoBehaviour
        if(collision.tag == "Son")
         {
             collision.SendMessage("takeDamage",1);
+            Destroy(gameObject);
         }
     }
 

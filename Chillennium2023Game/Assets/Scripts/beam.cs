@@ -30,7 +30,7 @@ public class beam : MonoBehaviour
         }
         else
         {
-            collision.gameObject.SendMessage("TakeDamage", 15);
+            collision.gameObject.SendMessage("TakeDamage", 15,SendMessageOptions.DontRequireReceiver);
         }
     }
 

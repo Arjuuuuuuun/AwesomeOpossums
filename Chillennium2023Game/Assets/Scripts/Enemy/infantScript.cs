@@ -98,6 +98,7 @@ public class infantScript : MonoBehaviour
         if (collision.tag == "Son")
         {
             collision.SendMessage("takeDamage", 1);
+            Destroy(this.gameObject);
         }
     }
 }

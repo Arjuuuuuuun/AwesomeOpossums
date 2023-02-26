@@ -14,6 +14,15 @@ public class Projectile : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = new Vector3(speed, 0,0);  
     }
+
+    private void Update()
+    {
+        if(transform.position.x <= -8.5)
+        {
+            GameObject.Find("Son").SendMessage("takeDamage", 1);
+            Destroy(gameObject);
+        }
+    }
     void TakeDamage(int damage)
     {
         return;
@@ -26,6 +35,7 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        if(collision.gameObject.tag == "Son") { Debug.Log("yeah"); }
         collision.gameObject.SendMessage("TakeDamage", damage);
         if (collision.gameObject.tag == "Camel" && !camelExemption)
         {
