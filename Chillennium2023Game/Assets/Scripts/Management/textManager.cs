@@ -205,7 +205,29 @@ public class textManager : MonoBehaviour
                     GameObject.Find("EnemySpawner").SendMessage("StartLevel5");
                     StartCoroutine(Wait(10));
                 }
+                break;
+
+            case (20):
+                tutorial_text.text = "You have learned everything know the phraoh will soon show no mercy";
                 if (HeadManager.instance.level_counter == 6)
+                {
+                    ++HeadManager.instance.tutorial_counter;
+                }
+                break;
+
+            case (21):
+                tutorial_text.text = "Good luck on the upcoming trials";
+                if (!is_wave_started)
+                {
+                    is_wave_started = true;
+                    GameObject.Find("EnemySpawner").SendMessage("StartLevel6");
+                    StartCoroutine(Wait(10));
+                }
+                break;
+
+            case (22):
+                tutorial_text.text = "It\'s impressive you made it this far";
+                if (HeadManager.instance.level_counter == 7)
                 {
                     ++HeadManager.instance.tutorial_counter;
                 }
