@@ -9,6 +9,7 @@ TagManager:
   - StopsProjectile
   - Enemy
   - Son
+  - Beam
   layers:
   - Default
   - TransparentFX

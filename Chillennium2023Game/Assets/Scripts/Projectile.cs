@@ -21,7 +21,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "PlayerBase")
+        if(collision.gameObject.tag == "PlayerBase" || collision.gameObject.tag == "Beam")
         {
             Destroy(gameObject);
             return;

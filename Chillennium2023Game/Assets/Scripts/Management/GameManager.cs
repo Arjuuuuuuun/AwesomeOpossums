@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
         }
         else if (Input.GetKeyDown("1"))
         {
-            if(HeadManager.instance.is_fox_active)
+            if (HeadManager.instance.is_fox_active)
             {
                 buyFox();
             }
@@ -39,6 +39,10 @@ public class GameManager : MonoBehaviour
         else if (Input.GetKeyDown("3"))
         {
             buyCamel();
+        }
+        else if (Input.GetKeyDown("q"))
+        {
+            buyBeam();
         }
     }
 
@@ -55,7 +59,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    
+
     void endGame()
     {
         StopAllCoroutines();
@@ -65,7 +69,7 @@ public class GameManager : MonoBehaviour
 
     bool buyMinion(int cost)
     {
-        if(cost > health)
+        if (cost > health)
         {
             return false;
         }
@@ -102,6 +106,23 @@ public class GameManager : MonoBehaviour
         if (buyMinion(55))
         {
             GameObject.Find("PlayerSpawner").SendMessage("SpawnCamel");
+        }
+    }
+
+    void buyBeam()
+    {
+        if (buyMinion(20))
+        {
+            GameObject.Find("PlayerSpawner").SendMessage("SpawnBeam");
+        }
+    }
+
+    void buyExplode()
+    {
+        if (buyMinion(10))
+        {
+           
+            //do things!!!
         }
     }
 }

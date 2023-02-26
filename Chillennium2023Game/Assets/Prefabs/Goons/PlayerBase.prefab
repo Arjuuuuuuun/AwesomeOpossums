@@ -155,6 +155,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 606796908209505012}
     m_Modifications:
+    - target: {fileID: 4907438647644629894, guid: 9cab25cd00bddbb42aebf30e96890a26, type: 3}
+      propertyPath: beam
+      value: 
+      objectReference: {fileID: 3237247045630991477, guid: d858fdd299a1c74439ab40967dc9117b, type: 3}
     - target: {fileID: 4907438647644629895, guid: 9cab25cd00bddbb42aebf30e96890a26, type: 3}
       propertyPath: m_Name
       value: PlayerSpawner

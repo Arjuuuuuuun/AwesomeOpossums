@@ -7,6 +7,7 @@ public class PlayerSpawn : MonoBehaviour
     public GameObject fox;
     public GameObject rat;
     public GameObject camel;
+    public GameObject beam;
     private Transform trans;
 
     public void Start()
@@ -37,5 +38,10 @@ public class PlayerSpawn : MonoBehaviour
     public void SpawnCamel()
     {
         Instantiate(camel, new Vector3(trans.position.x, trans.position.y, trans.position.z), Quaternion.identity, trans);
+    }
+
+    void SpawnBeam()
+    {
+        Instantiate(beam, new Vector3(trans.position.x, trans.position.y, trans.position.z), Quaternion.identity, trans);
     }
 }
