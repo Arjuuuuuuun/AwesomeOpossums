@@ -69,7 +69,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (5):
-                tutorial_text.text = "You can spend the heart\'s life force to use power-ups to turn the tide of battle!";
+                tutorial_text.text = "You can spend the heart\'s life force to use abilities to turn the tide of battle!";
                 StartCoroutine(Wait(7));
                 break;
 
@@ -103,7 +103,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (9):
-                tutorial_text.text = "You can use the money power-up by pressing \'r\'. (use the money power-up to continue)";
+                tutorial_text.text = "You can use the money abilitiy by pressing \'r\'. (Use the money ability to continue)";
                 GameObject.Find("GameManager").SendMessage("GiveHealthSon");
                 is_wave_started = false;
                 if (Input.GetKeyDown("r"))
@@ -113,7 +113,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (10):
-                tutorial_text.text = "Be careful when using power-ups as they cost lives!";
+                tutorial_text.text = "Be careful when using abilities as they cost lives!";
                 if (!is_wave_started)
                 {
                     is_wave_started = true;
@@ -163,7 +163,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (15):
-                tutorial_text.text = "The pharaoh is not holding back..., power-up use is the key to victory.";
+                tutorial_text.text = "The pharaoh is not holding back..., ability use is the key to victory.";
                 if (!is_wave_started)
                 {
                     is_wave_started = true;
@@ -205,7 +205,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (19):
-                tutorial_text.text = "Remeber to use your power-ups!";
+                tutorial_text.text = "Remeber to use your abilities!";
                 if (!is_wave_started)
                 {
                     is_wave_started = true;
