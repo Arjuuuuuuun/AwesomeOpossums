@@ -80,7 +80,6 @@ public class EnemySpawn : MonoBehaviour
         yield return new WaitForSeconds(10);
 
         Spawn('i', 4);
-        Spawn('s', 1);
         yield return new WaitForSeconds(10);
 
         HeadManager.instance.level_counter = 3;

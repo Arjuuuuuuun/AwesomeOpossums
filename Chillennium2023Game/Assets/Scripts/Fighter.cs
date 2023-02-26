@@ -11,6 +11,7 @@ public class Fighter : MonoBehaviour
     [SerializeField] float KBT;
     [SerializeField] float WT;
     [SerializeField] LayerMask mask;
+    SpriteRenderer sprite;
     Animator anime;
 
     Rigidbody2D rb;
@@ -23,6 +24,7 @@ public class Fighter : MonoBehaviour
         anime = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         running = exploding = false;
+        sprite = GetComponent<SpriteRenderer>();
     }
     private void Start()
     {
@@ -30,6 +32,7 @@ public class Fighter : MonoBehaviour
     }
     private void TakeDamage(int damage)
     {
+        StartCoroutine(flash());
         health -= damage;
         if (health <= 0)
         {
@@ -94,6 +97,13 @@ public class Fighter : MonoBehaviour
         {
             rb.velocity = new Vector3(speed, 0, 0);
         }
+    }
+
+    IEnumerator flash()
+    {
+        sprite.color = new Color(1, 0, 0);
+        yield return new WaitForSeconds(0.3f);
+        sprite.color = new Color(1, 1, 1);
     }
 
 

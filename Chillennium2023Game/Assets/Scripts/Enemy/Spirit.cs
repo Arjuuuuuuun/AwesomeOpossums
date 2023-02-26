@@ -11,10 +11,12 @@ public class Spirit : MonoBehaviour
     [SerializeField] float KBT;
     [SerializeField] float WT;
     Rigidbody2D rb;
+    SpriteRenderer sprite;
 
     bool running;
     private void Awake()
     {
+        sprite = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         running = false;
     }
@@ -24,6 +26,7 @@ public class Spirit : MonoBehaviour
     }
     private void TakeDamage(int damage)
     {
+        StartCoroutine(flash());
         health -= damage;
         if (health <= 0)
         {
@@ -78,5 +81,13 @@ public class Spirit : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    IEnumerator flash()
+    {
+        sprite.color = new Color(1, 0, 0);
+        yield return new WaitForSeconds(0.3f);
+        sprite.color = new Color(1, 1, 1);
+    }
+
 
 }

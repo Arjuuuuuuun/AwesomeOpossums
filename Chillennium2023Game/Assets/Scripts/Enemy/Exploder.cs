@@ -15,11 +15,13 @@ public class Exploder : MonoBehaviour
     Rigidbody2D rb;
     BoxCollider2D bx;
     Transform trans;
+    SpriteRenderer sprite;
 
     Animator anime;
 
     private void Awake()
     {
+        sprite = GetComponent<SpriteRenderer>();
         anime = GetComponent<Animator>();
         exploding = false;
         rb = GetComponent<Rigidbody2D>();
@@ -95,5 +97,13 @@ public class Exploder : MonoBehaviour
             StartCoroutine(Explode());
         }
     }
+    IEnumerator flash()
+    {
+        sprite.color = new Color(1, 0, 0);
+        yield return new WaitForSeconds(0.3f);
+        sprite.color = new Color(1, 1, 1);
+    }
+
+
 
 }

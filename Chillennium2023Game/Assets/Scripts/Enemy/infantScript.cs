@@ -12,11 +12,13 @@ public class infantScript : MonoBehaviour
     [SerializeField] float WT;
     [SerializeField] GameObject projectile;
     Rigidbody2D rb;
+    SpriteRenderer sprite;
     Animator animator;
     bool running;
 
     private void Awake()
     {
+        sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         animator.SetBool("DogBool", false);
         rb = GetComponent<Rigidbody2D>();
@@ -30,6 +32,7 @@ public class infantScript : MonoBehaviour
     }
     private void TakeDamage(int damage)
     {
+        StartCoroutine(flash());
         health -= damage;
         if(health <= 0) {
             
@@ -101,4 +104,12 @@ public class infantScript : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    IEnumerator flash()
+    {
+        sprite.color = new Color(1, 0, 0);
+        yield return new WaitForSeconds(0.3f);
+        sprite.color = new Color(1, 1, 1);
+    }
+
 }
