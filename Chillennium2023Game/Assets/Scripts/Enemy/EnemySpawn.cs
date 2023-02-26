@@ -27,6 +27,7 @@ public class EnemySpawn : MonoBehaviour
     void Tutur2()
     {
         Spawn('s', 3);
+        Spawn('s', 4);
         Spawn('s', 1);
     }
 

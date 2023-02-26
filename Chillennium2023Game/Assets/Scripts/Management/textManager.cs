@@ -10,7 +10,7 @@ public class textManager : MonoBehaviour
     public Text tutorial_text;
 
     private bool is_camel_bought;
-    private bool is_wave_1_started;
+    private bool is_wave_started;
 
     private bool isWaiting;
 
@@ -35,9 +35,9 @@ public class textManager : MonoBehaviour
 
             case (1):
                 tutorial_text.text = "Protect your son against incoming spirits by blocking their path.";
-                if (!is_wave_1_started)
+                if (!is_wave_started)
                 {
-                    is_wave_1_started = true;
+                    is_wave_started = true;
                     GameObject.Find("EnemySpawner").SendMessage("Tutur1");
                     StartCoroutine(Wait(5));
                 }             
@@ -45,6 +45,7 @@ public class textManager : MonoBehaviour
 
             case (2):
                 tutorial_text.text = "You can summon helpful spirits to help block minions!";
+                is_wave_started = false;
                 StartCoroutine(Wait(4));
                 break;
 
@@ -74,7 +75,11 @@ public class textManager : MonoBehaviour
 
             case (6):
                 tutorial_text.text = "Press \'f\' to send out a wall of fire, heavily damaging EVERYTHING, including your own forces!";
-                GameObject.Find("EnemySpawner").SendMessage("Tutur1");
+                if (!is_wave_started)
+                {
+                    is_wave_started = true;
+                    GameObject.Find("EnemySpawner").SendMessage("Tutur1");
+                }
                 if (Input.GetKeyDown("f"))
                 {
                     ++HeadManager.instance.tutorial_counter;
@@ -83,13 +88,22 @@ public class textManager : MonoBehaviour
 
             case (7):
                 tutorial_text.text = "The wall of fire costs 1 life, use it carefully.";
-                GameObject.Find("EnemySpawner").SendMessage("Tutur1");
-                StartCoroutine(Wait(10));
+                is_wave_started = false;
+                StartCoroutine(Wait(2));
                 break;
 
             case (8):
-                tutorial_text.text = "You can also drain your son\'s life to gain more money by pressing \'r\'";
+                if (!is_wave_started)
+                {
+                    is_wave_started = true;
+                    GameObject.Find("EnemySpawner").SendMessage("Tutur2");
+                    StartCoroutine(Wait(10));
+                }
+                break;
 
+            case (9):
+                tutorial_text.text = "You can also drain your son\'s life to gain more money by pressing \'r\'.";
+                StartCoroutine(Wait(8));
                 break;
         }
     }
