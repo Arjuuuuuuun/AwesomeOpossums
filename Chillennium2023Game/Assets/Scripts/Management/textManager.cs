@@ -80,20 +80,31 @@ public class textManager : MonoBehaviour
             case (6):
                 tutorial_text.text = "Projectiles will go through bears and damage them, watch out!";
                 PlayerBase.canMove = true;
-                StartCoroutine(Wait(7));
+                StartCoroutine(Wait(10));
                 break;
 
             case (7):
-                tutorial_text.text = "Press \'q\' to unleash a blast that will damage all minions, projectiles, and enemies";
-                StartCoroutine(Wait(7));
+                tutorial_text.text = "This is fun!";
+                StartCoroutine(Wait(15));
+
                 break;
 
             case (8):
-                tutorial_text.text = "Good luck with the rest of the level!";
+                tutorial_text.text = "Press \'q\' to unleash a blast that will damage all minions, projectiles, and enemies";
+                StartCoroutine(Wait(10));
+                break;
+
+            case (9):
+                tutorial_text.text = "Be careful, the beam can kill your bears if timed poorly!";
                 if(HeadManager.instance.level_counter == 3)
                 {
                     ++HeadManager.instance.tutorial_counter;
                 }
+                break;
+
+            case (10):
+                tutorial_text.text = "Press \'2\' to send a swarm of foxes";
+
                 break;
         }
     }
@@ -118,3 +129,24 @@ public class textManager : MonoBehaviour
         }
     }
 }
+
+/*
+
+tutorial_text.text = "Press \'3\' to buy an elephant! Elephants, unlike bears can absorb projectiles.";
+                HeadManager.instance.is_camel_active = true;
+                PlayerBase.canMove = false;
+                if (HeadManager.instance.is_camel_bought)
+                {
+                    ++HeadManager.instance.tutorial_counter;
+                    GameObject.Find("EnemySpawner").SendMessage("StartLevel2");
+                }
+                break;
+
+tutorial_text.text = "Projectiles will go through bears and damage them, watch out!";
+                PlayerBase.canMove = true;
+                StartCoroutine(Wait(10));
+                break;
+
+
+
+*/
