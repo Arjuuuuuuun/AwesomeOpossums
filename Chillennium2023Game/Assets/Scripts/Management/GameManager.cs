@@ -44,9 +44,13 @@ public class GameManager : MonoBehaviour
                 buyCamel();
             }
         }
-        else if (Input.GetKeyDown("q"))
+        else if (Input.GetKeyDown("f"))
         {
             buyBeam();
+        }
+        else if (Input.GetKeyDown("r"))
+        {
+            buyMoney();
         }
     }
 
@@ -80,6 +84,17 @@ public class GameManager : MonoBehaviour
             return false;
         }
         health -= cost;
+        return true;
+    }
+
+    bool buyPowerup()
+    {
+        if (2 > sonHealth)
+        {
+            return false;
+        }
+
+        --sonHealth;
         return true;
     }
 
@@ -117,9 +132,17 @@ public class GameManager : MonoBehaviour
 
     void buyBeam()
     {
-        if (buyMinion(20))
+        if (buyPowerup())
         {
             GameObject.Find("PlayerSpawner").SendMessage("SpawnBeam");
+        }
+    }
+
+    void buyMoney()
+    {
+        if (buyPowerup())
+        {
+            health += 55;
         }
     }
 

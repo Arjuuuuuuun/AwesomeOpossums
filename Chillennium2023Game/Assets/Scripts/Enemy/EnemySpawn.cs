@@ -82,6 +82,9 @@ public class EnemySpawn : MonoBehaviour
         Spawn('i', 4);
         yield return new WaitForSeconds(10);
 
+        Spawn('s', 3);
+        yield return new WaitForSeconds(10);
+
         HeadManager.instance.level_counter = 3;
         SceneManager.LoadScene(1);
 
