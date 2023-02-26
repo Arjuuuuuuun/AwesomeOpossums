@@ -7,17 +7,17 @@ public class SceneScript : MonoBehaviour
 {
     public void onLevelComplete()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void onGameStart()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void onRestart()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(0);
     }
 
     public void onLevelRestart()
@@ -53,7 +53,7 @@ public class SceneScript : MonoBehaviour
                 break;
         }
 
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void onQuit()

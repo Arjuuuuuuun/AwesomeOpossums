@@ -280,6 +280,6 @@ public class EnemySpawn : MonoBehaviour
         yield return new WaitUntil(() => HeadManager.instance.kill_counter >= val);
         ++HeadManager.instance.level_counter;
         HeadManager.instance.kill_counter = 0;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 }
