@@ -49,7 +49,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (3):
-                tutorial_text.text = "Press \'1 (One)\' to buy a bear! Bears cost 20 money.";
+                tutorial_text.text = "Press \'1 (One)\' to buy a bear! Bears cost 20 money. (Buy a bear to continue)";
                 HeadManager.instance.is_fox_active = true;
                 if (HeadManager.instance.is_fox_bought)
                 {
@@ -72,7 +72,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (6):
-                tutorial_text.text = "Press \'f\' to send out a wall of fire, damaging EVERYTHING, including your own forces!";
+                tutorial_text.text = "Press \'f\' to send out a massive wall of fire! (Buy the wall of fire to continue)";
                 HeadManager.instance.is_powerup_active = true;
                 if (!is_wave_started)
                 {
@@ -86,7 +86,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (7):
-                tutorial_text.text = "The wall of fire costs 1 life, use it carefully.";
+                tutorial_text.text = "The wall of fire costs 1 life, and damages EVERYTHING, including your own forces!";
                 is_wave_started = false;
                 StartCoroutine(Wait(2));
                 break;
@@ -124,7 +124,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (12):
-                tutorial_text.text = "Press \'3\' to buy an elephant! Elephants are the only troop that can block projectiles.";
+                tutorial_text.text = "Press \'3\' to buy an elephant! (Buy an elephant to continue)";
                 HeadManager.instance.is_camel_active = true;
                 HeadManager.instance.is_fox_active = false;
                 HeadManager.instance.is_powerup_active = false;
@@ -138,7 +138,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (13):
-                tutorial_text.text = "Projectiles will go through straight through bears, watch out!";
+                tutorial_text.text = "Projectiles will only be stopped by elephants, unlike bears, so watch out!";
                 PlayerBase.canMove = true;
                 GameManager.canGainMoney = true;
                 HeadManager.instance.is_fox_active = true;
@@ -166,7 +166,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (16):
-                tutorial_text.text = "The phraoh is starting to show his true power";
+                tutorial_text.text = "The phraoh is starting to show his true power!";
                 if (HeadManager.instance.level_counter == 5)
                 {
                     ++HeadManager.instance.tutorial_counter;
@@ -174,7 +174,7 @@ public class textManager : MonoBehaviour
                 break;
             
             case (17):
-                tutorial_text.text = "Press \'2\' to summon an earth of foxes";
+                tutorial_text.text = "Press \'2\' to summon an earth of foxes. (Buy some foxes to continue)";
                 GameManager.canGainMoney = false;
                 HeadManager.instance.is_camel_active = false;
                 HeadManager.instance.is_fox_active = false;
@@ -208,7 +208,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (20):
-                tutorial_text.text = "You have learned everything know the phraoh will soon show no mercy";
+                tutorial_text.text = "You have learned everything now, the pharoh will soon show no mercy.";
                 if (HeadManager.instance.level_counter == 6)
                 {
                     ++HeadManager.instance.tutorial_counter;
@@ -216,7 +216,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (21):
-                tutorial_text.text = "Good luck on the upcoming trials";
+                tutorial_text.text = "Good luck on the upcoming trials!";
                 if (!is_wave_started)
                 {
                     is_wave_started = true;
@@ -226,7 +226,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (22):
-                tutorial_text.text = "It\'s impressive you made it this far";
+                tutorial_text.text = "It\'s impressive you made it this far...";
                 if (HeadManager.instance.level_counter == 7)
                 {
                     ++HeadManager.instance.tutorial_counter;
