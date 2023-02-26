@@ -71,7 +71,7 @@ public class EnemySpawn : MonoBehaviour
         switch (type)
         {
             case ('s'):
-                Instantiate(spirit, new Vector3(trans.position.x + .5f, trans.position.y + level_offset, trans.position.z), Quaternion.identity, trans);
+                Instantiate(spirit, new Vector3(trans.position.x + .5f, trans.position.y + level_offset + 0.1f, trans.position.z), Quaternion.identity, trans);
                 break;
             case ('i'):
                 Instantiate(infantry, new Vector3(trans.position.x + .5f, trans.position.y  +level_offset, trans.position.z), Quaternion.identity, trans);
@@ -233,8 +233,7 @@ public class EnemySpawn : MonoBehaviour
             Spawn('s', i);
             yield return new WaitForSeconds(1.75f);
         }
-        Spawn('i', 2);
-        Spawn('i', 3);
+
         yield return new WaitForSeconds(4);
 
         for(int i = 1; i <= 4; ++i)
@@ -251,7 +250,7 @@ public class EnemySpawn : MonoBehaviour
         Spawn('s', 2);
         Spawn('i', 3);
 
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(10);
 
         Spawn('s', 3);
         Spawn('i', 4);
@@ -267,7 +266,7 @@ public class EnemySpawn : MonoBehaviour
             Spawn('s', i);
         }
 
-        StopCoroutine(waitUntilKillCount(34));
+        StopCoroutine(waitUntilKillCount(32));
 
     }
 
