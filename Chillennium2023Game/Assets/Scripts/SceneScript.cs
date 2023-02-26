@@ -48,6 +48,9 @@ public class SceneScript : MonoBehaviour
                 HeadManager.instance.tutorial_counter = 21;
                 break;
 
+            case (7):
+                HeadManager.instance.tutorial_counter = 23;
+                break;
         }
 
         SceneManager.LoadScene(0);
