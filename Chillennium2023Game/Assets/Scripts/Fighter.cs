@@ -57,7 +57,7 @@ public class Fighter : MonoBehaviour
     {
         rb.velocity = Vector3.zero;
         speed = 0;
-        yield return new WaitForSeconds(0.5);
+        yield return new WaitForSeconds(0.5f);
         exploding = true;
         RaycastHit2D[] arr = Physics2D.RaycastAll(
             new Vector2(transform.position.x + 2, transform.position.y),
