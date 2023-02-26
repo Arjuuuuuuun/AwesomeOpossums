@@ -8,6 +8,7 @@ public class PlayerBase : MonoBehaviour
     [SerializeField] float speed;
     static public int level;
     static public bool canMove;
+    [SerializeField] private AudioClip walk;
 
     private void Awake()
     {
@@ -23,6 +24,7 @@ public class PlayerBase : MonoBehaviour
             if ((level < 4) && canMove)
             {
                 ++level;
+                AudioSource.PlayClipAtPoint(walk, GetComponent<Transform>().position);
             }
         }
 
@@ -31,6 +33,7 @@ public class PlayerBase : MonoBehaviour
             if ((level > 1) && canMove)
             {
                 --level;
+                AudioSource.PlayClipAtPoint(walk, GetComponent<Transform>().position);
             }
         }
         

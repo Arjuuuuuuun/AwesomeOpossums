@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     public Text healthText;
     private int sonHealth;
     static public bool canGainMoney;
+    [SerializeField] private AudioClip fire;
+    [SerializeField] private AudioClip money;
+    [SerializeField] private AudioClip buy;
 
 
     private void Awake()
@@ -32,12 +35,14 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown("2"))
         {
             buyRat();
+            AudioSource.PlayClipAtPoint(buy, GetComponent<Transform>().position);
         }
         else if (Input.GetKeyDown("1"))
         {
             if (HeadManager.instance.is_fox_active)
             {
                 buyFox();
+                AudioSource.PlayClipAtPoint(buy, GetComponent<Transform>().position);
             }
         }
         else if (Input.GetKeyDown("3"))
@@ -45,6 +50,7 @@ public class GameManager : MonoBehaviour
             if (HeadManager.instance.is_camel_active)
             {
                 buyCamel();
+                AudioSource.PlayClipAtPoint(buy, GetComponent<Transform>().position);
             }
         }
         else if (Input.GetKeyDown("f"))
@@ -52,6 +58,7 @@ public class GameManager : MonoBehaviour
             if (HeadManager.instance.is_powerup_active)
             {
                 buyBeam();
+                AudioSource.PlayClipAtPoint(fire, GetComponent<Transform>().position);
             }
         }
         else if (Input.GetKeyDown("r"))
@@ -59,6 +66,7 @@ public class GameManager : MonoBehaviour
             if (HeadManager.instance.is_powerup_active)
             {
                 buyMoney();
+                AudioSource.PlayClipAtPoint(money, GetComponent<Transform>().position);
             }
         }
     }
