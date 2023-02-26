@@ -63,6 +63,7 @@ public class IntroSceneManager : MonoBehaviour
                 break;
                 default:
                     sprender.transform.position = new Vector3(10000, 10000, 10000);
+                    dongle.transform.position = new Vector3(10000, 10000, 10000);
                     Butt1.transform.position = new Vector3(0 , 3, 0);
                     Butt2.transform.position = new Vector3(0, -3, 0); 
                     waiting = true;
