@@ -123,10 +123,10 @@ public class EnemySpawn : MonoBehaviour
         yield return new WaitForSeconds(10);
 
         Spawn('i', 4);
-        yield return new WaitForSeconds(20);
+        Spawn('s', 2);
 
 
-        StartCoroutine(waitUntilKillCount(3));
+        StartCoroutine(waitUntilKillCount(4));
     }
 
     IEnumerator Level4()
@@ -140,7 +140,6 @@ public class EnemySpawn : MonoBehaviour
         yield return new WaitForSeconds(5);
 
         Spawn('s', 2);
-        yield return new WaitForSeconds(20);
 
         StartCoroutine(waitUntilKillCount(5));
 
