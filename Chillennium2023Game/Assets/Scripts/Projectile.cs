@@ -36,7 +36,7 @@ public class Projectile : MonoBehaviour
             return;
         }
         if(collision.gameObject.tag == "Son") { Debug.Log("yeah"); }
-        collision.gameObject.SendMessage("TakeDamage", damage);
+        collision.gameObject.SendMessage("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
         if (collision.gameObject.tag == "Camel" && !camelExemption)
         {
             Destroy(gameObject);

@@ -16,7 +16,6 @@ public class EnemySpawn : MonoBehaviour
     public void Start()
     {
         trans = GetComponent<Transform>();
-        Instantiate(spirit, new Vector3(trans.position.x + .5f, trans.position.y + 0.75f, trans.position.z), Quaternion.identity, trans);
 
         switch (HeadManager.instance.level_counter)
         {
