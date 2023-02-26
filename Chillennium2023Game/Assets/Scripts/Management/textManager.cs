@@ -24,19 +24,28 @@ public class textManager : MonoBehaviour
     {
         switch (HeadManager.instance.tutorial_counter)
         {
+
+            case (0):
+                tutorial_text.text = "Ah, a tomb with a heart! Use the \'w\' and \'s\' keys to move up and down.";
+                if (Input.GetKeyDown("w"))
+                {
+                    ++HeadManager.instance.tutorial_counter;
+                }
+                break;
+
             case (1):
-                tutorial_text.text = "Ah, a tomb with a heart! Protect your son against incoming spirits by blocking their path.";
+                tutorial_text.text = "Protect your son against incoming spirits by blocking their path.";
                 if (!is_wave_1_started)
                 {
                     is_wave_1_started = true;
                     GameObject.Find("EnemySpawner").SendMessage("Tutur1");
-                    StartCoroutine(Wait());
+                    StartCoroutine(Wait(5));
                 }             
                 break;
 
             case (2):
                 tutorial_text.text = "You can summon helpful spirits to help absorb minions!";
-                StartCoroutine(Wait());
+                StartCoroutine(Wait(4));
                 break;
 
             case (3):
@@ -78,7 +87,7 @@ public class textManager : MonoBehaviour
         is_camel_bought = true;
     }
 
-    IEnumerator Wait()
+    IEnumerator Wait(float time)
     {
         if (isWaiting)
         {
@@ -87,7 +96,7 @@ public class textManager : MonoBehaviour
         else
         {
             isWaiting = true;
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(time);
             isWaiting = false;
             ++HeadManager.instance.tutorial_counter;
         }

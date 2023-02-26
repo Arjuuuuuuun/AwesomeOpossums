@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         health = 40;
+        if (HeadManager.instance.level_counter == 2) { health += 15; }
         sonHealth = 5;
         gameActive = true;
         StartCoroutine(GameClock());

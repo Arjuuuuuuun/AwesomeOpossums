@@ -11,6 +11,7 @@ public class PlayerBase : MonoBehaviour
     private void Awake()
     {
         ts = GetComponent<Transform>();
+        level = 1;
     }
 
     private void Update()
