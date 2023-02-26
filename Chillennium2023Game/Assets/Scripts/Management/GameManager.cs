@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     static public int health;
     public Text healthText;
     private int sonHealth;
+    static public bool canGainMoney;
 
 
     private void Awake()
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
         if (HeadManager.instance.level_counter == 2) { health += 15; }
         sonHealth = 5;
         gameActive = true;
+        canGainMoney = true;
         StartCoroutine(GameClock());
     }
 
@@ -67,7 +69,7 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
 
-            if (health < 195 && HeadManager.instance.tutorial_counter >= 4)
+            if (canGainMoney && health < 195 && HeadManager.instance.tutorial_counter >= 4)
             {
                 health += 3;
             }

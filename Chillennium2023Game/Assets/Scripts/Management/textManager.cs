@@ -128,6 +128,9 @@ public class textManager : MonoBehaviour
             case (12):
                 tutorial_text.text = "Press \'3\' to buy an elephant! Elephants, unlike bears can absorb projectiles.";
                 HeadManager.instance.is_camel_active = true;
+                HeadManager.instance.is_fox_active = false;
+                HeadManager.instance.is_powerup_active = false;
+                GameManager.canGainMoney = false;
                 PlayerBase.canMove = false;
                 if (HeadManager.instance.is_camel_bought)
                 {
@@ -139,6 +142,9 @@ public class textManager : MonoBehaviour
             case (13):
                 tutorial_text.text = "Projectiles will go through bears and damage them, watch out!";
                 PlayerBase.canMove = true;
+                GameManager.canGainMoney = true;
+                HeadManager.instance.is_fox_active = true;
+                HeadManager.instance.is_powerup_active = true;
                 StartCoroutine(Wait(10));
                 break;
 
@@ -178,23 +184,3 @@ public class textManager : MonoBehaviour
     }
 }
 
-/*
-
-tutorial_text.text = "Press \'3\' to buy an elephant! Elephants, unlike bears can absorb projectiles.";
-                HeadManager.instance.is_camel_active = true;
-                PlayerBase.canMove = false;
-                if (HeadManager.instance.is_camel_bought)
-                {
-                    ++HeadManager.instance.tutorial_counter;
-                    GameObject.Find("EnemySpawner").SendMessage("StartLevel2");
-                }
-                break;
-
-tutorial_text.text = "Projectiles will go through bears and damage them, watch out!";
-                PlayerBase.canMove = true;
-                StartCoroutine(Wait(10));
-                break;
-
-
-
-*/
