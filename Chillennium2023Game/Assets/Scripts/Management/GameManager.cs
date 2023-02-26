@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -67,6 +68,8 @@ public class GameManager : MonoBehaviour
     {
         StopAllCoroutines();
         Debug.Log("enemy base deafeated");
+        SceneManager.LoadScene(3);
+
         //end the game
     }
 
