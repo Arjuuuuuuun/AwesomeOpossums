@@ -78,7 +78,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (6):
-                tutorial_text.text = "Projectiles will go through foxes and damage them, watch out!";
+                tutorial_text.text = "Projectiles will go through bears and damage them, watch out!";
                 PlayerBase.canMove = true;
                 StartCoroutine(Wait(7));
                 break;
