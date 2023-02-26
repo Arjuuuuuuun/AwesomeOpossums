@@ -74,7 +74,7 @@ public class EnemySpawn : MonoBehaviour
                 Instantiate(spirit, new Vector3(trans.position.x + .5f, trans.position.y + level_offset + 0.1f, trans.position.z), Quaternion.identity, trans);
                 break;
             case ('i'):
-                Instantiate(infantry, new Vector3(trans.position.x + .5f, trans.position.y  +level_offset, trans.position.z), Quaternion.identity, trans);
+                Instantiate(infantry, new Vector3(trans.position.x + .5f, trans.position.y  +level_offset + .2f, trans.position.z), Quaternion.identity, trans);
                 break;
         }
     }
