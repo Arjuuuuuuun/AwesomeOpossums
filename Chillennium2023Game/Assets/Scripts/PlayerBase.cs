@@ -19,7 +19,7 @@ public class PlayerBase : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown("w"))
+        if (Input.GetKeyDown("w") || Input.GetKeyDown(KeyCode.UpArrow))
         {
             if ((level < 4) && canMove)
             {
@@ -28,7 +28,7 @@ public class PlayerBase : MonoBehaviour
             }
         }
 
-        else if (Input.GetKeyDown("s"))
+        else if (Input.GetKeyDown("s") || Input.GetKeyDown(KeyCode.DownArrow))
         {
             if ((level > 1) && canMove)
             {

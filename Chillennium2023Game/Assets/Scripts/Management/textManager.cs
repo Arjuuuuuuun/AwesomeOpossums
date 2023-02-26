@@ -25,7 +25,7 @@ public class textManager : MonoBehaviour
         {
 
             case (0):
-                tutorial_text.text = "The pharaoh\'s trials begin! Use the \'w\' and \'s\' keys to move up and down.";
+                tutorial_text.text = "The pharaoh\'s trials begin! Use the \'w\' and \'s\' or arrow keys to move up and down.";
                 if (Input.GetKeyDown("w"))
                 {
                     ++HeadManager.instance.tutorial_counter;
@@ -237,7 +237,7 @@ public class textManager : MonoBehaviour
                 if (!is_wave_started)
                 {
                     is_wave_started = true;
-                    GameObject.Find("EnemySpawner").SendMessage("StartLevel6");
+                    GameObject.Find("EnemySpawner").SendMessage("StartLevel7");
                     StartCoroutine(Wait(10));
                 }
                 break;
