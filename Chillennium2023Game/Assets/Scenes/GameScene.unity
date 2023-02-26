@@ -217,8 +217,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -110.35, y: 169.19}
-  m_SizeDelta: {x: 525.01, y: 90.02}
+  m_AnchoredPosition: {x: -108.86, y: 166.23}
+  m_SizeDelta: {x: 529.96, y: 103.86}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &281970831
 MonoBehaviour:
@@ -242,18 +242,20 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 283f82f2915197b47b67f93d16d8d85a, type: 3}
-    m_FontSize: 25
+    m_FontSize: 21
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 221
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 'adfasdfasdfasdf
+
+    asdfasdfasdfsadf'
 --- !u!222 &281970832
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -339,7 +341,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 356721675
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &447225646
