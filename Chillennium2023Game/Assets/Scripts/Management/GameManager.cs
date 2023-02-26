@@ -121,6 +121,11 @@ public class GameManager : MonoBehaviour
         return true;
     }
 
+    void GiveHealthSon()
+    {
+        if(sonHealth == 1) { sonHealth++; }
+    }
+
     void TakeSonDamage(int val)
     {
         sonHealth -= val;

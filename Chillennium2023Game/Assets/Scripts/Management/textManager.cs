@@ -29,6 +29,7 @@ public class textManager : MonoBehaviour
                 if (Input.GetKeyDown("w") || Input.GetKeyDown(KeyCode.UpArrow)) 
                 {
                     ++HeadManager.instance.tutorial_counter;
+                    PlayerBase.canMove = false;
                 }
                 break;
 
@@ -37,6 +38,7 @@ public class textManager : MonoBehaviour
                 if (!is_wave_started)
                 {
                     is_wave_started = true;
+                    PlayerBase.canMove = true;
                     GameObject.Find("EnemySpawner").SendMessage("Tutur1");
                     StartCoroutine(Wait(5));
                 }             
@@ -102,6 +104,7 @@ public class textManager : MonoBehaviour
 
             case (9):
                 tutorial_text.text = "You can use the money power-up by pressing \'r\'. (use the money power-up to continue)";
+                GameObject.Find("GameManager").SendMessage("GiveHealthSon");
                 is_wave_started = false;
                 if (Input.GetKeyDown("r"))
                 {
@@ -110,6 +113,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (10):
+                tutorial_text.text = "Be careful when using power-ups as they cost lives!";
                 if (!is_wave_started)
                 {
                     is_wave_started = true;
@@ -159,7 +163,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (15):
-                tutorial_text.text = "The pharaoh is not holding back..., power up use is the key to victory.";
+                tutorial_text.text = "The pharaoh is not holding back..., power-up use is the key to victory.";
                 if (!is_wave_started)
                 {
                     is_wave_started = true;
@@ -201,7 +205,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (19):
-                tutorial_text.text = "Remeber to use your power ups!";
+                tutorial_text.text = "Remeber to use your power-ups!";
                 if (!is_wave_started)
                 {
                     is_wave_started = true;

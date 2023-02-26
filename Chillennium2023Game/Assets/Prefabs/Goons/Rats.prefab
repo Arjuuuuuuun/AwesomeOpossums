@@ -149,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 4
   health: 10
-  speed: 3.5
+  speed: 3.6
   knockBack: 3
   KBT: 0.3
   WT: 0.15
