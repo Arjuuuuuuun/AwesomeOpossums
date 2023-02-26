@@ -14,5 +14,6 @@ public class GameStarter : MonoBehaviour
         HeadManager.instance.is_camel_active = false;
         HeadManager.instance.is_camel_bought = false;
         HeadManager.instance.is_powerup_active = false;
+        HeadManager.instance.is_rat_active = false;
     }
 }
