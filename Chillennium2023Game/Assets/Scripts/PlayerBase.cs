@@ -4,28 +4,50 @@ using UnityEngine;
 
 public class PlayerBase : MonoBehaviour
 {
-    Rigidbody2D rb;
+    Transform ts;
     [SerializeField] float speed;
+    static public int level;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+        ts = GetComponent<Transform>();
     }
 
     private void Update()
     {
-        if (Input.GetKey("w"))
+        if (Input.GetKeyDown("w"))
         {
-            rb.velocity = new Vector2(0, speed);
+            if (level < 4)
+            {
+                ++level;
+            }
         }
 
-        else if (Input.GetKey("s"))
+        else if (Input.GetKeyDown("s"))
         {
-            rb.velocity = new Vector2(0, -speed);
+            if (level > 1)
+            {
+                --level;
+            }
         }
-        else
+        
+        switch (level)
         {
-            rb.velocity = Vector2.zero;
+            case (1):
+                ts.position = new Vector3(ts.position.x, -3.25f, ts.position.z);
+                break;
+
+            case (2):
+                ts.position = new Vector3(ts.position.x, -1.5f, ts.position.z);
+                break;
+
+            case (3):
+                ts.position = new Vector3(ts.position.x, 0.25f, ts.position.z);
+                break;
+
+            case (4):
+                ts.position = new Vector3(ts.position.x, 2f, ts.position.z);
+                break;
         }
     }
 
