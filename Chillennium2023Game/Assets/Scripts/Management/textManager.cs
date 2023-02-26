@@ -103,7 +103,7 @@ public class textManager : MonoBehaviour
             case (9):
                 tutorial_text.text = "You can also drain the heart\'s life to gain more money by pressing \'r\'.";
                 is_wave_started = false;
-                StartCoroutine(Wait(8));
+                StartCoroutine(Wait(12));
                 break;
 
             case (10):
@@ -111,7 +111,7 @@ public class textManager : MonoBehaviour
                 {
                     is_wave_started = true;
                     GameObject.Find("EnemySpawner").SendMessage("StartLevel2");
-                    StartCoroutine(Wait(10));
+                    StartCoroutine(Wait(12));
                 }
                 break;
 
@@ -143,7 +143,7 @@ public class textManager : MonoBehaviour
                 GameManager.canGainMoney = true;
                 HeadManager.instance.is_fox_active = true;
                 HeadManager.instance.is_powerup_active = true;
-                StartCoroutine(Wait(10));
+                StartCoroutine(Wait(12));
                 break;
 
             case (14):
@@ -162,7 +162,7 @@ public class textManager : MonoBehaviour
                     is_wave_started = true;
                     GameObject.Find("EnemySpawner").SendMessage("StartLevel4");
                 }
-                StartCoroutine(Wait(6));
+                StartCoroutine(Wait(12));
                 break;
 
             case (16):
@@ -194,7 +194,7 @@ public class textManager : MonoBehaviour
                 HeadManager.instance.is_camel_active = true;
                 HeadManager.instance.is_fox_active = true;
                 HeadManager.instance.is_powerup_active = true;
-                StartCoroutine(Wait(5));
+                StartCoroutine(Wait(10));
                 break;
 
             case (19):

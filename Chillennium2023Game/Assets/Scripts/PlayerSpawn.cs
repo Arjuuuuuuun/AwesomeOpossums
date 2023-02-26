@@ -30,7 +30,7 @@ public class PlayerSpawn : MonoBehaviour
     {
         for (int i = 0; i < 3; ++i)
         {
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(1);
             Instantiate(rat, new Vector3(trans.position.x + 1, trans.position.y + ((PlayerBase.level - 1) * 1.75f), trans.position.z), Quaternion.identity, trans);
         }
     }

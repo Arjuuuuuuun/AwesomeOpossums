@@ -153,7 +153,7 @@ public class EnemySpawn : MonoBehaviour
     {
         Spawn('s', 2);
         Spawn('s', 1);
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(12);
 
         Spawn('i', 4);
         Spawn('s', 3);
