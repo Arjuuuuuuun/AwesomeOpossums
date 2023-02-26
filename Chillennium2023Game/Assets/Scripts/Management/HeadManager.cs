@@ -12,6 +12,7 @@ public class HeadManager : MonoBehaviour
     public bool is_fox_bought;
     public bool is_camel_active;
     public bool is_camel_bought;
+    public bool is_rat_active;
     public bool is_powerup_active;
 
 

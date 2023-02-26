@@ -34,8 +34,11 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown("2"))
         {
-            buyRat();
-            AudioSource.PlayClipAtPoint(buy, GetComponent<Transform>().position);
+            if (HeadManager.instance.is_rat_active)
+            {
+                buyRat();
+                AudioSource.PlayClipAtPoint(buy, GetComponent<Transform>().position);
+            }
         }
         else if (Input.GetKeyDown("1"))
         {
