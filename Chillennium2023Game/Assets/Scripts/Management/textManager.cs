@@ -125,6 +125,35 @@ public class textManager : MonoBehaviour
                 }
                 break;
 
+            case (12):
+                tutorial_text.text = "Press \'3\' to buy an elephant! Elephants, unlike bears can absorb projectiles.";
+                HeadManager.instance.is_camel_active = true;
+                PlayerBase.canMove = false;
+                if (HeadManager.instance.is_camel_bought)
+                {
+                    ++HeadManager.instance.tutorial_counter;
+                    GameObject.Find("EnemySpawner").SendMessage("StartLevel3");
+                }
+                break;
+
+            case (13):
+                tutorial_text.text = "Projectiles will go through bears and damage them, watch out!";
+                PlayerBase.canMove = true;
+                StartCoroutine(Wait(10));
+                break;
+
+            case (14):
+                tutorial_text.text = "Wall of Fire also destroys projectiles";
+                StartCoroutine(Wait(10));
+                break;
+
+            case (15):
+                tutorial_text.text = "The phraoh is not holding back...";
+                if (HeadManager.instance.level_counter == 4)
+                {
+                    ++HeadManager.instance.tutorial_counter;
+                }
+                break;
         }
     }
 

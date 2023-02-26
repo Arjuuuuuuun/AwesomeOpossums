@@ -42,6 +42,11 @@ public class EnemySpawn : MonoBehaviour
         StartCoroutine(Level2());
     }
 
+    void StartLevel3()
+    {
+        StartCoroutine(Level3());
+    }
+
     void Spawn(char type, int level)
     {
         float level_offset = -2.75f + 1.75f * (level - 1);
@@ -102,7 +107,7 @@ public class EnemySpawn : MonoBehaviour
 
     IEnumerator Level3()
     {
-        //BEGIN LEVEL 2
+        //BEGIN LEVEL 3
         Spawn('i', 1);
         yield return new WaitForSeconds(5);
         
