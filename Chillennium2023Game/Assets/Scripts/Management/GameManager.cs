@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioClip fire;
     [SerializeField] private AudioClip money;
     [SerializeField] private AudioClip buy;
+    [SerializeField] private AudioClip denied;
 
 
     private void Awake()
@@ -37,7 +38,6 @@ public class GameManager : MonoBehaviour
             if (HeadManager.instance.is_rat_active)
             {
                 buyRat();
-                AudioSource.PlayClipAtPoint(buy, GetComponent<Transform>().position);
             }
         }
         else if (Input.GetKeyDown("1"))
@@ -45,7 +45,6 @@ public class GameManager : MonoBehaviour
             if (HeadManager.instance.is_fox_active)
             {
                 buyFox();
-                AudioSource.PlayClipAtPoint(buy, GetComponent<Transform>().position);
             }
         }
         else if (Input.GetKeyDown("3"))
@@ -53,7 +52,6 @@ public class GameManager : MonoBehaviour
             if (HeadManager.instance.is_camel_active)
             {
                 buyCamel();
-                AudioSource.PlayClipAtPoint(buy, GetComponent<Transform>().position);
             }
         }
         else if (Input.GetKeyDown("f"))
@@ -61,7 +59,6 @@ public class GameManager : MonoBehaviour
             if (HeadManager.instance.is_powerup_active)
             {
                 buyBeam();
-                AudioSource.PlayClipAtPoint(fire, GetComponent<Transform>().position);
             }
         }
         else if (Input.GetKeyDown("r"))
@@ -69,7 +66,6 @@ public class GameManager : MonoBehaviour
             if (HeadManager.instance.is_powerup_active)
             {
                 buyMoney();
-                AudioSource.PlayClipAtPoint(money, GetComponent<Transform>().position);
             }
         }
     }
@@ -128,9 +124,14 @@ public class GameManager : MonoBehaviour
     }
     public void buyRat()
     {
-        if (buyMinion(30))
+        if (buyMinion(15))
         {
             GameObject.Find("PlayerSpawner").SendMessage("SpawnRat");
+            AudioSource.PlayClipAtPoint(buy, GetComponent<Transform>().position);
+        }
+        else
+        {
+            AudioSource.PlayClipAtPoint(denied, GetComponent<Transform>().position);
         }
     }
 
@@ -139,6 +140,11 @@ public class GameManager : MonoBehaviour
         if (buyMinion(20))
         {
             GameObject.Find("PlayerSpawner").SendMessage("SpawnFox");
+            AudioSource.PlayClipAtPoint(buy, GetComponent<Transform>().position);
+        }
+        else
+        {
+            AudioSource.PlayClipAtPoint(denied, GetComponent<Transform>().position);
         }
     }
 
@@ -147,6 +153,11 @@ public class GameManager : MonoBehaviour
         if (buyMinion(40))
         {
             GameObject.Find("PlayerSpawner").SendMessage("SpawnCamel");
+            AudioSource.PlayClipAtPoint(buy, GetComponent<Transform>().position);
+        }
+        else
+        {
+            AudioSource.PlayClipAtPoint(denied, GetComponent<Transform>().position);
         }
     }
 
@@ -155,6 +166,11 @@ public class GameManager : MonoBehaviour
         if (buyPowerup())
         {
             GameObject.Find("PlayerSpawner").SendMessage("SpawnBeam");
+            AudioSource.PlayClipAtPoint(fire, GetComponent<Transform>().position);
+        }
+        else
+        {
+            AudioSource.PlayClipAtPoint(denied, GetComponent<Transform>().position);
         }
     }
 
@@ -163,15 +179,17 @@ public class GameManager : MonoBehaviour
         if (buyPowerup())
         {
             health += 55;
+            AudioSource.PlayClipAtPoint(money, GetComponent<Transform>().position);
+        }
+        else
+        {
+            AudioSource.PlayClipAtPoint(denied, GetComponent<Transform>().position);
         }
     }
 
     void buyExplode()
     {
-        if (buyMinion(10))
-        {
-            GameObject.Find("PlayerSpawner").BroadcastMessage("Boom", SendMessageOptions.DontRequireReceiver);
-            //do things!!!
-        }
+
+        GameObject.Find("PlayerSpawner").BroadcastMessage("Boom", SendMessageOptions.DontRequireReceiver);
     }
 }

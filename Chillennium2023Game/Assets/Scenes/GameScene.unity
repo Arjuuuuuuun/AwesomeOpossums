@@ -157,6 +157,7 @@ MonoBehaviour:
   fire: {fileID: 8300000, guid: f4147389976e50e4ab0fda866cdc1ef5, type: 3}
   money: {fileID: 8300000, guid: 03a1ac6e3d4dd4c4eb9ae3cffbf37a40, type: 3}
   buy: {fileID: 8300000, guid: 52b6ebbeed28b6c4499636ed7741694c, type: 3}
+  denied: {fileID: 8300000, guid: fc41e9704bf435c43961dd180d9fc5f0, type: 3}
 --- !u!4 &217015198
 Transform:
   m_ObjectHideFlags: 0
