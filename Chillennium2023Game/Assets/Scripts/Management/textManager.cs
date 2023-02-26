@@ -169,6 +169,27 @@ public class textManager : MonoBehaviour
                     ++HeadManager.instance.tutorial_counter;
                 }
                 break;
+            
+            case (16):
+                tutorial_text.text = "Press \'2\' to summon an earth of foxes";
+                GameManager.canGainMoney = false;
+                HeadManager.instance.is_camel_active = false;
+                HeadManager.instance.is_fox_active = false;
+                HeadManager.instance.is_powerup_active = false;
+                HeadManager.instance.is_rat_active = true;
+                if (Input.GetKeyDown("2"))
+                {
+                    ++HeadManager.instance.tutorial_counter;
+                }
+                break;
+
+            case (17):
+                tutorial_text.text = "Foxes are very weak, but press \'e\' to detonate them for massive damage!";
+                GameManager.canGainMoney = true;
+                HeadManager.instance.is_camel_active = true;
+                HeadManager.instance.is_fox_active = true;
+                HeadManager.instance.is_powerup_active = true;
+                break;
         }
     }
 
