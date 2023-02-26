@@ -126,7 +126,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (12):
-                tutorial_text.text = "Press \'3\' to buy an elephant! Elephants, unlike bears can absorb projectiles.";
+                tutorial_text.text = "Press \'3\' to buy an elephant! Elephants are the only troop that can block projectiles.";
                 HeadManager.instance.is_camel_active = true;
                 HeadManager.instance.is_fox_active = false;
                 HeadManager.instance.is_powerup_active = false;
@@ -140,7 +140,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (13):
-                tutorial_text.text = "Projectiles will go through bears and damage them, watch out!";
+                tutorial_text.text = "Projectiles will go through straight through bears, watch out!";
                 PlayerBase.canMove = true;
                 GameManager.canGainMoney = true;
                 HeadManager.instance.is_fox_active = true;
@@ -149,8 +149,8 @@ public class textManager : MonoBehaviour
                 break;
 
             case (14):
-                tutorial_text.text = "Wall of Fire also destroys projectiles";
-                StartCoroutine(Wait(10));
+                tutorial_text.text = "Wall of Fire also destroys projectiles!";
+                StartCoroutine(Wait(13));
                 break;
 
             case (15):
