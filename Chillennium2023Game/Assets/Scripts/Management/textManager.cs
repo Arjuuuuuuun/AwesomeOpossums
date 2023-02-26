@@ -113,7 +113,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (10):
-                tutorial_text.text = "Be careful when using power-ups as they cost lifes!";
+                tutorial_text.text = "Be careful when using power-ups as they cost lives!";
                 if (!is_wave_started)
                 {
                     is_wave_started = true;
@@ -163,7 +163,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (15):
-                tutorial_text.text = "The pharaoh is not holding back..., power up use is the key to victory.";
+                tutorial_text.text = "The pharaoh is not holding back..., power-up use is the key to victory.";
                 if (!is_wave_started)
                 {
                     is_wave_started = true;
@@ -205,7 +205,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (19):
-                tutorial_text.text = "Remeber to use your power ups!";
+                tutorial_text.text = "Remeber to use your power-ups!";
                 if (!is_wave_started)
                 {
                     is_wave_started = true;
