@@ -156,7 +156,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (15):
-                tutorial_text.text = "The phraoh is not holding back..., power up use is the key to victory.";
+                tutorial_text.text = "The pharaoh is not holding back..., power up use is the key to victory.";
                 if (!is_wave_started)
                 {
                     is_wave_started = true;
@@ -166,7 +166,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (16):
-                tutorial_text.text = "The phraoh is starting to show his true power!";
+                tutorial_text.text = "The pharaoh is starting to show his true power!";
                 if (HeadManager.instance.level_counter == 5)
                 {
                     ++HeadManager.instance.tutorial_counter;
@@ -208,7 +208,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (20):
-                tutorial_text.text = "You have learned everything now, the pharoh will soon show no mercy.";
+                tutorial_text.text = "You have learned everything now, the pharaoh will soon show no mercy.";
                 if (HeadManager.instance.level_counter == 6)
                 {
                     ++HeadManager.instance.tutorial_counter;
@@ -216,7 +216,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (21):
-                tutorial_text.text = "The pharoh is beginning to show his true strength!";
+                tutorial_text.text = "The pharaoh is beginning to show his true strength!";
                 if (!is_wave_started)
                 {
                     is_wave_started = true;
