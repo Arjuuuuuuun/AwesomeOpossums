@@ -44,21 +44,21 @@ public class IntroSceneManager : MonoBehaviour
             {
                 case 0:
                     sprender.sprite = scene1;
-                    txt.text = "intro1";
+                    txt.text = "Your son's life has been untimely taken from you, \nForever upending your existence as you knew";
                     break;
                 case 1:
                     sprender.sprite = scene2;
-                    txt.text = "intro2";
+                    txt.text = "Refusing to accept this injustice as true, \nYou search far and deep for but a single clue";
 
                 break;
                 case 2:
                     sprender.sprite = scene3;
-                    txt.text = "intro3";
+                    txt.text = "When an ancient mystic tome reveals the secret to life anew, \nFrom the corpse of a Pharaoh, a heart the seeker must hew";
 
                 break;
                 case 3:
                     sprender.sprite = scene4;
-                    txt.text = "intro4";
+                    txt.text = "But to share a heart the Divine once grew, \nThe Pharaoh must test the worth of masters new...";
 
                 break;
                 default:
