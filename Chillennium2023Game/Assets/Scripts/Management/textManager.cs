@@ -78,13 +78,13 @@ public class textManager : MonoBehaviour
                 break;
 
             case (6):
-                tutorial_text.text = "Projectiles will go through foxes and damage them, watch out!";
+                tutorial_text.text = "Projectiles will go through bears and damage them, watch out!";
                 PlayerBase.canMove = true;
                 StartCoroutine(Wait(7));
                 break;
 
             case (7):
-                tutorial_text.text = "Press q to unleash a blast that will damage all minions, projectiles, and enemies";
+                tutorial_text.text = "Press \'q\' to unleash a blast that will damage all minions, projectiles, and enemies";
                 StartCoroutine(Wait(7));
                 break;
 
