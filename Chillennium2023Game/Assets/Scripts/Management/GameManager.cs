@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
 
     public void buyCamel()
     {
-        if (buyMinion(55))
+        if (buyMinion(40))
         {
             GameObject.Find("PlayerSpawner").SendMessage("SpawnCamel");
         }

@@ -44,7 +44,7 @@ public class EnemySpawn : MonoBehaviour
                 Instantiate(spirit, new Vector3(trans.position.x + .5f, trans.position.y + level_offset, trans.position.z), Quaternion.identity, trans);
                 break;
             case ('i'):
-                Instantiate(spirit, new Vector3(trans.position.x + .5f, trans.position.y  +level_offset, trans.position.z), Quaternion.identity, trans);
+                Instantiate(infantry, new Vector3(trans.position.x + .5f, trans.position.y  +level_offset, trans.position.z), Quaternion.identity, trans);
                 break;
         }
     }
@@ -74,9 +74,14 @@ public class EnemySpawn : MonoBehaviour
     {
         //BEGIN LEVEL 2
         Spawn('i', 1);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(5);
+        
         Spawn('s', 4);
+        yield return new WaitForSeconds(10);
 
+        Spawn('i', 4);
+        Spawn('s', 1);
+        yield return new WaitForSeconds(10);
 
         HeadManager.instance.level_counter = 3;
         SceneManager.LoadScene(1);
