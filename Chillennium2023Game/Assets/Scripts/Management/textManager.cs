@@ -179,12 +179,13 @@ public class textManager : MonoBehaviour
                 if (Input.GetKeyDown("2"))
                 {
                     ++HeadManager.instance.tutorial_counter;
-                    GameObject.Find("EnemySpawner").SendMessage("StartLevel5");
+                    GameObject.Find("EnemySpawner").SendMessage("Tutur1");
                 }
                 break;
 
             case (17):
                 tutorial_text.text = "Foxes are very weak, but press \'e\' to detonate them for massive damage!";
+                is_wave_started = false;
                 GameManager.canGainMoney = true;
                 HeadManager.instance.is_camel_active = true;
                 HeadManager.instance.is_fox_active = true;
@@ -194,6 +195,12 @@ public class textManager : MonoBehaviour
 
             case (18):
                 tutorial_text.text = "Remeber to use your power ups!";
+                if (!is_wave_started)
+                {
+                    is_wave_started = true;
+                    GameObject.Find("EnemySpawner").SendMessage("StartLevel5");
+                    StartCoroutine(Wait(10));
+                }
                 if (HeadManager.instance.level_counter == 6)
                 {
                     ++HeadManager.instance.tutorial_counter;
@@ -202,10 +209,6 @@ public class textManager : MonoBehaviour
         }
     }
 
-    void CamelBought()
-    {
-        is_camel_bought = true;
-    }
 
     IEnumerator Wait(float time)
     {

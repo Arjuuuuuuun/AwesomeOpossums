@@ -149,31 +149,31 @@ public class EnemySpawn : MonoBehaviour
     {
         Spawn('s', 2);
         Spawn('s', 1);
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(6);
 
         Spawn('i', 4);
         Spawn('s', 3);
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(12);
 
         for(int i = 1; i <= 4; ++i)
         {
             Spawn('s', i);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1.5f);
         }
 
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(5);
 
         for (int i = 1; i <= 4; ++i)
         {
             Spawn('s', i);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1.5f);
         }
 
 
         for (int i = 4; i >= 1; --i)
         {
             Spawn('s', i);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1.5f);
         }
 
         StartCoroutine(waitUntilKillCount(16));
