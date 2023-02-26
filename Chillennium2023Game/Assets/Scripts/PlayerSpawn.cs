@@ -18,7 +18,7 @@ public class PlayerSpawn : MonoBehaviour
     public void SpawnFox()
     {
         HeadManager.instance.is_fox_bought = true;
-        Instantiate(fox, new Vector3(trans.position.x, trans.position.y + ((PlayerBase.level - 1)* 1.75f), trans.position.z), Quaternion.identity, trans);
+        Instantiate(fox, new Vector3(trans.position.x, trans.position.y + .1f + ((PlayerBase.level - 1)* 1.75f), trans.position.z), Quaternion.identity, trans);
     }
 
     public void SpawnRat()
