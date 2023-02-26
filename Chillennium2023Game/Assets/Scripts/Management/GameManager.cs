@@ -67,6 +67,11 @@ public class GameManager : MonoBehaviour
                 buyMoney();
             }
         }
+        else if (Input.GetKeyDown("e"))
+        {
+            if(HeadManager.instance.is_rat_active)
+                buyExplode();
+        }
     }
 
     IEnumerator GameClock()

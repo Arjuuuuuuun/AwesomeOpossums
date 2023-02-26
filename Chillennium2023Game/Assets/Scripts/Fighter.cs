@@ -44,12 +44,14 @@ public class Fighter : MonoBehaviour
             StartCoroutine(DamageAnime());
         }
     }
-    void Boom()
+    public void Boom()
     {
-        anime.SetBool("IstanBool", true);
-        Debug.Log("one day your car goes boom");
-        if (isFox) StartCoroutine(Bom());
-        
+        if (isFox)
+        {
+            anime.SetBool("IstanBool", true);
+            Debug.Log("one day your car goes boom");
+            StartCoroutine(Bom());
+        }
     }
     IEnumerator Bom()
     {

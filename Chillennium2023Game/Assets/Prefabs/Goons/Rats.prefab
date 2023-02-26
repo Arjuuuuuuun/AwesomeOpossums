@@ -156,7 +156,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 0
-  isFox: 0
+  isFox: 1
 --- !u!95 &-3789069049150153378
 Animator:
   serializedVersion: 4
