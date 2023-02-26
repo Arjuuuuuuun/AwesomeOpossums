@@ -16,8 +16,11 @@ public class Exploder : MonoBehaviour
     BoxCollider2D bx;
     Transform trans;
 
+    Animator anime;
+
     private void Awake()
     {
+        anime = GetComponent<Animator>();
         exploding = false;
         rb = GetComponent<Rigidbody2D>();
         trans = GetComponent<Transform>();
@@ -60,6 +63,7 @@ public class Exploder : MonoBehaviour
 
     IEnumerator Explode()
     {
+        anime.SetBool("Booltaureune", true);
         rb.velocity = Vector3.zero;
         speed = 0;
         yield return new WaitForSeconds(2);
