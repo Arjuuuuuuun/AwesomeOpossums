@@ -16,7 +16,7 @@ public class textManager : MonoBehaviour
 
     private void Start()
     {
-        is_wave_1_started = false;
+        is_wave_started = false;
     }
 
     // Update is called once per frame
