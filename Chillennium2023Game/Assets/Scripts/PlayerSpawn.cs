@@ -43,6 +43,6 @@ public class PlayerSpawn : MonoBehaviour
 
     void SpawnBeam()
     {
-        Instantiate(beam, new Vector3(trans.position.x + 1, 0, trans.position.z), Quaternion.identity, trans);
+        Instantiate(beam, new Vector3(trans.position.x + 1, -.5f, trans.position.z), Quaternion.identity, trans);
     }
 }
