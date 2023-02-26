@@ -9,7 +9,6 @@ public class textManager : MonoBehaviour
 
     public Text tutorial_text;
 
-    private bool is_camel_bought;
     private bool is_wave_started;
 
     private bool isWaiting;
@@ -74,7 +73,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (6):
-                tutorial_text.text = "Press \'f\' to send out a wall of fire, heavily damaging EVERYTHING, including your own forces!";
+                tutorial_text.text = "Press \'f\' to send out a wall of fire, damaging EVERYTHING, including your own forces!";
                 if (!is_wave_started)
                 {
                     is_wave_started = true;
@@ -118,7 +117,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (11):
-                tutorial_text.text = "Almost there!";
+                tutorial_text.text = "Remember, you can also block enemies and projectiles!";
                 if (HeadManager.instance.level_counter == 3)
                 {
                     ++HeadManager.instance.tutorial_counter;
@@ -158,7 +157,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (15):
-                tutorial_text.text = "The phraoh is not holding back...";
+                tutorial_text.text = "The phraoh is not holding back..., power up use is the key to victory.";
                 if (!is_wave_started)
                 {
                     is_wave_started = true;
