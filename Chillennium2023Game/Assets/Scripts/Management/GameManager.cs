@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     static public int health;
     public Text healthText;
     private int sonHealth;
+    public GameObject screenFlash;
     static public bool canGainMoney;
     [SerializeField] private AudioClip fire;
     [SerializeField] private AudioClip money;
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
         gameActive = true;
         canGainMoney = true;
         StartCoroutine(GameClock());
+        screenFlash.SetActive(false);
     }
 
     private void Update()
@@ -121,10 +123,18 @@ public class GameManager : MonoBehaviour
     void TakeSonDamage(int val)
     {
         sonHealth -= val;
+        StartCoroutine(flash());
         if (sonHealth <= 0)
         {
             endGame();
         }
+    }
+
+    IEnumerator flash()
+    {
+        screenFlash.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        screenFlash.SetActive(false);
     }
     public void buyRat()
     {
