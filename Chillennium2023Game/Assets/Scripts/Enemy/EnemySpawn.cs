@@ -176,7 +176,7 @@ public class EnemySpawn : MonoBehaviour
             yield return new WaitForSeconds(1.5f);
         }
 
-        StartCoroutine(waitUntilKillCount(16));
+        StartCoroutine(waitUntilKillCount(17));
 
     }
 

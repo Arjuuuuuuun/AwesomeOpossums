@@ -49,7 +49,7 @@ public class textManager : MonoBehaviour
                 break;
 
             case (3):
-                tutorial_text.text = "Press \'1\' to buy a bear! Bears cost 20 power.";
+                tutorial_text.text = "Press \'1\' to buy a bear! Bears cost 20 money.";
                 HeadManager.instance.is_fox_active = true;
                 if (HeadManager.instance.is_fox_bought)
                 {
@@ -113,11 +113,10 @@ public class textManager : MonoBehaviour
                     GameObject.Find("EnemySpawner").SendMessage("StartLevel2");
                     StartCoroutine(Wait(10));
                 }
-                StartCoroutine(Wait(8));
                 break;
 
             case (11):
-                tutorial_text.text = "Remember, you can also block enemies and projectiles!";
+                tutorial_text.text = "Remember, you can also block enemies!";
                 if (HeadManager.instance.level_counter == 3)
                 {
                     ++HeadManager.instance.tutorial_counter;
@@ -163,13 +162,18 @@ public class textManager : MonoBehaviour
                     is_wave_started = true;
                     GameObject.Find("EnemySpawner").SendMessage("StartLevel4");
                 }
+                StartCoroutine(Wait(6));
+                break;
+
+            case (16):
+                tutorial_text.text = "The phraoh is starting to show his true power";
                 if (HeadManager.instance.level_counter == 5)
                 {
                     ++HeadManager.instance.tutorial_counter;
                 }
                 break;
             
-            case (16):
+            case (17):
                 tutorial_text.text = "Press \'2\' to summon an earth of foxes";
                 GameManager.canGainMoney = false;
                 HeadManager.instance.is_camel_active = false;
@@ -183,7 +187,7 @@ public class textManager : MonoBehaviour
                 }
                 break;
 
-            case (17):
+            case (18):
                 tutorial_text.text = "Foxes are very weak, but press \'e\' to detonate them for massive damage!";
                 is_wave_started = false;
                 GameManager.canGainMoney = true;
@@ -193,7 +197,7 @@ public class textManager : MonoBehaviour
                 StartCoroutine(Wait(5));
                 break;
 
-            case (18):
+            case (19):
                 tutorial_text.text = "Remeber to use your power ups!";
                 if (!is_wave_started)
                 {
@@ -201,7 +205,29 @@ public class textManager : MonoBehaviour
                     GameObject.Find("EnemySpawner").SendMessage("StartLevel5");
                     StartCoroutine(Wait(10));
                 }
+                break;
+
+            case (20):
+                tutorial_text.text = "You have learned everything know the phraoh will soon show no mercy";
                 if (HeadManager.instance.level_counter == 6)
+                {
+                    ++HeadManager.instance.tutorial_counter;
+                }
+                break;
+
+            case (21):
+                tutorial_text.text = "Good luck on the upcoming trials";
+                if (!is_wave_started)
+                {
+                    is_wave_started = true;
+                    GameObject.Find("EnemySpawner").SendMessage("StartLevel6");
+                    StartCoroutine(Wait(10));
+                }
+                break;
+
+            case (22):
+                tutorial_text.text = "It\'s impressive you made it this far";
+                if (HeadManager.instance.level_counter == 7)
                 {
                     ++HeadManager.instance.tutorial_counter;
                 }
