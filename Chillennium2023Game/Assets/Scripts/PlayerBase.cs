@@ -58,6 +58,7 @@ public class PlayerBase : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy")
         {
+            ++HeadManager.instance.kill_counter;
             Destroy(collision.gameObject);
         }
     }

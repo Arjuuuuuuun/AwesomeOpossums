@@ -82,8 +82,7 @@ public class EnemySpawn : MonoBehaviour
         Spawn('s', 1);
         yield return new WaitForSeconds(10);
 
-        HeadManager.instance.level_counter = 2;
-        SceneManager.LoadScene(1);
+        StartCoroutine(waitUntilKillCount(6));
 
     }
 
@@ -105,8 +104,7 @@ public class EnemySpawn : MonoBehaviour
         Spawn('s', 2);
         yield return new WaitForSeconds(10);
 
-        HeadManager.instance.level_counter = 3;
-        SceneManager.LoadScene(1);
+        StartCoroutine(waitUntilKillCount(8));
 
     }
 
@@ -123,9 +121,7 @@ public class EnemySpawn : MonoBehaviour
         yield return new WaitForSeconds(20);
 
 
-        HeadManager.instance.level_counter = 4;
-        SceneManager.LoadScene(1);
-
+        StartCoroutine(waitUntilKillCount(3));
     }
 
     IEnumerator Level4()
@@ -140,5 +136,16 @@ public class EnemySpawn : MonoBehaviour
 
         Spawn('s', 2);
         yield return new WaitForSeconds(20);
+
+        StartCoroutine(waitUntilKillCount(5));
+
+    }
+
+    IEnumerator waitUntilKillCount(int val)
+    {
+        yield return new WaitUntil(() => HeadManager.instance.kill_counter >= val);
+        ++HeadManager.instance.level_counter;
+        HeadManager.instance.kill_counter = 0;
+        SceneManager.LoadScene(1);
     }
 }

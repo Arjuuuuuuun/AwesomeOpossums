@@ -38,6 +38,7 @@ public class infantScript : MonoBehaviour
             
 
             StopAllCoroutines();
+            ++HeadManager.instance.kill_counter;
             Destroy(gameObject);
 
         }
@@ -101,6 +102,7 @@ public class infantScript : MonoBehaviour
         if (collision.tag == "Son")
         {
             collision.SendMessage("takeDamage", 1);
+            ++HeadManager.instance.kill_counter;
             Destroy(this.gameObject);
         }
     }

@@ -31,6 +31,7 @@ public class Spirit : MonoBehaviour
         if (health <= 0)
         {
             StopAllCoroutines();
+            ++HeadManager.instance.kill_counter;
             Destroy(this.gameObject);
         }
         else
@@ -78,6 +79,7 @@ public class Spirit : MonoBehaviour
        if(collision.tag == "Son")
         {
             collision.SendMessage("takeDamage",1);
+            ++HeadManager.instance.kill_counter;
             Destroy(gameObject);
         }
     }

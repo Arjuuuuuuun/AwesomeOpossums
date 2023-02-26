@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(HeadManager.instance.kill_counter);
         //Updating health slider
         healthText.text = health.ToString() + "/200 " + sonHealth.ToString() + "/5";
 
