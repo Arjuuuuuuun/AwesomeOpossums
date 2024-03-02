@@ -23,7 +23,6 @@ public class Tombstone : MonoBehaviour
     [SerializeField] float bulFireRate;
     [SerializeField] float bulTimeBeforeFirstFire;
 
-    [SerializeField] private GameObject cirlce;
     [SerializeField] private GameObject skull;
 
     private Animator anime;
@@ -41,8 +40,6 @@ public class Tombstone : MonoBehaviour
         skull.GetComponent<SpriteRenderer>().sprite = flameless_skull;
 
         state = TombstoneState.notActive;
-
-        cirlce.GetComponent<SpriteRenderer>().enabled = false;
 
     }
 
@@ -149,9 +146,6 @@ public class Tombstone : MonoBehaviour
     IEnumerator ActiveTimer()
     {
         state = TombstoneState.Active;
-        cirlce.GetComponent<SpriteRenderer>().enabled = true;
-        yield return new WaitForSeconds(radGhostInitDelay);
-        cirlce.GetComponent<SpriteRenderer>().enabled = false;
         yield return new WaitForSeconds(tombstoneAwakeTime);
         state = TombstoneState.notActive;
     }
