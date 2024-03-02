@@ -12,9 +12,14 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private int health;
 
+    private Animator anime;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anime = GetComponent<Animator>();
+        anime.SetInteger("direction", 0);
+
     }
 
     // Update is called once per frame
@@ -28,18 +33,27 @@ public class Enemy : MonoBehaviour
                 case 1:
                     x = -speed;
                     y = 0;
+                    anime.SetInteger("direction", 3);
+                    transform.localScale = new Vector3(-1, 1, 1);
                     break;
                 case 2:
                     x = speed;
                     y = 0;
+                    anime.SetInteger("direction", 3);
+                    transform.localScale = new Vector3(1, 1, 1);
+
                     break;
                 case 3:
                     x = 0;
                     y = speed;
+                    anime.SetInteger("direction", 1);
+
                     break;
                 case 4:
                     x = 0;
                     y = -speed;
+                    anime.SetInteger("direction", 2);
+
                     break;
             }
 
