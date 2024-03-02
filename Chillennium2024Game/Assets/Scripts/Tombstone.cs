@@ -110,11 +110,7 @@ public class Tombstone : MonoBehaviour
     {
         bulCanFire = false;
         yield return new WaitForSeconds(bulFireRate);
-        for (int i = 0; i < 360; i += 90)
-        {
-            GameObject b = Instantiate(bulBullet, this.transform.position, Quaternion.identity);
-            yield return new WaitForSeconds(0.5f);
-        }
+        GameObject b = Instantiate(bulBullet, this.transform.position, Quaternion.identity);
         bulCanFire = true;
     }
 

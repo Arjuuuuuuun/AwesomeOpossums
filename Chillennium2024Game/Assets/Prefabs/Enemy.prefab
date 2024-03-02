@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: 1
   speed: 0.5
-  health: 5
+  health: 8
 --- !u!61 &3503777594460420500
 BoxCollider2D:
   m_ObjectHideFlags: 0
