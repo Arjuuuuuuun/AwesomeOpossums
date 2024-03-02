@@ -13,6 +13,10 @@ public class GhostSpawner : MonoBehaviour
         if (Player.life == Player.Life.Alive)
         {
             StopAllCoroutines();
+            for (int i = 0; i < ghosts.Count; i++)
+            {
+                GameObject.Destroy((GameObject) ghosts[i]);
+            }
         }
     }
 
@@ -25,6 +29,7 @@ public class GhostSpawner : MonoBehaviour
     IEnumerator GhostModeSpawner()
     {
         GameObject ghost = Instantiate(this.ghost);
+        ghosts.Add(ghost);
         //ghost.SendMessage("Innit");
         yield return new WaitForSeconds(1f);
     }
