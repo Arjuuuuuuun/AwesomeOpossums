@@ -9,6 +9,9 @@ public class Obstacle : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.gameObject.SendMessage("Rotate", direction);
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            collision.gameObject.SendMessage("Rotate", direction);
+        }
     }
 }
