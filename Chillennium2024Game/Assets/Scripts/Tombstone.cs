@@ -12,7 +12,6 @@ public class Tombstone : MonoBehaviour
 
     TowerType type;
 
-    protected SpriteRenderer spriteRenderer;
 
     bool radCanSpawnGhost = true;
     [SerializeField] GameObject radGhost;
@@ -43,7 +42,6 @@ public class Tombstone : MonoBehaviour
 
         state = TombstoneState.notActive;
 
-        spriteRenderer = GetComponent<SpriteRenderer>();
         cirlce.GetComponent<SpriteRenderer>().enabled = false;
 
     }
@@ -55,16 +53,17 @@ public class Tombstone : MonoBehaviour
             case TombstoneState.notActive:
                 anime.enabled = false;
                 skull.GetComponent<SpriteRenderer>().sprite = flameless_skull;
-                spriteRenderer.color = Color.gray;
                 if (playerNear && Input.GetKeyDown(KeyCode.Space))
                 {
                    StartCoroutine(ActiveTimer());
                     switch (Player.tombstone)
                     {
                         case(Player.TombstoneType.radial):
+                            anime.SetBool("Colour", false);
                             type = TowerType.Radial;
                             break;
                         case(Player.TombstoneType.bullet):
+                            anime.SetBool("Colour", true);
                             type = TowerType.Bullet;
                             break;
                         case (Player.TombstoneType.follow):
@@ -76,7 +75,6 @@ public class Tombstone : MonoBehaviour
             case TombstoneState.Active:
                 anime.enabled = true;
                 ActivateFire();
-                spriteRenderer.color = Color.blue;
                 break;   
         }
     }
@@ -88,14 +86,12 @@ public class Tombstone : MonoBehaviour
             case TowerType.Radial:
                 if (radCanSpawnGhost)
                 {
-                    anime.SetBool("Colour", false);
                     StartCoroutine(RadSpawnCooldown());
                 }
                 break;
             case TowerType.Bullet:
                 if (bulCanFire)
                 {
-                    anime.SetBool("Colour", true);
                     StartCoroutine(BulFire());
                 }
                 break;
@@ -121,9 +117,7 @@ public class Tombstone : MonoBehaviour
     IEnumerator RadSpawnCooldown()
     {
         radCanSpawnGhost = false;
-        cirlce.GetComponent<SpriteRenderer>().enabled = true;
         yield return new WaitForSeconds(radGhostInitDelay);
-        cirlce.GetComponent<SpriteRenderer>().enabled = false;
         GameObject b = Instantiate(radGhost, new Vector2(transform.position.x + 1.25f, transform.position.y - 1.25f), Quaternion.identity);
         yield return new WaitForSeconds(radGhostSpawnRate);
         radCanSpawnGhost = true;
@@ -148,6 +142,9 @@ public class Tombstone : MonoBehaviour
     IEnumerator ActiveTimer()
     {
         state = TombstoneState.Active;
+        cirlce.GetComponent<SpriteRenderer>().enabled = true;
+        yield return new WaitForSeconds(radGhostInitDelay);
+        cirlce.GetComponent<SpriteRenderer>().enabled = false;
         yield return new WaitForSeconds(tombstoneAwakeTime);
         state = TombstoneState.notActive;
     }

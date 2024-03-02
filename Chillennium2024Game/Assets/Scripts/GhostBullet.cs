@@ -14,6 +14,14 @@ public class GhostBullet : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if (Player.life == Player.Life.Dead)
+        {
+            ClearBullet();
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))

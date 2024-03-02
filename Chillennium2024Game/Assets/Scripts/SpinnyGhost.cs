@@ -19,18 +19,10 @@ public class SpinnyGhost : MonoBehaviour
     }
     private void FixedUpdate()
     {
+
         if(Player.life == Player.Life.Dead)
         {
-            StopAllCoroutines();
-            Transform playerTransform = GameObject.Find("Player").transform;
-            Vector3 playerpos = playerTransform.position;
-            Vector2 vel;
-            vel.x = (transform.localPosition - playerpos).x;
-            vel.y = (transform.localPosition - playerpos).y;
-            vel = vel.normalized;
-            vel.x *= -deadSpeed;
-            vel.y *= -deadSpeed;
-            rb.velocity = vel;
+            ClearBullet();
         }
     }
     IEnumerator Kill()
