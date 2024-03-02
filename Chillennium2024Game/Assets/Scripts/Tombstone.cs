@@ -14,6 +14,7 @@ public class Tombstone : MonoBehaviour
     bool canFire;
     [SerializeField] GameObject bullet;
     [SerializeField] float fireRate;
+    bool playerNear;
 
     private SpriteRenderer spriteRenderer;
    
@@ -39,15 +40,33 @@ public class Tombstone : MonoBehaviour
                 break;   
         }
     }
+
     public void Activate()
     {
-        if (state == TombstoneState.notActive)
+        if (playerNear && state == TombstoneState.notActive)
         {
             StartCoroutine(ActiveTimer());
         }
     }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Debug.Log("Player Detected");
+            playerNear = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            playerNear = false;
+        }
+    }
     IEnumerator ActiveTimer()
     {
+        Debug.Log("Activtating Tombstone");
         state = TombstoneState.Active;
         yield return new WaitForSeconds(tombstoneAwakeTime);
         state = TombstoneState.notActive;
