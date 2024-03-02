@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -37,7 +38,7 @@ public class Player : MonoBehaviour
     private new SpriteRenderer renderer;
     [SerializeField] private Sprite alive_sprite;
     [SerializeField] private Sprite dead_sprite;
-    private Animator anime;
+    [SerializeField] private Animator anime;
 
     void Awake()
     {
@@ -80,23 +81,32 @@ public class Player : MonoBehaviour
 
         if(x > 0)
         {
-            anime.SetBool("LR", true); // going right
+            Debug.Log("left");
+            anime.SetInteger("direction", 3);
+            player_transform.localScale = new Vector3(1,1,1);
+            
         } else if(x < 0)
         {
-            anime.SetBool("LR", false); // going left
+            Debug.Log("right");
+            anime.SetInteger("direction", 3);
+            player_transform.localScale = new Vector3(-1, 1, 1);
         }
-
-        if (x == 0 && y > 0) // up, 1
+        else if (y > 0) // up, 1
         {
             anime.SetInteger("direction", 1);
-        }else if (x == 0 && y < 0) // down, 2
+        }else if (y < 0) // down, 2
         {
+            Debug.Log("down");
+
             anime.SetInteger("direction", 2);
         }
-        else // all else, LR
+        else if(x==0 && y == 0)
         {
-            anime.SetInteger("direction", 3);
+            anime.SetInteger("direction", 0);
+            Debug.Log("idling");
         }
+        
+        
 
         player_body.velocity = new Vector2(
             (life == Life.Alive ? living_movement_speed : dead_movement_speed) * x,
