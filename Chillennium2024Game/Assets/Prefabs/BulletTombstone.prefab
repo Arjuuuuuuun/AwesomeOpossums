@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5619789133535693495}
   - component: {fileID: 3730418894873556318}
-  - component: {fileID: 5803773946235095040}
   - component: {fileID: 6169097255789338051}
+  - component: {fileID: 5582699769563233255}
   m_Layer: 0
-  m_Name: Tombstone
+  m_Name: BulletTombstone
   m_TagString: Tombstone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,22 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5803773946235095040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6989423770806033060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5aee9efbb847be49983f070f40eb13a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tombstoneAwakeTime: 12
-  bullet: {fileID: 5527106099050775478, guid: 0fa685d225ba97f4984e808f4887b984, type: 3}
-  fireRate: 3
-  timeBeforeFirstFire: 1
 --- !u!61 &6169097255789338051
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -147,3 +131,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5582699769563233255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6989423770806033060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a624909af8e3294694f158c0c3d4131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tombstoneAwakeTime: 20
+  bullet: {fileID: 5527106099050775478, guid: 0fa685d225ba97f4984e808f4887b984, type: 3}
+  fireRate: 3
+  timeBeforeFirstFire: 0
