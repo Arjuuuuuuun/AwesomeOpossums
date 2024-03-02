@@ -19,7 +19,7 @@ public class SpinnyGhost : MonoBehaviour
         StartCoroutine(Kill());
     }
     private void FixedUpdate()
-    { 
+    {
         if(Player.life == Player.Life.Dead)
         {
             StopAllCoroutines();

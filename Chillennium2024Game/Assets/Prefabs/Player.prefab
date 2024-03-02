@@ -97,17 +97,6 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 980851608178613846}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5455e7b1912c7784bb251ad5c6e239cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  max_health: 3
-  max_dead_health: 3
-  living_movement_speed: 5
-  dead_movement_speed: 3
-  corpse: {fileID: 2312316762829827170, guid: b7dffd0b03db184468f4087aec9813dd, type: 3}
-  alive_sprite: {fileID: 21300000, guid: ef57c0e55c64b8f4c93bae6fc9b5e427, type: 3}
-  dead_sprite: {fileID: 21300000, guid: 904e4f72fc341264986a1f890e0f342d, type: 3}
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 320daecb64f685d488ec162c93c7c293, type: 2}
   m_CullingMode: 0
@@ -204,10 +193,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5455e7b1912c7784bb251ad5c6e239cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_health: 10
+  max_health: 3
   max_dead_health: 10
   living_movement_speed: 5
   dead_movement_speed: 3
   corpse: {fileID: 2312316762829827170, guid: b7dffd0b03db184468f4087aec9813dd, type: 3}
   alive_sprite: {fileID: 21300000, guid: ef57c0e55c64b8f4c93bae6fc9b5e427, type: 3}
   dead_sprite: {fileID: 21300000, guid: 904e4f72fc341264986a1f890e0f342d, type: 3}
+  anime: {fileID: 0}
