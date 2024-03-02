@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    // movement stuff
     [SerializeField] private float movement_speed;
     private Rigidbody2D player_body;
     private Transform player_transform;
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour
     
     void Awake()
     {
+        // movement stuff
         player_body = GetComponent<Rigidbody2D>();
         player_transform = GetComponent<Transform>();
     }
@@ -20,7 +22,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
+        // movement stuff
         x = Input.GetAxisRaw("Horizontal");
         y = Input.GetAxisRaw("Vertical");
 
