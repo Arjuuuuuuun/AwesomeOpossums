@@ -8,7 +8,6 @@ public class SpinnyGhost : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] float speed;
     [SerializeField] int damagePerSecond;
-    private bool canTick = true;
     [SerializeField] float timeOnSide;
     [SerializeField] float deadSpeed;
     [SerializeField] float timeAlive;
@@ -59,14 +58,6 @@ public class SpinnyGhost : MonoBehaviour
         {
             collision.gameObject.SendMessage("TakeDamage", damagePerSecond);
         }
-    }
-
-    IEnumerator Damage(GameObject obj)
-    {
-        canTick = false;
-        obj.SendMessage("TakeDamage", damagePerSecond);
-        yield return new WaitForSeconds(1f);
-        canTick = true; 
     }
 
     public void ClearBullet()
