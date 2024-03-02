@@ -4,19 +4,36 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    // health stuff
+    [SerializeField] private int health;
+
     // movement stuff
-    [SerializeField] private float movement_speed;
+    [SerializeField] private float living_movement_speed;
+    [SerializeField] private float dead_movement_speed;
     private Rigidbody2D player_body;
     private Transform player_transform;
     private float x;
     private float y;
 
-    
+    // mode switching
+    private enum Life { Alive, Dead };
+
+    // rendering
+    private SpriteRenderer renderer;
+    [SerializeField] private Sprite alive_sprite;
+    [SerializeField] private Sprite dead_sprite;
+    private Animator anime;
+
+    private Life life;
     void Awake()
     {
+        life = Life.Alive;
         // movement stuff
         player_body = GetComponent<Rigidbody2D>();
         player_transform = GetComponent<Transform>();
+        anime = GetComponent<Animator>();   
+        renderer = GetComponent<SpriteRenderer>();
+        renderer.sprite = alive_sprite;
     }
 
     // Update is called once per frame
@@ -28,23 +45,29 @@ public class Player : MonoBehaviour
 
         if (x != 0 && y != 0)
         {
-            movement_speed *= .7071f;
+            dead_movement_speed *= .7071f;
+            living_movement_speed *= .7071f;
         }
 
-        player_body.velocity = new Vector2(movement_speed * x, movement_speed * y);
+        player_body.velocity = new Vector2(( life == Life.Alive ? living_movement_speed : dead_movement_speed)* x, (life == Life.Alive ? living_movement_speed : dead_movement_speed) * y);
 
         if (x != 0 && y != 0)
         {
-            movement_speed /= .7071f;
+            living_movement_speed /= .7071f;
+            dead_movement_speed /= .7071f;
         }
     }
 
-
-    private void OnTriggerStay2D(Collider2D collision)
+    void TakeDamage(int damage)
     {
-        if (collision.gameObject.CompareTag("Tombstone") && Input.GetKeyDown(KeyCode.Space))
+        health -= damage;
+
+        if(health < 0)
         {
-            collision.gameObject.SendMessage("Activate");
+            life = Life.Dead;
+            renderer.sprite = dead_sprite;
         }
     }
+
+
 }
