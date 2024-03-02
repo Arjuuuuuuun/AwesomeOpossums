@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GhostSpawner : MonoBehaviour
@@ -28,10 +29,20 @@ public class GhostSpawner : MonoBehaviour
 
     IEnumerator GhostModeSpawner()
     {
+        SummonGhost(new Vector2(-9, 4), new Vector2(1, 0));
+        SummonGhost(new Vector2(-9, 2), new Vector2(1, 0));
+        SummonGhost(new Vector2(-9, 0), new Vector2(1, 0));
+        SummonGhost(new Vector2(-9, -2), new Vector2(1, 0));
+        SummonGhost(new Vector2(-9, -4), new Vector2(1, 0));
+        yield return new WaitForSeconds(1f);
+    }
+
+    private void SummonGhost(Vector2 position, Vector2 velocity)
+    {
+        velocity.Normalize();
         GameObject ghost = Instantiate(this.ghost);
         ghosts.Add(ghost);
-        ghost.SendMessage("init", new Vector2(-9, 4));
-        ghost.SendMessage("init2", new Vector2(10, 0));
-        yield return new WaitForSeconds(1f);
+        ghost.SendMessage("init", position);
+        ghost.SendMessage("init2", velocity);
     }
 }
