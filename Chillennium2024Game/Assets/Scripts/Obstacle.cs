@@ -12,6 +12,6 @@ public class Obstacle : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.SendMessage("Rotate", direction);
-        }
+        } 
     }
 }
