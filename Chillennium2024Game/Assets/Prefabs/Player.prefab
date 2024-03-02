@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5842586780558209306}
   - component: {fileID: -2594905372402834536}
   - component: {fileID: 1993039613630386177}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -197,6 +197,5 @@ MonoBehaviour:
   max_dead_health: 10
   living_movement_speed: 5
   dead_movement_speed: 3
-  corpse: {fileID: 2312316762829827170, guid: b7dffd0b03db184468f4087aec9813dd, type: 3}
   alive_sprite: {fileID: 21300000, guid: dbf106e3bf79ec84ebf9196bb3431fda, type: 3}
   dead_sprite: {fileID: 21300000, guid: 904e4f72fc341264986a1f890e0f342d, type: 3}
