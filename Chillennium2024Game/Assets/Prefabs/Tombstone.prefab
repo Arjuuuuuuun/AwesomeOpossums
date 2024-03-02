@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 3730418894873556318}
   - component: {fileID: 6169097255789338051}
   - component: {fileID: 6501570578898770116}
+  - component: {fileID: 8309104963822551642}
   m_Layer: 0
   m_Name: Tombstone
   m_TagString: Tombstone
@@ -236,3 +237,16 @@ MonoBehaviour:
   bulFireRate: 0.5
   bulTimeBeforeFirstFire: 2
   cirlce: {fileID: 1098493810066933042}
+--- !u!114 &8309104963822551642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6989423770806033060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d877dae10154f047aa562c4b59833c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shade: {fileID: 4800000, guid: bd9f8c9c75176e646afac70aff72278e, type: 3}

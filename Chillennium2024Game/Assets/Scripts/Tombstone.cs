@@ -26,9 +26,13 @@ public class Tombstone : MonoBehaviour
 
     [SerializeField] private GameObject cirlce;
 
+
+
+
     void Start()
     {
         state = TombstoneState.notActive;
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         cirlce.GetComponent<SpriteRenderer>().enabled = false;
 
