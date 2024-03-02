@@ -5,7 +5,10 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // health stuff
+    [SerializeField] private int max_health;
     [SerializeField] private int health;
+    [SerializeField] private int max_dead_health;
+    [SerializeField] private int dead_health;
 
     // movement stuff
     [SerializeField] private float living_movement_speed;
@@ -17,16 +20,18 @@ public class Player : MonoBehaviour
 
     // mode switching
     private enum Life { Alive, Dead };
+    private int NumTimesDead = 0;
 
     // rendering
-    private SpriteRenderer renderer;
+    private new SpriteRenderer renderer;
     [SerializeField] private Sprite alive_sprite;
     [SerializeField] private Sprite dead_sprite;
     private Animator anime;
 
     private Life life;
-    void Awake()
-    {
+    void Awake() { 
+    
+        health = max_health;
         life = Life.Alive;
         // movement stuff
         player_body = GetComponent<Rigidbody2D>();
@@ -60,13 +65,43 @@ public class Player : MonoBehaviour
 
     void TakeDamage(int damage)
     {
-        health -= damage;
-
-        if(health < 0)
+        if (life == Life.Alive)
         {
-            life = Life.Dead;
-            renderer.sprite = dead_sprite;
+            health -= damage;
+
+            if (health < 0)
+            {
+                StartCoroutine("Dead");
+            }
         }
+        else
+        {
+            dead_health -= damage;
+            if (dead_health < 0)
+            {
+                StartCoroutine("RealDead");
+            }
+        }
+    }
+
+    IEnumerator Dead()
+    {
+        dead_health = max_dead_health;
+        life = Life.Dead;
+        renderer.sprite = dead_sprite;
+
+        yield return new WaitForSeconds(NumTimesDead * 3 + 5);
+        ++NumTimesDead;
+        health = max_health;
+
+        life = Life.Alive;
+    }
+
+    IEnumerator RealDead()
+    {
+        Debug.Log("end of game");
+        yield return new WaitForSeconds(100);
+
     }
 
 
