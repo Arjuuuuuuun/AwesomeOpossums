@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     // health stuff
     [SerializeField] private int max_health;
-     public static int health;
+    public static int health;
     [SerializeField] private int max_dead_health;
     public static int dead_health;
 
@@ -24,20 +24,30 @@ public class Player : MonoBehaviour
     public static Life life;
     [SerializeField] private GameObject corpse;
 
+    public enum TombstoneType
+    {
+        radial,
+        bullet,
+        follow
+    }
+
+    public static TombstoneType tombstone;
+
     // rendering
     private new SpriteRenderer renderer;
     [SerializeField] private Sprite alive_sprite;
     [SerializeField] private Sprite dead_sprite;
     private Animator anime;
 
-    void Awake() { 
-    
+    void Awake()
+    {
+
         health = max_health;
         life = Life.Alive;
         // movement stuff
         player_body = GetComponent<Rigidbody2D>();
         player_transform = GetComponent<Transform>();
-        anime = GetComponent<Animator>();   
+        anime = GetComponent<Animator>();
         renderer = GetComponent<SpriteRenderer>();
         renderer.sprite = alive_sprite;
     }
@@ -49,6 +59,19 @@ public class Player : MonoBehaviour
         x = Input.GetAxisRaw("Horizontal");
         y = Input.GetAxisRaw("Vertical");
 
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            tombstone = TombstoneType.follow;
+        }
+        else if (Input.GetKeyDown(KeyCode.I))
+        {
+            tombstone = TombstoneType.radial;
+        }
+        else if (Input.GetKeyDown(KeyCode.O))
+        {
+            tombstone = TombstoneType.bullet;
+        }
+
         if (x != 0 && y != 0)
         {
             dead_movement_speed *= .7071f;
@@ -56,7 +79,7 @@ public class Player : MonoBehaviour
         }
 
         player_body.velocity = new Vector2(
-            (life == Life.Alive ? living_movement_speed : dead_movement_speed) * x, 
+            (life == Life.Alive ? living_movement_speed : dead_movement_speed) * x,
             (life == Life.Alive ? living_movement_speed : dead_movement_speed) * y);
 
         if (x != 0 && y != 0)
