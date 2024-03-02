@@ -19,9 +19,9 @@ public class Player : MonoBehaviour
     private float y;
 
     // mode switching
-    private enum Life { Alive, Dead };
+    public enum Life { Alive, Dead };
     private int NumTimesDead = 0;
-    private Life life;
+    public static Life life;
     [SerializeField] private GameObject corpse;
 
     // rendering

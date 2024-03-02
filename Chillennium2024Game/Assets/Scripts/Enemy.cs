@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public Player.Life life;
+
     public int direction;
     [SerializeField] private int speed;
     float x, y;
@@ -14,36 +16,42 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        life = Player.life;
         rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        // movement stuff
-        switch (direction)
+        if (life == Player.Life.Alive)
         {
-            case 1:
-                x = -speed;
-                y = 0;
-                break;
-            case 2:
-                x = speed;
-                y = 0;
-                break;
-            case 3:
-                x = 0;
-                y = speed;
-                break;
-            case 4:
-                x = 0;
-                y = -speed;
-                break;
+            // movement stuff
+            switch (direction)
+            {
+                case 1:
+                    x = -speed;
+                    y = 0;
+                    break;
+                case 2:
+                    x = speed;
+                    y = 0;
+                    break;
+                case 3:
+                    x = 0;
+                    y = speed;
+                    break;
+                case 4:
+                    x = 0;
+                    y = -speed;
+                    break;
+            }
+
+            rb.velocity = new Vector2(x, y);
         }
-
-        rb.velocity = new Vector2(x, y);
-
+        else
+        {
+            rb.velocity = new Vector2(0,0);
+        }
     }
 
     void Rotate(int direction)
