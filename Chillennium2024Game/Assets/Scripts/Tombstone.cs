@@ -16,6 +16,7 @@ public class Tombstone : MonoBehaviour
 
     bool radCanSpawnGhost = true;
     [SerializeField] GameObject radGhost;
+    [SerializeField] float radGhostInitDelay;
     [SerializeField] float radGhostSpawnRate;
 
     bool bulCanFire = true;
@@ -98,8 +99,9 @@ public class Tombstone : MonoBehaviour
     IEnumerator RadSpawnCooldown()
     {
         radCanSpawnGhost = false;
-        yield return new WaitForSeconds(radGhostSpawnRate);
+        yield return new WaitForSeconds(radGhostInitDelay);
         GameObject b = Instantiate(radGhost, new Vector2(transform.position.x + 1.25f, transform.position.y - 1.25f), Quaternion.identity);
+        yield return new WaitForSeconds(radGhostSpawnRate);
         radCanSpawnGhost = true;
     }
 

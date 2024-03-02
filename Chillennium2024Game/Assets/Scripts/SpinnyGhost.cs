@@ -1,7 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Xml.Xsl;
 using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
@@ -56,7 +53,18 @@ public class SpinnyGhost : MonoBehaviour
             yield return new WaitForSeconds(timeOnSide);
         }
     }
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
+        {
+            if (canTick)
+            {
+                StartCoroutine(Damage(collision.gameObject));
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
         {
