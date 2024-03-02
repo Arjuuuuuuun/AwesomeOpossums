@@ -97,5 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5aee9efbb847be49983f070f40eb13a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tombstoneAwakeTime: 5
   bullet: {fileID: 0}
   fireRate: 3
