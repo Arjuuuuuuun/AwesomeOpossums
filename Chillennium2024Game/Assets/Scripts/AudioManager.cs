@@ -26,16 +26,18 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Heartbeat.volume = ((3f - Player.health)  / 3f) * 0.42f;
+
         if (Player.life == Player.Life.Dead)
         {
             LevelTheme.volume = 0f;
             DeadTheme.volume = 1f;
+            Heartbeat.volume = 0f;
         }
         else
         {
             LevelTheme.volume = 1f;
             DeadTheme.volume = 0f;
+            Heartbeat.volume = ((3f - Player.health) / 3f) * 0.42f;
         }
 
     }
