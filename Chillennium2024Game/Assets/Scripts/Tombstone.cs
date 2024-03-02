@@ -55,7 +55,7 @@ public class Tombstone : MonoBehaviour
     IEnumerator Fire()
     {
         canFire = false;
-        GameObject b = Instantiate(bullet, this.transform.position, Quaternion.identity);
+        //GameObject b = Instantiate(bullet, this.transform.position, Quaternion.identity);
         yield return new WaitForSeconds(fireRate);
         canFire = true;
     }
