@@ -51,16 +51,21 @@ public class Spawner : MonoBehaviour
 
         ArrayList list = new ArrayList();
 
-
-        for (int i = 0; i < 5; ++i)
+        for (int j = 0; j < 4; j++)
         {
-            GameObject enemy = Instantiate(this.enemy);
-            enemy.SendMessage("Rotate", direction);
-            enemy.transform.position = transform.position;
-            list.Add(enemy);
-            yield return new WaitForSeconds(3);
+            for (int i = 0; i < 8; ++i)
+            {
+                GameObject enemy = Instantiate(this.enemy);
+                enemy.SendMessage("Rotate", direction);
+                enemy.transform.position = transform.position;
+                list.Add(enemy);
+                yield return new WaitUntil(() => Player.life == Player.Life.Alive);
+                yield return new WaitForSeconds(1f);
+                
+            }
+            yield return new WaitUntil(() => Player.life == Player.Life.Alive);
+            yield return new WaitForSeconds(10f);
         }
-
         while (true)
         {
             int num_alive = 0;

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 20017314089028345}
   m_Layer: 0
   m_Name: Centre
-  m_TagString: Untagged
+  m_TagString: Center
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,7 +70,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 7.35, y: 4.89}
+    oldSize: {x: 1.8375, y: 1.2225}
     newSize: {x: 7.35, y: 4.89}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -143,3 +143,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e580145219f2f4881616360d6bb8fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 980851608178613846, guid: a69d43e56d7203343a0c2beed47b4702, type: 3}

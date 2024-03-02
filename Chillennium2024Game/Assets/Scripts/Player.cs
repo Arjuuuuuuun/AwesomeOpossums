@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     public enum Life { Alive, Dead };
     private int NumTimesDead = 0;
     public static Life life;
-    private GameObject corpse;
+    [SerializeField] private GameObject corpse;
 
     public enum TombstoneType
     {

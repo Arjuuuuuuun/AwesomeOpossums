@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ef57c0e55c64b8f4c93bae6fc9b5e427, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dbf106e3bf79ec84ebf9196bb3431fda, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -141,18 +141,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.040817976, y: -0.013605714}
+  m_Offset: {x: 0.028712094, y: -0.013605714}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.8375, y: 1.2225}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 7.35, y: 4.89}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6626744, y: 0.99867046}
+  m_Size: {x: 0.5223808, y: 0.99867046}
   m_EdgeRadius: 0
 --- !u!50 &-2594905372402834536
 Rigidbody2D:
@@ -198,6 +198,5 @@ MonoBehaviour:
   living_movement_speed: 5
   dead_movement_speed: 3
   corpse: {fileID: 2312316762829827170, guid: b7dffd0b03db184468f4087aec9813dd, type: 3}
-  alive_sprite: {fileID: 21300000, guid: ef57c0e55c64b8f4c93bae6fc9b5e427, type: 3}
+  alive_sprite: {fileID: 21300000, guid: dbf106e3bf79ec84ebf9196bb3431fda, type: 3}
   dead_sprite: {fileID: 21300000, guid: 904e4f72fc341264986a1f890e0f342d, type: 3}
-  anime: {fileID: 0}

@@ -4,22 +4,9 @@ using UnityEngine;
 
 public class Centre : MonoBehaviour
 {
-    public GameObject player;
 
-    void Start()
+    public void TakeDamage(int damage)
     {
-        player = GameObject.FindWithTag("Player");    // Start is called before the first frame update
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void TakeDamage(int damage)
-    {
-        player.gameObject.SendMessage("TakeDamage", damage);
+       GameObject.Find("Player").SendMessage("TakeDamage", damage);
     }
 }

@@ -8,6 +8,8 @@ TagManager:
   - GhostBullet
   - Enemy
   - Obstacle
+  - HeadManager
+  - Center
   layers:
   - Default
   - TransparentFX
