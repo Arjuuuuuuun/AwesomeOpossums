@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 326838568493761114, guid: 930030fa887347740bf2d85a455dfc8a, type: 3}
-  direction: 0
+  direction: 1
