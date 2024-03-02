@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour
     {
         if (Player.life == Player.Life.Alive)
         {
+            anime.enabled = true;
             // movement stuff
             switch (direction)
             {
@@ -61,6 +62,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
+            anime.enabled = false;
             rb.velocity = new Vector2(0,0);
         }
     }
