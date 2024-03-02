@@ -10,10 +10,11 @@ public class Tombstone : MonoBehaviour
     [SerializeField] protected enum TombstoneState {notActive, Active };
     TombstoneState state;
     [SerializeField] float tombstoneAwakeTime;
-
+    
     bool canFire;
     [SerializeField] GameObject bullet;
     [SerializeField] float fireRate;
+    [SerializeField] float timeBeforeFirstFire;
     bool playerNear;
 
     private SpriteRenderer spriteRenderer;
@@ -64,6 +65,9 @@ public class Tombstone : MonoBehaviour
     IEnumerator ActiveTimer()
     {
         state = TombstoneState.Active;
+        canFire = false;
+        yield return new WaitForSeconds(timeBeforeFirstFire);
+        canFire = true;
         yield return new WaitForSeconds(tombstoneAwakeTime);
         state = TombstoneState.notActive;
     }

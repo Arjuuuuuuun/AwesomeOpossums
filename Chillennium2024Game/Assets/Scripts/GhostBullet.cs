@@ -7,10 +7,20 @@ public class GhostBullet : MonoBehaviour
 {
     private Rigidbody2D rb;
     [SerializeField] float speed;
+    [SerializeField] int damage;
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.SendMessage("TakeDamage", damage);
+            Destroy(this.gameObject);
+        }
     }
     public void MakeGo(int degree)
     {
