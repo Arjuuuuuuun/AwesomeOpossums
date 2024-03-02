@@ -53,7 +53,7 @@ public class GhostBullet : MonoBehaviour
         }
         if (target != null && isTargeting)
         {
-            Vector3 playerpos = target.transform.position;
+            Vector3 playerpos = GameObject.Find("Player").transform.position;
             Vector2 vel;
             vel.x = (transform.localPosition - playerpos).x;
             vel.y = (transform.localPosition - playerpos).y;
@@ -74,8 +74,8 @@ public class GhostBullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            isTargeting = false;
             collision.gameObject.SendMessage("TakeDamage", damage);
+            GameObject.Destroy(this.gameObject);
         }
         if (collision.gameObject.CompareTag("Player"))
         {
