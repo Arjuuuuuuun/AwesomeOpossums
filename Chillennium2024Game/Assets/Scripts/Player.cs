@@ -59,15 +59,15 @@ public class Player : MonoBehaviour
         x = Input.GetAxisRaw("Horizontal");
         y = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             tombstone = TombstoneType.follow;
         }
-        else if (Input.GetKeyDown(KeyCode.I))
+        else if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             tombstone = TombstoneType.radial;
         }
-        else if (Input.GetKeyDown(KeyCode.O))
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             tombstone = TombstoneType.bullet;
         }
@@ -76,6 +76,26 @@ public class Player : MonoBehaviour
         {
             dead_movement_speed *= .7071f;
             living_movement_speed *= .7071f;
+        }
+
+        if(x > 0)
+        {
+            anime.SetBool("LR", true); // going right
+        } else if(x < 0)
+        {
+            anime.SetBool("LR", false); // going left
+        }
+
+        if (x == 0 && y > 0) // up, 1
+        {
+            anime.SetInteger("direction", 1);
+        }else if (x == 0 && y < 0) // down, 2
+        {
+            anime.SetInteger("direction", 2);
+        }
+        else // all else, LR
+        {
+            anime.SetInteger("direction", 3);
         }
 
         player_body.velocity = new Vector2(
