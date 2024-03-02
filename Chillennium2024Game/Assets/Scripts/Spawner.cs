@@ -8,12 +8,10 @@ public class Spawner : MonoBehaviour
     [SerializeField] private int direction;
     GameObject headManager;
 
-    private Transform transform;
     // Start is called before the first frame update
     void Start()
     {
         headManager = GameObject.FindGameObjectWithTag("HeadManager");
-        transform = GetComponent<Transform>();
         StartLevel(HeadManager.level_counter);
     }
 
