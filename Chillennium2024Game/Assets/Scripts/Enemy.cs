@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public int direction;
-    [SerializeField] private int speed;
+    [SerializeField] private float speed;
     float x, y;
     private Rigidbody2D rb;
     // Start is called before the first frame update
