@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
     private new SpriteRenderer renderer;
     [SerializeField] private Sprite alive_sprite;
     [SerializeField] private Sprite dead_sprite;
-    [SerializeField] private Animator anime;
+    private Animator anime;
 
     void Awake()
     {
@@ -94,10 +94,15 @@ public class Player : MonoBehaviour
         }
         else if (y > 0) // up, 1
         {
-            anime.SetInteger("direction", 1);
-        }else if (y < 0) // down, 2
+            anime.SetInteger("direction", 2);
+            player_transform.localScale = new Vector3(1, -1, 1);
+
+        }
+        else if (y < 0) // down, 2
         {
             anime.SetInteger("direction", 2);
+            player_transform.localScale = new Vector3(1, 1, 1);
+
         }
         else if(x==0 && y == 0)
         {
