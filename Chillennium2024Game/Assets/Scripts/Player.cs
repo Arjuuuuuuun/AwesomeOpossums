@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     public enum Life { Alive, Dead };
     private int NumTimesDead = 0;
     public static Life life;
-    [SerializeField] private GameObject corpse;
+    private GameObject corpse;
 
     public enum TombstoneType
     {
@@ -88,6 +88,7 @@ public class Player : MonoBehaviour
         } else if(x < 0)
         {
             Debug.Log("right");
+
             anime.SetInteger("direction", 3);
             player_transform.localScale = new Vector3(-1, 1, 1);
         }
@@ -96,14 +97,11 @@ public class Player : MonoBehaviour
             anime.SetInteger("direction", 1);
         }else if (y < 0) // down, 2
         {
-            Debug.Log("down");
-
             anime.SetInteger("direction", 2);
         }
         else if(x==0 && y == 0)
         {
             anime.SetInteger("direction", 0);
-            Debug.Log("idling");
         }
         
         
