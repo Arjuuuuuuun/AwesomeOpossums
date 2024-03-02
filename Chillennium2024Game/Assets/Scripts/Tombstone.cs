@@ -27,9 +27,14 @@ public class Tombstone : MonoBehaviour
 
     void Update()
     {
+
         switch (state) {
             case TombstoneState.notActive:
                 spriteRenderer.color = Color.gray;
+                if (playerNear && Input.GetKeyDown(KeyCode.Space))
+                {
+                   StartCoroutine(ActiveTimer());
+                }
                 break;
             case TombstoneState.Active:
                 spriteRenderer.color = Color.blue;
@@ -41,13 +46,6 @@ public class Tombstone : MonoBehaviour
         }
     }
 
-    public void Activate()
-    {
-        if (playerNear && state == TombstoneState.notActive)
-        {
-            StartCoroutine(ActiveTimer());
-        }
-    }
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
