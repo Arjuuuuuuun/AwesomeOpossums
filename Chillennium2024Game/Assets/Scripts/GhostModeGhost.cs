@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class GhostModeGhost : MonoBehaviour
 {
-    Rigidbody body;
+    Rigidbody2D body;
     // Start is called before the first frame update
     void Awake()
     {
-        body = GetComponent<Rigidbody>();   
+        body = GetComponent<Rigidbody2D>();   
     }
 
 
