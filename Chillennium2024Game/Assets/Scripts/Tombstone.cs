@@ -116,7 +116,6 @@ public class Tombstone : MonoBehaviour
         for (int i = 0; i < 360; i += 90)
         {
             GameObject b = Instantiate(bulBullet, this.transform.position, Quaternion.identity);
-            b.gameObject.SendMessage("MakeGo", i);
             yield return new WaitForSeconds(0.5f);
         }
         bulCanFire = true;
