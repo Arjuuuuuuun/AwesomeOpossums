@@ -23,7 +23,6 @@ public class Player : MonoBehaviour
     public enum Life { Alive, Dead };
     private int NumTimesDead = 0;
     public static Life life;
-    [SerializeField] private GameObject corpse;
 
     public enum TombstoneType
     {
@@ -94,14 +93,12 @@ public class Player : MonoBehaviour
         }
         else if (y > 0) // up, 1
         {
-            anime.SetInteger("direction", 2);
-            player_transform.localScale = new Vector3(1, -1, 1);
+            anime.SetInteger("direction", 1);
 
         }
         else if (y < 0) // down, 2
         {
             anime.SetInteger("direction", 2);
-            player_transform.localScale = new Vector3(1, 1, 1);
 
         }
         else if(x==0 && y == 0)
@@ -146,14 +143,11 @@ public class Player : MonoBehaviour
     IEnumerator Dead()
     {
         GameObject.Find("Main Camera").SendMessage("GreyOn");
-        GameObject c = Instantiate(corpse, player_transform.position, Quaternion.identity);
         dead_health = max_dead_health;
         life = Life.Dead;
         renderer.sprite = dead_sprite;
 
         yield return new WaitForSeconds(NumTimesDead * 3 + 5);
-        transform.position = c.transform.position;
-        Destroy(c);
         ++NumTimesDead;
         health = max_health;
         life = Life.Alive;
@@ -164,6 +158,7 @@ public class Player : MonoBehaviour
     IEnumerator RealDead()
     {
         Debug.Log("end of game");
+        GameObject.Find("Game Manager").SendMessage("EndGame");
         yield return new WaitForSeconds(100);
 
     }
