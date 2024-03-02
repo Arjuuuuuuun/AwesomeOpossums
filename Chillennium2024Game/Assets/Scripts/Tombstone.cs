@@ -50,7 +50,6 @@ public class Tombstone : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("Player Detected");
             playerNear = true;
         }
     }
@@ -64,7 +63,6 @@ public class Tombstone : MonoBehaviour
     }
     IEnumerator ActiveTimer()
     {
-        Debug.Log("Activtating Tombstone");
         state = TombstoneState.Active;
         yield return new WaitForSeconds(tombstoneAwakeTime);
         state = TombstoneState.notActive;
