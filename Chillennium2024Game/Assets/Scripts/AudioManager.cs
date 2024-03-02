@@ -26,6 +26,8 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        DeadTheme.timeSamples = LevelTheme.timeSamples;
+        Heartbeat.timeSamples = LevelTheme.timeSamples;
 
         if (Player.life == Player.Life.Dead)
         {
@@ -40,6 +42,18 @@ public class AudioManager : MonoBehaviour
             Heartbeat.volume = ((3f - Player.health) / 3f) * 0.42f;
         }
 
+    }
+
+    IEnumerator PlayLevelTheme()
+    {
+        LevelTheme.Play();
+        yield return new WaitForSeconds(1f);
+    }
+
+    IEnumerator PlayDeadTheme()
+    {
+        DeadTheme.Play();
+        yield return new WaitForSeconds(1f);
     }
 
 
