@@ -6,20 +6,39 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
 
-    public static AudioSource[] aud = new AudioSource[2];
-    [SerializeField] GameObject heartbeatg;
-    AudioSource heartbeat;
+    [SerializeField] GameObject LevelThemeg;
+    [SerializeField] GameObject Heartbeatg;
+    [SerializeField] GameObject DeadThemeg;
+    AudioSource Heartbeat;
+    AudioSource LevelTheme;
+    AudioSource DeadTheme;
     // Start is called before the first frame update
     void Awake()
-    {
-        heartbeat = heartbeatg.GetComponent<AudioSource>();
+    {   
+        LevelTheme = LevelThemeg.GetComponent<AudioSource>();
+        Heartbeat = Heartbeatg.GetComponent<AudioSource>();
+        DeadTheme = DeadThemeg.GetComponent<AudioSource>();
+        Heartbeat.Play();
+        LevelTheme.Play();
+        DeadTheme.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log((Player.health - 10f) / 10f);
-        heartbeat.volume = (10f - Player.health)  / 10f;
-        
+        Heartbeat.volume = ((3f - Player.health)  / 3f) * 0.42f;
+        if (Player.life == Player.Life.Dead)
+        {
+            LevelTheme.volume = 0f;
+            DeadTheme.volume = 1f;
+        }
+        else
+        {
+            LevelTheme.volume = 1f;
+            DeadTheme.volume = 0f;
+        }
+
     }
+
+
 }
