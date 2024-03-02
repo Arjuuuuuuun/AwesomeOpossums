@@ -235,3 +235,4 @@ MonoBehaviour:
   bulBullet: {fileID: 5527106099050775478, guid: 0fa685d225ba97f4984e808f4887b984, type: 3}
   bulFireRate: 0.5
   bulTimeBeforeFirstFire: 2
+  cirlce: {fileID: 1098493810066933042}

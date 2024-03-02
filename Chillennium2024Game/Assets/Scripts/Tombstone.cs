@@ -24,10 +24,13 @@ public class Tombstone : MonoBehaviour
     [SerializeField] float bulFireRate;
     [SerializeField] float bulTimeBeforeFirstFire;
 
+    [SerializeField] private GameObject cirlce;
+
     void Start()
     {
         state = TombstoneState.notActive;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        cirlce.GetComponent<SpriteRenderer>().enabled = false;
 
     }
 
@@ -99,7 +102,9 @@ public class Tombstone : MonoBehaviour
     IEnumerator RadSpawnCooldown()
     {
         radCanSpawnGhost = false;
+        cirlce.GetComponent<SpriteRenderer>().enabled = true;
         yield return new WaitForSeconds(radGhostInitDelay);
+        cirlce.GetComponent<SpriteRenderer>().enabled = false;
         GameObject b = Instantiate(radGhost, new Vector2(transform.position.x + 1.25f, transform.position.y - 1.25f), Quaternion.identity);
         yield return new WaitForSeconds(radGhostSpawnRate);
         radCanSpawnGhost = true;
