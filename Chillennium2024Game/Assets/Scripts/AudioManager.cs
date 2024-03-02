@@ -44,17 +44,5 @@ public class AudioManager : MonoBehaviour
 
     }
 
-    IEnumerator PlayLevelTheme()
-    {
-        LevelTheme.Play();
-        yield return new WaitForSeconds(1f);
-    }
-
-    IEnumerator PlayDeadTheme()
-    {
-        DeadTheme.Play();
-        yield return new WaitForSeconds(1f);
-    }
-
 
 }

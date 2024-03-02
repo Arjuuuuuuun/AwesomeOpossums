@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class GhostModeGhost : MonoBehaviour
 {
+    Rigidbody body;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        body = GetComponent<Rigidbody>();   
     }
 
-    // Update is called once per frame
-    void Update()
+
+    void init(Vector2 position)
     {
-        
+        body.position = position;
     }
 
-    void init(Vector3 position, float velocity)
+    void init2(Vector2 velocity)
     {
-
+        body.velocity = velocity;
     }
 }
