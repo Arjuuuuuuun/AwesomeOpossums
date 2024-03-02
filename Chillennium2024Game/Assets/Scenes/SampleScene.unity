@@ -625,6 +625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelThemeg: {fileID: 50607270}
   Heartbeatg: {fileID: 613066893}
+  DeadThemeg: {fileID: 191134882}
 --- !u!1 &613066893
 GameObject:
   m_ObjectHideFlags: 0
