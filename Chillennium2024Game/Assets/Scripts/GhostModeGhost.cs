@@ -21,4 +21,14 @@ public class GhostModeGhost : MonoBehaviour
     {
         body.velocity = velocity;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Ouch");
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.SendMessage("TakeDamage", 1);
+            GameObject.Destroy(gameObject);
+        }
+    }
 }
