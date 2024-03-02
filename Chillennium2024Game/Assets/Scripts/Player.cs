@@ -6,9 +6,9 @@ public class Player : MonoBehaviour
 {
     // health stuff
     [SerializeField] private int max_health;
-     private int health;
+     public static int health;
     [SerializeField] private int max_dead_health;
-    private int dead_health;
+    public static int dead_health;
 
     // movement stuff
     [SerializeField] private float living_movement_speed;
