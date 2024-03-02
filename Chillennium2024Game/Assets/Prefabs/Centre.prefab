@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 722417128078619512}
   - component: {fileID: 2426833540651796197}
   - component: {fileID: 20017314089028345}
+  - component: {fileID: 4072397052913748503}
   m_Layer: 8
   m_Name: Centre
   m_TagString: Center
@@ -143,3 +144,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e580145219f2f4881616360d6bb8fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4072397052913748503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4864045172270194792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d877dae10154f047aa562c4b59833c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shade: {fileID: 4800000, guid: bd9f8c9c75176e646afac70aff72278e, type: 3}
