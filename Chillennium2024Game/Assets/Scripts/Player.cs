@@ -100,6 +100,7 @@ public class Player : MonoBehaviour
         ++NumTimesDead;
         health = max_health;
         life = Life.Alive;
+        renderer.sprite = alive_sprite;
     }
 
     IEnumerator RealDead()
