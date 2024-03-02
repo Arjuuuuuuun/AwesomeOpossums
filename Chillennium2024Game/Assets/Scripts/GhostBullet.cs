@@ -22,6 +22,13 @@ public class GhostBullet : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    public void ClearBullet()
+    {
+        Destroy(this.gameObject);
+    }
+
+
     public void MakeGo(int degree)
     {
         switch (degree)
