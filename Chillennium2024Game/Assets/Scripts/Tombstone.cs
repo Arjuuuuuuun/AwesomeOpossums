@@ -25,12 +25,22 @@ public class Tombstone : MonoBehaviour
     [SerializeField] float bulTimeBeforeFirstFire;
 
     [SerializeField] private GameObject cirlce;
+    [SerializeField] private GameObject skull;
+
+    private Animator anime;
+    [SerializeField] private Sprite flameless_skull;
+
 
 
 
 
     void Start()
     {
+
+        anime = skull.GetComponent<Animator>();
+        anime.enabled = false;
+        skull.GetComponent<SpriteRenderer>().sprite = flameless_skull;
+
         state = TombstoneState.notActive;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -43,6 +53,8 @@ public class Tombstone : MonoBehaviour
 
         switch (state) {
             case TombstoneState.notActive:
+                anime.enabled = false;
+                skull.GetComponent<SpriteRenderer>().sprite = flameless_skull;
                 spriteRenderer.color = Color.gray;
                 if (playerNear && Input.GetKeyDown(KeyCode.Space))
                 {
@@ -62,6 +74,7 @@ public class Tombstone : MonoBehaviour
                 }
                 break;
             case TombstoneState.Active:
+                anime.enabled = true;
                 ActivateFire();
                 spriteRenderer.color = Color.blue;
                 break;   
@@ -75,12 +88,14 @@ public class Tombstone : MonoBehaviour
             case TowerType.Radial:
                 if (radCanSpawnGhost)
                 {
+                    anime.SetBool("Colour", false);
                     StartCoroutine(RadSpawnCooldown());
                 }
                 break;
             case TowerType.Bullet:
                 if (bulCanFire)
                 {
+                    anime.SetBool("Colour", true);
                     StartCoroutine(BulFire());
                 }
                 break;

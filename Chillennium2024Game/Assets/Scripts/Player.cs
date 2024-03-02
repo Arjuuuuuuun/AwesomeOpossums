@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
         anime = GetComponent<Animator>();
         renderer = GetComponent<SpriteRenderer>();
         renderer.sprite = alive_sprite;
+        anime.SetInteger("direction", 0);
     }
 
     // Update is called once per frame
