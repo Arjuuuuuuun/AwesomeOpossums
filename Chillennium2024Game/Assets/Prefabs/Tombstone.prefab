@@ -98,9 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5aee9efbb847be49983f070f40eb13a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tombstoneAwakeTime: 10
+  tombstoneAwakeTime: 12
   bullet: {fileID: 5527106099050775478, guid: 0fa685d225ba97f4984e808f4887b984, type: 3}
   fireRate: 3
+  timeBeforeFirstFire: 1
 --- !u!61 &6169097255789338051
 BoxCollider2D:
   m_ObjectHideFlags: 0
