@@ -13,8 +13,8 @@ public class ShaderScrpit : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
-        
+        Graphics.Blit(source, destination,material);
     }
 }
