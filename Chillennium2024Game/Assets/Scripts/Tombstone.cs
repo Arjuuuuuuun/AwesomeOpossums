@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Resources;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class Tombstone : MonoBehaviour
 
     [SerializeField] protected enum TombstoneState {notActive, Active };
     TombstoneState state;
+    [SerializeField] float tombstoneAwakeTime;
 
     bool canFire;
     [SerializeField] GameObject bullet;
@@ -39,7 +41,16 @@ public class Tombstone : MonoBehaviour
     }
     public void Activate()
     {
+        if (state == TombstoneState.notActive)
+        {
+            StartCoroutine(ActiveTimer());
+        }
+    }
+    IEnumerator ActiveTimer()
+    {
         state = TombstoneState.Active;
+        yield return new WaitForSeconds(tombstoneAwakeTime);
+        state = TombstoneState.notActive;
     }
     IEnumerator Fire()
     {
