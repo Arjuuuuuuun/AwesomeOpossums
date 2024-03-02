@@ -142,7 +142,7 @@ public class Player : MonoBehaviour
 
     IEnumerator Dead()
     {
-        GameObject.Find("Main Camera").SendMessage("GreyOn");
+
         dead_health = max_dead_health;
         life = Life.Dead;
         renderer.sprite = dead_sprite;
@@ -152,7 +152,7 @@ public class Player : MonoBehaviour
         health = max_health;
         life = Life.Alive;
         renderer.sprite = alive_sprite;
-        GameObject.Find("Main Camera").SendMessage("GreyOff");
+
     }
 
     IEnumerator RealDead()

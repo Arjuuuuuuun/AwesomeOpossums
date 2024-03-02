@@ -41,8 +41,8 @@ Shader "Custom/GreySurface"
         {
             // Albedo comes from a texture tinted by color
             fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
-            float intensity = c.x * 0.299 + c.y * 0.587 + c.z * 0.114;
-            fixed4 grey = fixed4(intensity,intensity,intensity * 1.5,c.w);
+            float intensity = c.r * 0.299 + c.g * 0.587 + c.b * 0.114;
+            fixed4 grey = fixed4(intensity * 5,intensity * 5,intensity * 5,c.a);
             o.Albedo = grey.rgb;
             // Metallic and smoothness come from slider variables
             o.Metallic = _Metallic;

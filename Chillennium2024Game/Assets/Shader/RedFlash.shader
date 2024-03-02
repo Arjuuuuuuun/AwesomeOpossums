@@ -1,4 +1,4 @@
-Shader "Unlit/Greyscale"
+Shader "Unlit/RedFlash"
 {
     Properties
     {
