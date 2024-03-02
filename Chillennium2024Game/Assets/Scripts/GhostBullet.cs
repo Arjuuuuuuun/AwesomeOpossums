@@ -16,7 +16,7 @@ public class GhostBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.SendMessage("TakeDamage", damage);
             Destroy(this.gameObject);
