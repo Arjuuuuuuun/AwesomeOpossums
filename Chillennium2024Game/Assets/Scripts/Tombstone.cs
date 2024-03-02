@@ -59,11 +59,13 @@ public class Tombstone : MonoBehaviour
                     switch (Player.tombstone)
                     {
                         case(Player.TombstoneType.radial):
-                            anime.SetBool("Colour", false);
+                            anime.SetBool("Colour", false); anime.enabled = true;
+
                             type = TowerType.Radial;
                             break;
                         case(Player.TombstoneType.bullet):
-                            anime.SetBool("Colour", true);
+                            anime.SetBool("Colour", true); anime.enabled = true;
+
                             type = TowerType.Bullet;
                             break;
                         case (Player.TombstoneType.follow):
@@ -73,12 +75,18 @@ public class Tombstone : MonoBehaviour
                 }
                 break;
             case TombstoneState.Active:
-                anime.enabled = true;
                 ActivateFire();
                 break;   
         }
     }
+    IEnumerator CheckPlayerState()
+    {
+        while (true)
+        {
+            yield return new WaitUntil(() => Player.life == Player.Life.Alive);
 
+        }
+    }
     void ActivateFire()
     {
         switch (type)
