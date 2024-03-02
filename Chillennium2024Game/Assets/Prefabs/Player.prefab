@@ -99,7 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5455e7b1912c7784bb251ad5c6e239cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  max_health: 0
   health: 10
+  max_dead_health: 0
+  dead_health: 0
   living_movement_speed: 5
   dead_movement_speed: 3
   alive_sprite: {fileID: 21300000, guid: ef57c0e55c64b8f4c93bae6fc9b5e427, type: 3}
@@ -175,4 +178,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
