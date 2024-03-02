@@ -6,9 +6,9 @@ public class Player : MonoBehaviour
 {
     // health stuff
     [SerializeField] private int max_health;
-    [SerializeField] private int health;
+     private int health;
     [SerializeField] private int max_dead_health;
-    [SerializeField] private int dead_health;
+    private int dead_health;
 
     // movement stuff
     [SerializeField] private float living_movement_speed;
@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     // mode switching
     private enum Life { Alive, Dead };
     private int NumTimesDead = 0;
+    private Life life;
+    [SerializeField] private GameObject corpse;
 
     // rendering
     private new SpriteRenderer renderer;
@@ -28,7 +30,6 @@ public class Player : MonoBehaviour
     [SerializeField] private Sprite dead_sprite;
     private Animator anime;
 
-    private Life life;
     void Awake() { 
     
         health = max_health;
@@ -54,7 +55,9 @@ public class Player : MonoBehaviour
             living_movement_speed *= .7071f;
         }
 
-        player_body.velocity = new Vector2(( life == Life.Alive ? living_movement_speed : dead_movement_speed)* x, (life == Life.Alive ? living_movement_speed : dead_movement_speed) * y);
+        player_body.velocity = new Vector2(
+            (life == Life.Alive ? living_movement_speed : dead_movement_speed) * x, 
+            (life == Life.Alive ? living_movement_speed : dead_movement_speed) * y);
 
         if (x != 0 && y != 0)
         {
@@ -86,14 +89,16 @@ public class Player : MonoBehaviour
 
     IEnumerator Dead()
     {
+        GameObject c = Instantiate(corpse, player_transform.position, Quaternion.identity);
         dead_health = max_dead_health;
         life = Life.Dead;
         renderer.sprite = dead_sprite;
 
         yield return new WaitForSeconds(NumTimesDead * 3 + 5);
+        transform.position = c.transform.position;
+        Destroy(c);
         ++NumTimesDead;
         health = max_health;
-
         life = Life.Alive;
     }
 
