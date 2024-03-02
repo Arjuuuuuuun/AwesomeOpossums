@@ -143,6 +143,7 @@ public class Player : MonoBehaviour
     IEnumerator Dead()
     {
 
+        GameObject.Find("GhostManager").SendMessage("GhostMode");
         dead_health = max_dead_health;
         life = Life.Dead;
         renderer.sprite = dead_sprite;
