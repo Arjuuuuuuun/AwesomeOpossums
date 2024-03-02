@@ -37,10 +37,8 @@ abstract public class Tombstone : MonoBehaviour
                 break;   
         }
     }
-    virtual protected void Activate()
-    {
-        return;
-    }
+    abstract protected void Activate();
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
