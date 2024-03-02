@@ -59,6 +59,10 @@ public class GhostSpawner : MonoBehaviour
         SummonGhost(new Vector2(-3, -5.5f), new Vector2(1, 1));
         SummonGhost(new Vector2(-0, -5.5f), new Vector2(1, 1));
         yield return new WaitForSeconds(1f);
+        for (int i = 0; i < 12; i++)
+        {
+            SummonGhost(new Vector2(10 *Mathf.Cos(i*30), 10 * Mathf.Sin(i * 30)), new Vector2(-10 * Mathf.Cos(i * 30), -10 * Mathf.Sin(i * 30)));
+        }
     }
 
     private void SummonGhost(Vector2 position, Vector2 velocity)
