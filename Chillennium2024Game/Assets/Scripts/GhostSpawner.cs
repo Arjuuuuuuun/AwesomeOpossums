@@ -30,8 +30,8 @@ public class GhostSpawner : MonoBehaviour
     {
         GameObject ghost = Instantiate(this.ghost);
         ghosts.Add(ghost);
-        ghost.SendMessage("init", new Vector2(10, 10));
-        ghost.SendMessage("init2", new Vector2(1, 0));
+        ghost.SendMessage("init", new Vector2(5, 5));
+        ghost.SendMessage("init2", new Vector2(0, -1));
         yield return new WaitForSeconds(1f);
     }
 }
