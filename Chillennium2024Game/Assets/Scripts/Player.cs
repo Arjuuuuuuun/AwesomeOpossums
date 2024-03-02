@@ -60,15 +60,15 @@ public class Player : MonoBehaviour
         x = Input.GetAxisRaw("Horizontal");
         y = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKey(KeyCode.Alpha3))
         {
             tombstone = TombstoneType.follow;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha1))
+        else if (Input.GetKey(KeyCode.Alpha1))
         {
             tombstone = TombstoneType.radial;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        else if (Input.GetKey(KeyCode.Alpha2))
         {
             tombstone = TombstoneType.bullet;
         }
