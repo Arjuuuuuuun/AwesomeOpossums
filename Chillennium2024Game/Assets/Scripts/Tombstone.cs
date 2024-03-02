@@ -78,7 +78,14 @@ public class Tombstone : MonoBehaviour
                 break;   
         }
     }
+    IEnumerator CheckPlayerState()
+    {
+        while (true)
+        {
+            yield return new WaitUntil(() => Player.life == Player.Life.Alive);
 
+        }
+    }
     void ActivateFire()
     {
         switch (type)
