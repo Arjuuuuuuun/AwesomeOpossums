@@ -57,21 +57,7 @@ public class SpinnyGhost : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
         {
-            if (canTick)
-            {
-                StartCoroutine(Damage(collision.gameObject));
-            }
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
-        {
-            if (canTick)
-            {
-                StartCoroutine(Damage(collision.gameObject));
-            }
+            collision.gameObject.SendMessage("TakeDamage", damagePerSecond);
         }
     }
 
