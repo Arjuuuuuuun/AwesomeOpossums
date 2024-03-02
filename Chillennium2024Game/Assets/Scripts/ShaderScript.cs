@@ -5,16 +5,21 @@ using UnityEngine;
 public class ShaderScrpit : MonoBehaviour
 {
     [SerializeField] UnityEngine.Shader shade;
-    Material material;
+    Camera cam;
     // Start is called before the first frame update
     void Start()
     {
-        material = new Material(shade);
+        cam =  GetComponent<Camera>();
     }
 
-    // Update is called once per frame
-    private void OnRenderImage(RenderTexture source, RenderTexture destination)
+    void GreyOn()
     {
-        Graphics.Blit(source, destination,material);
+        cam.SetReplacementShader(shade,"");
     }
+
+    void GreyOff()
+    {
+        cam.ResetReplacementShader();
+    }
+
 }
