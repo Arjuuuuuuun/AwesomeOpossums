@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5455e7b1912c7784bb251ad5c6e239cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_health: 10
-  max_dead_health: 10
+  max_health: 3
+  max_dead_health: 3
   living_movement_speed: 5
   dead_movement_speed: 3
   corpse: {fileID: 2312316762829827170, guid: b7dffd0b03db184468f4087aec9813dd, type: 3}
