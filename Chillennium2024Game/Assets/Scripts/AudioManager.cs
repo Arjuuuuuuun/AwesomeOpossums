@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour
     AudioSource Heartbeat;
     AudioSource LevelTheme;
     AudioSource DeadTheme;
+    bool swapper;
     // Start is called before the first frame update
     void Awake()
     {   
@@ -21,6 +22,7 @@ public class AudioManager : MonoBehaviour
         Heartbeat.Play();
         LevelTheme.Play();
         DeadTheme.Play();
+        swapper = false;
     }
 
     // Update is called once per frame
@@ -31,17 +33,49 @@ public class AudioManager : MonoBehaviour
 
         if (Player.life == Player.Life.Dead)
         {
-            LevelTheme.volume = 0f;
-            DeadTheme.volume = .8f;
-            Heartbeat.volume = 0f;
+            if (swapper)
+            {
+                //LevelTheme.volume = 0f;
+                StartCoroutine("fadeOut", LevelTheme);
+                //DeadTheme.volume = .8f;
+                StartCoroutine("fadeIn", DeadTheme);
+                Heartbeat.volume = 0f;
+
+            }
+            swapper = false;
         }
         else
         {
-            LevelTheme.volume = .8f;
-            DeadTheme.volume = 0f;
-            Heartbeat.volume = ((2f - Player.health) / 2f) * 0.3f;
+            if (!swapper)
+            {
+                //LevelTheme.volume = .8f;
+                StartCoroutine("fadeIn", LevelTheme);
+                //DeadTheme.volume = 0f;
+                StartCoroutine("fadeOut", DeadTheme);
+                Heartbeat.volume = ((2f - Player.health) / 2f) * 0.3f;
+            }
+
+            swapper = true;
         }
 
+    }
+
+    IEnumerator fadeIn(AudioSource clip)
+    {
+        for (int i = 0; i < 10; ++i)
+        {
+            clip.volume += 0.08f;
+            yield return new WaitForSeconds(.03f);
+        }
+    }
+
+    IEnumerator fadeOut(AudioSource clip)
+    {
+        for (int i = 0; i < 10; ++i)
+        {
+            clip.volume -= 0.08f;
+            yield return new WaitForSeconds(.03f);
+        }
     }
 
 
