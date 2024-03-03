@@ -5,9 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject enemy;
-    [SerializeField] private int direction;
     GameObject headManager;
-    [SerializeField] private bool isRightSpawner;
 
     // Start is called before the first frame update
     void Start()
@@ -45,11 +43,18 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    void SpawnEnemy(ref List<GameObject> enemyList)
+    void SpawnEnemyRight(ref List<GameObject> enemyList)
     {
         GameObject enemy = Instantiate(this.enemy);
-        enemy.SendMessage("Rotate", direction);
+        enemy.SendMessage("Rotate", 1);
         enemy.transform.position = transform.position;
+        enemyList.Add(enemy);
+    }
+    void SpawnEnemyLeft(ref List<GameObject> enemyList)
+    {
+        GameObject enemy = Instantiate(this.enemy);
+        enemy.SendMessage("Rotate", 2);
+        enemy.transform.position = new Vector3(-10.57f,-0.75f,0);
         enemyList.Add(enemy);
     }
     IEnumerator LevelOne()
@@ -59,15 +64,12 @@ public class Spawner : MonoBehaviour
 
         for (int i = 0; i < 5; ++i)
         {
-            if (isRightSpawner)
-            {
+
                 yield return new WaitUntil(() => Player.life == Player.Life.Alive);
-                SpawnEnemy(ref list);
+                SpawnEnemyRight(ref list);
                 yield return new WaitForSeconds(2f);
-            }
+
         }
-        if (isRightSpawner)
-        {
             while (true)
             {
                 int num_alive = 0;
@@ -88,7 +90,7 @@ public class Spawner : MonoBehaviour
             }
 
             Debug.Log("Level one Complete");
-        }
+       
         //headManager.SendMessage("LevelComplete");
     }
     IEnumerator LevelThree()
@@ -98,12 +100,11 @@ public class Spawner : MonoBehaviour
 
         for(int i = 0; i < 5; ++i)
         {
-            if (isRightSpawner)
-            {
+
                 yield return new WaitUntil(() => Player.life == Player.Life.Alive);
-                SpawnEnemy(ref list);
+                SpawnEnemyLeft(ref list);
                 yield return new WaitForSeconds(2f);
-            }
+            
         }
         yield return new WaitUntil(() => Player.life == Player.Life.Alive);
         yield return new WaitForSeconds(10f);
@@ -112,7 +113,7 @@ public class Spawner : MonoBehaviour
         {
 
                 yield return new WaitUntil(() => Player.life == Player.Life.Alive);
-                SpawnEnemy(ref list);
+                SpawnEnemyRight(ref list);
                 yield return new WaitForSeconds(2f);
 
         }
@@ -125,7 +126,7 @@ public class Spawner : MonoBehaviour
             for (int i = 0; i < 5; ++i)
             {
                 yield return new WaitUntil(() => Player.life == Player.Life.Alive);
-                SpawnEnemy(ref list);   
+                SpawnEnemyRight (ref list);   
                 yield return new WaitForSeconds(1f);
                 
             }
@@ -140,13 +141,13 @@ public class Spawner : MonoBehaviour
                 if (j % 2 == 0 )
                 {
                     yield return new WaitUntil(() => Player.life == Player.Life.Alive);
-                    SpawnEnemy(ref list);
+                    SpawnEnemyLeft(ref list);
                     yield return new WaitForSeconds(0.5f);
                 }
                 else if (j % 2 == 1)
                 {
                     yield return new WaitUntil(() => Player.life == Player.Life.Alive);
-                    SpawnEnemy(ref list);
+                    SpawnEnemyLeft(ref list);
                     yield return new WaitForSeconds(1f);
                 }
             }
