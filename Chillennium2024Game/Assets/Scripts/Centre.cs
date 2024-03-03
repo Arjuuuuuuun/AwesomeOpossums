@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Centre : MonoBehaviour
 {
-    private[SerializeField] float destructionRadius = 5f;
+    [SerializeField] private float destructionRadius;
 
     public void TakeDamage(int damage)
     {
