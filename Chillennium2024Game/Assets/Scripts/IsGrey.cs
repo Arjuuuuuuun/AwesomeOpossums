@@ -24,7 +24,7 @@ public class IsGrey : MonoBehaviour
             }
             catch (Exception e)
             {
-                Debug.Log(e.Message);
+                Debug.Log(gameObject.name + " " + e.Message);
             }
         }
 
@@ -36,7 +36,7 @@ public class IsGrey : MonoBehaviour
             }
             catch (Exception e)
             {
-                Debug.Log(e.Message);
+                Debug.Log(gameObject.name + " " + e.Message);
             }
         }
     }
