@@ -86,13 +86,11 @@ public class Player : MonoBehaviour
 
         if(x > 0)
         {
-            Debug.Log("left");
             anime.SetInteger("direction", 3);
             player_transform.localScale = new Vector3(1,1,1);
             
         } else if(x < 0)
         {
-            Debug.Log("right");
 
             anime.SetInteger("direction", 3);
             player_transform.localScale = new Vector3(-1, 1, 1);
@@ -129,6 +127,7 @@ public class Player : MonoBehaviour
     {
         if (life == Life.Alive)
         {
+            Debug.Log("living damage taken");
             GameObject.Find("Main Camera").SendMessage("Damage");
             health -= damage;
             AudioSource.PlayClipAtPoint(hurt, new Vector3(0, 0, 0));
@@ -140,6 +139,7 @@ public class Player : MonoBehaviour
         }
         else
         {
+            Debug.Log("dead damage taken");
             dead_health -= damage;
             if (dead_health < 0)
             {
