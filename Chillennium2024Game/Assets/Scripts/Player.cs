@@ -57,6 +57,7 @@ public class Player : MonoBehaviour
         renderer = GetComponent<SpriteRenderer>();
         renderer.sprite = alive_sprite;
         anime.SetInteger("direction", 0);
+        tombstone = TombstoneType.bullet;
     }
 
     // Update is called once per frame
