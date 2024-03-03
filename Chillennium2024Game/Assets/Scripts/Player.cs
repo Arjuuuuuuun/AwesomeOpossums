@@ -153,6 +153,12 @@ public class Player : MonoBehaviour
         ++NumTimesDead;
         health = max_health;
         life = Life.Alive;
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject enemy in enemies)
+        {
+            enemy.SendMessage("Cooldown", SendMessageOptions.DontRequireReceiver);
+        }
         renderer.sprite = alive_sprite;
 
     }

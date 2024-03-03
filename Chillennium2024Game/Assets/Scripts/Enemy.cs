@@ -13,9 +13,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int health;
 
     private Animator anime;
+    private SpriteRenderer sr;
+    private bool cooldown;
 
     void Start()
     {
+        cooldown = false;
+        sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         anime = GetComponent<Animator>();
         anime.SetInteger("direction", 0);
@@ -25,7 +29,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Player.life == Player.Life.Alive)
+        if (Player.life == Player.Life.Alive && ! cooldown)
         {
             anime.enabled = true;
             // movement stuff
@@ -63,7 +67,7 @@ public class Enemy : MonoBehaviour
         else
         {
             anime.enabled = false;
-            rb.velocity = new Vector2(0,0);
+            rb.velocity = new Vector2(0, 0);
         }
     }
 
@@ -83,10 +87,26 @@ public class Enemy : MonoBehaviour
 
     void TakeDamage(int damage)
     {
+        StartCoroutine("FlashRed");
         health -= damage;
         if (health < 0)
         {
             Destroy(this.gameObject);
         }
     }
+
+    IEnumerator FlashRed()
+    {
+        sr.color = Color.red;
+        yield return new WaitForSeconds(0.5f);
+        sr.color = Color.white;
+    }
+
+    IEnumerator Cooldown()
+    {
+        cooldown = true;
+        yield return new WaitForSeconds(5);
+        cooldown = false;
+    }
+
 }
