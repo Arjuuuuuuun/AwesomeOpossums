@@ -17,10 +17,18 @@ public class Heart : MonoBehaviour
     [SerializeField] Sprite blue_balls;
     [SerializeField] Sprite red_balls;
 
+    [SerializeField] SpriteRenderer timer_frame;
+    [SerializeField] SpriteRenderer timer;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        Color color = timer_frame.color;
+        color.a = 0.0f;
+        timer_frame.color = color;
+        Color color2 = timer.color;
+        color2.a = 0.0f;
+        timer.color = color2;
     }
 
     // Update is called once per frame
@@ -39,7 +47,8 @@ public class Heart : MonoBehaviour
         }
         if (Player.life == Player.Life.Dead)
         {
-            switch(Player.dead_health)
+
+            switch (Player.dead_health)
             {
                 case 0:
                     heart1.color = new Color(0f, 0f, 0f, 0f);
