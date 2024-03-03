@@ -5,6 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject enemy;
+    [SerializeField] private GameObject priest;
     GameObject headManager;
     public static bool in_level;
 
@@ -54,6 +55,22 @@ public class Spawner : MonoBehaviour
         enemy.transform.position = new Vector3(-10.57f,-0.75f,0);
         enemyList.Add(enemy);
     }
+
+    void SpawnPriestRight(ref List<GameObject> enemyList)
+    {
+        GameObject enemy = Instantiate(this.priest);
+        enemy.SendMessage("Rotate", 1);
+        enemy.transform.position = transform.position;
+        enemyList.Add(enemy);
+    }
+    void SpawnPriestLeft(ref List<GameObject> enemyList)
+    {
+        GameObject enemy = Instantiate(this.priest);
+        enemy.SendMessage("Rotate", 2);
+        enemy.transform.position = new Vector3(-10.57f, -0.75f, 0);
+        enemyList.Add(enemy);
+    }
+
 
     void StopCos()
     {
@@ -116,7 +133,7 @@ public class Spawner : MonoBehaviour
         List<GameObject> list = new List<GameObject>();
         for (int j = 0; j < 2; j++)
         {
-            for (int i = 0; i < 7; ++i)
+            for (int i = 0; i < 6; ++i)
             {
 
                 yield return new WaitUntil(() => Player.life == Player.Life.Alive);
@@ -184,27 +201,6 @@ public class Spawner : MonoBehaviour
         yield return new WaitUntil(() => Player.life == Player.Life.Alive);
         yield return new WaitForSeconds(13f);
 
-        for(int i = 0; i < 10; ++i)
-        {
-            for (int j = 0; j < 7; j++)
-            {
-                if (j % 2 == 0 )
-                {
-                    yield return new WaitUntil(() => Player.life == Player.Life.Alive);
-                    SpawnEnemyLeft(ref list);
-                    yield return new WaitForSeconds(0.5f);
-                }
-                else if (j % 2 == 1)
-                {
-                    yield return new WaitUntil(() => Player.life == Player.Life.Alive);
-                    SpawnEnemyRight(ref list);
-                    yield return new WaitForSeconds(0.5f);
-                }
-            }
-            yield return new WaitUntil(() => Player.life == Player.Life.Alive);
-            yield return new WaitForSeconds(5 - i / 2);
-
-        }
         while (true)
         {
             int num_alive = 0;
