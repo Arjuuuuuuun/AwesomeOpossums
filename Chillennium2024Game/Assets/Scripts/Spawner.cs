@@ -138,7 +138,7 @@ public class Spawner : MonoBehaviour
 
         List<GameObject> list = new List<GameObject>();
 
-        for(int i = 0; i < 10; ++i)
+        for(int i = 0; i < 4; ++i)
         {
 
                 yield return new WaitUntil(() => Player.life == Player.Life.Alive);
@@ -148,19 +148,19 @@ public class Spawner : MonoBehaviour
             
         }
         yield return new WaitUntil(() => Player.life == Player.Life.Alive);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(12f);
 
-        for (int i = 0; i < 10; ++i)
+        for (int i = 0; i < 6; ++i)
         {
 
                 yield return new WaitUntil(() => Player.life == Player.Life.Alive);
                 SpawnEnemyRight(ref list);
                 SpawnEnemyLeft(ref list);
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(2f);
 
         }
         yield return new WaitUntil(() => Player.life == Player.Life.Alive);
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(13f);
 
         for(int i = 0; i < 10; ++i)
         {

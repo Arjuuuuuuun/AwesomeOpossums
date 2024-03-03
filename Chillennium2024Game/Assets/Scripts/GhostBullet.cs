@@ -16,6 +16,8 @@ public class GhostBullet : MonoBehaviour
     private SpriteRenderer sprite;
     bool isTargeting = true;
     [SerializeField] bool targetingFurthest;
+    [SerializeField] AudioClip smallTowerShoot;
+
 
     void Awake()
     {
@@ -52,6 +54,7 @@ public class GhostBullet : MonoBehaviour
         }
         target = val.Item2;
         sprite.enabled = true;
+        AudioSource.PlayClipAtPoint(smallTowerShoot, Vector3.zero);
 
 
     }
