@@ -69,6 +69,7 @@ public class AudioManager : MonoBehaviour
             clip.volume += 0.07f;
             yield return new WaitForSeconds(.03f);
         }
+        clip.volume = 0.7f;
     }
 
     IEnumerator fadeOut(AudioSource clip)
@@ -78,6 +79,7 @@ public class AudioManager : MonoBehaviour
             clip.volume -= 0.07f;
             yield return new WaitForSeconds(.03f);
         }
+        clip.volume = 0.0f;
     }
 
 
