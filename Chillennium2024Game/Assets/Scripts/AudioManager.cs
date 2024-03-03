@@ -26,7 +26,7 @@ public class AudioManager : MonoBehaviour
         IdleTheme = IdleThemeg.GetComponent<AudioSource>();
         IdleTheme.Play();
         swapper = false;
-        swapper2 = false;
+        swapper2 = true;
     }
 
     // Update is called once per frame
@@ -106,6 +106,7 @@ public class AudioManager : MonoBehaviour
         }
         clip.volume = 0.0f;
     }
+
 
 
 }
