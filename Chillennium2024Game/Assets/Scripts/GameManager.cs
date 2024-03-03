@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Game Scene");
         HeadManager.instance.level_counter = 0;
+        HeadManager.instance.text_counter = 0;
     }
     public void onGameRetry()
     {
