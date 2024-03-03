@@ -16,14 +16,6 @@ public class LevelButtonController : MonoBehaviour
     void Update()
     {
         b.interactable = !Spawner.in_level;
-        if (b.interactable)
-        {
-            
-        }
-        else
-        {
-     
-        }
 
     }
 }
