@@ -13,10 +13,7 @@ public class SpinnyGhost : MonoBehaviour
     [SerializeField] int health;
     void Awake()
     {
-        if (Player.life == Player.Life.Dead)
-        {
-            Destroy(this.gameObject);
-        }
+
         sprite = GetComponent<SpriteRenderer>();
         sprite.enabled = false;
         rb = GetComponent<Rigidbody2D>();
@@ -27,10 +24,6 @@ public class SpinnyGhost : MonoBehaviour
 
     private void Update()
     {
-        if (Player.life == Player.Life.Dead)
-        {
-            ClearBullet();
-        }
 
         Vector3 playerpos = GameObject.Find("Player").transform.position;
         Vector2 vel;
@@ -68,10 +61,5 @@ public class SpinnyGhost : MonoBehaviour
                 GameObject.Destroy(this.gameObject);
             }
         }
-    }
-
-    public void ClearBullet()
-    {
-        Destroy(this.gameObject);
     }
 }
