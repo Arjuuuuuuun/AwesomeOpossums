@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public void onGameStart() //Also the same as restart game
     {
         SceneManager.LoadScene("Game Scene");
-        HeadManager.level_counter = 0;
+        HeadManager.instance.level_counter = 0;
     }
     public void onGameRetry()
     {
