@@ -51,7 +51,7 @@ public class TextManager : MonoBehaviour
                 }
                 break;
             case 3:
-                tutorialText.text = "<-- Press new wave to began the ritual and start the wave";
+                tutorialText.text = "<-- Press Next Level to began the ritual and start the wave";
                 if (is_wave_started)
                 {
                     HeadManager.instance.text_counter = 4;
