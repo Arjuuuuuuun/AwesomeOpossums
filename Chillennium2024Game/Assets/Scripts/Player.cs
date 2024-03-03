@@ -149,7 +149,7 @@ public class Player : MonoBehaviour
         life = Life.Dead;
         renderer.sprite = dead_sprite;
 
-        yield return new WaitForSeconds(NumTimesDead * 3 + 5);
+        yield return new WaitForSeconds(NumTimesDead * 2 + 3);
         ++NumTimesDead;
         health = max_health;
         life = Life.Alive;

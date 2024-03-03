@@ -33,37 +33,43 @@ public class GhostSpawner : MonoBehaviour
         SummonGhost(new Vector2(-9, 2), new Vector2(1, 0));
         SummonGhost(new Vector2(-9, -1), new Vector2(1, 0));
         SummonGhost(new Vector2(-9, -4), new Vector2(1, 0));
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         SummonGhost(new Vector2(9, 3.5f), new Vector2(-1, 0));
         SummonGhost(new Vector2(9, 0.5f), new Vector2(-1, 0));
         SummonGhost(new Vector2(9, -2.5f), new Vector2(-1, 0));
         SummonGhost(new Vector2(9, -5.5f), new Vector2(-1, 0));
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         SummonGhost(new Vector2(9, 5.5f), new Vector2(-1, -1));
         SummonGhost(new Vector2(6, 5.5f), new Vector2(-1, -1));
         SummonGhost(new Vector2(3, 5.5f), new Vector2(-1, -1));
         SummonGhost(new Vector2(0, 5.5f), new Vector2(-1, -1));
-        yield return new WaitForSeconds(1.5f);
+        SummonGhost(new Vector2(-9, 5.5f), new Vector2(-1, -1));
+        SummonGhost(new Vector2(-6, 5.5f), new Vector2(-1, -1));
+        SummonGhost(new Vector2(-3, 5.5f), new Vector2(-1, -1));
+        yield return new WaitForSeconds(1f);
         SummonGhost(new Vector2(-9, 5.5f), new Vector2(1, -1));
         SummonGhost(new Vector2(-6, 5.5f), new Vector2(1, -1));
         SummonGhost(new Vector2(-3, 5.5f), new Vector2(1, -1));
         SummonGhost(new Vector2(-0, 5.5f), new Vector2(1, -1));
-        yield return new WaitForSeconds(1.25f);
+        SummonGhost(new Vector2(9, 5.5f), new Vector2(1, -1));
+        SummonGhost(new Vector2(6, 5.5f), new Vector2(1, -1));
+        SummonGhost(new Vector2(3, 5.5f), new Vector2(1, -1));
+        yield return new WaitForSeconds(1f);
         SummonGhost(new Vector2(9, -5.5f), new Vector2(-1, 1));
         SummonGhost(new Vector2(6, -5.5f), new Vector2(-1, 1));
         SummonGhost(new Vector2(3, -5.5f), new Vector2(-1, 1));
         SummonGhost(new Vector2(0, -5.5f), new Vector2(-1, 1));
-        yield return new WaitForSeconds(1.25f);
+        yield return new WaitForSeconds(.8f);
         SummonGhost(new Vector2(-9, -5.5f), new Vector2(1, 1));
         SummonGhost(new Vector2(-6, -5.5f), new Vector2(1, 1));
         SummonGhost(new Vector2(-3, -5.5f), new Vector2(1, 1));
         SummonGhost(new Vector2(-0, -5.5f), new Vector2(1, 1));
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.8f);
         for (int i = 0; i < 12; i++)
         {
             SummonGhost(new Vector2(10 *Mathf.Cos(i*30), 10 * Mathf.Sin(i * 30)), new Vector2(-10 * Mathf.Cos(i * 30), -10 * Mathf.Sin(i * 30)));
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.7f);
         SummonGhost(new Vector2(15, 5.5f), new Vector2(-1, -2));
         SummonGhost(new Vector2(12, 5.5f), new Vector2(-1, -2));
         SummonGhost(new Vector2(9, 5.5f), new Vector2(-1, -2));
@@ -73,7 +79,7 @@ public class GhostSpawner : MonoBehaviour
         SummonGhost(new Vector2(-3, 5.5f), new Vector2(-1, -2));
         SummonGhost(new Vector2(-6, 5.5f), new Vector2(-1, -2));
         SummonGhost(new Vector2(-9, 5.5f), new Vector2(-1, -2));
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.6f);
         SummonGhost(new Vector2(15, 5.5f), new Vector2(1, -2));
         SummonGhost(new Vector2(12, 5.5f), new Vector2(1, -2));
         SummonGhost(new Vector2(9, 5.5f), new Vector2(1, -2));
@@ -83,12 +89,12 @@ public class GhostSpawner : MonoBehaviour
         SummonGhost(new Vector2(-3, 5.5f), new Vector2(1, -2));
         SummonGhost(new Vector2(-6, 5.5f), new Vector2(1, -2));
         SummonGhost(new Vector2(-9, 5.5f), new Vector2(1, -2));
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.6f);
         for (int i = 0; i < 12; i++)
         {
             SummonGhost(new Vector2(10 * Mathf.Cos(i * 30) + 3, 10 * Mathf.Sin(i * 30) + 1), new Vector2(-10 * Mathf.Cos(i * 30), -10 * Mathf.Sin(i * 30)));
         }
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(0.5f);
         for (int i = 0; i < 12; i++)
         {
             SummonGhost(new Vector2(10 * Mathf.Cos(i * 30) - 3, 10 * Mathf.Sin(i * 30) - 1), new Vector2(-10 * Mathf.Cos(i * 30), -10 * Mathf.Sin(i * 30)));
@@ -98,7 +104,7 @@ public class GhostSpawner : MonoBehaviour
     private void SummonGhost(Vector2 position, Vector2 velocity)
     {
         velocity.Normalize();
-        velocity *= 2.5f;
+        velocity *= 4f;
         GameObject ghost = Instantiate(this.ghost);
         ghosts.Add(ghost);
         ghost.SendMessage("init", position);
