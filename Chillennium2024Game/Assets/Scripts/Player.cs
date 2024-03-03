@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -245,11 +244,6 @@ public class Player : MonoBehaviour
         if (!tombstoneNear && Input.GetKeyDown(KeyCode.Space))
         {
             AudioSource.PlayClipAtPoint(invalid_build, new Vector3(0, 0, 0));
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            tombstone = TombstoneType.follow;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
