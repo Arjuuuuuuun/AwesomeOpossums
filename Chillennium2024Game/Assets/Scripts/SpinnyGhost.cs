@@ -19,13 +19,13 @@ public class SpinnyGhost : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        AudioSource.PlayClipAtPoint(bigTowerShoot, Vector3.zero);
+
 
         sprite = GetComponent<SpriteRenderer>();
         sprite.enabled = false;
         rb = GetComponent<Rigidbody2D>();
         sprite.enabled = true;
-
+        AudioSource.PlayClipAtPoint(bigTowerShoot, Vector3.zero);
 
     }
 
