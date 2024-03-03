@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Priest : MonoBehaviour
@@ -78,8 +79,9 @@ public class Priest : MonoBehaviour
         foreach (Collider2D collider in colliders)
         {
             // Check if the collider's GameObject name matches the condition
-            if (collider.gameObject.name == "GhostBullet" || collider.gameObject.name == "GhostBulletFurth")
+            if (collider.gameObject.name == "Red" || collider.gameObject.name == "Blue")
             {
+                Debug.Log("Destroy!");
                 // Destroy the collider's GameObject
                 Destroy(collider.gameObject);
             }
