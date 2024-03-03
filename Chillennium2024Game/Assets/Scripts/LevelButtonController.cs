@@ -5,17 +5,6 @@ using UnityEngine.UI;
 
 public class LevelButtonController : MonoBehaviour
 {
-    private Button b;
-    // Start is called before the first frame update
-    void Start()
-    {
-        b = GetComponent<Button>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        b.enabled = !Spawner.in_level;
-        Debug.Log(b.enabled ? "enabled" : "not enabled");
-    }
+    [SerializeField] private Button b;
+    void Update(){b.interactable = !Spawner.in_level;}
 }

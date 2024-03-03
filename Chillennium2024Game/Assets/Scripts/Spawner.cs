@@ -11,15 +11,10 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        headManager = GameObject.FindGameObjectWithTag("HeadManager");
-        StartLevel(0);
+        StartLevel(HeadManager.instance.level_counter);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+   
 
     void StartLevel(int level)
     {
@@ -59,9 +54,22 @@ public class Spawner : MonoBehaviour
         enemy.transform.position = new Vector3(-10.57f,-0.75f,0);
         enemyList.Add(enemy);
     }
+
+    void StopCos()
+    {
+        StopAllCoroutines();
+    }
+
     IEnumerator LevelOne()
     {
-
+        yield return new WaitUntil(() => TextManager.readyForLevel2);
+        yield return new WaitUntil(() => Player.life == Player.Life.Alive);
+        in_level = false;
+        ++HeadManager.instance.level_counter;
+    }
+    IEnumerator LevelTwo()
+    {
+      
         List<GameObject> list = new List<GameObject>();
 
         for (int i = 0; i < 5; ++i)
@@ -84,18 +92,25 @@ public class Spawner : MonoBehaviour
                         break;
                     }
                 }
-                Debug.Log(num_alive);
                 if (num_alive == 0)
                     break;
                 yield return new WaitForSeconds(2);
 
             }
+
+
+        yield return new WaitUntil(() => Player.life == Player.Life.Alive);
+        GameObject[] bullets = GameObject.FindGameObjectsWithTag("GhostBullet");
+        foreach (GameObject bullet in bullets)
+        {
+            GameObject.Destroy(bullet);
+        }
         in_level = false;
         ++HeadManager.instance.level_counter;
-        headManager.SendMessage("LevelComplete");
     }
 
-    IEnumerator LevelTwo()
+
+    IEnumerator LevelThree()
     {
 
         List<GameObject> list = new List<GameObject>();
@@ -130,14 +145,17 @@ public class Spawner : MonoBehaviour
             yield return new WaitForSeconds(2);
 
         }
+        yield return new WaitUntil(() => Player.life == Player.Life.Alive);
+        GameObject[] bullets = GameObject.FindGameObjectsWithTag("GhostBullet");
+        foreach (GameObject bullet in bullets)
+        {
+            GameObject.Destroy(bullet);
+        }
         ++HeadManager.instance.level_counter;
         in_level = false;
-
-
-        headManager.SendMessage("LevelComplete");
     }
 
-    IEnumerator LevelThree()
+    IEnumerator LevelFour()
     {
 
         List<GameObject> list = new List<GameObject>();
@@ -202,10 +220,13 @@ public class Spawner : MonoBehaviour
             yield return new WaitForSeconds(2);
 
         }
-
+        yield return new WaitUntil(() => Player.life == Player.Life.Alive);
+        GameObject[] bullets = GameObject.FindGameObjectsWithTag("GhostBullet");
+        foreach (GameObject bullet in bullets)
+        {
+            GameObject.Destroy(bullet);
+        }
         ++HeadManager.instance.level_counter;
         in_level = false;
-
-        headManager.SendMessage("LevelComplete");
     }
 }

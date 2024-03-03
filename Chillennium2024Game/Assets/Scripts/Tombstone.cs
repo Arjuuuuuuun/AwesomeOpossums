@@ -116,7 +116,6 @@ public class Tombstone : MonoBehaviour
                             break;
                         case(Player.TombstoneType.bullet):
                             anime.SetBool("Colour", true); anime.enabled = true;
-                            Debug.Log("Red Tower Built");
                             GameObject.Find("TextManager").SendMessage("RedTowerBuild");
                             type = TowerType.Bullet;
                             break;
