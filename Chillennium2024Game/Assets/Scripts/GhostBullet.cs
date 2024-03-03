@@ -23,7 +23,7 @@ public class GhostBullet : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         sprite.enabled = false;
         rb = GetComponent<Rigidbody2D>();
-        Collider2D []colliders = Physics2D.OverlapCircleAll(transform.position, 100, layerMask);
+        Collider2D []colliders = Physics2D.OverlapCircleAll(transform.position, 200, layerMask);
         Tuple<float, GameObject> val;
         if (!targetingFurthest) {
             val = new Tuple<float, GameObject>(math.INFINITY, null);
@@ -39,7 +39,7 @@ public class GhostBullet : MonoBehaviour
             {
                 val = new Tuple<float, GameObject> (dist, colliders[i].gameObject);
             }    
-            else if(dist > val.Item1)
+            else if(dist > val.Item1 && targetingFurthest)
             {
                 val = new Tuple<float, GameObject>(dist, colliders[i].gameObject);
             }
@@ -86,7 +86,7 @@ public class GhostBullet : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.SendMessage("TakeDamage", damage);
+            collision.gameObject.SendMessage("TakeDamage", 1);
             GameObject.Destroy(this.gameObject);
         }
         if (collision.gameObject.CompareTag("Ghost"))
