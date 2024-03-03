@@ -178,6 +178,7 @@ public class Spawner : MonoBehaviour
             GameObject.Destroy(bullet);
         }
         ++HeadManager.instance.level_counter;
+        GameObject.Find("Player").SendMessage("Reset");
         in_level = false;
     }
 

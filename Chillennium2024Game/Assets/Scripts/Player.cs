@@ -234,6 +234,11 @@ public class Player : MonoBehaviour
             tombstoneNear = false;
         }
     }
+    private void Reset()
+    {
+        health = max_health;
+        NumTimesDead = 0;
+    }
 
     private void Update()
     {
