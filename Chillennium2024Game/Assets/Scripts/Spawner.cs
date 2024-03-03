@@ -6,12 +6,14 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject enemy;
     GameObject headManager;
+    public bool in_level;
 
     // Start is called before the first frame update
     void Start()
     {
+
         headManager = GameObject.FindGameObjectWithTag("HeadManager");
-        StartLevel(2);
+        StartLevel(0);
     }
 
     // Update is called once per frame
@@ -22,6 +24,7 @@ public class Spawner : MonoBehaviour
 
     void StartLevel(int level)
     {
+        in_level = true;
         switch (level)
         {
             case 0:
@@ -88,8 +91,8 @@ public class Spawner : MonoBehaviour
                 yield return new WaitForSeconds(2);
 
             }
-            
-       
+        in_level = false;
+        ++HeadManager.instance.level_counter;
         headManager.SendMessage("LevelComplete");
     }
 
@@ -128,6 +131,8 @@ public class Spawner : MonoBehaviour
             yield return new WaitForSeconds(2);
 
         }
+        ++HeadManager.instance.level_counter;
+        in_level = false;
 
 
         headManager.SendMessage("LevelComplete");
@@ -199,6 +204,8 @@ public class Spawner : MonoBehaviour
 
         }
 
+        ++HeadManager.instance.level_counter;
+        in_level = false;
 
         headManager.SendMessage("LevelComplete");
     }
