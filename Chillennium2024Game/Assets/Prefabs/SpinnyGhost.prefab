@@ -164,3 +164,4 @@ MonoBehaviour:
   speed: 2
   enemyDamage: 7
   health: 2
+  bigTowerShoot: {fileID: 8300000, guid: ab35de8180ead9743bbda638532b5190, type: 3}
