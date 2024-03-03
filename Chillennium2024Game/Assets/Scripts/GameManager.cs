@@ -28,6 +28,10 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Game Over");
     }
 
-    public void NextLevel() => GameObject.Find("Spawner").GetComponent<Spawner>().SendMessage("StartLevel", HeadManager.instance.level_counter);
+    public void NextLevel()
+    {
+        GameObject.Find("TextManager").SendMessage("StartWave");
+        GameObject.Find("Spawner").GetComponent<Spawner>().SendMessage("StartLevel", HeadManager.instance.level_counter);
+    }
 
 }
