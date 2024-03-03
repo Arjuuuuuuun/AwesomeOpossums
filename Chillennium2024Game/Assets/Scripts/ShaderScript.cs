@@ -15,7 +15,7 @@ public class ShaderScrpit : MonoBehaviour
     }
 
     void Damage(){
-        StartCoroutine(Flash());
+        //StartCoroutine(Flash());
 
     }
     IEnumerator Flash()
