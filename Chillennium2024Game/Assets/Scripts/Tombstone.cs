@@ -45,12 +45,11 @@ public class Tombstone : MonoBehaviour
 
     void Update()
     {
-
         switch (state) {
             case TombstoneState.notActive:
                 anime.enabled = false;
                 skull.GetComponent<SpriteRenderer>().sprite = flameless_skull;
-                if (playerNear && Input.GetKeyDown(KeyCode.Space))
+                if (playerNear && Input.GetKeyDown(KeyCode.Space) && Player.life == Player.Life.Alive)
                 {
                    StartCoroutine(ActiveTimer());
                     switch (Player.tombstone)
@@ -110,7 +109,16 @@ public class Tombstone : MonoBehaviour
     {
         bulCanFire = false;
         yield return new WaitForSeconds(bulFireRate);
+<<<<<<< HEAD
+        for (int i = 0; i < 360; i += 90)
+        {
+            yield return new WaitUntil(() => Player.life == Player.Life.Alive);
+            GameObject b = Instantiate(bulBullet, this.transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(0.5f);
+        }
+=======
         GameObject b = Instantiate(bulBullet, this.transform.position, Quaternion.identity);
+>>>>>>> cad4475f6d68964cdab4db2f0fc27c1a9343b8d1
         bulCanFire = true;
     }
 
