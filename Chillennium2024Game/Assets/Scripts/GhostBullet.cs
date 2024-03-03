@@ -81,6 +81,11 @@ public class GhostBullet : MonoBehaviour
             }
         }
 
+        if(Player.life == Player.Life.Dead)
+        {
+            Destroy(this.gameObject);
+        }
+
 
     }
 
