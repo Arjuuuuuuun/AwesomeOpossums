@@ -132,6 +132,7 @@ public class Spawner : MonoBehaviour
             GameObject.Destroy(bullet);
         }
         in_level = false;
+        GameObject.Find("Player").SendMessage("Reset");
         ++HeadManager.instance.level_counter;
     }
 
@@ -233,6 +234,7 @@ public class Spawner : MonoBehaviour
             GameObject.Destroy(bullet);
         }
         ++HeadManager.instance.level_counter;
+        GameObject.Find("Player").SendMessage("Reset");
         in_level = false;
     }
 
@@ -249,19 +251,19 @@ public class Spawner : MonoBehaviour
                 yield return new WaitUntil(() => Player.life == Player.Life.Alive);
                 SpawnEnemyLeft(ref list);
                 SpawnEnemyRight(ref list);
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(4f);
 
             }
             yield return new WaitUntil(() => Player.life == Player.Life.Alive);
             yield return new WaitForSeconds(12f);
             SpawnPriestRight(ref list);
-            for (int i = 0; i < 3; ++i)
+            for (int i = 0; i < 2; ++i)
             {
 
                 yield return new WaitUntil(() => Player.life == Player.Life.Alive);
                 SpawnEnemyRight(ref list);
                 SpawnEnemyLeft(ref list);
-                yield return new WaitForSeconds(4f);
+                yield return new WaitForSeconds(5f);
 
             }
             SpawnPriestRight(ref list);
@@ -292,6 +294,7 @@ public class Spawner : MonoBehaviour
             GameObject.Destroy(bullet);
         }
         ++HeadManager.instance.level_counter;
+        GameObject.Find("Player").SendMessage("Reset");
         in_level = false;
     }
 
@@ -326,6 +329,7 @@ public class Spawner : MonoBehaviour
             SpawnPriestRight(ref list);
             SpawnPriestLeft(ref list);
             yield return new WaitUntil(() => Player.life == Player.Life.Alive);
+            yield return new WaitForSeconds(15f);
         }
         while (true)
         {
@@ -350,6 +354,7 @@ public class Spawner : MonoBehaviour
             GameObject.Destroy(bullet);
         }
         ++HeadManager.instance.level_counter;
+        GameObject.Find("Player").SendMessage("Reset");
         in_level = false;
     }
 
@@ -357,26 +362,26 @@ public class Spawner : MonoBehaviour
     {
 
         List<GameObject> list = new List<GameObject>();
-        for (int j = 0; j < 3; ++j)
+        for (int j = 0; j < 4; ++j)
         {
-            SpawnPriestLeft(ref list);
-            for (int i = 0; i < 3; ++i)
+            for (int i = 0; i < 4; ++i)
             {
 
                 yield return new WaitUntil(() => Player.life == Player.Life.Alive);
                 SpawnEnemyLeft(ref list);
                 SpawnEnemyRight(ref list);
+                SpawnPriestLeft(ref list);
                 yield return new WaitForSeconds(2f);
 
             }
             yield return new WaitUntil(() => Player.life == Player.Life.Alive);
-            yield return new WaitForSeconds(12f);
-            SpawnPriestRight(ref list);
-            for (int i = 0; i < 3; ++i)
+            yield return new WaitForSeconds(15f);
+            for (int i = 0; i < 2; ++i)
             {
 
                 yield return new WaitUntil(() => Player.life == Player.Life.Alive);
                 SpawnEnemyRight(ref list);
+                SpawnPriestRight(ref list);
                 SpawnEnemyLeft(ref list);
                 yield return new WaitForSeconds(4f);
 
@@ -408,6 +413,7 @@ public class Spawner : MonoBehaviour
             GameObject.Destroy(bullet);
         }
         ++HeadManager.instance.level_counter;
+        GameObject.Find("Player").SendMessage("Reset");
         in_level = false;
     }
 }
