@@ -150,7 +150,7 @@ MonoBehaviour:
   radGhostInitDelay: 2
   radGhostSpawnRate: 8
   bulBullet: {fileID: 5527106099050775478, guid: 0fa685d225ba97f4984e808f4887b984, type: 3}
-  bulFireRate: 3
+  bulFireRate: 4
   bulTimeBeforeFirstFire: 2
   skull: {fileID: 7776186048733560310}
   flameless_skull: {fileID: 21300000, guid: 8eb9df012aa1f074299d57adef575a50, type: 3}
