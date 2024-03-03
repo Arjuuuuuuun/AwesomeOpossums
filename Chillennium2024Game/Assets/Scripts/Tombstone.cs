@@ -104,10 +104,14 @@ public class Tombstone : MonoBehaviour
                     {
                         case(Player.TombstoneType.radial):
                             anime.SetBool("Colour", false); anime.enabled = true;
+                            radCanSpawnGhost = true;    
+                            currentHealth = maxHealth;
                             type = TowerType.Radial;
                             break;
                         case(Player.TombstoneType.bullet):
                             anime.SetBool("Colour", true); anime.enabled = true;
+                            currentHealth = maxHealth;
+                            bulCanFire = true;
                             GameObject.Find("TextManager").SendMessage("RedTowerBuild");
                             type = TowerType.Bullet;
                             break;
