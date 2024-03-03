@@ -126,6 +126,10 @@ public class Player : MonoBehaviour
 
                 if (health < 0)
                 {
+                    if(HeadManager.instance.level_counter == 1)
+                    {
+                        StartCoroutine("RealDead");
+                    }
                     StartCoroutine("Dead");
                 }
             }
@@ -185,7 +189,7 @@ public class Player : MonoBehaviour
 
     IEnumerator RealDead()
     {
-        Debug.Log("end of game");
+        GameObject.Find("Spawner").SendMessage("StopCos");
         GameObject.Find("Game Manager").SendMessage("EndGame");
         yield return new WaitForSeconds(100);
 
