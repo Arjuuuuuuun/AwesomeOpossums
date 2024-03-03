@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e580145219f2f4881616360d6bb8fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destructionRadius: 3
+  destructionRadius: 2
 --- !u!114 &4072397052913748503
 MonoBehaviour:
   m_ObjectHideFlags: 0
