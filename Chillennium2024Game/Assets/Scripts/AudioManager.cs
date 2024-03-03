@@ -67,8 +67,8 @@ public class AudioManager : MonoBehaviour
                     StartCoroutine("fadeIn", LevelTheme);
                     //DeadTheme.volume = 0f;
                     StartCoroutine("fadeOut", DeadTheme);
-                    Heartbeat.volume = ((2f - Player.health) / 2f) * 0.2f;
                 }
+                Heartbeat.volume = ((2f - Player.health) / 2f) * 0.2f;
 
                 swapper = true;
             }
