@@ -24,6 +24,9 @@ public class Tombstone : MonoBehaviour
     [SerializeField] float bulFireRate;
     [SerializeField] float bulTimeBeforeFirstFire;
 
+    [SerializeField] AudioClip smallTowerShoot;
+    [SerializeField] AudioClip bigTowerShoot;
+
     [SerializeField] private GameObject skull;
 
     private Animator anime;
@@ -138,16 +141,6 @@ public class Tombstone : MonoBehaviour
     }
 
 
-
-   
-    IEnumerator CheckPlayerState()
-    {
-        while (true)
-        {
-            yield return new WaitUntil(() => Player.life == Player.Life.Alive);
-
-        }
-    }
     void ActivateFire()
     {
         switch (type)
@@ -174,6 +167,7 @@ public class Tombstone : MonoBehaviour
     {
         bulCanFire = false;
         yield return new WaitForSeconds(bulTimeBeforeFirstFire);
+        AudioSource.PlayClipAtPoint(smallTowerShoot, Vector3.zero);
         GameObject b = Instantiate(bulBullet, this.transform.position, Quaternion.identity);
         b = Instantiate(bulBulletFurth, this.transform.position, Quaternion.identity);
         yield return new WaitForSeconds(bulFireRate);
@@ -184,6 +178,7 @@ public class Tombstone : MonoBehaviour
     {
         radCanSpawnGhost = false;
         yield return new WaitForSeconds(radGhostInitDelay);
+        AudioSource.PlayClipAtPoint(bigTowerShoot, Vector3.zero);
         GameObject b = Instantiate(radGhost, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
         yield return new WaitForSeconds(radGhostSpawnRate);
         radCanSpawnGhost = true;
