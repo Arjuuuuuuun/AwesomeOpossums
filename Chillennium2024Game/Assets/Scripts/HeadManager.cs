@@ -6,6 +6,7 @@ public class HeadManager : MonoBehaviour
 {
     public static HeadManager instance;
     public int level_counter;
+    public int text_counter;
     
     private void Awake()
     {
@@ -17,6 +18,7 @@ public class HeadManager : MonoBehaviour
 
         }
         level_counter = 0;
+        text_counter = 0;
         instance = this;
         DontDestroyOnLoad(gameObject);
     }
