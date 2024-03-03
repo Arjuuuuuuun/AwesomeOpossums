@@ -93,7 +93,12 @@ public class Priest : MonoBehaviour
         }
     }
 
-
+    IEnumerator Freeze(int freeze_time)
+    {
+        cooldown = true;
+        yield return new WaitForSeconds(freeze_time);
+        cooldown = false;
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Center"))

@@ -97,6 +97,13 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    IEnumerator Freeze(int freeze_time)
+    {
+        cooldown = true;
+        yield return new WaitForSeconds(freeze_time);
+        cooldown = false;
+    }
+
     IEnumerator FlashRed()
     {
         sr.color = Color.red;
