@@ -213,7 +213,7 @@ public class Player : MonoBehaviour
     {
         if (!tombstoneNear && Input.GetKeyDown(KeyCode.Space))
         {
-            AudioSource.PlayClipAtPoint(invalid_build, new Vector3(0, 0, 0));
+            AudioSource.PlayClipAtPoint(invalid_build, new Vector3(0, 0, 10));
         }
     }
 
