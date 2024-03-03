@@ -149,7 +149,14 @@ public class Player : MonoBehaviour
         {
             GameObject.Destroy(enemy); 
         }
-        GameObject.Find("GhostManager").SendMessage("GhostMode");
+        GameObject[] bullets = GameObject.FindGameObjectsWithTag("GhostBullet");
+        foreach (GameObject bullet in bullets)
+        {
+            GameObject.Destroy(bullet);
+        }
+
+
+            GameObject.Find("GhostManager").SendMessage("GhostMode");
         dead_health = max_dead_health;
         life = Life.Dead;
         renderer.sprite = dead_sprite;

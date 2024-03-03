@@ -20,6 +20,7 @@ public class Tombstone : MonoBehaviour
 
     bool bulCanFire = true;
     [SerializeField] GameObject bulBullet;
+    [SerializeField] GameObject bulBulletFurth;
     [SerializeField] float bulFireRate;
     [SerializeField] float bulTimeBeforeFirstFire;
 
@@ -168,8 +169,10 @@ public class Tombstone : MonoBehaviour
     IEnumerator BulFire()
     {
         bulCanFire = false;
-        yield return new WaitForSeconds(bulFireRate);
+        yield return new WaitForSeconds(bulTimeBeforeFirstFire);
         GameObject b = Instantiate(bulBullet, this.transform.position, Quaternion.identity);
+        b = Instantiate(bulBulletFurth, this.transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(bulFireRate);
         bulCanFire = true;
     }
 

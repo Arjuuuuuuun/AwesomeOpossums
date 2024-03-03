@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6381204724965688887}
   - component: {fileID: 1402049302877142407}
   m_Layer: 0
-  m_Name: GhostBullet
+  m_Name: GhostBulletFurth
   m_TagString: GhostBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -167,4 +167,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 640
   ghostHealth: 2
-  targetingFurthest: 0
+  targetingFurthest: 1
