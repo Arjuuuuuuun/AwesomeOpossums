@@ -16,20 +16,20 @@ public class TextManager : MonoBehaviour
     }
     void Update()
     {
-        switch (HeadManager.instance.level_counter)
+        switch (HeadManager.instance.text_counter)
         {
             case 0:
                 tutorialText.text = "Use the WASD keys to move!";
                 if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
                 {
-                    HeadManager.instance.level_counter = 1;
+                    HeadManager.instance.text_counter = 1;
                 }
                 break;
             case 1:
                 tutorialText.text = "Press space next to a tombstone to build a red tower";
                 if (is_red_tower_built)
                 {
-                    HeadManager.instance.level_counter = 2;
+                    HeadManager.instance.text_counter = 2;
                 }
                 break;
             case 2:
