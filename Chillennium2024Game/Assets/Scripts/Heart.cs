@@ -7,8 +7,8 @@ public class Heart : MonoBehaviour
 {
 
     [SerializeField] SpriteRenderer heart1;
-    [SerializeField] SpriteRenderer heart3;
     [SerializeField] SpriteRenderer heart2;
+    [SerializeField] SpriteRenderer heart3;
     [SerializeField] SpriteRenderer logo;
 
     [SerializeField] Sprite full_heart;

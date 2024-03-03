@@ -27,4 +27,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Game Over");
     }
+
+    public void NextLevel() => GameObject.Find("Spawner").GetComponent<Spawner>().SendMessage("StartLevel", HeadManager.instance.level_counter);
+
 }
