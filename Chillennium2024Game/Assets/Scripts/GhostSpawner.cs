@@ -134,7 +134,7 @@ public class GhostSpawner : MonoBehaviour
     {
         velocity.Normalize();
         velocity *= 2f;
-        GameObject ghost = Instantiate(this.ghost);
+        GameObject ghost = Instantiate(this.ghost,new Vector3(200f,200f,0),Quaternion.identity);
         ghosts.Add(ghost);
         ghost.SendMessage("init", position);
         ghost.SendMessage("init2", velocity);

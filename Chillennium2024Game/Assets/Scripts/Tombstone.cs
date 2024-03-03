@@ -127,6 +127,11 @@ public class Tombstone : MonoBehaviour
                 }
                 break;
             case TombstoneState.Active:
+                if(Player.life == Player.Life.Dead)
+                {
+                    state = TombstoneState.notActive;
+                    break;
+                }
                 Color color3 = healthBar.color;
                 color3.a = 1.0f;
                 healthBar.color = color3;
@@ -167,7 +172,9 @@ public class Tombstone : MonoBehaviour
         bulCanFire = false;
         yield return new WaitForSeconds(bulTimeBeforeFirstFire);
         GameObject b = Instantiate(bulBullet, this.transform.position, Quaternion.identity);
+        b.name = "Red";
         b = Instantiate(bulBulletFurth, this.transform.position, Quaternion.identity);
+        b.name = "Red";
         yield return new WaitForSeconds(bulFireRate);
         bulCanFire = true;
     }
@@ -178,6 +185,7 @@ public class Tombstone : MonoBehaviour
         yield return new WaitForSeconds(radGhostInitDelay);
         AudioSource.PlayClipAtPoint(bigTowerShoot, Vector3.zero);
         GameObject b = Instantiate(radGhost, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
+        b.name = "Blue";
         yield return new WaitForSeconds(radGhostSpawnRate);
         radCanSpawnGhost = true;
     }
