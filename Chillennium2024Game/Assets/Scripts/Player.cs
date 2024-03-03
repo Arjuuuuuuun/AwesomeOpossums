@@ -36,7 +36,6 @@ public class Player : MonoBehaviour
     // rendering
     private new SpriteRenderer renderer;
     [SerializeField] private Sprite alive_sprite;
-    [SerializeField] private Sprite dead_sprite;
     private Animator anime;
 
     //audio
@@ -164,7 +163,6 @@ public class Player : MonoBehaviour
             GameObject.Find("GhostManager").SendMessage("GhostMode");
         dead_health = max_dead_health;
         life = Life.Dead;
-        renderer.sprite = dead_sprite;
 
         yield return new WaitForSeconds(NumTimesDead * 2 + 3);
         ++NumTimesDead;
