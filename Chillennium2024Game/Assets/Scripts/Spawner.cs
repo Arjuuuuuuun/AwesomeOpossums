@@ -11,15 +11,11 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        headManager = GameObject.FindGameObjectWithTag("HeadManager");
+        headManager = GameObject.Find("HeadManager");
         StartLevel(0);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+   
 
     void StartLevel(int level)
     {
@@ -59,7 +55,15 @@ public class Spawner : MonoBehaviour
         enemy.transform.position = new Vector3(-10.57f,-0.75f,0);
         enemyList.Add(enemy);
     }
+
     IEnumerator LevelOne()
+    {
+        yield return new WaitForSeconds(1);
+        in_level = false;
+        ++HeadManager.instance.level_counter;
+        headManager.SendMessage("LevelComplete");
+    }
+    IEnumerator LevelTwo()
     {
 
         List<GameObject> list = new List<GameObject>();
@@ -95,7 +99,7 @@ public class Spawner : MonoBehaviour
         headManager.SendMessage("LevelComplete");
     }
 
-    IEnumerator LevelTwo()
+    IEnumerator LevelThree()
     {
 
         List<GameObject> list = new List<GameObject>();
@@ -137,7 +141,7 @@ public class Spawner : MonoBehaviour
         headManager.SendMessage("LevelComplete");
     }
 
-    IEnumerator LevelThree()
+    IEnumerator LevelFour()
     {
 
         List<GameObject> list = new List<GameObject>();
