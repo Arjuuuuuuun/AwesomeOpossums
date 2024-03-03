@@ -11,10 +11,13 @@ public class Priest : MonoBehaviour
     // Start is called before the first frame update
 
     [SerializeField] private int health;
+    [SerializeField] private float overlapRadius;
 
     private Animator anime;
     private SpriteRenderer sr;
     private bool cooldown;
+
+    [SerializeField] GameObject circle;
 
     void Start()
     {
@@ -69,6 +72,18 @@ public class Priest : MonoBehaviour
             anime.enabled = false;
             rb.velocity = new Vector2(0, 0);
         }
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + new Vector3(0,0.1f,0), overlapRadius);
+
+        // Loop through all colliders detected
+        foreach (Collider2D collider in colliders)
+        {
+            // Check if the collider's GameObject name matches the condition
+            if (collider.gameObject.name == "GhostBullet" || collider.gameObject.name == "GhostBulletFurth")
+            {
+                // Destroy the collider's GameObject
+                Destroy(collider.gameObject);
+            }
+        }
     }
 
 
@@ -79,10 +94,7 @@ public class Priest : MonoBehaviour
             collision.gameObject.SendMessage("TakeDamage", 1);
             GameObject.Destroy(this.gameObject);
         }
-        if(collision.gameObject.name == "GhostBullet" || collision.gameObject.name == "GhostBulletFurth")
-        {
-            GameObject.Destroy(collision.gameObject);
-        }
+
     }
 
     void Rotate(int direction)
