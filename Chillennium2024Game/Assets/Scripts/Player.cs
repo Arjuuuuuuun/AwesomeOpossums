@@ -143,7 +143,12 @@ public class Player : MonoBehaviour
 
     IEnumerator Dead()
     {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
+        foreach (GameObject enemy in enemies)
+        {
+            GameObject.Destroy(enemy); 
+        }
         GameObject.Find("GhostManager").SendMessage("GhostMode");
         dead_health = max_dead_health;
         life = Life.Dead;
@@ -153,12 +158,7 @@ public class Player : MonoBehaviour
         ++NumTimesDead;
         health = max_health;
         life = Life.Alive;
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        foreach (GameObject enemy in enemies)
-        {
-            enemy.SendMessage("Cooldown", SendMessageOptions.DontRequireReceiver);
-        }
+        
         renderer.sprite = alive_sprite;
 
     }

@@ -28,8 +28,43 @@ public class Tombstone : MonoBehaviour
     private Animator anime;
     [SerializeField] private Sprite flameless_skull;
 
+    // Health
+    public SpriteRenderer healthBarFrame;
+    public SpriteRenderer healthBar;
+
+    private Vector3 HealthStartingPosition = new Vector3(0,-0.7f,0);
 
 
+    private float maxHealth = 100;
+    private float currentHealth;
+
+
+    private void UpdateHealthBar()
+    {
+        float healthPercentage = currentHealth / maxHealth;
+
+        // Update the color of the health bar from green to red based on health percentage
+        healthBar.color = Color.Lerp(Color.red, Color.green, healthPercentage);
+
+        if (currentHealth <= 0)
+        {
+            // Set the alpha value of the color to make the image transparent
+            Color currentColor = healthBar.color;
+            currentColor.a = 0.0f; // Set the alpha to 50% (0.0 to 1.0, where 0 is fully transparent and 1 is fully opaque)
+            healthBar.color = currentColor;
+        }
+        else
+        {
+            // Update the scale (width) of the health bar
+            healthBar.gameObject.transform.localScale = new Vector3(healthPercentage, .25f, 1f);
+
+            // Calculate the intended change in position
+            float newPositionX = (healthPercentage - 1) / 2 * HealthStartingPosition.x ;
+
+            // Add the intended change to the current local position
+            healthBar.gameObject.transform.localPosition = new Vector3(HealthStartingPosition.x + newPositionX, HealthStartingPosition.y, HealthStartingPosition.z);
+        }
+    }
 
 
     void Start()
@@ -40,6 +75,13 @@ public class Tombstone : MonoBehaviour
         skull.GetComponent<SpriteRenderer>().sprite = flameless_skull;
 
         state = TombstoneState.notActive;
+        Color color = healthBar.color;
+        color.a = 0.0f;
+        healthBar.color = color;
+        Color color2 = healthBarFrame.color;
+        color2.a = 0.0f;
+        healthBar.color = color2;
+        currentHealth = maxHealth;
 
     }
 
@@ -47,11 +89,18 @@ public class Tombstone : MonoBehaviour
     {
         switch (state) {
             case TombstoneState.notActive:
+                Color color = healthBar.color;
+                color.a = 0.0f;
+                healthBar.color = color;
+                Color color2 = healthBarFrame.color;
+                color2.a = 0.0f;
+                healthBarFrame.color = color2;
+
                 anime.enabled = false;
                 skull.GetComponent<SpriteRenderer>().sprite = flameless_skull;
-                if (playerNear && Input.GetKeyDown(KeyCode.Space) && Player.life == Player.Life.Alive)
+                if (playerNear && Input.GetKeyDown(KeyCode.Space))
                 {
-                   StartCoroutine(ActiveTimer());
+                   StartCoroutine("ActiveTimer");
                     switch (Player.tombstone)
                     {
                         case(Player.TombstoneType.radial):
@@ -71,10 +120,21 @@ public class Tombstone : MonoBehaviour
                 }
                 break;
             case TombstoneState.Active:
+                Color color3 = healthBar.color;
+                color3.a = 1.0f;
+                healthBar.color = color3;
+                Color color4 = healthBarFrame.color;
+                color4.a = 1.0f;
+                healthBarFrame.color = color4;
                 ActivateFire();
+
                 break;   
         }
     }
+
+
+
+   
     IEnumerator CheckPlayerState()
     {
         while (true)
@@ -117,7 +177,7 @@ public class Tombstone : MonoBehaviour
     {
         radCanSpawnGhost = false;
         yield return new WaitForSeconds(radGhostInitDelay);
-        GameObject b = Instantiate(radGhost, new Vector2(transform.position.x + 1.25f, transform.position.y - 1.25f), Quaternion.identity);
+        GameObject b = Instantiate(radGhost, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
         yield return new WaitForSeconds(radGhostSpawnRate);
         radCanSpawnGhost = true;
     }
@@ -141,8 +201,16 @@ public class Tombstone : MonoBehaviour
     IEnumerator ActiveTimer()
     {
         state = TombstoneState.Active;
-        yield return new WaitForSeconds(tombstoneAwakeTime);
+        for(int i = 0;i  < tombstoneAwakeTime;i++)
+        {
+            currentHealth -= maxHealth / tombstoneAwakeTime;
+            UpdateHealthBar();
+            yield return new WaitForSeconds(1);
+        }
+        currentHealth = maxHealth;
+
         state = TombstoneState.notActive;
+
     }
 
 
