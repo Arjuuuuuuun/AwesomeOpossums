@@ -109,15 +109,8 @@ public class Spawner : MonoBehaviour
         ++HeadManager.instance.level_counter;
     }
 
-    IEnumerator LevelThree()
-    {
-        yield return new WaitUntil(() => TextManager.readyForLevel4);
-        yield return new WaitUntil(() => Player.life == Player.Life.Alive);
-        in_level = false;
-        ++HeadManager.instance.level_counter;
-    }
 
-    IEnumerator LevelFour()
+    IEnumerator LevelThree()
     {
 
         List<GameObject> list = new List<GameObject>();
@@ -162,7 +155,7 @@ public class Spawner : MonoBehaviour
         in_level = false;
     }
 
-    IEnumerator LevelFive()
+    IEnumerator LevelFour()
     {
 
         List<GameObject> list = new List<GameObject>();

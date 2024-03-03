@@ -172,7 +172,7 @@ public class Player : MonoBehaviour
         switch (NumTimesDead)
         {
             case 0:
-                waitTime = 8f;
+                waitTime = 5f;
                 break;
             case 1:
                 waitTime = 9f;

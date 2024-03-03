@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class TextManager : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class TextManager : MonoBehaviour
     public static bool readyForLevel2 = false;
     public static bool readyForLevel4 = false;
     public TMP_Text tutorialText;
-
+    public Button button;
     private void Start()
     {
         is_wave_started = false;
@@ -56,6 +57,7 @@ public class TextManager : MonoBehaviour
                     HeadManager.instance.text_counter = 4;
                     if (!inDelay)
                     {
+                        is_wave_started = false;
                         StartCoroutine(Delay(4));
                     }
                 }
@@ -70,14 +72,35 @@ public class TextManager : MonoBehaviour
 
                 break;
             case 5:
-                tutorialText.text = "Your life force is tied to both yourself and the ritual site, make sure to protect them both.";
+                tutorialText.text = "Your life is tied to both you and your ritual site, protect them both.";
                 if (HeadManager.instance.level_counter == 2)
                 {
                     HeadManager.instance.text_counter = 6;
+                    if (!inDelay)
+                    {
+                        StartCoroutine(Delay(6));
+                    }
                 }
                 break;
             case 6:
-                tutorialText.text = "Watch out!  When all your lives are lost, vengeful spirits will hunt your soul until balance is restored.  Hang in there!";
+                button.interactable = false;
+                tutorialText.text = "When all your lives are lost, vengeful spirits will hunt your soul until balance is restored.";
+                if (delay)
+                {
+                    delay = false;
+                    HeadManager.instance.text_counter = 7;
+                }
+                break;
+            case 7:
+                button.interactable = true;
+                tutorialText.text = "As long as you can avoid the spirits you will be brought back with a new life, Hang in there!";
+                if (is_wave_started)
+                {
+                    HeadManager.instance.text_counter = 8;
+                }
+                break;
+            case 8:
+                tutorialText.text = "Be careful! More sheriffs are coming from both sides";
                 break;
         }
     }
