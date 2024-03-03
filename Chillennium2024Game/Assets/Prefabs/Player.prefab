@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   max_health: 3
-  max_dead_health: 10
+  max_dead_health: 1
   living_movement_speed: 5
   dead_movement_speed: 3
   alive_sprite: {fileID: 21300000, guid: dbf106e3bf79ec84ebf9196bb3431fda, type: 3}

@@ -163,3 +163,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   enemyDamage: 3
+  health: 2

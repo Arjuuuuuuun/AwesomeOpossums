@@ -57,9 +57,9 @@ public class Spawner : MonoBehaviour
 
         ArrayList list = new ArrayList();
 
-        for (int j = 0; j < 4; j++)
+        for (int j = 0; j < 7; j++)
         {
-            for (int i = 0; i < 3; ++i)
+            for (int i = 0; i < 5; ++i)
             {
                 SpawnEnemy(list);   
                 yield return new WaitUntil(() => Player.life == Player.Life.Alive);
@@ -67,7 +67,7 @@ public class Spawner : MonoBehaviour
                 
             }
             yield return new WaitUntil(() => Player.life == Player.Life.Alive);
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(6f);
         }
         while (true)
         {

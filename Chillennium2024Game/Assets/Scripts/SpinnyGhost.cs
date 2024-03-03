@@ -10,6 +10,7 @@ public class SpinnyGhost : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] int enemyDamage;
     private SpriteRenderer sprite;
+    [SerializeField] int health;
     void Awake()
     {
         if (Player.life == Player.Life.Dead)
@@ -49,7 +50,10 @@ public class SpinnyGhost : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.SendMessage("TakeDamage", enemyDamage);
-            GameObject.Destroy(this.gameObject);
+            if(--health == 0)
+            {
+                GameObject.Destroy(this.gameObject);
+            }
         }
         if (collision.gameObject.CompareTag("Player"))
         {
