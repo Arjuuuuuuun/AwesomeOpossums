@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
 
     [SerializeField] private int health;
+    [SerializeField] AudioClip enemyDeathSound;
 
     private Animator anime;
     private SpriteRenderer sr;
@@ -91,6 +92,7 @@ public class Enemy : MonoBehaviour
         health -= damage;
         if (health < 0)
         {
+            AudioSource.PlayClipAtPoint(enemyDeathSound, Vector3.zero);
             Destroy(this.gameObject);
         }
     }

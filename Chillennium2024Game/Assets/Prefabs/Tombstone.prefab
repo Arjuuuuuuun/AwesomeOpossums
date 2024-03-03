@@ -252,6 +252,8 @@ MonoBehaviour:
   bulBulletFurth: {fileID: 5527106099050775478, guid: a89e6bbef2248714dbfde0b47d2acec0, type: 3}
   bulFireRate: 1.5
   bulTimeBeforeFirstFire: 0.5
+  smallTowerShoot: {fileID: 8300000, guid: 046c4dd3647801e45bb49ca3f0587f88, type: 3}
+  bigTowerShoot: {fileID: 8300000, guid: ab35de8180ead9743bbda638532b5190, type: 3}
   skull: {fileID: 7776186048733560310}
   flameless_skull: {fileID: 21300000, guid: 8eb9df012aa1f074299d57adef575a50, type: 3}
   healthBarFrame: {fileID: 4077337032181957817}

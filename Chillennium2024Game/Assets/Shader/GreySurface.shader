@@ -9,7 +9,7 @@ Shader "Custom/GreySurface"
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "RenderType"="Fade" }
         LOD 200
 
         CGPROGRAM
