@@ -73,13 +73,18 @@ public class Priest : MonoBehaviour
             anime.enabled = false;
             rb.velocity = new Vector2(0, 0);
         }
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + new Vector3(0,0.1f,0), overlapRadius);
+
+    }
+    private void FixedUpdate()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + new Vector3(0, 0.1f, 0), overlapRadius);
 
         // Loop through all colliders detected
         foreach (Collider2D collider in colliders)
         {
+            Debug.Log(collider.gameObject.name);
             // Check if the collider's GameObject name matches the condition
-            if (collider.gameObject.name == "Red" || collider.gameObject.name == "Blue")
+            if (collider.gameObject.name.ToString() == "Red" || collider.gameObject.name.ToString() == "Blue")
             {
                 Debug.Log("Destroy!");
                 // Destroy the collider's GameObject

@@ -211,7 +211,7 @@ MonoBehaviour:
   direction: 1
   speed: 0.5
   health: 3
-  overlapRadius: 0.32
+  overlapRadius: 1.5
   circle: {fileID: 0}
 --- !u!1 &5036036305264708329
 GameObject:
