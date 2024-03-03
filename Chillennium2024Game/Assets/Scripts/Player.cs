@@ -72,18 +72,10 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.Alpha2))
         {
-            if (tombstone == TombstoneType.radial)
-            {
-                AudioSource.PlayClipAtPoint(invalid_build, new Vector3(0, 0, 0));
-            }
             tombstone = TombstoneType.radial;
         }
         else if (Input.GetKey(KeyCode.Alpha1))
         {
-            if (tombstone == TombstoneType.bullet)
-            {
-                AudioSource.PlayClipAtPoint(invalid_build, new Vector3(0, 0, 0));
-            }
             tombstone = TombstoneType.bullet;
         }
 
@@ -220,6 +212,15 @@ public class Player : MonoBehaviour
     private void Update()
     {
         if (!tombstoneNear && Input.GetKeyDown(KeyCode.Space))
+        {
+            AudioSource.PlayClipAtPoint(invalid_build, new Vector3(0, 0, 0));
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1) && tombstone == TombstoneType.bullet)
+        {
+            AudioSource.PlayClipAtPoint(invalid_build, new Vector3(0, 0, 0));
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2) && tombstone == TombstoneType.radial)
         {
             AudioSource.PlayClipAtPoint(invalid_build, new Vector3(0, 0, 0));
         }
