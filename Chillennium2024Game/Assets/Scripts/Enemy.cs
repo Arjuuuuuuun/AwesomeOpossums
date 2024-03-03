@@ -105,8 +105,10 @@ public class Enemy : MonoBehaviour
     IEnumerator Cooldown()
     {
         cooldown = true;
+        sr.color = Color.blue;
         yield return new WaitForSeconds(5);
         cooldown = false;
+        sr.color = Color.white;
     }
 
 }
