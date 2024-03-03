@@ -173,7 +173,7 @@ public class Player : MonoBehaviour
             GameObject.Destroy(bullet);
         }
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         GameObject.Find("GhostManager").SendMessage("GhostMode");
         dead_health = max_dead_health;
         life = Life.Dead;

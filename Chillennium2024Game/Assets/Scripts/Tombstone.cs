@@ -23,8 +23,7 @@ public class Tombstone : MonoBehaviour
     [SerializeField] GameObject bulBulletFurth;
     [SerializeField] float bulFireRate;
     [SerializeField] float bulTimeBeforeFirstFire;
-    
-    [SerializeField] AudioClip bigTowerShoot;
+   
 
     [SerializeField] private GameObject skull;
 
@@ -172,7 +171,6 @@ public class Tombstone : MonoBehaviour
     {
         radCanSpawnGhost = false;
         yield return new WaitForSeconds(radGhostInitDelay);
-        AudioSource.PlayClipAtPoint(bigTowerShoot, Vector3.zero);
         GameObject b = Instantiate(radGhost, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
         b.name = "Blue";
         yield return new WaitForSeconds(radGhostSpawnRate);
