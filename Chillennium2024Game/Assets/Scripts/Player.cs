@@ -87,13 +87,11 @@ public class Player : MonoBehaviour
 
         if(x > 0)
         {
-            Debug.Log("left");
             anime.SetInteger("direction", 3);
             player_transform.localScale = new Vector3(1,1,1);
             
         } else if(x < 0)
         {
-            Debug.Log("right");
 
             anime.SetInteger("direction", 3);
             player_transform.localScale = new Vector3(-1, 1, 1);
