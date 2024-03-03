@@ -39,6 +39,11 @@ public class Player : MonoBehaviour
     [SerializeField] private Sprite dead_sprite;
     private Animator anime;
 
+    //audio
+    private bool tombstoneNear;
+    [SerializeField] private AudioClip invalid_build;
+
+
     void Awake()
     {
 
@@ -178,5 +183,29 @@ public class Player : MonoBehaviour
 
     }
 
+    //JANK AUDIO FIX
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Tombstone")
+        {
+            tombstoneNear = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Tombstone")
+        {
+            tombstoneNear = false;
+        }
+    }
+
+    private void Update()
+    {
+        if (!tombstoneNear && Input.GetKeyDown(KeyCode.Space))
+        {
+            AudioSource.PlayClipAtPoint(invalid_build, new Vector3(0, 0, 0));
+        }
+    }
 
 }

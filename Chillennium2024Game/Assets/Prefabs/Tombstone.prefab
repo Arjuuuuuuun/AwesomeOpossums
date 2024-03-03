@@ -256,6 +256,7 @@ MonoBehaviour:
   flameless_skull: {fileID: 21300000, guid: 8eb9df012aa1f074299d57adef575a50, type: 3}
   healthBarFrame: {fileID: 4077337032181957817}
   healthBar: {fileID: 3863406034417060483}
+  build: {fileID: 8300000, guid: 9196937826afd574fa30c02ee8a0d485, type: 3}
 --- !u!114 &4870310413942475879
 MonoBehaviour:
   m_ObjectHideFlags: 0

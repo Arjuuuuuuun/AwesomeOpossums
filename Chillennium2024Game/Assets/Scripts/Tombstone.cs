@@ -39,6 +39,9 @@ public class Tombstone : MonoBehaviour
     private float maxHealth = 100;
     private float currentHealth;
 
+    //Audio
+    [SerializeField] private AudioClip build;
+
 
     private void UpdateHealthBar()
     {
@@ -101,7 +104,8 @@ public class Tombstone : MonoBehaviour
                 skull.GetComponent<SpriteRenderer>().sprite = flameless_skull;
                 if (playerNear && Input.GetKeyDown(KeyCode.Space))
                 {
-                   StartCoroutine("ActiveTimer");
+                    AudioSource.PlayClipAtPoint(build, new Vector3(0, 0, 0));
+                    StartCoroutine("ActiveTimer");
                     switch (Player.tombstone)
                     {
                         case(Player.TombstoneType.radial):
