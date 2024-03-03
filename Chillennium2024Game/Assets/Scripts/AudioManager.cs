@@ -16,7 +16,6 @@ public class AudioManager : MonoBehaviour
     AudioSource IdleTheme;
     bool swapper;
     bool swapper2;
-    [SerializeField] private AudioClip invalid_build;
     // Start is called before the first frame update
     void Awake()
     {   

@@ -42,6 +42,7 @@ public class Player : MonoBehaviour
     //audio
     private bool tombstoneNear;
     [SerializeField] private AudioClip invalid_build;
+    [SerializeField] private AudioClip valid_build;
     [SerializeField] private AudioClip hurt;
 
 
@@ -251,6 +252,10 @@ public class Player : MonoBehaviour
             {
                 AudioSource.PlayClipAtPoint(invalid_build, new Vector3(0, 0, 0));
             }
+            else
+            {
+                AudioSource.PlayClipAtPoint(valid_build, new Vector3(0, 0, 0));
+            }
             tombstone = TombstoneType.radial;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -258,6 +263,10 @@ public class Player : MonoBehaviour
             if (tombstone == TombstoneType.bullet)
             {
                 AudioSource.PlayClipAtPoint(invalid_build, new Vector3(0, 0, 0));
+            }
+            else
+            {
+                AudioSource.PlayClipAtPoint(valid_build, new Vector3(0, 0, 0));
             }
             tombstone = TombstoneType.bullet;
         }
