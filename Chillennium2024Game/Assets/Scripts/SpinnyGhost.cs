@@ -21,6 +21,7 @@ public class SpinnyGhost : MonoBehaviour
         }
 
 
+
         sprite = GetComponent<SpriteRenderer>();
         sprite.enabled = false;
         rb = GetComponent<Rigidbody2D>();
@@ -31,8 +32,12 @@ public class SpinnyGhost : MonoBehaviour
 
     private void Update()
     {
+        if (Player.life == Player.Life.Dead)
+        {
+            GameObject.Destroy(this.gameObject);
+        }
 
-        Vector3 playerpos = GameObject.Find("Player").transform.position;
+            Vector3 playerpos = GameObject.Find("Player").transform.position;
         Vector2 vel;
         vel.x = (transform.localPosition - playerpos).x;
         vel.y = (transform.localPosition - playerpos).y;
