@@ -155,7 +155,7 @@ public class Player : MonoBehaviour
     IEnumerator IFrame()
     {
         iFrame = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         iFrame = false;
     }
     IEnumerator Dead()
