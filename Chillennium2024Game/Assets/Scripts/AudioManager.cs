@@ -9,10 +9,13 @@ public class AudioManager : MonoBehaviour
     [SerializeField] GameObject LevelThemeg;
     [SerializeField] GameObject Heartbeatg;
     [SerializeField] GameObject DeadThemeg;
+    [SerializeField] GameObject IdleThemeg;
     AudioSource Heartbeat;
     AudioSource LevelTheme;
     AudioSource DeadTheme;
+    AudioSource IdleTheme;
     bool swapper;
+    bool swapper2;
     [SerializeField] private AudioClip invalid_build;
     // Start is called before the first frame update
     void Awake()
@@ -20,10 +23,10 @@ public class AudioManager : MonoBehaviour
         LevelTheme = LevelThemeg.GetComponent<AudioSource>();
         Heartbeat = Heartbeatg.GetComponent<AudioSource>();
         DeadTheme = DeadThemeg.GetComponent<AudioSource>();
-        Heartbeat.Play();
-        LevelTheme.Play();
-        DeadTheme.Play();
+        IdleTheme = IdleThemeg.GetComponent<AudioSource>();
+        IdleTheme.Play();
         swapper = false;
+        swapper2 = false;
     }
 
     // Update is called once per frame
@@ -33,31 +36,53 @@ public class AudioManager : MonoBehaviour
         DeadTheme.timeSamples = LevelTheme.timeSamples;
         Heartbeat.timeSamples = LevelTheme.timeSamples;
 
-        if (Player.life == Player.Life.Dead)
+        if (Spawner.in_level)
         {
-            if (swapper)
+            if (swapper2)
             {
-                //LevelTheme.volume = 0f;
-                StartCoroutine("fadeOut", LevelTheme);
-                //DeadTheme.volume = .8f;
-                StartCoroutine("fadeIn", DeadTheme);
-                Heartbeat.volume = 0f;
-
+                IdleTheme.Stop();
+                Heartbeat.Play();
+                LevelTheme.Play();
+                DeadTheme.Play();
+                swapper2 = false;
             }
-            swapper = false;
+            if (Player.life == Player.Life.Dead)
+            {
+                if (swapper)
+                {
+                    //LevelTheme.volume = 0f;
+                    StartCoroutine("fadeOut", LevelTheme);
+                    //DeadTheme.volume = .8f;
+                    StartCoroutine("fadeIn", DeadTheme);
+                    Heartbeat.volume = 0f;
+
+                }
+                swapper = false;
+            }
+            else
+            {
+                if (!swapper)
+                {
+                    //LevelTheme.volume = .8f;
+                    StartCoroutine("fadeIn", LevelTheme);
+                    //DeadTheme.volume = 0f;
+                    StartCoroutine("fadeOut", DeadTheme);
+                    Heartbeat.volume = ((2f - Player.health) / 2f) * 0.2f;
+                }
+
+                swapper = true;
+            }
         }
         else
         {
-            if (!swapper)
+            if (!swapper2)
             {
-                //LevelTheme.volume = .8f;
-                StartCoroutine("fadeIn", LevelTheme);
-                //DeadTheme.volume = 0f;
-                StartCoroutine("fadeOut", DeadTheme);
-                Heartbeat.volume = ((2f - Player.health) / 2f) * 0.2f;
+                IdleTheme.Play();
+                Heartbeat.Stop();
+                LevelTheme.Stop();
+                DeadTheme.Stop();
+                swapper2 = true;
             }
-
-            swapper = true;
         }
 
     }

@@ -13,6 +13,11 @@ public class SpinnyGhost : MonoBehaviour
     [SerializeField] int health;
     void Awake()
     {
+        if (!Spawner.in_level)
+        {
+            Destroy(this.gameObject);
+        }
+
 
         sprite = GetComponent<SpriteRenderer>();
         sprite.enabled = false;

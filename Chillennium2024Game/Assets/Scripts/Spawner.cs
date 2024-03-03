@@ -225,4 +225,63 @@ public class Spawner : MonoBehaviour
         ++HeadManager.instance.level_counter;
         in_level = false;
     }
+
+    IEnumerator LevelFive()
+    {
+
+        List<GameObject> list = new List<GameObject>();
+        for (int j = 0; j < 2; ++j)
+        {
+            SpawnPriestLeft(ref list);
+            for (int i = 0; i < 2; ++i)
+            {
+
+                yield return new WaitUntil(() => Player.life == Player.Life.Alive);
+                SpawnEnemyLeft(ref list);
+                SpawnEnemyRight(ref list);
+                yield return new WaitForSeconds(2f);
+
+            }
+            yield return new WaitUntil(() => Player.life == Player.Life.Alive);
+            yield return new WaitForSeconds(12f);
+            SpawnPriestRight(ref list);
+            for (int i = 0; i < 3; ++i)
+            {
+
+                yield return new WaitUntil(() => Player.life == Player.Life.Alive);
+                SpawnEnemyRight(ref list);
+                SpawnEnemyLeft(ref list);
+                yield return new WaitForSeconds(4f);
+
+            }
+            SpawnPriestRight(ref list);
+            SpawnPriestLeft(ref list);
+            yield return new WaitUntil(() => Player.life == Player.Life.Alive);
+            yield return new WaitForSeconds(13f);
+        }
+        while (true)
+        {
+            int num_alive = 0;
+            for (int i = 0; i < list.Count; ++i)
+            {
+                if (list[i] != null)
+                {
+                    num_alive++;
+                    break;
+                }
+            }
+            if (num_alive == 0)
+                break;
+            yield return new WaitForSeconds(2);
+
+        }
+        yield return new WaitUntil(() => Player.life == Player.Life.Alive);
+        GameObject[] bullets = GameObject.FindGameObjectsWithTag("GhostBullet");
+        foreach (GameObject bullet in bullets)
+        {
+            GameObject.Destroy(bullet);
+        }
+        ++HeadManager.instance.level_counter;
+        in_level = false;
+    }
 }
