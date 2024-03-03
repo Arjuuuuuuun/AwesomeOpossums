@@ -78,9 +78,9 @@ public class Priest : MonoBehaviour
         // Loop through all colliders detected
         foreach (Collider2D collider in colliders)
         {
-            Debug.Log(collider.gameObject.GetPrefabDefinition().name);
+            Debug.Log(collider.gameObject.name);
             // Check if the collider's GameObject name matches the condition
-            if (collider.gameObject.GetPrefabDefinition().name == "GhostBullet" || collider.gameObject.GetPrefabDefinition().name == "GhostBulletFurth")
+            if (collider.gameObject.name == "Red" || collider.gameObject.name == "Blue")
             {
                 Debug.Log("Destroy!");
                 // Destroy the collider's GameObject
