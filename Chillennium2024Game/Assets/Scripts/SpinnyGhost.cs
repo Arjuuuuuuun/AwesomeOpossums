@@ -11,13 +11,15 @@ public class SpinnyGhost : MonoBehaviour
     [SerializeField] int enemyDamage;
     private SpriteRenderer sprite;
     [SerializeField] int health;
+
+    [SerializeField] AudioClip bigTowerShoot;
     void Awake()
     {
         if (!Spawner.in_level)
         {
             Destroy(this.gameObject);
         }
-
+        AudioSource.PlayClipAtPoint(bigTowerShoot, Vector3.zero);
 
         sprite = GetComponent<SpriteRenderer>();
         sprite.enabled = false;
