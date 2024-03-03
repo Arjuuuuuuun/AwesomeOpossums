@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
     //audio
     private bool tombstoneNear;
     [SerializeField] private AudioClip invalid_build;
+    [SerializeField] private AudioClip hurt;
 
 
     void Awake()
@@ -129,6 +130,7 @@ public class Player : MonoBehaviour
         if (life == Life.Alive)
         {
             health -= damage;
+            AudioSource.PlayClipAtPoint(hurt, new Vector3(0, 0, 0));
 
             if (health < 0)
             {
