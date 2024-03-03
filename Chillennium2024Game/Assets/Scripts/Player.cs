@@ -129,6 +129,7 @@ public class Player : MonoBehaviour
     {
         if (life == Life.Alive)
         {
+            GameObject.Find("Main Camera").SendMessage("Damage");
             health -= damage;
             AudioSource.PlayClipAtPoint(hurt, new Vector3(0, 0, 0));
 
