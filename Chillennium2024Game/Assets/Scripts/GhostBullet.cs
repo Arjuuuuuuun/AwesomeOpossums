@@ -15,27 +15,36 @@ public class GhostBullet : MonoBehaviour
     GameObject target = null;
     private SpriteRenderer sprite;
     bool isTargeting = true;
+    [SerializeField] bool targetingFurthest;
 
     void Awake()
     {
-        if(Player.life == Player.Life.Dead)
-        {
-            Destroy(this.gameObject);
-        }
+   
         sprite = GetComponent<SpriteRenderer>();
         sprite.enabled = false;
         rb = GetComponent<Rigidbody2D>();
         Collider2D []colliders = Physics2D.OverlapCircleAll(transform.position, 100, layerMask);
-        Tuple<float, GameObject> val = new Tuple<float, GameObject>(math.INFINITY, null);
+        Tuple<float, GameObject> val;
+        if (!targetingFurthest) {
+            val = new Tuple<float, GameObject>(math.INFINITY, null);
+        }
+        else
+        {
+            val = new Tuple<float, GameObject>(-math.INFINITY, null);
+        }
         for (int i = 0; i < colliders.Length; i++) 
         {
             float dist = (colliders[i].transform.position - transform.localPosition).magnitude;
-            if (dist < val.Item1)
+            if (dist < val.Item1 && !targetingFurthest)
             {
                 val = new Tuple<float, GameObject> (dist, colliders[i].gameObject);
             }    
+            else if(dist > val.Item1)
+            {
+                val = new Tuple<float, GameObject>(dist, colliders[i].gameObject);
+            }
         }
-        if (val.Item1 == math.INFINITY)
+        if (val.Item1 == math.INFINITY || val.Item1 == -math.INFINITY)
         {
             Debug.Log("Bullet has not found a target ");
             Destroy(this.gameObject);
@@ -49,10 +58,6 @@ public class GhostBullet : MonoBehaviour
 
     private void Update()
     {
-        if (Player.life == Player.Life.Dead)
-        {
-            ClearBullet();
-        }
         if (target != null && isTargeting)
         {
             Vector3 playerpos = target.transform.position;
@@ -92,10 +97,5 @@ public class GhostBullet : MonoBehaviour
                 GameObject.Destroy(this.gameObject);
             }
         }
-    }
-
-    public void ClearBullet()
-    {
-        Destroy(this.gameObject);
     }
 }

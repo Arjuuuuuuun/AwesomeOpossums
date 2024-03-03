@@ -10,6 +10,7 @@ TagManager:
   - Obstacle
   - HeadManager
   - Center
+  - Ghost
   layers:
   - Default
   - TransparentFX
