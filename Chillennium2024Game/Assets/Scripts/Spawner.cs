@@ -88,55 +88,83 @@ public class Spawner : MonoBehaviour
                 yield return new WaitForSeconds(2);
 
             }
-
-            Debug.Log("Level one Complete");
+            
        
-        //headManager.SendMessage("LevelComplete");
+        headManager.SendMessage("LevelComplete");
     }
+
+    IEnumerator LevelTwo()
+    {
+
+        List<GameObject> list = new List<GameObject>();
+        for (int j = 0; j < 2; j++)
+        {
+            for (int i = 0; i < 7; ++i)
+            {
+
+                yield return new WaitUntil(() => Player.life == Player.Life.Alive);
+                SpawnEnemyRight(ref list);
+                SpawnEnemyLeft(ref list);
+                yield return new WaitForSeconds(2f);
+
+            }
+            yield return new WaitForSeconds(6f);
+        }
+        while (true)
+        {
+            int num_alive = 0;
+            for (int i = 0; i < list.Count; ++i)
+            {
+                if (list[i] != null)
+                {
+                    Debug.Log(list[i].name);
+                    num_alive++;
+                    break;
+                }
+            }
+            Debug.Log(num_alive);
+            if (num_alive == 0)
+                break;
+            yield return new WaitForSeconds(2);
+
+        }
+
+
+        headManager.SendMessage("LevelComplete");
+    }
+
     IEnumerator LevelThree()
     {
 
         List<GameObject> list = new List<GameObject>();
 
-        for(int i = 0; i < 5; ++i)
+        for(int i = 0; i < 10; ++i)
         {
 
                 yield return new WaitUntil(() => Player.life == Player.Life.Alive);
                 SpawnEnemyLeft(ref list);
-                yield return new WaitForSeconds(2f);
+                SpawnEnemyRight(ref list);
+                yield return new WaitForSeconds(1f);
             
         }
         yield return new WaitUntil(() => Player.life == Player.Life.Alive);
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(5f);
 
-        for (int i = 0; i < 5; ++i)
+        for (int i = 0; i < 10; ++i)
         {
 
                 yield return new WaitUntil(() => Player.life == Player.Life.Alive);
                 SpawnEnemyRight(ref list);
-                yield return new WaitForSeconds(2f);
+                SpawnEnemyLeft(ref list);
+                yield return new WaitForSeconds(1f);
 
         }
         yield return new WaitUntil(() => Player.life == Player.Life.Alive);
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(7f);
 
-
-        for (int j = 0; j < 7; j++)
+        for(int i = 0; i < 10; ++i)
         {
-            for (int i = 0; i < 5; ++i)
-            {
-                yield return new WaitUntil(() => Player.life == Player.Life.Alive);
-                SpawnEnemyRight (ref list);   
-                yield return new WaitForSeconds(1f);
-                
-            }
-            yield return new WaitUntil(() => Player.life == Player.Life.Alive);
-            yield return new WaitForSeconds(4f);
-        }
-
-        for(int i = 0; i < 20; i++)
-        {
-            for (int j = 0; j < 5; j++)
+            for (int j = 0; j < 7; j++)
             {
                 if (j % 2 == 0 )
                 {
@@ -147,12 +175,12 @@ public class Spawner : MonoBehaviour
                 else if (j % 2 == 1)
                 {
                     yield return new WaitUntil(() => Player.life == Player.Life.Alive);
-                    SpawnEnemyLeft(ref list);
-                    yield return new WaitForSeconds(1f);
+                    SpawnEnemyRight(ref list);
+                    yield return new WaitForSeconds(0.5f);
                 }
             }
             yield return new WaitUntil(() => Player.life == Player.Life.Alive);
-            yield return new WaitForSeconds(5 - i / 4);
+            yield return new WaitForSeconds(5 - i / 2);
 
         }
         while (true)

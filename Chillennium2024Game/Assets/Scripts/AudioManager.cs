@@ -32,14 +32,14 @@ public class AudioManager : MonoBehaviour
         if (Player.life == Player.Life.Dead)
         {
             LevelTheme.volume = 0f;
-            DeadTheme.volume = 1f;
+            DeadTheme.volume = .8f;
             Heartbeat.volume = 0f;
         }
         else
         {
-            LevelTheme.volume = 1f;
+            LevelTheme.volume = .8f;
             DeadTheme.volume = 0f;
-            Heartbeat.volume = ((3f - Player.health) / 3f) * 0.42f;
+            Heartbeat.volume = ((2f - Player.health) / 2f) * 0.3f;
         }
 
     }

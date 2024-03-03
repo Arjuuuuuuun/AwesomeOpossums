@@ -199,3 +199,4 @@ MonoBehaviour:
   dead_movement_speed: 3
   alive_sprite: {fileID: 21300000, guid: dbf106e3bf79ec84ebf9196bb3431fda, type: 3}
   invalid_build: {fileID: 8300000, guid: 6212c484354be69428c0910774679e63, type: 3}
+  hurt: {fileID: 8300000, guid: 734043622db98544fbc9afa468e88ee2, type: 3}
