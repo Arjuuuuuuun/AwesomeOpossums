@@ -16,6 +16,7 @@ public class HeadManager : MonoBehaviour
             return;
 
         }
+        level_counter = 0;
         instance = this;
         DontDestroyOnLoad(gameObject);
     }
