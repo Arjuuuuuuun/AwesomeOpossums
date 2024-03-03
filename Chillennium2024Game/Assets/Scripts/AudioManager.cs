@@ -52,7 +52,7 @@ public class AudioManager : MonoBehaviour
                 StartCoroutine("fadeIn", LevelTheme);
                 //DeadTheme.volume = 0f;
                 StartCoroutine("fadeOut", DeadTheme);
-                Heartbeat.volume = ((2f - Player.health) / 2f) * 0.3f;
+                Heartbeat.volume = ((2f - Player.health) / 2f) * 0.2f;
             }
 
             swapper = true;
@@ -64,7 +64,7 @@ public class AudioManager : MonoBehaviour
     {
         for (int i = 0; i < 10; ++i)
         {
-            clip.volume += 0.08f;
+            clip.volume += 0.07f;
             yield return new WaitForSeconds(.03f);
         }
     }
@@ -73,7 +73,7 @@ public class AudioManager : MonoBehaviour
     {
         for (int i = 0; i < 10; ++i)
         {
-            clip.volume -= 0.08f;
+            clip.volume -= 0.07f;
             yield return new WaitForSeconds(.03f);
         }
     }

@@ -6,19 +6,22 @@ public class ShaderScrpit : MonoBehaviour
 {
     [SerializeField] UnityEngine.Shader shade;
     Camera cam;
+    Material mat;
     // Start is called before the first frame update
     void Start()
     {
         cam =  GetComponent<Camera>();
+        mat = new Material(shade);
     }
 
-    void GreyOn()
-    {
-        cam.SetReplacementShader(shade,"");
-    }
+    void Damage(){
+        StartCoroutine(Flash());
 
-    void GreyOff()
+    }
+    IEnumerator Flash()
     {
+        cam.SetReplacementShader(shade, "");
+        yield return new WaitForSeconds(0.2f);
         cam.ResetReplacementShader();
     }
 

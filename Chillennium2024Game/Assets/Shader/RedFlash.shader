@@ -29,7 +29,7 @@ Shader "Unlit/RedFlash"
             {
                 float2 uv : TEXCOORD0;
                 UNITY_FOG_COORDS(1)
-                float4 vertex : SV_POSITION;
+                float4 vertex : SV_POSITION;            
             };
 
             sampler2D _MainTex;
@@ -42,15 +42,15 @@ Shader "Unlit/RedFlash"
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 UNITY_TRANSFER_FOG(o,o.vertex);
                 return o;
-            }
+                
+           }
 
             fixed4 frag (v2f i) : SV_Target
             {
                 // sample the texture
                 fixed4 col = tex2D(_MainTex, i.uv);
-                float intensity = col.x * 0.299 + col.y * 0.587 + col.z * 0.114;
-                fixed4 grey = fixed4(intensity,intensity,intensity,col.w);
-                return grey;
+                fixed4 red = fixed4(col.r,col.g * 0.1,col.b* 0.1,col.w);
+                return red;
             }
             ENDCG
         }
