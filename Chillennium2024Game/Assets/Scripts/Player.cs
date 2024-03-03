@@ -183,7 +183,7 @@ public class Player : MonoBehaviour
         dead_health = max_dead_health;
         life = Life.Dead;
 
-        yield return new WaitForSeconds(NumTimesDead * 2 + 3);
+        yield return new WaitForSeconds(NumTimesDead * 4 + 7);
         ++NumTimesDead;
         health = max_health;
         life = Life.Alive;
