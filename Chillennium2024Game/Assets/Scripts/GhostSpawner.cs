@@ -33,12 +33,12 @@ public class GhostSpawner : MonoBehaviour
         SummonGhost(new Vector2(-9, 2), new Vector2(1, 0));
         SummonGhost(new Vector2(-9, -1), new Vector2(1, 0));
         SummonGhost(new Vector2(-9, -4), new Vector2(1, 0));
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.9f);
         SummonGhost(new Vector2(9, 3.5f), new Vector2(-1, 0));
         SummonGhost(new Vector2(9, 0.5f), new Vector2(-1, 0));
         SummonGhost(new Vector2(9, -2.5f), new Vector2(-1, 0));
         SummonGhost(new Vector2(9, -5.5f), new Vector2(-1, 0));
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.9f);
         SummonGhost(new Vector2(9, 5.5f), new Vector2(-1, -1));
         SummonGhost(new Vector2(6, 5.5f), new Vector2(-1, -1));
         SummonGhost(new Vector2(3, 5.5f), new Vector2(-1, -1));
@@ -46,7 +46,7 @@ public class GhostSpawner : MonoBehaviour
         SummonGhost(new Vector2(-9, 5.5f), new Vector2(-1, -1));
         SummonGhost(new Vector2(-6, 5.5f), new Vector2(-1, -1));
         SummonGhost(new Vector2(-3, 5.5f), new Vector2(-1, -1));
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.87f);
         SummonGhost(new Vector2(-9, 5.5f), new Vector2(1, -1));
         SummonGhost(new Vector2(-6, 5.5f), new Vector2(1, -1));
         SummonGhost(new Vector2(-3, 5.5f), new Vector2(1, -1));
@@ -54,7 +54,7 @@ public class GhostSpawner : MonoBehaviour
         SummonGhost(new Vector2(9, 5.5f), new Vector2(1, -1));
         SummonGhost(new Vector2(6, 5.5f), new Vector2(1, -1));
         SummonGhost(new Vector2(3, 5.5f), new Vector2(1, -1));
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.86f);
         SummonGhost(new Vector2(9, -5.5f), new Vector2(-1, 1));
         SummonGhost(new Vector2(6, -5.5f), new Vector2(-1, 1));
         SummonGhost(new Vector2(3, -5.5f), new Vector2(-1, 1));
