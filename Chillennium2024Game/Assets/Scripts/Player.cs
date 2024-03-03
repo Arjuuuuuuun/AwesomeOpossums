@@ -126,8 +126,9 @@ public class Player : MonoBehaviour
 
     void TakeDamage(int damage)
     {
-        if (iFrame)
+        if (!iFrame)
         {
+            StartCoroutine(IFrame());
             if (life == Life.Alive)
             {
                 GameObject.Find("Main Camera").SendMessage("Damage");
