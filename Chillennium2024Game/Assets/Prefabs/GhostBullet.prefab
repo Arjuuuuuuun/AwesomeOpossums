@@ -168,4 +168,4 @@ MonoBehaviour:
     m_Bits: 640
   ghostHealth: 2
   targetingFurthest: 0
-  smallTowerShoot: {fileID: 8300000, guid: 046c4dd3647801e45bb49ca3f0587f88, type: 3}
+  smallTowerShoot: {fileID: 8300000, guid: 9ec11e683d7044343876fb9ad10e2704, type: 3}
