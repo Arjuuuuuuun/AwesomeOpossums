@@ -245,11 +245,6 @@ public class Player : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(invalid_build, new Vector3(0, 0, 0));
         }
-
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            tombstone = TombstoneType.follow;
-        }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             if (tombstone == TombstoneType.radial)
