@@ -66,18 +66,6 @@ public class Player : MonoBehaviour
         x = Input.GetAxisRaw("Horizontal");
         y = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKey(KeyCode.Alpha3))
-        {
-            tombstone = TombstoneType.follow;
-        }
-        else if (Input.GetKey(KeyCode.Alpha2))
-        {
-            tombstone = TombstoneType.radial;
-        }
-        else if (Input.GetKey(KeyCode.Alpha1))
-        {
-            tombstone = TombstoneType.bullet;
-        }
 
         if (x != 0 && y != 0)
         {
@@ -216,13 +204,25 @@ public class Player : MonoBehaviour
             AudioSource.PlayClipAtPoint(invalid_build, new Vector3(0, 0, 0));
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1) && tombstone == TombstoneType.bullet)
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            AudioSource.PlayClipAtPoint(invalid_build, new Vector3(0, 0, 0));
+            tombstone = TombstoneType.follow;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2) && tombstone == TombstoneType.radial)
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            AudioSource.PlayClipAtPoint(invalid_build, new Vector3(0, 0, 0));
+            if (tombstone == TombstoneType.radial)
+            {
+                AudioSource.PlayClipAtPoint(invalid_build, new Vector3(0, 0, 0));
+            }
+            tombstone = TombstoneType.radial;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            if (tombstone == TombstoneType.bullet)
+            {
+                AudioSource.PlayClipAtPoint(invalid_build, new Vector3(0, 0, 0));
+            }
+            tombstone = TombstoneType.bullet;
         }
     }
 

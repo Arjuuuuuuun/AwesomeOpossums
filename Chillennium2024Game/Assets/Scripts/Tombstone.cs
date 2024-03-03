@@ -23,8 +23,7 @@ public class Tombstone : MonoBehaviour
     [SerializeField] GameObject bulBulletFurth;
     [SerializeField] float bulFireRate;
     [SerializeField] float bulTimeBeforeFirstFire;
-
-    [SerializeField] AudioClip smallTowerShoot;
+    
     [SerializeField] AudioClip bigTowerShoot;
 
     [SerializeField] private GameObject skull;
@@ -167,7 +166,6 @@ public class Tombstone : MonoBehaviour
     {
         bulCanFire = false;
         yield return new WaitForSeconds(bulTimeBeforeFirstFire);
-        AudioSource.PlayClipAtPoint(smallTowerShoot, Vector3.zero);
         GameObject b = Instantiate(bulBullet, this.transform.position, Quaternion.identity);
         b = Instantiate(bulBulletFurth, this.transform.position, Quaternion.identity);
         yield return new WaitForSeconds(bulFireRate);

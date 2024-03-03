@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour
     AudioSource LevelTheme;
     AudioSource DeadTheme;
     bool swapper;
+    [SerializeField] private AudioClip invalid_build;
     // Start is called before the first frame update
     void Awake()
     {   
@@ -28,6 +29,7 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         DeadTheme.timeSamples = LevelTheme.timeSamples;
         Heartbeat.timeSamples = LevelTheme.timeSamples;
 
