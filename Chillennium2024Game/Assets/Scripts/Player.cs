@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     private Transform player_transform;
     private float x;
     private float y;
+    private bool iFrame = false;
 
     // mode switching
     public enum Life { Alive, Dead };
@@ -127,27 +128,36 @@ public class Player : MonoBehaviour
 
     void TakeDamage(int damage)
     {
-        if (life == Life.Alive)
+        if (!iFrame)
         {
-            GameObject.Find("Main Camera").SendMessage("Damage");
-            health -= damage;
-            AudioSource.PlayClipAtPoint(hurt, new Vector3(0, 0, 0));
+            StartCoroutine(IFrame());
+            if (life == Life.Alive)
+            {
+                GameObject.Find("Main Camera").SendMessage("Damage");
+                health -= damage;
+                AudioSource.PlayClipAtPoint(hurt, new Vector3(0, 0, 0));
 
-            if (health < 0)
-            {
-                StartCoroutine("Dead");
+                if (health < 0)
+                {
+                    StartCoroutine("Dead");
+                }
             }
-        }
-        else
-        {
-            dead_health -= damage;
-            if (dead_health < 0)
+            else
             {
-                StartCoroutine("RealDead");
+                dead_health -= damage;
+                if (dead_health < 0)
+                {
+                    StartCoroutine("RealDead");
+                }
             }
         }
     }
-
+    IEnumerator IFrame()
+    {
+        iFrame = true;
+        yield return new WaitForSeconds(0.5f);
+        iFrame = false;
+    }
     IEnumerator Dead()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
