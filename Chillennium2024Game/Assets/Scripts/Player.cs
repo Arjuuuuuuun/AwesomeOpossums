@@ -167,18 +167,30 @@ public class Player : MonoBehaviour
             GameObject.Find("GhostManager").SendMessage("GhostMode");
         dead_health = max_dead_health;
         life = Life.Dead;
+        float waitTime;
+
         switch (NumTimesDead)
         {
             case 0:
-                yield return new WaitForSeconds(8);
+                waitTime = 8f;
                 break;
             case 1:
-                yield return new WaitForSeconds(9);
+                waitTime = 9f;
                 break;
             default:
-                yield return new WaitForSeconds(NumTimesDead * 7);
+                waitTime = NumTimesDead * 7f;
                 break;
         }
+
+
+        // Find all objects with the tag "health" and send a message
+        GameObject[] healthObjects = GameObject.FindGameObjectsWithTag("health");
+        foreach (GameObject healthObject in healthObjects)
+        {
+            healthObject.SendMessage("Death", waitTime);
+        }
+        yield return new WaitForSeconds(waitTime);
+    
         ++NumTimesDead;
         health = max_health;
         life = Life.Alive;
