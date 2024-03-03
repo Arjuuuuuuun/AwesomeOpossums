@@ -71,12 +71,17 @@ public class Priest : MonoBehaviour
         }
     }
 
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Center"))
         {
             collision.gameObject.SendMessage("TakeDamage", 1);
             GameObject.Destroy(this.gameObject);
+        }
+        if(collision.gameObject.name == "GhostBullet" || collision.gameObject.name == "GhostBulletFurth")
+        {
+            GameObject.Destroy(collision.gameObject);
         }
     }
 
