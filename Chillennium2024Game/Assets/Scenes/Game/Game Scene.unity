@@ -508,6 +508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level_counter: 0
+  text_counter: 0
 --- !u!4 &56131948
 Transform:
   m_ObjectHideFlags: 0
@@ -1861,7 +1862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d877dae10154f047aa562c4b59833c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shade: {fileID: 0}
+  shade: {fileID: 4800000, guid: bd9f8c9c75176e646afac70aff72278e, type: 3}
 --- !u!1 &504769391
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,12 +6,11 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject enemy;
     GameObject headManager;
-    public bool in_level;
+    public static bool in_level;
 
     // Start is called before the first frame update
     void Start()
     {
-
         headManager = GameObject.FindGameObjectWithTag("HeadManager");
         StartLevel(0);
     }
