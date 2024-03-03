@@ -51,7 +51,7 @@ public class Spawner : MonoBehaviour
 
         for (int j = 0; j < 4; j++)
         {
-            for (int i = 0; i < 8; ++i)
+            for (int i = 0; i < 3; ++i)
             {
                 GameObject enemy = Instantiate(this.enemy);
                 enemy.SendMessage("Rotate", direction);

@@ -13,6 +13,7 @@ public class GhostBullet : MonoBehaviour
     [SerializeField] LayerMask layerMask;
     GameObject target = null;
     private SpriteRenderer sprite;
+    bool isTargeting = true;
     void Awake()
     {
         if(Player.life == Player.Life.Dead)
@@ -50,9 +51,9 @@ public class GhostBullet : MonoBehaviour
         {
             ClearBullet();
         }
-        if (target != null)
+        if (target != null && isTargeting)
         {
-            Vector3 playerpos = target.transform.position;
+            Vector3 playerpos = GameObject.Find("Player").transform.position;
             Vector2 vel;
             vel.x = (transform.localPosition - playerpos).x;
             vel.y = (transform.localPosition - playerpos).y;
@@ -71,10 +72,15 @@ public class GhostBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.SendMessage("TakeDamage", damage);
-            Destroy(this.gameObject);
+            GameObject.Destroy(this.gameObject);
+        }
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.SendMessage("TakeDamage", damage);
+            GameObject.Destroy(this.gameObject);
         }
     }
 
