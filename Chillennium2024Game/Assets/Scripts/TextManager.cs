@@ -101,7 +101,60 @@ public class TextManager : MonoBehaviour
                 break;
             case 8:
                 tutorialText.text = "Be careful! More sheriffs are coming from both sides";
+                if(HeadManager.instance.level_counter == 3)
+                {
+                    HeadManager.instance.text_counter = 9;
+                }
                 break;
+            case 9:
+                button.interactable = false;
+                tutorialText.text = "Press '2' to switch tombstone mode. This will allow you to activate them different color.";
+                if (Input.GetKeyDown(KeyCode.Alpha2))
+                {
+                    HeadManager.instance.text_counter = 10;
+                    if (!inDelay)
+                    {
+                        StartCoroutine(Delay(6));
+                    }
+                }
+                break;
+            case 10:
+                button.interactable = false;
+                tutorialText.text = "You can press '1' and '2' to switch between the modes at will!";
+                if (delay)
+                {
+                    delay = false;
+                    HeadManager.instance.text_counter = 11;
+                }
+                break;
+            case 11:
+                tutorialText.text = "Good luck out there, more sheriffs spotted";
+                if (HeadManager.instance.level_counter == 4)
+                {
+                    HeadManager.instance.text_counter = 12;
+                    if (!inDelay)
+                    {
+                        StartCoroutine(Delay(4));
+                    }
+                }
+                break;
+            case 12:
+                button.interactable = false;
+                tutorialText.text = "Next wave will have priests that block all red bullets!";
+                if (delay)
+                {
+                    delay = false;
+                    HeadManager.instance.text_counter = 13;
+                }
+                break;
+            case 13:
+                tutorialText.text = "Its only geting harder from here!";
+                if (HeadManager.instance.level_counter == 5)
+                {
+                    HeadManager.instance.text_counter= 14;
+                }
+                break;
+
         }
     }
     IEnumerator Delay(float time)

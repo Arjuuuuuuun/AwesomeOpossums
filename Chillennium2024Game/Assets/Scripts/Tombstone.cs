@@ -32,7 +32,6 @@ public class Tombstone : MonoBehaviour
     [SerializeField] private Sprite flameless_skull;
 
     // Health
-    public SpriteRenderer healthBarFrame;
     public SpriteRenderer healthBar;
 
     private Vector3 HealthStartingPosition = new Vector3(0,-0.7f,0);
@@ -84,9 +83,6 @@ public class Tombstone : MonoBehaviour
         Color color = healthBar.color;
         color.a = 0.0f;
         healthBar.color = color;
-        Color color2 = healthBarFrame.color;
-        color2.a = 0.0f;
-        healthBar.color = color2;
         currentHealth = maxHealth;
 
     }
@@ -98,9 +94,6 @@ public class Tombstone : MonoBehaviour
                 Color color = healthBar.color;
                 color.a = 0.0f;
                 healthBar.color = color;
-                Color color2 = healthBarFrame.color;
-                color2.a = 0.0f;
-                healthBarFrame.color = color2;
 
                 anime.enabled = false;
                 skull.GetComponent<SpriteRenderer>().sprite = flameless_skull;
@@ -134,9 +127,6 @@ public class Tombstone : MonoBehaviour
                 Color color3 = healthBar.color;
                 color3.a = 1.0f;
                 healthBar.color = color3;
-                Color color4 = healthBarFrame.color;
-                color4.a = 1.0f;
-                healthBarFrame.color = color4;
                 ActivateFire();
 
                 break;   
