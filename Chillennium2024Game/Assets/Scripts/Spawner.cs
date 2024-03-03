@@ -7,6 +7,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private GameObject enemy;
     [SerializeField] private int direction;
     GameObject headManager;
+    [SerializeField] private bool isRightSpawner;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +45,13 @@ public class Spawner : MonoBehaviour
         }
     }
 
+    void SpawnEnemy(ArrayList enemyList)
+    {
+        GameObject enemy = Instantiate(this.enemy);
+        enemy.SendMessage("Rotate", direction);
+        enemy.transform.position = transform.position;
+        enemyList.Add(enemy);
+    }
     IEnumerator LevelOne()
     {
 
@@ -53,10 +61,7 @@ public class Spawner : MonoBehaviour
         {
             for (int i = 0; i < 3; ++i)
             {
-                GameObject enemy = Instantiate(this.enemy);
-                enemy.SendMessage("Rotate", direction);
-                enemy.transform.position = transform.position;
-                list.Add(enemy);
+                SpawnEnemy(list);   
                 yield return new WaitUntil(() => Player.life == Player.Life.Alive);
                 yield return new WaitForSeconds(1f);
                 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Unity.Mathematics;
 using UnityEditor;
@@ -7,48 +8,53 @@ public class SpinnyGhost : MonoBehaviour
 {
     private Rigidbody2D rb;
     [SerializeField] float speed;
-    [SerializeField] int damagePerSecond;
-    [SerializeField] float timeOnSide;
-    [SerializeField] float deadSpeed;
-    [SerializeField] float timeAlive;
+    [SerializeField] int enemyDamage;
+    private SpriteRenderer sprite;
     void Awake()
     {
+        if (Player.life == Player.Life.Dead)
+        {
+            Destroy(this.gameObject);
+        }
+        sprite = GetComponent<SpriteRenderer>();
+        sprite.enabled = false;
         rb = GetComponent<Rigidbody2D>();
-        StartCoroutine(FakeFixedUpdate());
-        StartCoroutine(Kill());
-    }
-    private void FixedUpdate()
-    {
+        sprite.enabled = true;
 
-        if(Player.life == Player.Life.Dead)
+
+    }
+
+    private void Update()
+    {
+        if (Player.life == Player.Life.Dead)
         {
             ClearBullet();
         }
+
+        Vector3 playerpos = GameObject.Find("Player").transform.position;
+        Vector2 vel;
+        vel.x = (transform.localPosition - playerpos).x;
+        vel.y = (transform.localPosition - playerpos).y;
+        vel = vel.normalized;
+        vel.x *= -speed;
+        vel.y *= -speed;
+        rb.velocity = vel;
+        
+
+
     }
-    IEnumerator Kill()
-    {
-        yield return new WaitForSeconds(timeAlive);
-        GameObject.Destroy(this.gameObject);
-    }
-    IEnumerator FakeFixedUpdate()
-    {
-        while (true)
-        {
-            rb.velocity = new Vector2(0, speed);
-            yield return new WaitForSeconds(timeOnSide);
-            rb.velocity = new Vector2(-speed, 0);
-            yield return new WaitForSeconds(timeOnSide);
-            rb.velocity = new Vector2(0, -speed);
-            yield return new WaitForSeconds(timeOnSide);
-            rb.velocity = new Vector2(speed, 0);
-            yield return new WaitForSeconds(timeOnSide);
-        }
-    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.SendMessage("TakeDamage", damagePerSecond);
+            collision.gameObject.SendMessage("TakeDamage", enemyDamage);
+            GameObject.Destroy(this.gameObject);
+        }
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.SendMessage("TakeDamage", 1);
+            GameObject.Destroy(this.gameObject);
         }
     }
 
