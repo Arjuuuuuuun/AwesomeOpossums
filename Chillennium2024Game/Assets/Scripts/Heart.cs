@@ -17,7 +17,6 @@ public class Heart : MonoBehaviour
     [SerializeField] Sprite blue_balls;
     [SerializeField] Sprite red_balls;
 
-    [SerializeField] SpriteRenderer timer_frame;
     [SerializeField] SpriteRenderer timer;
 
     private float timeLeft;
@@ -29,9 +28,6 @@ public class Heart : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Color color = timer_frame.color;
-        color.a = 0.0f;
-        timer_frame.color = color;
         Color color2 = timer.color;
         color2.a = 0.0f;
         timer.color = color2;
@@ -72,9 +68,6 @@ public class Heart : MonoBehaviour
         else
         {
 
-            Color color5 = timer_frame.color;
-            color5.a = 0.0f;
-            timer_frame.color = color5;
             Color color6 = timer.color;
             color6.a = 0.0f;
             timer.color = color6;
@@ -104,9 +97,6 @@ public class Heart : MonoBehaviour
 
     IEnumerator Death(int time)
     {
-        Color color = timer_frame.color;
-        color.a = 1.0f;
-        timer_frame.color = color;
         Color color2 = timer.color;
         color2.a = 1.0f;
         timer.color = color2;
@@ -123,9 +113,6 @@ public class Heart : MonoBehaviour
 
         }
 
-        Color color3 = timer_frame.color;
-        color.a = 0.0f;
-        timer_frame.color = color3;
         Color color4 = timer.color;
         color2.a = 0.0f;
         timer.color = color4;

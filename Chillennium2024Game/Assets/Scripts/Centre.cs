@@ -6,9 +6,17 @@ public class Centre : MonoBehaviour
 {
     [SerializeField] private float destructionRadius;
 
+    private SpriteRenderer spriteRenderer;
+
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
     public void TakeDamage(int damage)
     {
-       GameObject.Find("Player").SendMessage("TakeDamage", damage);
+       GameObject.Find("Player").SendMessage("TakeDamage", damage *2);
+        StartCoroutine("Flash");
     }
 
     public void EnterDeath()
@@ -33,5 +41,13 @@ public class Centre : MonoBehaviour
                 enemy.SendMessage("Freeze");
             }
         }
+    }
+
+    IEnumerator Flash()
+    {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.5f);
+        spriteRenderer.color = Color.white;
+
     }
 }

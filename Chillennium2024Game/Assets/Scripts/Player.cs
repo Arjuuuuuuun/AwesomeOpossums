@@ -74,12 +74,13 @@ public class Player : MonoBehaviour
             living_movement_speed *= .7071f;
         }
 
-        if(x > 0)
+        if (x > 0)
         {
             anime.SetInteger("direction", 3);
-            player_transform.localScale = new Vector3(1,1,1);
-            
-        } else if(x < 0)
+            player_transform.localScale = new Vector3(1, 1, 1);
+
+        }
+        else if (x < 0)
         {
 
             anime.SetInteger("direction", 3);
@@ -95,12 +96,12 @@ public class Player : MonoBehaviour
             anime.SetInteger("direction", 2);
 
         }
-        else if(x==0 && y == 0)
+        else if (x == 0 && y == 0)
         {
             anime.SetInteger("direction", 0);
         }
-        
-        
+
+
 
         player_body.velocity = new Vector2(
             (life == Life.Alive ? living_movement_speed : dead_movement_speed) * x,
@@ -117,16 +118,25 @@ public class Player : MonoBehaviour
     {
         if (!iFrame)
         {
+
+
             AudioSource.PlayClipAtPoint(hurt, new Vector3(0, 0, 0));
             StartCoroutine(IFrame());
             if (life == Life.Alive)
             {
-                GameObject.Find("Main Camera").SendMessage("Damage");
+                if (damage == 2)
+                {
+                    damage = 1;
+
+                }
+                else
+                    GameObject.Find("Main Camera").SendMessage("Damage");
+
                 health -= damage;
 
                 if (health < 0)
                 {
-                    if(HeadManager.instance.level_counter == 1)
+                    if (HeadManager.instance.level_counter == 1)
                     {
                         StartCoroutine("RealDead");
                     }
@@ -155,7 +165,7 @@ public class Player : MonoBehaviour
 
         foreach (GameObject enemy in enemies)
         {
-            GameObject.Destroy(enemy); 
+            GameObject.Destroy(enemy);
         }
         GameObject[] bullets = GameObject.FindGameObjectsWithTag("GhostBullet");
         foreach (GameObject bullet in bullets)
@@ -164,7 +174,7 @@ public class Player : MonoBehaviour
         }
 
 
-            GameObject.Find("GhostManager").SendMessage("GhostMode");
+        GameObject.Find("GhostManager").SendMessage("GhostMode");
         dead_health = max_dead_health;
         life = Life.Dead;
         float waitTime;
@@ -190,11 +200,11 @@ public class Player : MonoBehaviour
             healthObject.SendMessage("Death", waitTime);
         }
         yield return new WaitForSeconds(waitTime);
-    
+
         ++NumTimesDead;
         health = max_health;
         life = Life.Alive;
-        
+
         renderer.sprite = alive_sprite;
 
     }
