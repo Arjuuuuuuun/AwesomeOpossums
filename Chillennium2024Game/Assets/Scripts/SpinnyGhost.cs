@@ -55,10 +55,18 @@ public class SpinnyGhost : MonoBehaviour
                 GameObject.Destroy(this.gameObject);
             }
         }
-        if (collision.gameObject.CompareTag("Player"))
+        else if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.SendMessage("TakeDamage", 1);
             GameObject.Destroy(this.gameObject);
+        }
+        else if (collision.gameObject.CompareTag("Ghost"))
+        {
+            GameObject.Destroy(collision.gameObject);
+            if (--health == 0)
+            {
+                GameObject.Destroy(this.gameObject);
+            }
         }
     }
 
