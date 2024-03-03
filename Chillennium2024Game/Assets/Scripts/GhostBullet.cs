@@ -11,9 +11,11 @@ public class GhostBullet : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] int damage;
     [SerializeField] LayerMask layerMask;
+    [SerializeField] int ghostHealth;
     GameObject target = null;
     private SpriteRenderer sprite;
     bool isTargeting = true;
+
     void Awake()
     {
         if(Player.life == Player.Life.Dead)
@@ -81,6 +83,14 @@ public class GhostBullet : MonoBehaviour
         {
             collision.gameObject.SendMessage("TakeDamage", damage);
             GameObject.Destroy(this.gameObject);
+        }
+        if (collision.gameObject.CompareTag("Ghost"))
+        {
+            GameObject.Destroy(collision.gameObject);
+            if(--ghostHealth == 0)
+            {
+                GameObject.Destroy(this.gameObject);
+            }
         }
     }
 

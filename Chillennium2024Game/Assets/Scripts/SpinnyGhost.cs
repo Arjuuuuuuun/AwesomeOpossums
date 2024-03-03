@@ -10,12 +10,10 @@ public class SpinnyGhost : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] int enemyDamage;
     private SpriteRenderer sprite;
+    [SerializeField] int health;
     void Awake()
     {
-        if (Player.life == Player.Life.Dead)
-        {
-            Destroy(this.gameObject);
-        }
+
         sprite = GetComponent<SpriteRenderer>();
         sprite.enabled = false;
         rb = GetComponent<Rigidbody2D>();
@@ -26,10 +24,6 @@ public class SpinnyGhost : MonoBehaviour
 
     private void Update()
     {
-        if (Player.life == Player.Life.Dead)
-        {
-            ClearBullet();
-        }
 
         Vector3 playerpos = GameObject.Find("Player").transform.position;
         Vector2 vel;
@@ -49,17 +43,23 @@ public class SpinnyGhost : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.SendMessage("TakeDamage", enemyDamage);
-            GameObject.Destroy(this.gameObject);
+            if(--health == 0)
+            {
+                GameObject.Destroy(this.gameObject);
+            }
         }
-        if (collision.gameObject.CompareTag("Player"))
+        else if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.SendMessage("TakeDamage", 1);
             GameObject.Destroy(this.gameObject);
         }
-    }
-
-    public void ClearBullet()
-    {
-        Destroy(this.gameObject);
+        else if (collision.gameObject.CompareTag("Ghost"))
+        {
+            GameObject.Destroy(collision.gameObject);
+            if (--health == 0)
+            {
+                GameObject.Destroy(this.gameObject);
+            }
+        }
     }
 }
