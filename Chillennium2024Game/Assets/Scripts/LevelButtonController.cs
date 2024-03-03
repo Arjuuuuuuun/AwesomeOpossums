@@ -16,13 +16,5 @@ public class LevelButtonController : MonoBehaviour
     void Update()
     {
         b.interactable = !Spawner.in_level;
-        if (b.interactable)
-        {
-            Debug.Log("enabled");
-        }
-        else
-        {
-            Debug.Log("not enabled");
-        }
     }
 }
