@@ -20,7 +20,7 @@ public class Heart : MonoBehaviour
     [SerializeField] SpriteRenderer timer_frame;
     [SerializeField] SpriteRenderer timer;
 
-    private int timeLeft;
+    private float timeLeft;
     private int totalTime;
 
     private Vector3 timerStartingPosition = new Vector3(9.1f, 1.95f, 0f);
@@ -71,6 +71,14 @@ public class Heart : MonoBehaviour
         }
         else
         {
+
+            Color color5 = timer_frame.color;
+            color5.a = 0.0f;
+            timer_frame.color = color5;
+            Color color6 = timer.color;
+            color6.a = 0.0f;
+            timer.color = color6;
+
             heart1.color = new Color(1f, 1f, 1f, 1f);
 
             switch (Player.health)
@@ -104,10 +112,11 @@ public class Heart : MonoBehaviour
         timer.color = color2;
 
         timeLeft = totalTime = time;
-
+        timeLeft += 0.5f;
         for(int i = 0; i < time; ++i)
         {
-            timeLeft -= 100 / time;
+            Debug.Log(timeLeft.ToString() + " : " + totalTime.ToString());
+            timeLeft -= 1;
 
             UpdateTimer();
             yield return new WaitForSeconds(1);
@@ -140,13 +149,13 @@ public class Heart : MonoBehaviour
         else
         {
             // Update the scale (width) of the health bar
-            timer.gameObject.transform.localScale = new Vector3(healthPercentage, .25f, 1f);
+            timer.gameObject.transform.localScale = new Vector3(healthPercentage * 2.5f, .3f, 1f);
 
             // Calculate the intended change in position
-            float newPositionX = (healthPercentage - 1) / 2 * timerStartingPosition.x;
+            /*float newPositionX = (healthPercentage - 1) / 2 * timerStartingPosition.x;
 
             // Add the intended change to the current local position
-            timer.gameObject.transform.localPosition = new Vector3(timerStartingPosition.x + newPositionX, timerStartingPosition.y, timerStartingPosition.z);
+            timer.gameObject.transform.localPosition = new Vector3(timerStartingPosition.x + newPositionX, timerStartingPosition.y, timerStartingPosition.z);*/
         }
     }
 }
