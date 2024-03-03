@@ -137,13 +137,13 @@ public class Spawner : MonoBehaviour
         {
             for (int j = 0; j < 5; j++)
             {
-                if (j % 2 == 0 && isRightSpawner)
+                if (j % 2 == 0 )
                 {
                     yield return new WaitUntil(() => Player.life == Player.Life.Alive);
                     SpawnEnemy(ref list);
                     yield return new WaitForSeconds(0.5f);
                 }
-                else if (j % 2 == 1 && !isRightSpawner)
+                else if (j % 2 == 1)
                 {
                     yield return new WaitUntil(() => Player.life == Player.Life.Alive);
                     SpawnEnemy(ref list);
