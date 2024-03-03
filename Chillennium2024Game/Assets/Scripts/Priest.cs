@@ -84,7 +84,7 @@ public class Priest : MonoBehaviour
         {
             Debug.Log(collider.gameObject.name);
             // Check if the collider's GameObject name matches the condition
-            if (collider.gameObject.name.ToString() == "Red" || collider.gameObject.name.ToString() == "Blue")
+            if (collider.gameObject.name.ToString() == "Red")
             {
                 Debug.Log("Destroy!");
                 // Destroy the collider's GameObject
