@@ -162,8 +162,18 @@ public class Player : MonoBehaviour
             GameObject.Find("GhostManager").SendMessage("GhostMode");
         dead_health = max_dead_health;
         life = Life.Dead;
-
-        yield return new WaitForSeconds(NumTimesDead * 4 + 12);
+        switch (NumTimesDead)
+        {
+            case 0:
+                yield return new WaitForSeconds(8);
+                break;
+            case 1:
+                yield return new WaitForSeconds(9);
+                break;
+            default:
+                yield return new WaitForSeconds(NumTimesDead * 7);
+                break;
+        }
         ++NumTimesDead;
         health = max_health;
         life = Life.Alive;
