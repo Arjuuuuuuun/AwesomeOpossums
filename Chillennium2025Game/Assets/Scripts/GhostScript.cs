@@ -9,15 +9,12 @@ public class GhostScript : MonoBehaviour
     [SerializeField] float xVelocity;
     [SerializeField] float yVelocity;
     [SerializeField] float patrolDistance;
-    private Animator animator;
     private Transform trans;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
         trans = GetComponent<Transform>();
         StartCoroutine(Patrol());
-        animator.StartPlayback();
     }
 
     IEnumerator Patrol()
