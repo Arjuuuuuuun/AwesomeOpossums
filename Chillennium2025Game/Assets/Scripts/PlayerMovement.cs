@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private LensDistortion ppLens;
     private bool canSwap;
 
+
     [SerializeField] GameObject door1;
     [SerializeField] GameObject door2;
     [SerializeField] GameObject door3;
@@ -30,6 +31,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject key2;
     [SerializeField] GameObject key3;
     [SerializeField] GameObject key4;
+
+    [SerializeField] Sprite sideCat;
+    [SerializeField] Sprite frontCat;
+    [SerializeField] Sprite backCat;
+
 
     void Start()
     {
@@ -45,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         // Toggle night vision mode with Spacebar (only if energy > 0)
-        if (Input.GetKeyDown(KeyCode.Space) && currentEnergy > 0)
+        if (canSwap && Input.GetKeyDown(KeyCode.Space) && currentEnergy > 0)
         {
             if (!spectralOn)
             {
