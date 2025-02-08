@@ -94,8 +94,8 @@ GameObject:
   - component: {fileID: -4804732058721445785}
   - component: {fileID: -2923252938105583573}
   - component: {fileID: -6977895043045446801}
-  - component: {fileID: 7925082028139488395}
   - component: {fileID: 4004350682467147891}
+  - component: {fileID: 1347073428236073718}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -229,8 +229,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &7925082028139488395
-BoxCollider2D:
+--- !u!114 &4004350682467147891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7471818846479681679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c081ffd6de08f349a0bbd8123fabd90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceWhenSoundQueueIsPlayed: 5
+--- !u!70 &1347073428236073718
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -261,32 +274,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.05}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 9.35, y: 5.49}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.63}
-  m_EdgeRadius: 0
---- !u!114 &4004350682467147891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7471818846479681679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c081ffd6de08f349a0bbd8123fabd90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distanceWhenSoundQueueIsPlayed: 5
+  m_Offset: {x: 0, y: -0.07}
+  m_Size: {x: 0.45, y: 0.65}
+  m_Direction: 0
 --- !u!1 &7764504337434581674
 GameObject:
   m_ObjectHideFlags: 0
