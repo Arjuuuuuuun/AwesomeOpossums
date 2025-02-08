@@ -7,17 +7,19 @@ public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float maxEnergy = 100f;
-    public bool spectralOn = false; // False = normal, True = night vision
+    public bool state = false; // False = normal, True = night vision
     public float energyDrainRate = 5f; // Energy drains per second when in night vision mode
     public Slider energyBar; // Assign in the Inspector
 
     private Rigidbody2D rb;
     private Vector2 movement;
     private float currentEnergy;
+    delegate void toggleOnSight();
+
 
     void Start()
     {
-        spectralOn = false;
+        state = false;
         rb = GetComponent<Rigidbody2D>();
         currentEnergy = maxEnergy;
 
@@ -30,18 +32,23 @@ public class PlayerMovement : MonoBehaviour
         // Toggle night vision mode with Spacebar (only if energy > 0)
         if (Input.GetKeyDown(KeyCode.Space) && currentEnergy > 0)
         {
-            if (spectralOn)
+            if (state)
             {
-                //turn off
-                BroadcastMessage("toggleOffSpectralLayer", SendMessageOptions.DontRequireReceiver);
+                var objects = FindObjectsOfType<spectralSight>(); 
+                foreach(var gameObj in objects){
+                    gameObj.SendMessage("toggleOnSpectralLayer");
+                }
+                    
             }
             else 
-            { 
-
-                //turn on
-                BroadcastMessage("toggleOnSpectralLayer", SendMessageOptions.DontRequireReceiver);
+            {
+                var objects = FindObjectsOfType<spectralSight>();
+                foreach (var gameObj in objects)
+                {
+                    gameObj.SendMessage("toggleOffSpectralLayer");
+                }
             }
-            spectralOn = !spectralOn; // Toggle state
+            state = !state; // Toggle state
         }
 
         // Get input from player
@@ -52,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
         movement = movement.normalized;
 
         // Handle energy system
-        if (spectralOn && currentEnergy > 0)
+        if (state && currentEnergy > 0)
         {
             currentEnergy -= energyDrainRate * Time.deltaTime;
 
@@ -60,9 +67,7 @@ public class PlayerMovement : MonoBehaviour
             if (currentEnergy <= 0)
             {
                 currentEnergy = 0;
-                spectralOn = false;
-                BroadcastMessage("toggleOffSpectralLayer", SendMessageOptions.DontRequireReceiver);
-
+                state = false;
             }
         }
 
