@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public float energyDrainRate = 2f; // Energy drains per second when in night vision mode
     public Slider energyBar; // Assign in the Inspector
     public float cooldownTime;
+    public bool canSwap;
 
 
     private Rigidbody2D rb;
@@ -19,7 +20,6 @@ public class PlayerMovement : MonoBehaviour
     private float currentEnergy;
     private PostProcessVolume ppVolume;
     private LensDistortion ppLens;
-    private bool canSwap;
     private SpriteRenderer renderer;
     private Transform trans;
 

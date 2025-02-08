@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3670705063506266407}
   - component: {fileID: 635377678503047370}
   - component: {fileID: 3326126769929016933}
+  - component: {fileID: 6380130570187018402}
   m_Layer: 7
   m_Name: GhostType1
   m_TagString: Ghost
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5f741dcda1492bc4b86284d89ed9d7ed, type: 3}
   m_Color: {r: 0.100302614, g: 0.420518, b: 0.9245283, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -179,3 +180,24 @@ MonoBehaviour:
   xVelocity: 0
   yVelocity: 0
   patrolDistance: 0
+--- !u!95 &6380130570187018402
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5638866597825660839}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ceb0d8218a89b14ab4c8c43459f7153, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
