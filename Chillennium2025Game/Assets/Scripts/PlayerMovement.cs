@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
@@ -14,11 +15,14 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 movement;
     private float currentEnergy;
-    delegate void toggleOnSight();
+    private PostProcessVolume ppVolume;
+    private LensDistortion ppLens;
 
 
     void Start()
     {
+        ppVolume = GetComponentInChildren<PostProcessVolume>();
+        ppVolume.profile.TryGetSettings<LensDistortion>(out ppLens);
         spectralOn = false;
         rb = GetComponent<Rigidbody2D>();
         currentEnergy = maxEnergy;
@@ -105,6 +109,11 @@ public class PlayerMovement : MonoBehaviour
         {
             RechargeEnergy();
             Destroy(collision.gameObject); // Remove the energy particle
+        }
+        if (collision.CompareTag("Ghost"))
+        {
+            ppLens.intensity.value = 30f;
+            Debug.Log("game over");
         }
     }
 }
