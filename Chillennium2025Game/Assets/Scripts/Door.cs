@@ -3,47 +3,60 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    // public Animator animator; // Reference to the Animator component
-    // public string destructionAnimationName = "DestructionSequence"; // Animation name
     private SpriteRenderer renderer;
     private Color color;
+    private Transform trans;
 
-    // Start is called before the first frame update
+    private enum Direction { Up, Down, Left, Right }
+    [SerializeField] private Direction dir;
+
     void Start()
     {
+        trans = GetComponent<Transform>();
         renderer = GetComponent<SpriteRenderer>();
         color = renderer.color;
-        // Make sure the animator is assigned
-        /*if (animator == null)
-        {
-            animator = GetComponent<Animator>();
-        }*/
     }
 
-    // This function is called when the message "Initiate Destruction Sequence" is received
+    // Function to trigger destruction sequence
     void InitiateDestructionSequence()
     {
-
-
-        /*// Play the destruction animation
-        animator.SetTrigger(destructionAnimationName);*/
-
         StartCoroutine(DestroyAfterAnimation());
-        
     }
 
-    // Coroutine to wait for animation to finish and then destroy the door
+    // Coroutine for moving the door and destroying it
     IEnumerator DestroyAfterAnimation()
     {
-        float opacity = 1f;
+        float duration = 2f; // Move over 2 seconds
+        float elapsedTime = 0f;
+        Vector3 startPos = trans.localPosition;
+        Vector3 targetPos = startPos;
 
-        while (opacity > 0f)
+        // Determine movement direction
+        switch (dir)
         {
-            renderer.color = new Color(color.r, color.g, color.b, opacity / 2);
-            opacity -= Time.deltaTime;
-            yield return new WaitForSeconds(Time.deltaTime);
+            case Direction.Up:
+                targetPos += Vector3.up;
+                break;
+            case Direction.Down:
+                targetPos += Vector3.down;
+                break;
+            case Direction.Left:
+                targetPos += Vector3.left;
+                break;
+            case Direction.Right:
+                targetPos += Vector3.right;
+                break;
         }
 
-        Destroy(gameObject);
+        // Move the door gradually
+        while (elapsedTime < duration)
+        {
+            trans.localPosition = Vector3.Lerp(startPos, targetPos, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;  // Wait for the next frame
+        }
+
+        trans.localPosition = targetPos;  // Ensure exact final position
+        Destroy(gameObject);  // Destroy the door
     }
 }

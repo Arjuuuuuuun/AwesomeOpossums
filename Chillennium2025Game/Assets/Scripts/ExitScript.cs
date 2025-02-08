@@ -13,6 +13,7 @@ public class ExitScript : MonoBehaviour
         if (other.CompareTag("Player")) // Ensure the player has the correct tag
         {
             LoadMenu();
+            Debug.Log("colission detected");
         }
     }
 
