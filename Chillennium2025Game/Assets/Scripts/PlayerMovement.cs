@@ -64,16 +64,33 @@ public class PlayerMovement : MonoBehaviour
             energyBar.maxValue = maxEnergy;
 
         // Assign sprites to keys
-        key1.GetComponent<SpriteRenderer>().sprite = Key1Image;
-        key2.GetComponent<SpriteRenderer>().sprite = Key2Image;
-        key3.GetComponent<SpriteRenderer>().sprite = Key3Image;
-        key4.GetComponent<SpriteRenderer>().sprite = Key4Image;
+        if (key1 != null) key1.GetComponent<SpriteRenderer>().sprite = Key1Image;
+        
+
+        if (key2 != null) key2.GetComponent<SpriteRenderer>().sprite = Key2Image;
+        
+
+        if (key3 != null) key3.GetComponent<SpriteRenderer>().sprite = Key3Image;
+        
+
+        if (key4 != null) key4.GetComponent<SpriteRenderer>().sprite = Key4Image;
+        
 
         // Assign sprites to doors
-        door1.GetComponent<SpriteRenderer>().sprite = Door1Image;
-        door2.GetComponent<SpriteRenderer>().sprite = Door2Image;
-        door3.GetComponent<SpriteRenderer>().sprite = Door3Image;
-        door4.GetComponent<SpriteRenderer>().sprite = Door4Image;
+        if (door1 != null)
+        {
+                door1.GetComponent<SpriteRenderer>().sprite = Door1Image;
+        }
+
+        if (door2 != null) door2.GetComponent<SpriteRenderer>().sprite = Door2Image;
+        
+
+        if (door3 != null) door3.GetComponent<SpriteRenderer>().sprite = Door3Image;
+        
+
+        if (door4 != null) door4.GetComponent<SpriteRenderer>().sprite = Door4Image;
+        
+
     }
 
     void Update()
