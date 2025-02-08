@@ -33,7 +33,7 @@ public class ModeToggler : MonoBehaviour
     {
         image.sprite = player.spectralOn ? Ghost : Physical;
 
-        if (player.spectralOn != statePrev && player.spectralOn)
+        if (player.spectralOn != statePrev && !player.spectralOn)
         {
             StartCoroutine(Cooldown(cooldownTime));
         }
