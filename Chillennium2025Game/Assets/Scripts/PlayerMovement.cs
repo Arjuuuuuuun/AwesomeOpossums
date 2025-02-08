@@ -126,8 +126,9 @@ public class PlayerMovement : MonoBehaviour
         }
         if (collision.gameObject == key1)
         {
+            Debug.Log("We get here");
             Destroy(collision.gameObject );
-            Destroy(door1);
+            Destroy(door1.gameObject);
         }
         if (collision.gameObject == key2)
         {
