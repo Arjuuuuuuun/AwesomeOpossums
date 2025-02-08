@@ -146,6 +146,9 @@ MonoBehaviour:
   key2: {fileID: 0}
   key3: {fileID: 0}
   key4: {fileID: 0}
+  sideCat: {fileID: 21300000, guid: 5f741dcda1492bc4b86284d89ed9d7ed, type: 3}
+  frontCat: {fileID: 21300000, guid: 75e6ee286079a7e4e93e57876ac09d7c, type: 3}
+  backCat: {fileID: 21300000, guid: 877838551d8cfaa48a7f42a31d98688a, type: 3}
 --- !u!50 &-2923252938105583573
 Rigidbody2D:
   serializedVersion: 4

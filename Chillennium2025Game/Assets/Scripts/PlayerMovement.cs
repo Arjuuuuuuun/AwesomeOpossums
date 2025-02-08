@@ -20,7 +20,8 @@ public class PlayerMovement : MonoBehaviour
     private PostProcessVolume ppVolume;
     private LensDistortion ppLens;
     private bool canSwap;
-
+    private SpriteRenderer renderer;
+    private Transform trans;
 
     [SerializeField] GameObject door1;
     [SerializeField] GameObject door2;
@@ -42,6 +43,8 @@ public class PlayerMovement : MonoBehaviour
         canSwap = true;
         spectralOn = false;
         rb = GetComponent<Rigidbody2D>();
+        renderer = GetComponent<SpriteRenderer>();
+        trans = GetComponent<Transform>();
         currentEnergy = maxEnergy;
 
         if (energyBar != null)
@@ -79,6 +82,26 @@ public class PlayerMovement : MonoBehaviour
         // Get input from player
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+
+        if (movement.x > 0)
+        {
+            renderer.sprite = sideCat;
+            trans.localScale = new Vector3(1, 1, 1); // Face right
+        }
+        else if (movement.x < 0)
+        {
+            renderer.sprite = sideCat;
+            trans.localScale = new Vector3(-1, 1, 1); // Flip horizontally to face left
+        }
+        else if (movement.y > 0)
+        {
+            renderer.sprite = backCat;
+        }
+        else
+        {
+            renderer.sprite = frontCat;
+        }
+
 
         // Normalize movement to prevent faster diagonal movement
         movement = movement.normalized;
