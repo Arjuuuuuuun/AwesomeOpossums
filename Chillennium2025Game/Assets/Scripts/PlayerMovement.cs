@@ -162,22 +162,25 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject == key1)
         {
             Destroy(collision.gameObject );
-            Destroy(door1.gameObject);
+            door1.SendMessage("InitiateDestructionSequence");
         }
         if (collision.gameObject == key2)
         {
             Destroy(collision.gameObject );
-            Destroy(door2);
+
+            door2.SendMessage("InitiateDestructionSequence");
         }
         if(collision.gameObject == key3)
         {
             Destroy(collision.gameObject );
-            Destroy(door3);
+
+            door3.SendMessage("InitiateDestructionSequence");
         }
         if(collision.gameObject == key4)
         {
             Destroy(collision.gameObject);
-            Destroy(door4);
+
+            door4.SendMessage("InitiateDestructionSequence");
         }
     }
     IEnumerator timer()
