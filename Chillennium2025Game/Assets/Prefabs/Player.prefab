@@ -133,9 +133,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  maxEnergy: 5
+  maxEnergy: 15
   spectralOn: 0
-  energyDrainRate: 5
+  energyDrainRate: 1
   energyBar: {fileID: 0}
   cooldownTime: 0.5
   door1: {fileID: 0}

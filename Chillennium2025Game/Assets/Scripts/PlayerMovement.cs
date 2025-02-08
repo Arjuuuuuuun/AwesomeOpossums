@@ -7,9 +7,9 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    public float maxEnergy = 100f;
+    public float maxEnergy = 25f;
     public bool spectralOn = false; // False = normal, True = night vision
-    public float energyDrainRate = 5f; // Energy drains per second when in night vision mode
+    public float energyDrainRate = 2f; // Energy drains per second when in night vision mode
     public Slider energyBar; // Assign in the Inspector
     public float cooldownTime;
 
@@ -53,36 +53,58 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        
+
+        // Get input from player
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
+
+        // Normalize movement to prevent faster diagonal movement
+        movement = movement.normalized;
+        if(movement.sqrMagnitude > 0 && spectralOn)
+        {
+            canSwap = false;
+            spectralOn = false;
+            var objects = FindObjectsOfType<spectralSight>();
+            foreach (var gameObj in objects)
+            {
+                gameObj.SendMessage("toggleOffSpectralLayer", SendMessageOptions.DontRequireReceiver);
+            }
+            StartCoroutine(timer());
+
+        }
+
         // Toggle night vision mode with Spacebar (only if energy > 0)
-        if (canSwap && Input.GetKeyDown(KeyCode.Space) && currentEnergy > 0)
+        else if (canSwap && Input.GetKeyDown(KeyCode.Space) && currentEnergy > 0)
         {
             if (!spectralOn)
             {
-                var objects = FindObjectsOfType<spectralSight>(); 
-                foreach(var gameObj in objects){
+                var objects = FindObjectsOfType<spectralSight>();
+                foreach (var gameObj in objects)
+                {
                     gameObj.SendMessage("toggleOnSpectralLayer", SendMessageOptions.DontRequireReceiver);
                 }
 
-                    
+                spectralOn = true; // Toggle spectralOn
+                canSwap = true;
+
+
             }
-            else 
+            else
             {
+
                 var objects = FindObjectsOfType<spectralSight>();
                 foreach (var gameObj in objects)
                 {
                     gameObj.SendMessage("toggleOffSpectralLayer", SendMessageOptions.DontRequireReceiver);
                 }
 
+                spectralOn = false; // Toggle spectralOn
+                canSwap = false;
+
             }
-            spectralOn = !spectralOn; // Toggle spectralOn
-            canSwap = false;
             StartCoroutine(timer());
         }
-
-        // Get input from player
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-
         if (movement.x > 0)
         {
             renderer.sprite = sideCat;
@@ -103,15 +125,13 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        // Normalize movement to prevent faster diagonal movement
-        movement = movement.normalized;
 
         // Handle energy system
-        if (spectralOn && currentEnergy > 0 && movement.normalized.sqrMagnitude != 0)
+        if (spectralOn && currentEnergy > 0 )
         {
             currentEnergy -= energyDrainRate * Time.deltaTime;
 
-            // If energy runs out, disable night vision automatically
+            // If energy runs out, disable night vision
             if (currentEnergy <= 0)
             {
                 currentEnergy = 0;
@@ -121,6 +141,8 @@ public class PlayerMovement : MonoBehaviour
                 {
                     gameObj.SendMessage("toggleOffSpectralLayer", SendMessageOptions.DontRequireReceiver);
                 }
+                canSwap = false;
+                StartCoroutine (timer());
             }
         }
 
