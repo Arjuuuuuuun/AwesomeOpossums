@@ -132,8 +132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c99e6b58443f84640b02d2cb5b36d88a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  maxEnergy: 25
+  moveSpeed: 3
+  maxEnergy: 10
   spectralOn: 0
   energyDrainRate: 5
   energyBar: {fileID: 0}
