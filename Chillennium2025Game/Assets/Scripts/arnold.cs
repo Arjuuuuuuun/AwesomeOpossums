@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class arnold : MonoBehaviour
 {
@@ -25,5 +26,9 @@ public class arnold : MonoBehaviour
             spriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, elaspedTime / animationTime);
             yield return new WaitForSeconds(0.01f);
         }
+        Time.timeScale = 0.000001f;
+        yield return new WaitForSeconds(0.000002f);
+        Time.timeScale = 1;
+        SceneManager.LoadScene("GameOverScene");
     } 
 }
