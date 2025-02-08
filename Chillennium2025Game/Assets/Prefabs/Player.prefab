@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  maxEnergy: 100
+  maxEnergy: 25
   spectralOn: 0
   energyDrainRate: 5
   energyBar: {fileID: 0}

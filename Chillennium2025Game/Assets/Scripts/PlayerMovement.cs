@@ -107,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
         movement = movement.normalized;
 
         // Handle energy system
-        if (spectralOn && currentEnergy > 0)
+        if (spectralOn && currentEnergy > 0 && movement.normalized.sqrMagnitude != 0)
         {
             currentEnergy -= energyDrainRate * Time.deltaTime;
 
