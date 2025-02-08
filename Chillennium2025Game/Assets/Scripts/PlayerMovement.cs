@@ -242,11 +242,10 @@ public class PlayerMovement : MonoBehaviour
             lighting.pointLightInnerRadius = (slope * totalTime + 3f);
             lighting.pointLightOuterRadius = (slope * totalTime + 5f);
 
-            float rSlope = ((30 - 255) / (spectralSightAnimationTime));
             float bSlope = ((30 - 255) / (spectralSightAnimationTime));
             float aSlope = ((255 - 255) / (spectralSightAnimationTime));
 
-            lighting.color = new Color((rSlope * totalTime + 255) / 255,1, (bSlope * totalTime + 255) / 255, (aSlope * totalTime + 255) / 255); 
+            lighting.color = new Color(1,1, (bSlope * totalTime + 255) / 255, (aSlope * totalTime + 255) / 255); 
 
             yield return new WaitForSeconds(0.01f);
             totalTime += 0.01f;
@@ -274,12 +273,11 @@ public class PlayerMovement : MonoBehaviour
             lighting.pointLightInnerRadius = (slope * totalTime + initInnerRadius);
             lighting.pointLightOuterRadius = (slope * totalTime + initOuterRaduis);
 
-            float rSlope = -((initR * 255 - 255) / (spectralSightAnimationTime));
             float bSlope = -((initB * 255 - 255) / (spectralSightAnimationTime));
             float aSlope = -((initA * 255 - 255) / (spectralSightAnimationTime));
 
 
-            lighting.color = new Color((rSlope * totalTime + initR * 255) / 255, 1, (bSlope * totalTime + initB * 255) / 255, (aSlope * totalTime + initA * 255) / 255);
+            lighting.color = new Color(1, 1, (bSlope * totalTime + initB * 255) / 255, (aSlope * totalTime + initA * 255) / 255);
 
             yield return new WaitForSeconds(0.01f);
             totalTime += 0.01f;
