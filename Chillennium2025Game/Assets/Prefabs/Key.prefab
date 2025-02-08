@@ -143,5 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6813838d0399f408976a6b71eac88e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  scaleFactor: 1
+  pulseSpeed: 2
+  pulseAmount: 0.03
+  bounceHeight: 2
+  fallSpeed: 2
