@@ -36,8 +36,7 @@ public class PlayerMovement : MonoBehaviour
                 BroadcastMessage("toggleOffSpectralLayer", SendMessageOptions.DontRequireReceiver);
             }
             else 
-            { 
-
+            {
                 //turn on
                 BroadcastMessage("toggleOnSpectralLayer", SendMessageOptions.DontRequireReceiver);
             }
