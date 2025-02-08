@@ -4,7 +4,7 @@ using System.Collections;
 public class Key : MonoBehaviour
 {
     public float pulseSpeed = 2f;
-    public float pulseAmount = 0.05f;
+    public float pulseAmount = 0.03f;
     public float bounceHeight = 2f;
     public float fallSpeed = 2f;
 
