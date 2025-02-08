@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Toggle night vision mode with Spacebar (only if energy > 0)
-        else if (canSwap && Input.GetKeyDown(KeyCode.Space) && currentEnergy > 0)
+        else if (canSwap && Input.GetKeyDown(KeyCode.Space) && currentEnergy > 0 && movement.sqrMagnitude <= 0)
         {
             if (!spectralOn)
             {
@@ -171,6 +171,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ghost"))
         {
+            var objects = FindObjectsOfType<spectralSight>();
+            foreach (var gameObj in objects)
+            {
+                gameObj.SendMessage("toggleOffSpectralLayer", SendMessageOptions.DontRequireReceiver);
+            }
+
+            spectralOn = false; // Toggle spectralOn
+            canSwap = false;
             Instantiate(jumpScare);
             Destroy(collision.gameObject);
         }
