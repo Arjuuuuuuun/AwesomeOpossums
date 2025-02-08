@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,29 +6,52 @@ public class ModeToggler : MonoBehaviour
 {
     [SerializeField] private Sprite Physical;
     [SerializeField] private Sprite Ghost;
+    private float cooldownTime;
     private Image image;
-    private PlayerMovement player; // Reference to the player's script
+    private PlayerMovement player;
+    private bool statePrev;
 
     void Start()
     {
         image = GetComponent<Image>();
-        image.sprite = Physical; // Default state
+        image.sprite = Physical;
 
-        // Find the player object (assuming it has the PlayerMovement script)
         player = FindObjectOfType<PlayerMovement>();
+        statePrev = player.spectralOn;
+        cooldownTime = player.cooldownTime;
 
         if (player == null)
         {
             Debug.LogError("Player object with PlayerMovement script not found!");
         }
+
+        image.type = Image.Type.Filled;
+        image.fillMethod = Image.FillMethod.Radial360; 
     }
 
     void Update()
     {
-        if (player != null)
+        image.sprite = player.spectralOn ? Ghost : Physical;
+
+        if (player.spectralOn != statePrev)
         {
-            // Check the player's `spectralOn` variable and switch sprite accordingly
-            image.sprite = player.spectralOn ? Ghost : Physical;
+            StartCoroutine(Cooldown(cooldownTime));
         }
+
+        statePrev = player.spectralOn;
+    }
+
+    IEnumerator Cooldown(float duration)
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            image.fillAmount = elapsedTime / duration; // Gradually increase fill
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        image.fillAmount = 1f; // Fully present
     }
 }
