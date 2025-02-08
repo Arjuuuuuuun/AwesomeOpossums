@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private float currentEnergy;
     private PostProcessVolume ppVolume;
     private LensDistortion ppLens;
+    private bool canSwap;
 
     [SerializeField] GameObject door1;
     [SerializeField] GameObject door2;
@@ -32,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-
+        canSwap = true;
         spectralOn = false;
         rb = GetComponent<Rigidbody2D>();
         currentEnergy = maxEnergy;
@@ -65,6 +66,8 @@ public class PlayerMovement : MonoBehaviour
 
             }
             spectralOn = !spectralOn; // Toggle spectralOn
+            canSwap = false;
+            StartCoroutine(timer());
         }
 
         // Get input from player
@@ -148,4 +151,10 @@ public class PlayerMovement : MonoBehaviour
             Destroy(door4);
         }
     }
+    IEnumerator timer()
+    {
+        yield return new WaitForSeconds(cooldownTime);
+        canSwap = true;
+    }
+
 }
