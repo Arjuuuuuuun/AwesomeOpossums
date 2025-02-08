@@ -2999,8 +2999,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf88ca232188194ab5a14aa588a2286, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Physical: {fileID: 21300000, guid: 9591a9724b23cbe4b94938df63c5f085, type: 3}
-  Ghost: {fileID: 21300000, guid: cf369e752cac44d468bae47711f9bd24, type: 3}
+  Physical: {fileID: 21300000, guid: 665edead5f1744d4ebe8a8a315bab8a6, type: 3}
+  Ghost: {fileID: 21300000, guid: a715badb01cbd354190b027c52a7ac66, type: 3}
 --- !u!1001 &1280100920
 PrefabInstance:
   m_ObjectHideFlags: 0
