@@ -16,9 +16,10 @@ public class homingGhostScript : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Vector3 direction = -(transform.position - player.transform.position).normalized;
         if (player.spectralOn)
         {
-            Vector3 direction = -(transform.position - player.transform.position).normalized;
+            
             rb.velocity = new Vector2(direction.x * velocity, direction.y * velocity);
         }
         else {
