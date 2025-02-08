@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     private PostProcessVolume ppVolume;
     private LensDistortion ppLens;
     private bool canSwap;
+    private SpriteRenderer renderer;
+    private Transform trans;
 
     [SerializeField] GameObject door1;
     [SerializeField] GameObject door2;
@@ -31,11 +33,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject key3;
     [SerializeField] GameObject key4;
 
+    [SerializeField] Sprite sideCat;
+    [SerializeField] Sprite frontCat;
+    [SerializeField] Sprite backCat;
+
+
     void Start()
     {
         canSwap = true;
         spectralOn = false;
         rb = GetComponent<Rigidbody2D>();
+        renderer = GetComponent<SpriteRenderer>();
+        trans = GetComponent<Transform>();
         currentEnergy = maxEnergy;
 
         if (energyBar != null)
@@ -45,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         // Toggle night vision mode with Spacebar (only if energy > 0)
-        if (Input.GetKeyDown(KeyCode.Space) && currentEnergy > 0)
+        if (canSwap && Input.GetKeyDown(KeyCode.Space) && currentEnergy > 0)
         {
             if (!spectralOn)
             {
@@ -74,11 +83,31 @@ public class PlayerMovement : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
+        if (movement.x > 0)
+        {
+            renderer.sprite = sideCat;
+            trans.localScale = new Vector3(0.1f, 0.1f, 0.1f); // Face right
+        }
+        else if (movement.x < 0)
+        {
+            renderer.sprite = sideCat;
+            trans.localScale = new Vector3(-0.1f, 0.1f, 0.1f); // Flip horizontally to face left
+        }
+        else if (movement.y > 0)
+        {
+            renderer.sprite = backCat;
+        }
+        else
+        {
+            renderer.sprite = frontCat;
+        }
+
+
         // Normalize movement to prevent faster diagonal movement
         movement = movement.normalized;
 
         // Handle energy system
-        if (spectralOn && currentEnergy > 0)
+        if (spectralOn && currentEnergy > 0 && movement.normalized.sqrMagnitude != 0)
         {
             currentEnergy -= energyDrainRate * Time.deltaTime;
 

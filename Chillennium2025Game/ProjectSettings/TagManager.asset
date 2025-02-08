@@ -50,3 +50,6 @@ TagManager:
   - name: Ghosts
     uniqueID: 321784645
     locked: 0
+  - name: Arnold
+    uniqueID: 2020052115
+    locked: 0
