@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
@@ -14,14 +14,17 @@ public class PlayerMovement : MonoBehaviour
     public float cooldownTime;
     public bool canSwap;
 
+    [SerializeField] float spectralSightAnimationTime;
+    [SerializeField] float spectralSightDelay;
+
 
     private Rigidbody2D rb;
     private Vector2 movement;
     private float currentEnergy;
-    private PostProcessVolume ppVolume;
-    private LensDistortion ppLens;
     private SpriteRenderer renderer;
     private Transform trans;
+
+    Light2D lighting;
 
     [SerializeField] GameObject door1;
     [SerializeField] GameObject door2;
@@ -45,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         renderer = GetComponent<SpriteRenderer>();
         trans = GetComponent<Transform>();
+        lighting = GetComponentInChildren<Light2D>();
         currentEnergy = maxEnergy;
 
         if (energyBar != null)
@@ -70,7 +74,9 @@ public class PlayerMovement : MonoBehaviour
             {
                 gameObj.SendMessage("toggleOffSpectralLayer", SendMessageOptions.DontRequireReceiver);
             }
+            StopAllCoroutines();
             StartCoroutine(timer());
+            StartCoroutine(fromSpectralSight());
 
         }
 
@@ -79,13 +85,10 @@ public class PlayerMovement : MonoBehaviour
         {
             if (!spectralOn)
             {
-                var objects = FindObjectsOfType<spectralSight>();
-                foreach (var gameObj in objects)
-                {
-                    gameObj.SendMessage("toggleOnSpectralLayer", SendMessageOptions.DontRequireReceiver);
-                }
+
 
                 spectralOn = true; // Toggle spectralOn
+                StartCoroutine(toSpectralSight());
                 canSwap = true;
 
 
@@ -100,10 +103,14 @@ public class PlayerMovement : MonoBehaviour
                 }
 
                 spectralOn = false; // Toggle spectralOn
+                StopAllCoroutines();
+                StartCoroutine(fromSpectralSight());
                 canSwap = false;
+
 
             }
             StartCoroutine(timer());
+
         }
         if (movement.x > 0)
         {
@@ -142,7 +149,9 @@ public class PlayerMovement : MonoBehaviour
                     gameObj.SendMessage("toggleOffSpectralLayer", SendMessageOptions.DontRequireReceiver);
                 }
                 canSwap = false;
+                StopAllCoroutines();
                 StartCoroutine (timer());
+                StartCoroutine(fromSpectralSight());
             }
         }
 
@@ -179,6 +188,10 @@ public class PlayerMovement : MonoBehaviour
 
             spectralOn = false; // Toggle spectralOn
             canSwap = false;
+            StopCoroutine(toSpectralSight());
+            lighting.pointLightInnerRadius = 3f;
+            lighting.pointLightOuterRadius = 5f;
+            lighting.color = Color.white;
             Instantiate(jumpScare);
             Destroy(collision.gameObject);
         }
@@ -218,6 +231,64 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(cooldownTime);
         canSwap = true;
+    }
+
+    IEnumerator toSpectralSight()
+    {
+        yield return new WaitForSeconds(spectralSightDelay);
+        lighting.pointLightInnerRadius = 3f;
+        lighting.pointLightOuterRadius = 5f;
+        lighting.color = Color.white;
+        float totalTime = 0.0f;
+        while(totalTime < spectralSightAnimationTime)
+        {
+            float slope = ((17 - 3) / (spectralSightAnimationTime));
+            lighting.pointLightInnerRadius = (slope * totalTime + 3f);
+            lighting.pointLightOuterRadius = (slope * totalTime + 5f);
+
+            float rSlope = ((30 - 255) / (spectralSightAnimationTime));
+            float bSlope = ((30 - 255) / (spectralSightAnimationTime));
+            float aSlope = ((255 - 255) / (spectralSightAnimationTime));
+
+            lighting.color = new Color((rSlope * totalTime + 255) / 255,1, (bSlope * totalTime + 255) / 255, (aSlope * totalTime + 255) / 255); 
+
+            yield return new WaitForSeconds(0.01f);
+            totalTime += 0.01f;
+        }
+        var objects = FindObjectsOfType<spectralSight>();
+        foreach (var gameObj in objects)
+        {
+            gameObj.SendMessage("toggleOnSpectralLayer", SendMessageOptions.DontRequireReceiver);
+        }
+
+    }
+
+    IEnumerator fromSpectralSight()
+    {
+        float initInnerRadius = lighting.pointLightInnerRadius;
+        float initOuterRaduis = lighting.pointLightOuterRadius;
+        float initR = lighting.color.r;
+        float initB = lighting.color.b; 
+        float initA = lighting.color.a;
+        Debug.Log(lighting.color);
+        float totalTime = 0.0f;
+        while (totalTime < spectralSightAnimationTime)
+        {
+            float slope = -((initInnerRadius - 3) / (spectralSightAnimationTime));
+            lighting.pointLightInnerRadius = (slope * totalTime + initInnerRadius);
+            lighting.pointLightOuterRadius = (slope * totalTime + initOuterRaduis);
+
+            float rSlope = -((initR * 255 - 255) / (spectralSightAnimationTime));
+            float bSlope = -((initB * 255 - 255) / (spectralSightAnimationTime));
+            float aSlope = -((initA * 255 - 255) / (spectralSightAnimationTime));
+
+
+            lighting.color = new Color((rSlope * totalTime + initR * 255) / 255, 1, (bSlope * totalTime + initB * 255) / 255, (aSlope * totalTime + initA * 255) / 255);
+
+            yield return new WaitForSeconds(0.01f);
+            totalTime += 0.01f;
+        }
+
     }
 
 }

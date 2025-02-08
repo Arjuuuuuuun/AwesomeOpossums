@@ -138,6 +138,9 @@ MonoBehaviour:
   energyDrainRate: 1
   energyBar: {fileID: 0}
   cooldownTime: 0.5
+  canSwap: 0
+  spectralSightAnimationTime: 0.4
+  spectralSightDelay: 0
   door1: {fileID: 0}
   door2: {fileID: 0}
   door3: {fileID: 0}
