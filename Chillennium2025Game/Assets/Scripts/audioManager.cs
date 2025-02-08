@@ -6,8 +6,12 @@ public class audioManager : MonoBehaviour
 {
     [SerializeField] GameObject NormalThemeObject;
     [SerializeField] GameObject SpectralThemeObject;
+    [SerializeField] GameObject spectralModeOnObject;
+    [SerializeField] GameObject spectralModeOffObject;
     AudioSource NormalTheme;
     AudioSource SpectralTheme;
+    AudioSource spectralModeOn;
+    AudioSource spectralModeOff;
     PlayerMovement playerMovement;
     bool isNormalModePlaying;
     // Start is called before the first frame update
@@ -15,6 +19,8 @@ public class audioManager : MonoBehaviour
     {
         NormalTheme = NormalThemeObject.GetComponent<AudioSource>();
         SpectralTheme = SpectralThemeObject.GetComponent<AudioSource>();
+        spectralModeOn = spectralModeOnObject.GetComponent<AudioSource>();
+        spectralModeOff = spectralModeOffObject.GetComponent<AudioSource>();
         playerMovement = FindObjectOfType<PlayerMovement>();
         NormalTheme.Play();
         SpectralTheme.volume = 0.0f;
@@ -27,6 +33,7 @@ public class audioManager : MonoBehaviour
         if (playerMovement.spectralOn && isNormalModePlaying)
         {
             isNormalModePlaying = false;
+            spectralModeOn.Play();
             StartCoroutine("fadeOut", NormalTheme);
             StartCoroutine("fadeIn", SpectralTheme);
 
@@ -34,6 +41,7 @@ public class audioManager : MonoBehaviour
         else if (!playerMovement.spectralOn && !isNormalModePlaying)
         {
             isNormalModePlaying = true;
+            spectralModeOff.Play();
             StartCoroutine("fadeIn", NormalTheme);
             StartCoroutine("fadeOut", SpectralTheme);
         }
@@ -49,17 +57,17 @@ public class audioManager : MonoBehaviour
     {
         for (int i = 0; i < 10; ++i)
         {
-            clip.volume += 0.07f;
+            clip.volume += 0.05f;
             yield return new WaitForSeconds(.03f);
         }
-        clip.volume = 0.7f;
+        clip.volume = 0.5f;
     }
 
     IEnumerator fadeOut(AudioSource clip)
     {
         for (int i = 0; i < 10; ++i)
         {
-            clip.volume -= 0.07f;
+            clip.volume -= 0.05f;
             yield return new WaitForSeconds(.03f);
         }
         clip.volume = 0.0f;
