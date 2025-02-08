@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
                 foreach(var gameObj in objects){
                     gameObj.SendMessage("toggleOnSpectralLayer", SendMessageOptions.DontRequireReceiver);
                 }
+
                     
             }
             else 
@@ -47,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     gameObj.SendMessage("toggleOffSpectralLayer", SendMessageOptions.DontRequireReceiver);
                 }
+
             }
             spectralOn = !spectralOn; // Toggle spectralOn
         }
