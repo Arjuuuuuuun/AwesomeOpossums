@@ -16,16 +16,15 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] float spectralSightAnimationTime;
     [SerializeField] float spectralSightDelay;
+    [SerializeField] Sprite Key1Image;
+    [SerializeField] Sprite Key2Image;
+    [SerializeField] Sprite Key3Image;
+    [SerializeField] Sprite Key4Image;
 
-
-    private Rigidbody2D rb;
-    private Vector2 movement;
-    private float currentEnergy;
-    private SpriteRenderer renderer;
-    private Transform trans;
-
-    Light2D lighting;
-
+    [SerializeField] Sprite Door1Image;
+    [SerializeField] Sprite Door2Image;
+    [SerializeField] Sprite Door3Image;
+    [SerializeField] Sprite Door4Image;
     [SerializeField] GameObject door1;
     [SerializeField] GameObject door2;
     [SerializeField] GameObject door3;
@@ -35,6 +34,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject key2;
     [SerializeField] GameObject key3;
     [SerializeField] GameObject key4;
+
+    private Rigidbody2D rb;
+    private Vector2 movement;
+    private float currentEnergy;
+    private SpriteRenderer renderer;
+    private Transform trans;
+
+    Light2D lighting;
+
+
 
     [SerializeField] Sprite sideCat;
     [SerializeField] Sprite frontCat;
@@ -53,6 +62,18 @@ public class PlayerMovement : MonoBehaviour
 
         if (energyBar != null)
             energyBar.maxValue = maxEnergy;
+
+        // Assign sprites to keys
+        key1.GetComponent<SpriteRenderer>().sprite = Key1Image;
+        key2.GetComponent<SpriteRenderer>().sprite = Key2Image;
+        key3.GetComponent<SpriteRenderer>().sprite = Key3Image;
+        key4.GetComponent<SpriteRenderer>().sprite = Key4Image;
+
+        // Assign sprites to doors
+        door1.GetComponent<SpriteRenderer>().sprite = Door1Image;
+        door2.GetComponent<SpriteRenderer>().sprite = Door2Image;
+        door3.GetComponent<SpriteRenderer>().sprite = Door3Image;
+        door4.GetComponent<SpriteRenderer>().sprite = Door4Image;
     }
 
     void Update()
