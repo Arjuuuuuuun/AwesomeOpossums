@@ -39,6 +39,12 @@ public class audioManager : MonoBehaviour
         }
     }
 
+    public void StopAllThemes()
+    {
+        SpectralTheme.volume = 0.0f;
+        NormalTheme.volume = 0.0f;
+    }
+
     IEnumerator fadeIn(AudioSource clip)
     {
         for (int i = 0; i < 10; ++i)
