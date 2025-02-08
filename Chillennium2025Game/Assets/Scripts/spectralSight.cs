@@ -24,12 +24,12 @@ public class spectralSight : MonoBehaviour
             float distanceToPlayer = Vector2.Distance(FindAnyObjectByType<PlayerMovement>().gameObject.transform.position,this.transform.position);
             if (distanceToPlayer < appearInnerRadius)
             {
-                new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                spriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
             }
             else if(distanceToPlayer < appearOuterRadius)
             {
-                float scratch = distanceToPlayer - appearOuterRadius;
-                new Color(1.0f, 1.0f, 1.0f,scratch / (appearOuterRadius - appearInnerRadius));
+                float scratch = appearOuterRadius - distanceToPlayer;
+                spriteRenderer.color = new Color(1.0f, 1.0f, 1.0f,scratch / (appearOuterRadius - appearInnerRadius));
             }
             else
             {
