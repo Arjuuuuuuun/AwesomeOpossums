@@ -39,6 +39,15 @@ public class ModeToggler : MonoBehaviour
         }
 
         statePrev = player.spectralOn;
+
+        if(!player.canSwap)
+        {
+            image.color = Color.gray;
+        }
+        else
+        {
+            image.color = Color.white;
+        }
     }
 
     IEnumerator Cooldown(float duration)
