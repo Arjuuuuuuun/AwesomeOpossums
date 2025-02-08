@@ -86,12 +86,12 @@ public class PlayerMovement : MonoBehaviour
         if (movement.x > 0)
         {
             renderer.sprite = sideCat;
-            trans.localScale = new Vector3(1, 1, 1); // Face right
+            trans.localScale = new Vector3(0.1f, 0.1f, 0.1f); // Face right
         }
         else if (movement.x < 0)
         {
             renderer.sprite = sideCat;
-            trans.localScale = new Vector3(-1, 1, 1); // Flip horizontally to face left
+            trans.localScale = new Vector3(-0.1f, 0.1f, 0.1f); // Flip horizontally to face left
         }
         else if (movement.y > 0)
         {
