@@ -34,10 +34,12 @@ public class PlayerMovement : MonoBehaviour
         {
             if (state)
             {
-                var objects = FindObjectsOfType<spectralSight>(); 
-                foreach(var gameObj in objects){
-                    gameObj.SendMessage("toggleOnSpectralLayer");
+                var objects = FindObjectsOfType<spectralSight>();
+                foreach (var gameObj in objects)
+                {
+                    gameObj.SendMessage("toggleOffSpectralLayer");
                 }
+
                     
             }
             else 
@@ -45,8 +47,9 @@ public class PlayerMovement : MonoBehaviour
                 var objects = FindObjectsOfType<spectralSight>();
                 foreach (var gameObj in objects)
                 {
-                    gameObj.SendMessage("toggleOffSpectralLayer");
+                    gameObj.SendMessage("toggleOnSpectralLayer");
                 }
+
             }
             state = !state; // Toggle state
         }
