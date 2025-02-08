@@ -13,14 +13,16 @@ public class spectralSight : MonoBehaviour
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.enabled = false;
+        spriteRenderer.enabled = true;
+        spriteRenderer.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
     }
 
     private void Update()
     {
         if (!inSight)
         {
-            if(Vector2.Distance(FindAnyObjectByType<PlayerMovement>().gameObject.transform.position,this.transform.position) > appearOuterRadius)
+            float distanceToPlayer = Vector2.Distance(FindAnyObjectByType<PlayerMovement>().gameObject.transform.position,this.transform.position);
+            if (distanceToPlayer > appearOuterRadius)
             {
 
             }
