@@ -18,6 +18,15 @@ public class PlayerMovement : MonoBehaviour
     private PostProcessVolume ppVolume;
     private LensDistortion ppLens;
 
+    [SerializeField] GameObject door1;
+    [SerializeField] GameObject door2;
+    [SerializeField] GameObject door3;
+    [SerializeField] GameObject door4;
+
+    [SerializeField] GameObject key1;
+    [SerializeField] GameObject key2;
+    [SerializeField] GameObject key3;
+    [SerializeField] GameObject key4;
 
     void Start()
     {
@@ -114,6 +123,26 @@ public class PlayerMovement : MonoBehaviour
         {
             ppLens.intensity.value = 30f;
             Debug.Log("game over");
+        }
+        if (collision.gameObject == key1)
+        {
+            Destroy(collision.gameObject );
+            Destroy(door1);
+        }
+        if (collision.gameObject == key2)
+        {
+            Destroy(collision.gameObject );
+            Destroy(door2);
+        }
+        if(collision.gameObject == key3)
+        {
+            Destroy(collision.gameObject );
+            Destroy(door3);
+        }
+        if(collision.gameObject == key4)
+        {
+            Destroy(collision.gameObject);
+            Destroy(door4);
         }
     }
 }
