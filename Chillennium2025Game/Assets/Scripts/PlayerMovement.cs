@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Sprite frontCat;
     [SerializeField] Sprite backCat;
 
-
+    [SerializeField] GameObject jumpScare;
     void Start()
     {
         canSwap = true;
@@ -149,7 +149,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ghost"))
         {
-            Destroy(this.gameObject);
+            Instantiate(jumpScare);
+            Destroy(collision.gameObject);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

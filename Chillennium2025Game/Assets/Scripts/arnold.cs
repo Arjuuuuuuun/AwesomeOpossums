@@ -13,16 +13,17 @@ public class arnold : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+        StartCoroutine(jumpScare());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator jumpScare()
     {
         while (elaspedTime < animationTime)
         {
-            transform.localScale = new Vector3((1.0f + elaspedTime), (1.0f + elaspedTime), 1.0f);
-            spriteRenderer.color = new Color(0.0f, 0.0f, 0.0f, elaspedTime / animationTime);
-            elaspedTime += Time.deltaTime;
+            elaspedTime += 0.1f;
+            transform.localScale = new Vector3(elaspedTime/ animationTime, elaspedTime / animationTime, 1.0f);
+            spriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, elaspedTime / animationTime);
+            yield return new WaitForSeconds(0.01f);
         }
-    }
+    } 
 }
