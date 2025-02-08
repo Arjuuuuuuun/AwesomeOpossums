@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 movement;
     private float currentEnergy;
+    delegate void toggleOnSight();
+
 
     void Start()
     {
@@ -30,17 +32,23 @@ public class PlayerMovement : MonoBehaviour
         // Toggle night vision mode with Spacebar (only if energy > 0)
         if (Input.GetKeyDown(KeyCode.Space) && currentEnergy > 0)
         {
-            if (spectralOn)
+            if (!spectralOn)
             {
-                //turn off
-                BroadcastMessage("toggleOffSpectralLayer", SendMessageOptions.DontRequireReceiver);
+                var objects = FindObjectsOfType<spectralSight>(); 
+                foreach(var gameObj in objects){
+                    gameObj.SendMessage("toggleOnSpectralLayer", SendMessageOptions.DontRequireReceiver);
+                }
+                    
             }
             else 
             {
-                //turn on
-                BroadcastMessage("toggleOnSpectralLayer", SendMessageOptions.DontRequireReceiver);
+                var objects = FindObjectsOfType<spectralSight>();
+                foreach (var gameObj in objects)
+                {
+                    gameObj.SendMessage("toggleOffSpectralLayer", SendMessageOptions.DontRequireReceiver);
+                }
             }
-            spectralOn = !spectralOn; // Toggle state
+            spectralOn = !spectralOn; // Toggle spectralOn
         }
 
         // Get input from player
@@ -60,8 +68,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 currentEnergy = 0;
                 spectralOn = false;
-                BroadcastMessage("toggleOffSpectralLayer", SendMessageOptions.DontRequireReceiver);
-
+                var objects = FindObjectsOfType<spectralSight>();
+                foreach (var gameObj in objects)
+                {
+                    gameObj.SendMessage("toggleOffSpectralLayer", SendMessageOptions.DontRequireReceiver);
+                }
             }
         }
 
