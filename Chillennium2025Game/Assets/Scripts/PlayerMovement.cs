@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public bool spectralOn = false; // False = normal, True = night vision
     public float energyDrainRate = 5f; // Energy drains per second when in night vision mode
     public Slider energyBar; // Assign in the Inspector
+    public float cooldownTime;
+
 
     private Rigidbody2D rb;
     private Vector2 movement;
@@ -30,8 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        ppVolume = GetComponentInChildren<PostProcessVolume>();
-        ppVolume.profile.TryGetSettings<LensDistortion>(out ppLens);
+
         spectralOn = false;
         rb = GetComponent<Rigidbody2D>();
         currentEnergy = maxEnergy;
@@ -112,6 +113,13 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Detect collision with an energy particle
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ghost"))
+        {
+            Destroy(this.gameObject);
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Energy"))
@@ -119,14 +127,8 @@ public class PlayerMovement : MonoBehaviour
             RechargeEnergy();
             Destroy(collision.gameObject); // Remove the energy particle
         }
-        if (collision.CompareTag("Ghost"))
-        {
-            ppLens.intensity.value = 30f;
-            Debug.Log("game over");
-        }
         if (collision.gameObject == key1)
         {
-            Debug.Log("We get here");
             Destroy(collision.gameObject );
             Destroy(door1.gameObject);
         }
