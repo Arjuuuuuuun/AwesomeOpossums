@@ -135,7 +135,7 @@ MonoBehaviour:
   moveSpeed: 3
   maxEnergy: 15
   spectralOn: 0
-  energyDrainRate: 1
+  energyDrainRate: 0
   energyBar: {fileID: 0}
   cooldownTime: 0.5
   canSwap: 0
