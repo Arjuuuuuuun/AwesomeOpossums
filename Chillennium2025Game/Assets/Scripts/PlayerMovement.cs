@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     private float currentEnergy;
     private SpriteRenderer renderer;
     private Transform trans;
+    private bool isInCooldown = false;
 
     Light2D lighting;
 
@@ -79,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
         // Assign sprites to doors
         if (door1 != null)
         {
-                door1.GetComponent<SpriteRenderer>().sprite = Door1Image;
+            door1.GetComponent<SpriteRenderer>().sprite = Door1Image;
         }
 
         if (door2 != null) door2.GetComponent<SpriteRenderer>().sprite = Door2Image;
@@ -103,9 +104,11 @@ public class PlayerMovement : MonoBehaviour
 
         // Normalize movement to prevent faster diagonal movement
         movement = movement.normalized;
+        
+        canSwap = movement.magnitude == 0 && !isInCooldown;
+        
         if(movement.sqrMagnitude > 0 && spectralOn)
         {
-            canSwap = false;
             spectralOn = false;
             var objects = FindObjectsOfType<spectralSight>();
             foreach (var gameObj in objects)
@@ -119,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Toggle night vision mode with Spacebar (only if energy > 0)
-        else if (canSwap && Input.GetKeyDown(KeyCode.Space) && currentEnergy > 0 && movement.sqrMagnitude <= 0)
+        else if (canSwap && Input.GetKeyDown(KeyCode.Space) && currentEnergy > 0)
         {
             if (!spectralOn)
             {
@@ -127,7 +130,7 @@ public class PlayerMovement : MonoBehaviour
 
                 spectralOn = true; // Toggle spectralOn
                 StartCoroutine(toSpectralSight());
-                canSwap = true;
+                canSwap = false;
 
 
             }
@@ -142,12 +145,11 @@ public class PlayerMovement : MonoBehaviour
 
                 spectralOn = false; // Toggle spectralOn
                 StopAllCoroutines();
-                StartCoroutine(fromSpectralSight());
-                canSwap = false;
+                StartCoroutine(timer());
+                StartCoroutine(fromSpectralSight());  
 
 
             }
-            StartCoroutine(timer());
 
         }
         if (movement.x > 0)
@@ -186,7 +188,6 @@ public class PlayerMovement : MonoBehaviour
                 {
                     gameObj.SendMessage("toggleOffSpectralLayer", SendMessageOptions.DontRequireReceiver);
                 }
-                canSwap = false;
                 StopAllCoroutines();
                 StartCoroutine (timer());
                 StartCoroutine(fromSpectralSight());
@@ -225,7 +226,6 @@ public class PlayerMovement : MonoBehaviour
             }
 
             spectralOn = false; // Toggle spectralOn
-            canSwap = false;
             StopCoroutine(toSpectralSight());
             lighting.pointLightInnerRadius = 3f;
             lighting.pointLightOuterRadius = 5f;
@@ -263,8 +263,10 @@ public class PlayerMovement : MonoBehaviour
     }
     IEnumerator timer()
     {
+        isInCooldown = true;
         yield return new WaitForSeconds(cooldownTime);
-        canSwap = true;
+
+        isInCooldown = false;
     }
 
     IEnumerator toSpectralSight()
