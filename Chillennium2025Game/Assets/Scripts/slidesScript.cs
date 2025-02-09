@@ -95,6 +95,7 @@ public class SlideScript : MonoBehaviour
         // Enable buttons and destroy object after last slide
         button1.interactable = true;
         button2.interactable = true;
+        spaceToContinue.color = new Color(0, 0, 0, 0);
         // Destroy GameObject after the final slide
         Destroy(gameObject);
     }
