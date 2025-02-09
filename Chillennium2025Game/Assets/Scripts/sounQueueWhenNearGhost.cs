@@ -8,6 +8,7 @@ public class sounQueueWhenNearGhost : MonoBehaviour
 
     PostProcessVolume ppVolume;
     LensDistortion ppLens;
+    audioManager audioManager;
     [SerializeField] float distanceWhenSoundQueueIsPlayed;
     int ghostsNear = 0;
     bool soundQueuePlayed = false;
@@ -16,6 +17,7 @@ public class sounQueueWhenNearGhost : MonoBehaviour
     {
         ppVolume = GetComponentInChildren<PostProcessVolume>();
         ppVolume.profile.TryGetSettings<LensDistortion>(out ppLens);
+        audioManager = FindObjectOfType<audioManager>();
     }
 
 
@@ -29,9 +31,11 @@ public class sounQueueWhenNearGhost : MonoBehaviour
             if(Vector2.Distance(ghost.gameObject.transform.position,this.transform.position) < distanceWhenSoundQueueIsPlayed)
             {
                 nearGhost = true;
-                if(soundQueuePlayed == false)
+             
+
+                if (soundQueuePlayed == false)
                 {
-                    //play sound queue
+                    audioManager.SendMessage("raiseHeartbeat");
                     Debug.Log("Ghost Near");
                     soundQueuePlayed = true;
                 }
@@ -40,6 +44,8 @@ public class sounQueueWhenNearGhost : MonoBehaviour
         if(nearGhost == false)
         {
             soundQueuePlayed = false;
+            audioManager.SendMessage("lowerHeartbeat");
+            Debug.Log("Ghost Away");
         }
     }
     

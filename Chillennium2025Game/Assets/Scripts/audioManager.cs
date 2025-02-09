@@ -10,12 +10,14 @@ public class audioManager : MonoBehaviour
     [SerializeField] GameObject spectralModeOffObject;
     [SerializeField] GameObject jumpscareObject;
     [SerializeField] GameObject keySoundObject;
+    [SerializeField] GameObject heartbeatObject;
     AudioSource NormalTheme;
     AudioSource SpectralTheme;
     AudioSource spectralModeOn;
     AudioSource spectralModeOff;
     AudioSource jumpscare;
     AudioSource keySound;
+    AudioSource heartbeat;
     PlayerMovement playerMovement;
     bool isNormalModePlaying;
     // Start is called before the first frame update
@@ -27,15 +29,17 @@ public class audioManager : MonoBehaviour
         spectralModeOff = spectralModeOffObject.GetComponent<AudioSource>();
         jumpscare = jumpscareObject.GetComponent<AudioSource>();
         keySound = keySoundObject.GetComponent<AudioSource>();
+        heartbeat = heartbeatObject.GetComponent<AudioSource>();
         playerMovement = FindObjectOfType<PlayerMovement>();
         NormalTheme.Play();
+        heartbeat.volume = 0.0f;
         SpectralTheme.volume = 0.0f;
         isNormalModePlaying = true;
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {;    
         if (playerMovement.spectralOn && isNormalModePlaying)
         {
             isNormalModePlaying = false;
@@ -65,6 +69,15 @@ public class audioManager : MonoBehaviour
         NormalTheme.volume = 0.0f;
     }
 
+    public void raiseHeartbeat()
+    {
+        StartCoroutine("fadeInHeartbeat", heartbeat);
+    }
+
+    public void lowerHeartbeat()
+    {
+        StartCoroutine("fadeOutHeartbeat", heartbeat);
+    }
     IEnumerator fadeIn(AudioSource clip)
     {
         for (int i = 0; i < 10; ++i)
@@ -83,5 +96,25 @@ public class audioManager : MonoBehaviour
             yield return new WaitForSeconds(.03f);
         }
         clip.volume = 0.0f;
+    }
+
+    IEnumerator fadeInHeartbeat(AudioSource clip)
+    {
+        for (int i = 0; i < 10; ++i)
+        {
+            clip.volume += 0.1f;
+            yield return new WaitForSeconds(.03f);
+        }
+        clip.volume = 1f;
+    }
+
+    IEnumerator fadeOutHeartbeat(AudioSource clip)
+    {
+        for (int i = 0; i < 10; ++i)
+        {
+            clip.volume -= 0.1f;
+            yield return new WaitForSeconds(.03f);
+        }
+        clip.volume = 0f;
     }
 }
