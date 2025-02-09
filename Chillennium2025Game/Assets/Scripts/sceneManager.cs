@@ -76,10 +76,18 @@ public class sceneManager : MonoBehaviour
         SceneManager.LoadScene("LevelKeyHunt");
     }
 
-    public void startLevelHoming()
+    public void startLevelGrid()
     {
-       
-            SceneManager.LoadScene("LevelHoming");
-        
+        SceneManager.LoadScene("LevelGrid");
+    }
+
+    public void startLevelLines()
+    {
+        SceneManager.LoadScene("LevelWaterfall");
+    }
+
+    public void startLevelHoming()
+    {       
+        SceneManager.LoadScene("LevelHoming");       
     }
 }

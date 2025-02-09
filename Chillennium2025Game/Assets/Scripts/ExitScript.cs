@@ -42,9 +42,17 @@ public class ExitScript : MonoBehaviour
         {
             level_num = 6;
         }
+        if (scene_name == "LevelGrid")
+        {
+            level_num = 7;
+        }
         if (scene_name == "LevelHoming")
         {
             level_num = 8;
+        }
+        if (scene_name == "LevelWaterfall")
+        {
+            level_num = 9;
         }
         if (scene_name == "LevelKeyHunt")
         {
