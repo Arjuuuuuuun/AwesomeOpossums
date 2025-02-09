@@ -9,11 +9,13 @@ public class audioManager : MonoBehaviour
     [SerializeField] GameObject spectralModeOnObject;
     [SerializeField] GameObject spectralModeOffObject;
     [SerializeField] GameObject jumpscareObject;
+    [SerializeField] GameObject keySoundObject;
     AudioSource NormalTheme;
     AudioSource SpectralTheme;
     AudioSource spectralModeOn;
     AudioSource spectralModeOff;
     AudioSource jumpscare;
+    AudioSource keySound;
     PlayerMovement playerMovement;
     bool isNormalModePlaying;
     // Start is called before the first frame update
@@ -24,6 +26,7 @@ public class audioManager : MonoBehaviour
         spectralModeOn = spectralModeOnObject.GetComponent<AudioSource>();
         spectralModeOff = spectralModeOffObject.GetComponent<AudioSource>();
         jumpscare = jumpscareObject.GetComponent<AudioSource>();
+        keySound = keySoundObject.GetComponent<AudioSource>();
         playerMovement = FindObjectOfType<PlayerMovement>();
         NormalTheme.Play();
         SpectralTheme.volume = 0.0f;
@@ -52,7 +55,7 @@ public class audioManager : MonoBehaviour
 
     public void playKeySounds()
     {
-
+        keySound.Play();
     }
 
     public void StopAllThemes()
