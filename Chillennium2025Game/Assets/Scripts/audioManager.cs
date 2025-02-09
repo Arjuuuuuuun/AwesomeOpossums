@@ -61,6 +61,10 @@ public class audioManager : MonoBehaviour
     {
         keySound.Play();
     }
+    public void playCancelSound()
+    {
+
+    }
 
     public void StopAllThemes()
     {
