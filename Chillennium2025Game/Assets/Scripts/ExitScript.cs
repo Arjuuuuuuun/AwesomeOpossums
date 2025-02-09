@@ -26,6 +26,10 @@ public class ExitScript : MonoBehaviour
         {
             level_num = 3;
         }
+        if (scene_name == "LevelHoming")
+        {
+            level_num = 9;
+        }
     }
     // Detect collision with player
     private void OnTriggerEnter2D(Collider2D other)
