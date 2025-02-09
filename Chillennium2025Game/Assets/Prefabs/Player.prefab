@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c081ffd6de08f349a0bbd8123fabd90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceWhenSoundQueueIsPlayed: 5
+  distanceWhenSoundQueueIsPlayed: 1.5
 --- !u!70 &1347073428236073718
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
