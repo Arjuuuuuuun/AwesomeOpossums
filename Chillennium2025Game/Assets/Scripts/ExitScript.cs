@@ -7,9 +7,11 @@ public class ExitScript : MonoBehaviour
 {
     string scene_name;
     int level_num = 0;
+    audioManager audioManager;
     private void Awake()
     {
 
+        audioManager = FindObjectOfType<audioManager>();
         scene_name = SceneManager.GetActiveScene().name;
         Debug.Log(scene_name);
         if (scene_name == "TLevel1")
@@ -56,7 +58,7 @@ public class ExitScript : MonoBehaviour
         {
             headManager.instance.level_completions[level_num] = 1;
             Debug.Log(level_num);
-            LoadMenu();
+            StartCoroutine("LoadMenuScene");
             Debug.Log("colission detected");
         }
     } 
@@ -65,5 +67,12 @@ public class ExitScript : MonoBehaviour
     private void LoadMenu()
     {
         SceneManager.LoadScene("LevelSelect");
+    }
+
+    IEnumerator LoadMenuScene()
+    {
+        audioManager.SendMessage("playWinSound");
+        yield return new WaitForSeconds(1f);
+        LoadMenu();
     }
 }
