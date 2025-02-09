@@ -12,6 +12,7 @@ public class audioManager : MonoBehaviour
     [SerializeField] GameObject keySoundObject;
     [SerializeField] GameObject heartbeatObject;
     [SerializeField] GameObject cancelObject;
+    [SerializeField] GameObject youwinObject;
     AudioSource NormalTheme;
     AudioSource SpectralTheme;
     AudioSource spectralModeOn;
@@ -20,6 +21,7 @@ public class audioManager : MonoBehaviour
     AudioSource keySound;
     AudioSource heartbeat;
     AudioSource cancel;
+    AudioSource youwin;
     PlayerMovement playerMovement;
     bool isNormalModePlaying;
     // Start is called before the first frame update
@@ -33,6 +35,7 @@ public class audioManager : MonoBehaviour
         keySound = keySoundObject.GetComponent<AudioSource>();
         heartbeat = heartbeatObject.GetComponent<AudioSource>();
         cancel = cancelObject.GetComponent<AudioSource>();  
+        youwin = youwinObject.GetComponent<AudioSource>(); 
         playerMovement = FindObjectOfType<PlayerMovement>();
         NormalTheme.Play();
         heartbeat.volume = 0.0f;
@@ -68,7 +71,12 @@ public class audioManager : MonoBehaviour
     {
         cancel.Play();
     }
-
+    public void playWinSound()
+    {
+        SpectralTheme.volume = 0.0f;
+        NormalTheme.volume = 0.0f;
+        youwin.Play();
+    }
     public void StopAllThemes()
     {
         jumpscare.Play();
