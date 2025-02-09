@@ -10,6 +10,10 @@ public class SlideScript : MonoBehaviour
     [SerializeField] private float minSlideTime = 2f; // Minimum time per slide
     [SerializeField] private Button button1;
     [SerializeField] private Button button2;
+    [SerializeField] private Image text;
+    [SerializeField] private Sprite[] textSlides;
+    [SerializeField] private Image spaceToContinue;
+
 
     private int currentSlideIndex = 0;
     private RectTransform rectTransform;
@@ -18,6 +22,8 @@ public class SlideScript : MonoBehaviour
 
     void Start()
     {
+        spaceToContinue.color = new Color(0,0,0,0);
+
         button1.interactable = false;
         button2.interactable = false;
         rectTransform = slideImage.rectTransform;
@@ -45,13 +51,28 @@ public class SlideScript : MonoBehaviour
 
                 while (elapsedTime < firstSlideScrollTime)
                 {
+                    if(elapsedTime < firstSlideScrollTime / 4)
+                    {
+                        text.sprite = textSlides[0];
+                    }else if(elapsedTime < firstSlideScrollTime / 2)
+                    {
+                        text.sprite = textSlides[1];
+                    } else if(elapsedTime < firstSlideScrollTime *3 / 4)
+                    {
+                        text.sprite = textSlides[2];
+                    }
+                    else
+                    {
+                        text.sprite = textSlides[3];
+                    }
+
                     if (Input.GetKeyDown(KeyCode.Space)) break;
 
                     elapsedTime += Time.deltaTime;
                     rectTransform.anchoredPosition = Vector2.Lerp(startPos, endPos, elapsedTime / firstSlideScrollTime);
                     yield return null;
                 }
-
+                text.color = new Color(0, 0, 0, 0);
                 rectTransform.anchoredPosition = endPos;
                 currentSlideIndex++; // Move to the next slide after first
             }
@@ -63,6 +84,8 @@ public class SlideScript : MonoBehaviour
                 // Wait for spacebar to proceed
                 while (!Input.GetKeyDown(KeyCode.Space))
                 {
+                    spaceToContinue.color = new Color(1, 1, 1, 1);
+
                     yield return null; // Waiting for spacebar press
                 }
 
@@ -82,6 +105,14 @@ public class SlideScript : MonoBehaviour
         float elapsedTime = 0f;
         while (elapsedTime < minSlideTime || !(Input.GetKeyDown(KeyCode.Space)))
         {
+            if(elapsedTime < minSlideTime)
+            {
+                spaceToContinue.color = new Color(0,0,0,0);
+            }
+            else
+            {
+                spaceToContinue.color = new Color(1, 1, 1, 1);
+            }
             elapsedTime += Time.deltaTime;
             yield return null;
         }
