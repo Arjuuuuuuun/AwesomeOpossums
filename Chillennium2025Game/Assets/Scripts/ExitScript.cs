@@ -9,7 +9,9 @@ public class ExitScript : MonoBehaviour
     int level_num = 0;
     private void Awake()
     {
+
         scene_name = SceneManager.GetActiveScene().name;
+        Debug.Log(scene_name);
         if (scene_name == "TLevel1")
         {
             level_num = 0;
@@ -22,7 +24,7 @@ public class ExitScript : MonoBehaviour
         {
             level_num = 2;
         }
-        if (scene_name == "TLevel4")
+        if (scene_name == "Tlevel4")
         {
             level_num = 3;
         }
@@ -53,6 +55,7 @@ public class ExitScript : MonoBehaviour
         if (other.CompareTag("Player")) // Ensure the player has the correct tag
         {
             headManager.instance.level_completions[level_num] = 1;
+            Debug.Log(level_num);
             LoadMenu();
             Debug.Log("colission detected");
         }
