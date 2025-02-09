@@ -1357,12 +1357,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slideImage: {fileID: 2001425365}
   slides:
-  - {fileID: 21300000, guid: bb00861583423c14ab69356f2d55d28d, type: 3}
+  - {fileID: 21300000, guid: 2219ae6ad412c9d488c133918fde1932, type: 3}
   - {fileID: 21300000, guid: 1633cfe38717757439fbc4f69257522c, type: 3}
   - {fileID: 21300000, guid: 136e578e961b84047911a18b81933228, type: 3}
-  - {fileID: 21300000, guid: 6a9b2bdd8c4c73444b4099f833c14a6a, type: 3}
   firstSlideScrollTime: 10
-  minSlideTime: 2
+  minSlideTime: 1
   button1: {fileID: 1902895484}
   button2: {fileID: 76285220}
 --- !u!114 &2001425365
