@@ -26,9 +26,25 @@ public class ExitScript : MonoBehaviour
         {
             level_num = 3;
         }
+        if (scene_name == "LevelMaze")
+        {
+            level_num = 4;  
+        }
+        if (scene_name == "LevelConga")
+        {
+            level_num = 5;
+        }
+        if (scene_name == "MediumLevel1")
+        {
+            level_num = 6;
+        }
         if (scene_name == "LevelHoming")
         {
-            level_num = 9;
+            level_num = 8;
+        }
+        if (scene_name == "LevelKeyHunt")
+        {
+            level_num = 10;
         }
     }
     // Detect collision with player

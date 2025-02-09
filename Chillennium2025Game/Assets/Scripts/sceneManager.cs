@@ -56,6 +56,26 @@ public class sceneManager : MonoBehaviour
         
     }
 
+    public void startLevelConga()
+    {
+        SceneManager.LoadScene("LevelConga");
+    }
+
+    public void startLevelVertical()
+    {
+        SceneManager.LoadScene("MediumLevel1");
+    }
+
+    public void startLevelMaze()
+    {
+        SceneManager.LoadScene("LevelMaze");
+    }
+
+    public void startLevelKeyHunt()
+    {
+        SceneManager.LoadScene("LevelKeyHunt");
+    }
+
     public void startLevelHoming()
     {
        
