@@ -219,6 +219,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ghost"))
         {
+            Destroy(lighting.gameObject);
             var objects = FindObjectsOfType<spectralSight>();
             foreach (var gameObj in objects)
             {
