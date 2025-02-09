@@ -25,11 +25,11 @@ public class homingGhostScript : MonoBehaviour
             rb.velocity = new Vector2(direction.x * velocity, direction.y * velocity);
 
             // Flip the object based on movement direction
-            if (direction.x > 0)
+            if (direction.x > 0 || direction.y > 0 && direction.x == 0)
             {
                 transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z); // Facing right
             }
-            else if (direction.x < 0)
+            else 
             {
                 transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z); // Facing left
             }
