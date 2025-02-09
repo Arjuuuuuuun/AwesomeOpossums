@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isInCooldown = false;
 
     Light2D lighting;
-
+    audioManager audioManager;
 
 
     [SerializeField] Sprite sideCat;
@@ -237,6 +237,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        audioManager = FindObjectOfType<audioManager>();
         if (collision.CompareTag("Energy"))
         {
             RechargeEnergy();
@@ -245,21 +246,25 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject == key1)
         {
             door1.SendMessage("InitiateDestructionSequence");
+            audioManager.SendMessage("playKeySounds");
         }
         if (collision.gameObject == key2)
         {
 
             door2.SendMessage("InitiateDestructionSequence");
+            audioManager.SendMessage("playKeySounds");
         }
         if(collision.gameObject == key3)
         {
 
             door3.SendMessage("InitiateDestructionSequence");
+            audioManager.SendMessage("playKeySounds");
         }
         if(collision.gameObject == key4)
         {
 
             door4.SendMessage("InitiateDestructionSequence");
+            audioManager.SendMessage("playKeySounds");
         }
     }
     IEnumerator timer()
