@@ -339,7 +339,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1238912954}
         m_TargetAssemblyTypeName: sceneManager, Assembly-CSharp
-        m_MethodName: returntoMenu
+        m_MethodName: onQuit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
