@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    private SpriteRenderer renderer;
-    private Color color;
     private Transform trans;
 
     private enum Direction { Up, Down, Left, Right }
@@ -13,8 +11,6 @@ public class Door : MonoBehaviour
     void Start()
     {
         trans = GetComponent<Transform>();
-        renderer = GetComponent<SpriteRenderer>();
-        color = renderer.color;
     }
 
     // Function to trigger destruction sequence

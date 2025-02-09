@@ -141,6 +141,14 @@ MonoBehaviour:
   canSwap: 0
   spectralSightAnimationTime: 0.2
   spectralSightDelay: 0
+  Key1Image: {fileID: 21300000, guid: 14bc466c13ef4a946b8203da71e34371, type: 3}
+  Key2Image: {fileID: 21300000, guid: d853847fe5954294697d95f0ae86907f, type: 3}
+  Key3Image: {fileID: 21300000, guid: d7d1db363c85d014093d12437e63e44d, type: 3}
+  Key4Image: {fileID: 21300000, guid: 5697feb443ffc9d4ead07460aefba00a, type: 3}
+  Door1Image: {fileID: 21300000, guid: d92cca388773de340b45f1b5c4d5639c, type: 3}
+  Door2Image: {fileID: 21300000, guid: 36477f8ba651b994dac9ecca4868c58e, type: 3}
+  Door3Image: {fileID: 21300000, guid: 7f55fb25c23e13040852a60610c2bdfa, type: 3}
+  Door4Image: {fileID: 21300000, guid: c01676cfee3225d4c9580f63e97f950c, type: 3}
   door1: {fileID: 0}
   door2: {fileID: 0}
   door3: {fileID: 0}
