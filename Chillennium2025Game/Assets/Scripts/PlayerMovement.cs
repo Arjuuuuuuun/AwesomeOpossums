@@ -276,14 +276,13 @@ public class PlayerMovement : MonoBehaviour
         float totalTime = 0.0f;
         while(totalTime < spectralSightAnimationTime)
         {
-            float slope = ((17 - 3) / (spectralSightAnimationTime));
+            float slope = ((19 - 3) / (spectralSightAnimationTime));
             lighting.pointLightInnerRadius = (slope * totalTime + 3f);
             lighting.pointLightOuterRadius = (slope * totalTime + 5f);
 
-            float bSlope = ((30 - 255) / (spectralSightAnimationTime));
-            float aSlope = ((255 - 255) / (spectralSightAnimationTime));
+            float cSlope = ((80 - 255) / (spectralSightAnimationTime));
 
-            lighting.color = new Color(1,1, (bSlope * totalTime + 255) / 255, (aSlope * totalTime + 255) / 255); 
+            lighting.color = new Color((cSlope * totalTime + 255) / 255, (cSlope * totalTime + 255) / 255, (cSlope * totalTime + 255) / 255); 
 
             yield return new WaitForSeconds(0.01f);
             totalTime += 0.01f;
@@ -301,6 +300,7 @@ public class PlayerMovement : MonoBehaviour
         float initInnerRadius = lighting.pointLightInnerRadius;
         float initOuterRaduis = lighting.pointLightOuterRadius;
         float initR = lighting.color.r;
+        float initG = lighting.color.g;
         float initB = lighting.color.b; 
         float initA = lighting.color.a;
         Debug.Log(lighting.color);
@@ -311,11 +311,14 @@ public class PlayerMovement : MonoBehaviour
             lighting.pointLightInnerRadius = (slope * totalTime + initInnerRadius);
             lighting.pointLightOuterRadius = (slope * totalTime + initOuterRaduis);
 
+
+            float rSlope = -((initR * 255 - 255) / (spectralSightAnimationTime));
+            float gSlope = -((initG * 255 - 255) / (spectralSightAnimationTime));
             float bSlope = -((initB * 255 - 255) / (spectralSightAnimationTime));
             float aSlope = -((initA * 255 - 255) / (spectralSightAnimationTime));
 
 
-            lighting.color = new Color(1, 1, (bSlope * totalTime + initB * 255) / 255, (aSlope * totalTime + initA * 255) / 255);
+            lighting.color = new Color((rSlope * totalTime + initB * 255) / 255, (gSlope * totalTime + initB * 255) / 255, (bSlope * totalTime + initB * 255) / 255, (aSlope * totalTime + initA * 255) / 255);
 
             yield return new WaitForSeconds(0.01f);
             totalTime += 0.01f;
