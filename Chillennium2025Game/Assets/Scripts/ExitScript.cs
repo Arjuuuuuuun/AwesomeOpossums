@@ -45,6 +45,6 @@ public class ExitScript : MonoBehaviour
     // Load the menu scene
     private void LoadMenu()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("LevelSelect");
     }
 }
