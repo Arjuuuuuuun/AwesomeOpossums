@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1633cfe38717757439fbc4f69257522c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1c000cdc989d07b4598dd346c708ff21, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -122,7 +122,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5137255, y: 1.1375115}
+    oldSize: {x: 5, y: 5}
     newSize: {x: 14.036364, y: 10.547833}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -143,4 +143,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acb1b916f848ce14e8eca215c614e529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuSceneName: Menu
