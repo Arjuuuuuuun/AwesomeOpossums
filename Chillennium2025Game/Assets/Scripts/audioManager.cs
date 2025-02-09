@@ -50,6 +50,11 @@ public class audioManager : MonoBehaviour
         }
     }
 
+    public void playKeySounds()
+    {
+
+    }
+
     public void StopAllThemes()
     {
         jumpscare.Play();
