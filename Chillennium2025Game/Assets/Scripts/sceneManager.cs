@@ -34,6 +34,11 @@ public class sceneManager : MonoBehaviour
         SceneManager.LoadScene("TLevel3");
     }
 
+    public void startLevel4()
+    {
+        SceneManager.LoadScene("TLevel4");
+    }
+
     public void startLevelHoming()
     {
         SceneManager.LoadScene("LevelHoming");
