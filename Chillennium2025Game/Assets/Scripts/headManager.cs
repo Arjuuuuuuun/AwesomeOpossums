@@ -11,7 +11,7 @@ public class headManager : MonoBehaviour
 
     private void Awake()
     {
-        sceneManager.RunSlides();
+
 
         if (instance != null)
         {
