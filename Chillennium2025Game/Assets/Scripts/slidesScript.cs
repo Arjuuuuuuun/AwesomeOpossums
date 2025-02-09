@@ -32,7 +32,7 @@ public class SlideScript : MonoBehaviour
     }
     private IEnumerator ShowSlides()
     {
-        while (currentSlideIndex < slides.Length)
+        while (currentSlideIndex <= slides.Length)
         {
             if (currentSlideIndex == 0)
             {
@@ -69,7 +69,9 @@ public class SlideScript : MonoBehaviour
                 currentSlideIndex++; // Move to the next slide
             }
         }
-
+        // Enable buttons and destroy object after last slide
+        button1.interactable = true;
+        button2.interactable = true;
         // Destroy GameObject after the final slide
         Destroy(gameObject);
     }
@@ -89,12 +91,9 @@ public class SlideScript : MonoBehaviour
         {
             SetupSlide(slides[currentSlideIndex]);
         }
-        else
-        {
-            // Enable buttons and destroy object after last slide
-            button1.interactable = true;
-            button2.interactable = true;
-        }
+        
+           
+        
     }
 
 
