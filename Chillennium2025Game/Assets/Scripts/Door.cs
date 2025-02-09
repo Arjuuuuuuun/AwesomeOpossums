@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEngine.Rendering.Universal;
 using UnityEngine;
 
 public class Door : MonoBehaviour
@@ -7,10 +8,14 @@ public class Door : MonoBehaviour
 
     private enum Direction { Up, Down, Left, Right }
     [SerializeField] private Direction dir;
+    Light2D doorLight;
 
     void Start()
     {
         trans = GetComponent<Transform>();
+        doorLight = GetComponentInChildren<Light2D>();
+        doorLight.enabled = false;
+        
     }
 
     // Function to trigger destruction sequence
@@ -26,6 +31,8 @@ public class Door : MonoBehaviour
         float elapsedTime = 0f;
         Vector3 startPos = trans.localPosition;
         Vector3 targetPos = startPos;
+        doorLight.enabled = true;
+
 
         // Determine movement direction
         switch (dir)
