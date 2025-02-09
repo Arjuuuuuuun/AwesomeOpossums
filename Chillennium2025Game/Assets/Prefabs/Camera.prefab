@@ -161,7 +161,7 @@ MonoBehaviour:
   spectralModeOnObject: {fileID: 9024220238085618108}
   spectralModeOffObject: {fileID: 6787635392279782871}
   jumpscareObject: {fileID: 6998315575877209316}
-<<<<<<< HEAD
+  keySoundObject: {fileID: 2679644071266796654}
 --- !u!1 &1076123973561675210
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,9 +211,6 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 558fc4dafbe08a1418dfaaa4a1bb7912, type: 2}
-=======
-  keySoundObject: {fileID: 2679644071266796654}
->>>>>>> 63c09562ec287cb71181615f49aed051502afe02
 --- !u!1 &2322279790817689570
 GameObject:
   m_ObjectHideFlags: 0
