@@ -137,7 +137,7 @@ MonoBehaviour:
   spectralOn: 0
   energyDrainRate: 0
   energyBar: {fileID: 0}
-  cooldownTime: 0.5
+  cooldownTime: 0.2
   canSwap: 0
   spectralSightAnimationTime: 0.2
   spectralSightDelay: 0
