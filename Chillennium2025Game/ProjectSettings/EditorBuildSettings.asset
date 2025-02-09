@@ -14,4 +14,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOverScene.unity
     guid: e47ad0ac5969018449a0842e97746659
+  - enabled: 1
+    path: Assets/Scenes/TLevel1.unity
+    guid: 783ea4493f4202a4498b5ec9d00b5cd4
+  - enabled: 1
+    path: Assets/Scenes/TLevel2.unity
+    guid: 7de6ceaae4eb6934f87992cd21e1387b
+  - enabled: 1
+    path: Assets/Scenes/TLevel3.unity
+    guid: 27112246096f20b43a9ac110342dcccb
+  - enabled: 1
+    path: Assets/Scenes/LevelHoming.unity
+    guid: 842d7d7261c2417469df5e076cc6f81c
   m_configObjects: {}
