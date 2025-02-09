@@ -59,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
         renderer = GetComponent<SpriteRenderer>();
         trans = GetComponent<Transform>();
         lighting = GetComponentInChildren<Light2D>();
+        audioManager = FindObjectOfType<audioManager>();
         currentEnergy = maxEnergy;
 
         if (energyBar != null)
@@ -122,6 +123,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Toggle night vision mode with Spacebar (only if energy > 0)
+        else if (Input.GetKeyDown(KeyCode.Space) && (!canSwap))
+        {
+            audioManager.SendMessage("playCancelSound");
+        }
         else if (canSwap && Input.GetKeyDown(KeyCode.Space) && currentEnergy > 0)
         {
             if (!spectralOn)
@@ -237,7 +242,6 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        audioManager = FindObjectOfType<audioManager>();
         if (collision.CompareTag("Energy"))
         {
             RechargeEnergy();
