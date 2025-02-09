@@ -2275,6 +2275,10 @@ PrefabInstance:
       propertyPath: energyBar
       value: 
       objectReference: {fileID: 119090380}
+    - target: {fileID: -4804732058721445785, guid: bfa520c04e45071459ad7bc2db7f34df, type: 3}
+      propertyPath: maxEnergy
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 1677798967893641262, guid: bfa520c04e45071459ad7bc2db7f34df, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.1
@@ -4492,6 +4496,9 @@ SceneRoots:
   - {fileID: 1119393372}
   - {fileID: 699778924}
   - {fileID: 32053575}
+  - {fileID: 890378484}
+  - {fileID: 2130820594}
+  - {fileID: 363530546}
   - {fileID: 380760085}
   - {fileID: 1008795454}
   - {fileID: 800809706}
@@ -4516,9 +4523,6 @@ SceneRoots:
   - {fileID: 2049158910}
   - {fileID: 1512701506}
   - {fileID: 997552404}
-  - {fileID: 890378484}
-  - {fileID: 2130820594}
-  - {fileID: 363530546}
   - {fileID: 354853272}
   - {fileID: 1525213454}
   - {fileID: 1800490397}
