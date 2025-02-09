@@ -123,6 +123,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Toggle night vision mode with Spacebar (only if energy > 0)
+        else if (Input.GetKeyDown(KeyCode.Space) && (!canSwap))
+        {
+            audioManager.SendMessage("playCancelSound");
+        }
         else if (canSwap && Input.GetKeyDown(KeyCode.Space) && currentEnergy > 0)
         {
             if (!spectralOn)
