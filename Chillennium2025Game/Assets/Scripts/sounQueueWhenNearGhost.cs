@@ -31,11 +31,11 @@ public class sounQueueWhenNearGhost : MonoBehaviour
             if(Vector2.Distance(ghost.gameObject.transform.position,this.transform.position) < distanceWhenSoundQueueIsPlayed)
             {
                 nearGhost = true;
-                audioManager.SendMessage("raiseHeartbeat");
+             
 
                 if (soundQueuePlayed == false)
                 {
-                    //play sound queue
+                    audioManager.SendMessage("raiseHeartbeat");
                     Debug.Log("Ghost Near");
                     soundQueuePlayed = true;
                 }
@@ -45,6 +45,7 @@ public class sounQueueWhenNearGhost : MonoBehaviour
         {
             soundQueuePlayed = false;
             audioManager.SendMessage("lowerHeartbeat");
+            Debug.Log("Ghost Away");
         }
     }
     
