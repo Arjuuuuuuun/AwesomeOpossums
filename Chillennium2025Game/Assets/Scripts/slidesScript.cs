@@ -30,27 +30,73 @@ public class SlideScript : MonoBehaviour
             StartCoroutine(ShowSlides());
         }
     }
-
     private IEnumerator ShowSlides()
     {
         while (currentSlideIndex < slides.Length)
         {
             if (currentSlideIndex == 0)
             {
-                yield return StartCoroutine(ScrollFirstSlide());
+                // First slide animation: scroll from right to left
+                float elapsedTime = 0f;
+                Vector2 startPos = new Vector2(rectTransform.sizeDelta.x / 2 - screenWidth / 2, 0); // Start at the right edge
+                Vector2 endPos = new Vector2(-rectTransform.sizeDelta.x / 2 + screenWidth / 2, 0); // Move to the left edge
+
+                rectTransform.anchoredPosition = startPos;
+
+                while (elapsedTime < firstSlideScrollTime)
+                {
+                    if (Input.GetKeyDown(KeyCode.Space)) break;
+
+                    elapsedTime += Time.deltaTime;
+                    rectTransform.anchoredPosition = Vector2.Lerp(startPos, endPos, elapsedTime / firstSlideScrollTime);
+                    yield return null;
+                }
+
+                rectTransform.anchoredPosition = endPos;
+                currentSlideIndex++; // Move to the next slide after first
             }
             else
             {
-                ResetSlidePosition();
+                // Display subsequent slides
                 yield return StartCoroutine(DisplaySlide());
-            }
 
-            currentSlideIndex++;
+                // Wait for spacebar to proceed
+                while (!Input.GetKeyDown(KeyCode.Space))
+                {
+                    yield return null; // Waiting for spacebar press
+                }
+
+                currentSlideIndex++; // Move to the next slide
+            }
         }
 
         // Destroy GameObject after the final slide
         Destroy(gameObject);
     }
+
+    private IEnumerator DisplaySlide()
+    {
+        // Display current slide for the minimum time or until space is pressed
+        float elapsedTime = 0f;
+        while (elapsedTime < minSlideTime || !(Input.GetKeyDown(KeyCode.Space)))
+        {
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Move to the next slide setup
+        if (currentSlideIndex < slides.Length)
+        {
+            SetupSlide(slides[currentSlideIndex]);
+        }
+        else
+        {
+            // Enable buttons and destroy object after last slide
+            button1.interactable = true;
+            button2.interactable = true;
+        }
+    }
+
 
     private void SetupSlide(Sprite sprite)
     {
@@ -69,55 +115,8 @@ public class SlideScript : MonoBehaviour
             // Fit width, adjust height
             rectTransform.sizeDelta = new Vector2(screenWidth, screenWidth / imageAspect);
         }
-
         // Position left edge of image at the left edge of the screen
         rectTransform.anchoredPosition = new Vector2(-rectTransform.sizeDelta.x / 2 + screenWidth / 2, 0);
     }
-    private IEnumerator ScrollFirstSlide()
-    {
-        float elapsedTime = 0f;
-        Vector2 startPos = new Vector2(rectTransform.sizeDelta.x / 2 - screenWidth / 2, 0); // Start at the right edge
-        Vector2 endPos = new Vector2(-rectTransform.sizeDelta.x / 2 + screenWidth / 2, 0); // Move to the left edge
 
-        rectTransform.anchoredPosition = startPos;
-
-        while (elapsedTime < firstSlideScrollTime)
-        {
-            if (Input.GetKeyDown(KeyCode.Space)) break;
-
-            elapsedTime += Time.deltaTime;
-            rectTransform.anchoredPosition = Vector2.Lerp(startPos, endPos, elapsedTime / firstSlideScrollTime);
-            yield return null;
-        }
-
-        rectTransform.anchoredPosition = endPos;
-    }
-
-
-    private void ResetSlidePosition()
-    {
-        rectTransform.anchoredPosition = new Vector2(-rectTransform.sizeDelta.x / 2 + screenWidth / 2, 0);
-    }
-
-    private IEnumerator DisplaySlide()
-    {
-        float elapsedTime = 0f;
-        while (elapsedTime < minSlideTime || !Input.GetKeyDown(KeyCode.Space))
-        {
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        if (currentSlideIndex + 1 < slides.Length)
-        {
-            SetupSlide(slides[currentSlideIndex + 1]);
-        }
-        else
-        {
-
-            button1.interactable = true;
-            button2.interactable = true;
-            Destroy(gameObject); // Destroy after the final slide
-        }
-    }
 }
