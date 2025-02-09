@@ -65,6 +65,15 @@ public class audioManager : MonoBehaviour
         NormalTheme.volume = 0.0f;
     }
 
+    public void raiseHeartbeat()
+    {
+
+    }
+
+    public void lowerHeartbeat()
+    {
+
+    }
     IEnumerator fadeIn(AudioSource clip)
     {
         for (int i = 0; i < 10; ++i)
