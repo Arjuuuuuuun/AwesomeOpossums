@@ -59,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
         renderer = GetComponent<SpriteRenderer>();
         trans = GetComponent<Transform>();
         lighting = GetComponentInChildren<Light2D>();
+        audioManager = FindObjectOfType<audioManager>();
         currentEnergy = maxEnergy;
 
         if (energyBar != null)
@@ -237,7 +238,6 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        audioManager = FindObjectOfType<audioManager>();
         if (collision.CompareTag("Energy"))
         {
             RechargeEnergy();

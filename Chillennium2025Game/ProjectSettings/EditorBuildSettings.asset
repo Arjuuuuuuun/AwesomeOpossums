@@ -26,4 +26,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScenes/LevelHoming.unity
     guid: 842d7d7261c2417469df5e076cc6f81c
+  - enabled: 1
+    path: Assets/Scenes/GameScenes/Tlevel4.unity
+    guid: 3f2f9b6130a505e4389e64e5e989044e
+  - enabled: 1
+    path: Assets/Scenes/GameScenes/LevelMaze.unity
+    guid: a1427c1e9438ac5469994e6d1ac7b6aa
+  - enabled: 1
+    path: Assets/Scenes/GameScenes/MediumLevel1.unity
+    guid: b4e54f4050f11484c9bfcfd33c9709ff
+  - enabled: 1
+    path: Assets/Scenes/GameScenes/LevelConga.unity
+    guid: 550fefa155b8c5f488dae25430037915
+  - enabled: 1
+    path: Assets/Scenes/GameScenes/LevelKeyHunt.unity
+    guid: c79d56850b159f94da72ebe122e76a9f
   m_configObjects: {}
