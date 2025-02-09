@@ -5,7 +5,7 @@ using UnityEngine;
 public class headManager : MonoBehaviour
 {
     public static headManager instance;
-    public int[] level_completions = new int[4];
+    public int[] level_completions = new int[12];
 
     private void Awake()
     {
@@ -16,10 +16,6 @@ public class headManager : MonoBehaviour
             return;
 
         }
-        level_completions[0] = 0;
-        level_completions[1] = 0;
-        level_completions[2] = 0;
-        level_completions[3] = 0;
         instance = this;
         DontDestroyOnLoad(gameObject);
     }

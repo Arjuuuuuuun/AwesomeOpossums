@@ -20,4 +20,17 @@ public class sceneManager : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
     }
+
+    public void startLevel1()
+    {
+        SceneManager.LoadScene("TLevel1");
+    }
+    public void startLevel2()
+    {
+        SceneManager.LoadScene("TLevel2");
+    }
+    public void startLevel3()
+    {
+        SceneManager.LoadScene("TLevel3");
+    }
 }
